@@ -3,7 +3,7 @@ parent: Topics
 layout: default
 title: Ant
 description:  "Apache Ant, a build tool for Java (similar to Make/Makefiles)"
-category_prefix: "Ant: "
+has_children: true
 ---
 
 # The short version:

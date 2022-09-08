@@ -1,5 +1,6 @@
 ---
-parent: Topics
+parent: Ant
+grand_parent: Topics
 layout: default
 title: "Ant: Properties"
 description:  "The variable like things in Ant files (but they aren't really variables)"

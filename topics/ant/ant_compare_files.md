@@ -1,5 +1,6 @@
 ---
-parent: Topics
+parent: Ant
+grand_parent: Topics
 layout: default
 title: "Ant: Comparing files"
 description:  "Doing something like a unix 'diff -q' via Ant"
