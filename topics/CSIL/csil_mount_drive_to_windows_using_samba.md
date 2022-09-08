@@ -1,5 +1,6 @@
 ---
-parent: Topics
+parent: CSIL
+grand_parent: Topics
 layout: default
 title: "CSIL: Mount CSIL drive Via Windows"
 description:  "Remotely Mount your CSIL drive to your Windows system via cifs/smb using SAMBA"

@@ -1,5 +1,6 @@
 ---
-parent: Topics
+parent: CSIL
+grand_parent: Topics
 layout: default
 title: "CSIL: ssh port forwarding"
 description:  "How to access webapps running on CSIL from your local machine"

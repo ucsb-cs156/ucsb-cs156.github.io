@@ -1,5 +1,6 @@
 ---
-parent: Topics
+parent: CSIL
+grand_parent: Topics
 layout: default
 title: "CSIL: Via MacOS"
 description:  "Accessing CSIL from your MacOS system"

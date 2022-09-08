@@ -1,5 +1,6 @@
 ---
-parent: Topics
+parent: CSIL
+grand_parent: Topics
 layout: default
 title: "CSIL: Java 11"
 description:  "How to configure your CSIL account for Java 11"

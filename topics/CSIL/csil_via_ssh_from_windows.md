@@ -1,5 +1,6 @@
 ---
-parent: Topics
+parent: CSIL
+grand_parent: Topics
 layout: default
 title: "CSIL: via ssh from Windows"
 description:  "Connecting via ssh (PuTTY, XMing, Command Line) or remote desktop"

@@ -1,5 +1,6 @@
 ---
-parent: Topics
+parent: CSIL
+grand_parent: Topics
 layout: default
 title: "CSIL: Remote Host Id Changed"
 description:  "The scary REMOTE HOST ID CHANGED message with mention of SOMETHING NASTY"
