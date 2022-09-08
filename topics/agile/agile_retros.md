@@ -1,5 +1,6 @@
 ---
-parent: Topics
+parent: Agile
+grand_parent: Topics
 layout: default
 title: "Agile: Retros"
 description:  "Retrospectives: the heart of Agile"

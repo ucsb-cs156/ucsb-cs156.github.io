@@ -3,7 +3,6 @@ parent: Topics
 layout: default
 title: Agile
 description:  "A Software Development Methodology"
-category_prefix: "Agile: "
 has_children: true
 ---
 

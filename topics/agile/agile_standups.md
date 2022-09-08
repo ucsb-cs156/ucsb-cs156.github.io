@@ -1,5 +1,6 @@
 ---
-parent: Topics
+parent: Agile
+grand_parent: Topics
 layout: default
 title: "Agile: Standups"
 description:  "A timeboxed standing meeting to help team make progress"

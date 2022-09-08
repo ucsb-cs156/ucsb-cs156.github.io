@@ -1,5 +1,6 @@
 ---
-parent: Topics
+parent: Agile
+grand_parent: Topics
 layout: default
 title: "Agile: User Stories"
 description:  "As a (who?) I can (what?) so that (why?)"

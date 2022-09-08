@@ -1,5 +1,6 @@
 ---
-parent: Topics
+parent: Agile
+grand_parent: Topics
 layout: default
 title: "Agile: Acceptance Criteria"
 description:  "What should be true when a user story is successfully implemented"

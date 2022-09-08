@@ -1,5 +1,6 @@
 ---
-parent: Topics
+parent: Agile
+grand_parent: Topics
 layout: default
 title: "Agile: Team Norms"
 description:  "Groundrules set by a team that promote effective and harmonious teamwork and productivty"
