@@ -1,10 +1,9 @@
 ---
-parent: Topics
+parent: Codecov
+grand_parent: Topics
 layout: default
 title: "Codecov: Troubleshooting"
 description:  "Solutions to problems that commonly arise with Codecov"
-category_prefix: "Codecov: "
-indent: true
 ---
 
 # I cannot find my upload token

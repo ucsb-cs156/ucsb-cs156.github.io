@@ -1,10 +1,9 @@
 ---
-parent: Topics
+parent: Codecov
+grand_parent: Topics
 layout: default
 title: "Codecov: Transfering Repos "
 description:  "Steps to take When transferring repos from one owner/org to another"
-category_prefix: "Codecov: "
-indent: true
 ---
 
 In CS156, we have had the practice of transferring the project repos for legacy code projects from one course org to another, e.g

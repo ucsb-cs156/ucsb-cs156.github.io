@@ -1,10 +1,9 @@
 ---
-parent: Topics
+parent: Codecov
+grand_parent: Topics
 layout: default
 title: "Codecov: GitHub Actions"
 description:  "Using Codecov with GitHub Actions, including adding CODECOV_TOKEN secret"
-category_prefix: "Codecov: "
-indent: true
 ---
 
 To use CodeCov.io with GitHub Actions, you need two things:
