@@ -1,9 +1,12 @@
 ---
-parent: Topics
+parent: Antipatterns
+grand_parent: Topics
 layout: default
 title: "Antipatterns: inheritance"
 description:  "When NOT to use inheritance"
 ---
+
+# {{ page.title }}
 
 
 TBD

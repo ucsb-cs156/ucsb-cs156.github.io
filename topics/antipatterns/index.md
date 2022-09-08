@@ -1,14 +1,13 @@
 ---
 parent: Topics
 layout: default
-title: "antipatterns"
+title: "Antipatterns"
 description:  "Things to avoid in your code"
-category_prefix: "antipatterns: "
-category_prefix_alt: "Antipatterns: "
 ---
 
-Definition
-==========
+# {{ page.title }}
+
+## Definition
 
 An anti-pattern is something that lots of people write often in their
 code, but that is BAD and should NOT BE DONE.
