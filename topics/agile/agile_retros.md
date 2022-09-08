@@ -8,6 +8,8 @@ indent: true
 category_prefix: "Agile: "
 ---
 
+# {{page.title}}
+
 I teach that the most important phrase to remember about Agile is: "Inspect and Adapt".
 
 The "Inspect and Adapt" principle is useful  at all time, and in all aspects of the software development life-cycle.

@@ -8,6 +8,7 @@ indent: true
 category_prefix: "Agile: "
 ---
 
+# {{page.title}}
 
 Suppose you are working on a GitHub issue to implement a [User Story](https://ucsb-cs156.github.io/topics/agile_user_stories/).
 

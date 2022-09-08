@@ -6,6 +6,8 @@ description:  "A Software Development Methodology"
 has_children: true
 ---
 
+# {{page.title}}
+
 * <http://agilemanifesto.org/principles.html>
 
 * <https://www.scrum.org/scrum-guide>

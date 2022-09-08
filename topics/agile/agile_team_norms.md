@@ -8,6 +8,8 @@ indent: true
 category_prefix: "Agile: "
 ---
 
+# {{page.title}}
+
 When an Agile team forms, it is customary to set **team norms** early in the team forming process.
 
 # Moussa et al on Team Norms

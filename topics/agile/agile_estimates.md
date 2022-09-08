@@ -8,6 +8,8 @@ indent: true
 category_prefix: "Agile: "
 ---
 
+# {{page.title}}
+
 
 * <https://www.planningpoker.com/blog/how-mature-teams-story-point/>
 

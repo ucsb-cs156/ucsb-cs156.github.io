@@ -8,6 +8,8 @@ indent: true
 category_prefix: "Agile: "
 ---
 
+# {{page.title}}
+
 Timeboxed meeting (5-15 minutes), where everyone stands (to keep the meeting short)
 
 # The three questions

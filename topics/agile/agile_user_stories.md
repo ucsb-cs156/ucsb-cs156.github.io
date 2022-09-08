@@ -8,6 +8,8 @@ indent: true
 category_prefix: "Agile: "
 ---
 
+# {{page.title}}
+
 
 *User Stories* are a way of expressing software requirements in terms of what a user of your software can do.
 
