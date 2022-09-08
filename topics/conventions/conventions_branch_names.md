@@ -1,10 +1,9 @@
 ---
-parent: Topics
+parent: Conventions
+grand_parent: Topics
 layout: default
 title: "Conventions: Branch Names"
 description:  "How to name your branches"
-indent: true
-category_prefix: "Conventions: "
 ---
 
 # Default Branch is `main`

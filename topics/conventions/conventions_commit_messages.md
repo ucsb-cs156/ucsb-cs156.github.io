@@ -1,10 +1,9 @@
 ---
-parent: Topics
+parent: Conventions
+grand_parent: Topics
 layout: default
 title: "Conventions: Commit Messages"
 description:  "How to make a commit message"
-indent: true
-category_prefix: "Conventions: "
 ---
 
 For commit messages, we use these conventions:

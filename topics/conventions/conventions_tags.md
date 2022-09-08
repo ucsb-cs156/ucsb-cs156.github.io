@@ -1,10 +1,9 @@
 ---
-parent: Topics
+parent: Conventions
+grand_parent: Topics
 layout: default
 title: "Conventions: Tags"
 description:  "Tags (only for course staff)"
-indent: true
-category_prefix: "Conventions: "
 ---
 
 # This page is only for course staff
