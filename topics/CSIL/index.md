@@ -4,6 +4,7 @@ layout: default
 title: "CSIL"
 description:  "Computer Science Instructional Lab machines"
 category_prefix: "csil: "
+has_children: true
 ---
 
 # What is CSIL?

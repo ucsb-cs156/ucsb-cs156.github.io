@@ -1,5 +1,6 @@
 ---
-parent: Topics
+parent: Git
+grand_parent: Topics
 layout: default
 title: "git: pair repo"
 description:  "Setting up a repo for pair partners"

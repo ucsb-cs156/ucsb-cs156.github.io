@@ -1,5 +1,6 @@
 ---
-parent: Topics
+parent: Git
+grand_parent: Topics
 layout: default
 title: "git: merge conflicts"
 description:  "Not nearly as scary as you may have been told"

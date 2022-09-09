@@ -1,5 +1,6 @@
 ---
-parent: Topics
+parent: GitHub
+grand_parent: Topics
 layout: default
 title: "github: wrong starter"
 description:  "help! I pulled from the wrong starter"

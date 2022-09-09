@@ -1,5 +1,6 @@
 ---
-parent: Topics
+parent: Git
+grand_parent: Topics
 layout: default
 title: "git: git/github troubleshooting"
 description:  "Various problems and their solution"

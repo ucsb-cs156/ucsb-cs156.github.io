@@ -1,5 +1,6 @@
 ---
-parent: Topics
+parent: GitHub
+grand_parent: Topics
 layout: default
 title: "github: pro tips"
 description:  "A few extras to help you work with GitHub more effectively"

@@ -1,5 +1,6 @@
 ---
-parent: Topics
+parent: GitHub
+grand_parent: Topics
 layout: default
 title: "github: actions self hosted runners"
 description:  "If you run out of GitHub minutes, you can set up your own servers"

@@ -1,5 +1,6 @@
 ---
-parent: Topics
+parent: GitHub
+grand_parent: Topics
 layout: default
 title: "github: using ssh keys"
 description:  "generating public/private key pair, uploading public key to github"

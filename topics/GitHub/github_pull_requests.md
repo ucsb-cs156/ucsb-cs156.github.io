@@ -1,5 +1,6 @@
 ---
-parent: Topics
+parent: GitHub
+grand_parent: Topics
 layout: default
 title: "github: pull requests"
 description:  "working with pull requests (PRs) in github"

@@ -1,5 +1,6 @@
 ---
-parent: Topics
+parent: Git
+grand_parent: Topics
 layout: default
 title: "git: cloning your first repo"
 description:  "A guide for those new to git"

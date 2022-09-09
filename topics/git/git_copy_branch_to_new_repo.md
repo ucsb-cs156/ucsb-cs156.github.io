@@ -1,5 +1,6 @@
 ---
-parent: Topics
+parent: Git
+grand_parent: Topics
 layout: default
 title: "git: copy branch to new repo"
 description:  "Creating a new repo with a branch from another repo"

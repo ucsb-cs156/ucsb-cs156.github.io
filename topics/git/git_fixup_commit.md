@@ -1,5 +1,6 @@
 ---
-parent: Topics
+parent: Git
+grand_parent: Topics
 layout: default
 title: "git: fixup commit"
 description:  "Fixing an error you made in a previous commit"

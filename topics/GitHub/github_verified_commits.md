@@ -1,5 +1,6 @@
 ---
-parent: Topics
+parent: GitHub
+grand_parent: Topics
 layout: default
 title: "github: verified badge on commits"
 description:  "adding extra security to your commit messages"

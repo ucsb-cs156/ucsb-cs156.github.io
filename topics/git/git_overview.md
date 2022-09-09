@@ -1,5 +1,6 @@
 ---
-parent: Topics
+parent: Git
+grand_parent: Topics
 layout: default
 title: "git: overview"
 description:  "An introduction. git vs. github.com vs. github.ucsb.edu, repos, etc."

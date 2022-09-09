@@ -1,5 +1,6 @@
 ---
-parent: Topics
+parent: Git
+grand_parent: Topics
 layout: default
 title: "git: commit messages"
 description:  "How to write clear and helpful commit messages"

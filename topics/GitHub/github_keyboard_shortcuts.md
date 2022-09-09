@@ -1,5 +1,6 @@
 ---
-parent: Topics
+parent: GitHub
+grand_parent: Topics
 layout: default
 title: "github: keyboard shortcuts"
 description:  "making the github web UI easier to use"

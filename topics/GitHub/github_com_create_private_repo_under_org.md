@@ -1,5 +1,6 @@
 ---
-parent: Topics
+parent: GitHub
+grand_parent: Topics
 layout: default
 title: "github.com: creating private repos under an organization"
 description:  "for closed source class assignments"

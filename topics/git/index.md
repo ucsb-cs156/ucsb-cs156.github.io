@@ -1,10 +1,9 @@
 ---
 parent: Topics
 layout: default
-title: "git and github"
+title: "Git"
 description:  "version control, source code configuration and project collaboration tools"
-category_prefix: "git: "
-category_prefix_alt: "github: "
+has_children: true
 ---
 
 The software package known as *git* is an open source version control system.  
@@ -17,16 +16,8 @@ The commerical company *github* provides web-based software and cloud-based host
 
 The article [git: overview](/topics/git_overview/) explains more.  In addition there are several other articles about git/github listed below.
 
-# Quick Tips
+See also: [GitHub](GitHub)
 
-* [Github Cheat Sheet](https://education.github.com/git-cheat-sheet-education.pdf)
-
-* Short Cut Keys
-   * Did you know that when browsing files in github.com, you can type a ? and bring up a whole bunch of amazing short cut keys?
-   * For example T is "fuzzy file search".  Have fun exploring all the rest.
-
-
-* Code Navigation: <https://help.github.com/en/github/managing-files-in-a-repository/navigating-code-on-github>
 
 # Windows
 

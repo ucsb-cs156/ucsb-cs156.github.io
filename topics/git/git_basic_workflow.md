@@ -1,5 +1,6 @@
 ---
-parent: Topics
+parent: Git
+grand_parent: Topics
 layout: default
 title: "git: basic workflow"
 description:  "The basics: git add..., git commit..., git push ... "
