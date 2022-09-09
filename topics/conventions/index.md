@@ -4,6 +4,7 @@ layout: default
 title: "Conventions: "
 description:  "The conventions we use in our code"
 category_prefix: "Conventions: "
+has_children: true
 ---
 
 This part of the website explains the conventions used in various aspects of the software design life cycle in CMPSC 156.

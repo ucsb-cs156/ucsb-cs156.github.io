@@ -3,6 +3,7 @@ parent: Topics
 layout: default
 title: "Antipatterns"
 description:  "Things to avoid in your code"
+has_children: true
 ---
 
 # {{ page.title }}

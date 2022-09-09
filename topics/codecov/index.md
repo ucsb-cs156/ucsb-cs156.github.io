@@ -3,7 +3,7 @@ parent: Topics
 layout: default
 title: "Codecov: "
 description:  "Integrated tools to group, merge, archive, and compare coverage reports (commerical, free for open-source)"
-category_prefix: "Codecov: "
+has_children: true
 ---
 
 The website <https://codecov.io> is a commerical tool (free for open source, and free to students for closed source through the 
