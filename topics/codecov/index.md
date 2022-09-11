@@ -1,7 +1,7 @@
 ---
 parent: Topics
 layout: default
-title: "Codecov: "
+title: "Codecov"
 description:  "Integrated tools to group, merge, archive, and compare coverage reports (commerical, free for open-source)"
 has_children: true
 ---

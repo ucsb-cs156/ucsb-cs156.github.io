@@ -3,6 +3,7 @@ parent: Topics
 layout: default
 title: Javadoc
 description:  "Documentation generator for java"
+has_children: true
 ---
 
 # {{page.title}}

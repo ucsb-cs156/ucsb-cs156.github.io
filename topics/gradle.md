@@ -1,7 +1,7 @@
 ---
 parent: Topics
 layout: default
-title: "gradle"
+title: "Gradle"
 description:  "A build system (alternative to Ant or Maven) based on the groovy scripting language"
 category_prefix	: "gradle: "
 ---

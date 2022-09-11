@@ -1,7 +1,7 @@
 ---
 parent: Topics
 layout: default
-title: "eslint"
+title: "Eslint"
 description:  "Linting (checking for style and frequent errors) in ECMAScript (i.e. JavaScript)"
 ---
 

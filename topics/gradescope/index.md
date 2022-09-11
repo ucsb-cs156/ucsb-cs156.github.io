@@ -4,6 +4,7 @@ layout: default
 title: "Gradescope"
 description:  "System for homework grading, feedback and submission"
 category_prefix	: "Gradescope: "
+has_children: true
 ---
 
 ## Link to Gradescope
