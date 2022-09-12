@@ -6,11 +6,18 @@ description:  "Apache Ant, a build tool for Java (similar to Make/Makefiles)"
 has_children: true
 ---
 
-# The short version:
+# {{page.title}}
+
+## The short version:
 
 * Ant is similar in purpose to Make/Makefiles for C/C++
+* We typically no longer use Ant in CMPSC 156, preferring to use Maven instead.
+* So, you probably won't need to learn Ant in this course.
+* However some Maven projects still rely on Ant as a kind of "subroutine" 
+  to accomplish certain tasks, so it's helpful to have some documentation for
+  Ant around.
 
-# Differences between Ant and make
+## Differences between Ant and make
 
 * XML syntax instead of ideosyncratic Makefile syntax (tabs? what?)
 * Built in Java, so its ostensibly portable like Java (Makefiles are very Unix centric)
@@ -20,23 +27,26 @@ has_children: true
     * `ant clean` instead of `make clean`
 
 
-# References:
+## References:
 
 * [Ant Users Manual](https://ant.apache.org/manual/)
 * [Ant Tutorial (Hello World)](https://ant.apache.org/manual/tutorial-HelloWorldWithAnt.html)
 * [Wikipedia page for Apache Ant](https://en.wikipedia.org/wiki/Apache_Ant)
 * [List of Ant Tasks](http://ant.apache.org/manual/tasksoverview.html ) from Apache Ant website
 
-# Tutorials
+## Tutorials
 
 * [Writing a Simple Buildfile](http://ant.apache.org/manual/using.html) from Apache Ant website.
+* [Installing Ant on Mac OS X](http://stackoverflow.com/questions/3222804/how-can-i-install-apache-ant-on-mac-os-x)
+* [Ant Binary Download Page](http://ant.apache.org/bindownload.cgi)
 
-# Installing
+## Installing
+
 * [Ant Download Page](http://ant.apache.org/bindownload.cgi)
 * [Installing Ant on Mac OS X](http://stackoverflow.com/questions/3222804/how-can-i-install-apache-ant-on-mac-os-x) 
     * NOTE: Use Instructions for Manual Install
 
-# How do I...? 
+## How do I...? 
 
 ## Factor out my classpath? 
 
@@ -59,13 +69,13 @@ Using it:
   </java>          
 ```
 
-# Get non-code resources into my JAR file
+## Get non-code resources into my JAR file
 
 e.g. images, configuration files, sample data, etc.
 
 http://stackoverflow.com/questions/1216744/adding-non-code-resources-to-jar-file-using-ant
 
-# access non-code resources in my JAR file 
+## access non-code resources in my JAR file 
 
 If you have images or files in your JAR, you may need to get to them from your code.
 
@@ -73,9 +83,9 @@ You can't do this the normal "file system" way.  Instead, there are alternative 
 
 http://stackoverflow.com/questions/2393194/how-to-access-resources-in-jar-file
 
-# Common Problems 
+## Common Problems 
 
-## "Modified in the Future"
+### "Modified in the Future"
 
 *Q:* I get the message "Warning: file foo.bar modified in the future". What's up with that?
 
@@ -87,7 +97,7 @@ http://jawe.net/wiki/dev/ant/anttouchfuturefiles
 
 Best bet: don't worry&mdash;be happy.
 
-# includeantruntime warning 
+### includeantruntime warning 
 
 *Q:* When I compile with ant, I'm getting this crazy warning (see below) on the `javac` step. What's up with that?
 
@@ -111,7 +121,7 @@ The reasons for this are sort of obscure and have to do with an "improvement" to
 
 * <http://ant.1045680.n5.nabble.com/warning-includeantruntime-was-not-set-td2639463.html> 
 
-# I get "(Unknown Source)" in my stack traceback messages 
+### I get "(Unknown Source)" in my stack traceback messages 
 
 *Q:* I'm trying to debug my code, and I'm getting an exception. Weird thing is, the JVM seems to know the exact line numbers inside the system classes, but not in my own code.  I'm getting "(Unknown Source)" next to my own code. What's up with that?  I'd really like to know where the exception is being thrown. Here's an example of what I'm getting:
 
@@ -156,19 +166,11 @@ Then you should more helpful output like this:
 
 Remember that you might need to do `ant clean` to force a recompile before you run again&mdash;otherwise, this change to your javac task won't make any difference.
 
-## My problem isn't listed here!
+### My problem isn't listed here!
 
 
 *Q:* My problem isn't listed here!
 
 *A:* Try googling the error message, or check here: http://bobcat.webappcabaret.net/javachina/faq/ant_01.htm
-
-# Tutorials
-
-= Tutorials =
-
-* [Writing a Simple Buildfile](http://ant.apache.org/manual/using.html) from Apache Ant website.
-* [Installing Ant on Mac OS X](http://stackoverflow.com/questions/3222804/how-can-i-install-apache-ant-on-mac-os-x)
-* [Ant Binary Download Page](http://ant.apache.org/bindownload.cgi)
 
 
