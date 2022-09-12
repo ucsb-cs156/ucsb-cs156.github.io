@@ -1,9 +1,8 @@
 ---
 parent: Topics
 layout: default
-title: "User Stories: "
+title: "User Stories"
 description:  "As a (who?) I can (what?) so that (why?)"
-category_prefix: "User Stories: "
 ---
 
 *User Stories* are a way of expressing software requirements in terms of what a user of your software can do.
