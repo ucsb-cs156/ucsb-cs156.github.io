@@ -1,9 +1,8 @@
 ---
 parent: Topics
 layout: default
-title: "Conventions: "
+title: "Conventions"
 description:  "The conventions we use in our code"
-category_prefix: "Conventions: "
 has_children: true
 ---
 
