@@ -5,6 +5,8 @@ title: "Scrum"
 description:  "A Software Development Methodology"
 ---
 
+# {{page.title}}
+
 The ["Scrum Guide"](http://www.scrumguides.org/scrum-guide.html) at <http://www.scrumguides.org> is a good resource to understand Scrum.
 
 # What is Scrum?

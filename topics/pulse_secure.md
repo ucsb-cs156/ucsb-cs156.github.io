@@ -6,6 +6,8 @@ description:  "Remotely Access the UCSB Campus Network"
 indent: true
 ---
 
+# {{page.title}}
+
 If you are not connected to campus or university housing internet, you will not be able to access some online resources that are restricted to only members of our campus. For this class, this includes the shared digital copies of the course textbooks and the ECI network share which allows you to mount your CSIL home directory on your computer. 
 
 To access these resourcs, you'll need to install the Pulse Secure VPN on your computer and configure it to connect to the university network.

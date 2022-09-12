@@ -6,6 +6,8 @@ description:  "A compendium of knowledge and skills applications programmers (so
 category_prefix: "Applications Programming: "
 ---
 
+# {{page.title}}
+
 This is a _compendium_† of the knowledge and skills that applications progammers (software developers) typically need 
 to be effective contributors in software development internships and jobs.    This was compiled based on 
 direct observation, and conversations with recent graduates at interships and jobs.

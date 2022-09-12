@@ -5,6 +5,8 @@ title: Data
 description:  "Various sources for datasets to build applications with"
 ---
 
+# {{page.title}}
+
 * Corgis: <https://think.cs.vt.edu/corgis>
   * Sample Code for Airline collection: <https://github.com/UCSB-CS56-pconrad/corgis-airlines-demo-01>
   * Github repo: <https://github.com/RealTimeWeb/datasets/>

@@ -5,6 +5,8 @@ title: "Sockets"
 description:  "An abstraction used in networking"
 ---
 
+# {{page.title}}
+
 The term *socket* is overloaded, in the sense that there are multiple meanings of the word.
 
 It can mean:

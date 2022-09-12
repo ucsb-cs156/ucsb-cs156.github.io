@@ -1,9 +1,12 @@
 ---
-parent: Topics
+parent: SQL
+grand_parent: Topics
 layout: default
-title: "Postgres"
+title: "SQL: Postgres"
 description:  "An implementation of an SQL relational database, available on Heroku"
 ---
+
+# {{page.title}}
 
 Postgres is a particular implementation of an SQL-based relational database.
 

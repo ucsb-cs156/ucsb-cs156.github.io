@@ -5,13 +5,14 @@ title: "Thymeleaf"
 description:  "A Templating Engine for Spring Boot"
 ---
 
-# NOTE: This page is obsolete
+
+# {{page.title}}
 
 The CMPSC 156 code bases no longer use Thymeleaf.  Thymeleaf is a templating engine for when the Java Spring Boot backend handles the formatting of the client HTML, and there it little to no JavaScript code.   We have moved all frontend processing to the client side using React.
 
 This page is here only for historical reasons, in case we need to decipher an older code base that uses Thymeleaf.
 
-# Introduction to Thymeleaf
+## Introduction to Thymeleaf
 
 In web applications, we typically need to render HTML pages that are a mixture of static HTML plus computed data.
 
@@ -25,7 +26,7 @@ So, most web application frameworks have some kind of *Templating System*.   A t
 
 The templating system we'll be using in CMPSC 56 is called *Thymeleaf*.  Thymeleaf  has a particular advantage over other templating systems in that that every `.html` file that uses Thymeleaf is also valid HTML that can be displayed in a browser.   The parts of the file that do the templating *will not work* if you just open the file in a browser, but you can at least see if the HTML looks reasonable or not.
 
-# Thymeleaf dependency for Maven `pom.xml`
+## Thymeleaf dependency for Maven `pom.xml`
 
 The first step if you want to use Thymeleaf is a Spring Boot application is that you must include Thymeleaf as a dependency in the `dependencies` section of the Maven `pom.xml` file.  Here is the dependency that you need:
 
@@ -46,7 +47,7 @@ This is typically used in the comnbination with this `parent` element:
    </parent>
 ```
 
-# Setting up a controller
+## Setting up a controller
 
 A controller action that uses Thymeleaf will return the name of a `.html` file that is:
 * located in `src/main/resources/templates`
@@ -88,6 +89,6 @@ public class HomeController {
 
 
 
-# References
+## References
 
 * <https://www.thymeleaf.org/doc/articles/standarddialect5minutes.html>

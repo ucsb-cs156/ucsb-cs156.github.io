@@ -5,6 +5,10 @@ title: "Code Smells"
 description:  "Common problems that arise in code"
 ---
 
+# {{page.title}}
+
+See also: [Antipatterns](antipatterns)
+
 The term "code smell" was introduced in a book by Martin Fowler, in a chapter he co-authored with Kent Beck (the designer of JUnit) in a book
 called "Refactoring: Improving the Design of Existing Code".
 

@@ -5,6 +5,8 @@ title: Bug Reports
 description:  "The typical format: STR, observed, desired"
 ---
 
+# {{page.title}}
+
 There are certain conventions about writing in software development.  One example is a "bug report", which typically has three parts:
 
 * Steps to Reproduce:   This is a list of steps that, if a user takes those steps in the software, the bug will show up.  It's like a recipe for the bug.

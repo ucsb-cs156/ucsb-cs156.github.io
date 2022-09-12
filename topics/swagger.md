@@ -5,6 +5,8 @@ title: Swagger
 description:  "Automatic documentation of Spring Boot Restful APIs"
 ---
 
+# {{page.title}}
+
 The backend of a Spring Boot web app can be documented using a package called Swagger.
 
 Here are some resources that describe how this works:

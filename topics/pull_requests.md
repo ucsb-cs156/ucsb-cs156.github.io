@@ -5,7 +5,7 @@ title: "Pull Requests"
 description:  "aka PRs; a checklist for doing them properly"
 ---
 
-# Pull Requests
+# {{page.title}}
 
 # A Checklist
 

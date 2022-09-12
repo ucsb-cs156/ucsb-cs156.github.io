@@ -5,6 +5,8 @@ title: Semantic Versioning
 description:  "A set of rules for assigning meaningful version numbers"
 ---
 
+# {{page.title}}
+
 *Semantic Versioning* is a specific scheme for assigning version numbers to releases of software.
 
 It is widely used in several important software ecosystems.

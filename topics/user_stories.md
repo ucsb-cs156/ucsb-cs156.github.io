@@ -5,6 +5,8 @@ title: "User Stories"
 description:  "As a (who?) I can (what?) so that (why?)"
 ---
 
+# {{page.title}}
+
 *User Stories* are a way of expressing software requirements in terms of what a user of your software can do.
 
 They often take the form: 

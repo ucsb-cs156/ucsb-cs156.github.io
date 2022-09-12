@@ -5,6 +5,8 @@ title: "Refactoring"
 description:  ""
 ---
 
+# {{page.title}}
+
 See Also: [Code Smells]({{ '/topics/code_smells/' | relative_url }})
 
 Martin Fowler and Kent Beck (the designer of JUnit) are the authors of a very influential book called  “Refactoring: Improving the Design of Existing Code”.

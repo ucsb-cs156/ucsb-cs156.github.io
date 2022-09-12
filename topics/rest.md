@@ -5,6 +5,8 @@ title: "REST"
 description:  "RESTful APIs, etc (Representational State Transfer)"
 ---
 
+# {{page.title}}
+
 As a programmer, you typically encounter the notion of a RESTful API in one of two contexts:
 * You need to use someone else's RESTful API that already exists
 * You need to implement your own RESTful API for others to use.

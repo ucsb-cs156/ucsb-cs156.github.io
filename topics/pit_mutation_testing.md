@@ -5,12 +5,14 @@ title: "PIT Mutation Testing"
 description:  "Testing your test suite by mutating your solution, pitest.org"
 ---
 
-# Quick reference
+# {{page.title}}
+
+## Quick reference
 
 The maven command to run pitest is:
 * `mvn clean test org.pitest:pitest-maven:mutationCoverage`
 
-# Introduction
+## Introduction
 
 How do we know whether a test suite for a piece of software is any good?
 
@@ -25,7 +27,7 @@ For that, we have *mutation testing*.   Mutation testing involves:
 
 One tool for mutation testing in Java is PIT Test, which is explained at <https://pitest.org>
 
-# See also
+## See also
 
 * Discussion of Mutation testing in <https://ucsb-cs156.github.io/tutorials/student_ex08/>
 * Baeldung Article: <https://www.baeldung.com/java-mutation-testing-with-pitest>

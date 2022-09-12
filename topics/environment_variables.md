@@ -5,6 +5,8 @@ title: "Enviroment Variables"
 description:  "Reading them from Java code"
 ---
 
+# {{page.title}}
+
 One way to allow the configuration of an application to vary depending on the environment in which
 it is running is to have the application look at *environment variables*.
 

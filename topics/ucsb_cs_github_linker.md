@@ -5,7 +5,9 @@ title: "UCSB CS Github Linker"
 description:  "A Tool for setting up your Github Account for your course"
 ---
 
-To submit work in this course, you'll need to belong to a Github Organization for this course and this quarter (e.g. ucsb-cs56-f19).
+# {{page.title}}
+
+To submit work in this course, you'll need to belong to a Github Organization for this course and this quarter (e.g. ucsb-cs156-f22).
 
 Students at UCSB, working together with Prof. Conrad, have developed an open source tool to enable you to add yourself into this organization automatically
 provided that:

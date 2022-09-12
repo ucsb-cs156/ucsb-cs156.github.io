@@ -5,6 +5,8 @@ title: "Test Driven Development (TDD)"
 description:  "General information about best practices"
 ---
 
+# {{page.title}}
+
 Test-Driven Development, TDD, refers to a development practice where you follow a cycle of four stages.  (It is usually presented as the last three, i.e. red-green-refactor, but this leaves out perhaps the most important step.)
 
 * <span class="tdd_refactor">Design</span>. Think of some new functionality you want to add, or a bug you want to eliminate

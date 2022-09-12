@@ -6,6 +6,8 @@ description:  "Virtualization/Container platform"
 category_prefix: "Docker: "
 ---
 
+# {{page.title}}
+
 # What is Docker?
 
 Docker is a tool for creating/running containers, which are essentially lightweight virtual machines. The main benefit of Docker is that it makes applications much more portable—instead of having to make sure the target machine has exactly the correct dependencies for deployment/local development, you can trust that any machine with Docker installed will be able to run your app.

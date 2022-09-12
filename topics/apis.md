@@ -6,6 +6,8 @@ description:  "Application Programming Interfaces"
 category_prefix: "APIs: "
 ---
 
+# {{page.title}}
+
 The term *Application Programming Interface* or *API* is used in various ways.  Two common meanings of API that arise in this course:
 
 1. A collection of public methods and properties of some specific collection of classes/objects 

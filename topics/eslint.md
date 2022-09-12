@@ -5,6 +5,7 @@ title: "Eslint"
 description:  "Linting (checking for style and frequent errors) in ECMAScript (i.e. JavaScript)"
 ---
 
+# {{page.title}}
 
 # NOTE: `eslint` currently disabled.
 

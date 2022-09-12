@@ -5,6 +5,8 @@ title: "Markdown"
 description:  "A simplified syntax to create formatted documents"
 ---
 
+# {{page.title}}
+
 <style>
 div.niceTable table {
    border-collapse: collapse;

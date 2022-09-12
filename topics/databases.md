@@ -6,6 +6,8 @@ description:  "SQL, Postgres, H2, etc"
 category_prefix: "Databases: "
 ---
 
+# {{page.title}}
+
 In CS56 Spring Boot projects, we use:
 * H2 in-memory database when running on localhost
 * Postgres database when running on Heroku
