@@ -5,18 +5,6 @@ nav_order: 3
 description: "Textbooks used in CMPSC 156"
 ---
 
-
-# Note about the textbooks for the course
-
-The textbooks for this course are available in "full text", at no charge, to UCSB students (see below).
-
-There is a "catch": In past years, there were a limited number of "seats" for access to the UC subscription to the O'Reilly library that provides this access.
-
-If you login at a time when "too many" folks from across the UC System (yes, all nine campuses), you might get an error.  This hasn't happened in a while, so maybe it's no longer a problem, but **be warned**; there may be a benefit to having your own paper copy.
-
-The books tend to be much less expensive than
-traditional textbooks, so if you can afford it, there is benefit to purchasing your own physical copy.
-
 ## Textbooks Used This Quarter
 
 {% assign textbooks = site.textbooks | sort: 'custom_sort_order' %}
@@ -37,6 +25,16 @@ traditional textbooks, so if you can afford it, there is benefit to purchasing y
 {% endif %}
 {% endfor %}
 
+# Note about the textbooks for the course
+
+The textbooks for this course are available in "full text", at no charge, to UCSB students (see below).
+
+There is a "catch": In past years, there were a limited number of "seats" for access to the UC subscription to the O'Reilly library that provides this access.
+
+If you login at a time when "too many" folks from across the UC System (yes, all nine campuses), you might get an error.  This hasn't happened in a while, so maybe it's no longer a problem, but **be warned**; there may be a benefit to having your own paper copy.
+
+The books tend to be much less expensive than
+traditional textbooks, so if you can afford it, there is benefit to purchasing your own physical copy.
 
 ## How to access the textbooks online
 
