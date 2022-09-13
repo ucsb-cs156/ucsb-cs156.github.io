@@ -30,9 +30,9 @@ course number CMPSC 56.
 | [W18](https://ucsb-cs56-w18.github.io/) | P. Conrad |
 | [F17](https://ucsb-cs56-f17.github.io/) | P. Conrad |
 | [M16](https://ucsb-cs56-m16.github.io/) | P. Conrad |
-| [W16](https://foo.cs.ucsb.edu/56wiki/index.php/Main_Page) | P. Conrad |
-| [W15](https://foo.cs.ucsb.edu/56wiki/index.php/Main_Page) | P. Conrad |
-| [W14](https://foo.cs.ucsb.edu/56wiki/index.php/Template:W14Hdr) | P. Conrad |
+| [W16]((https://mw-mysql-01.herokuapp.com/index.php?title=Main_Page) | P. Conrad |
+| [W15]((https://mw-mysql-01.herokuapp.com/index.php?title=Main_Page) | P. Conrad |
+| [W14](https://mw-mysql-01.herokuapp.com/index.php?title=Main_Page) | P. Conrad |
 | [S13](http://www.cs.ucsb.edu/~pconrad/cs56/) | P. Conrad |
 | [S12](http://www.cs.ucsb.edu/~pconrad/cs56/) | P. Conrad |
 | [W12](http://www.cs.ucsb.edu/~pconrad/cs56/) | P. Conrad |
