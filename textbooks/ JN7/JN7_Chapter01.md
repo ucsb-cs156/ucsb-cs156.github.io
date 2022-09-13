@@ -1,9 +1,11 @@
 ---
-title: "Java in a Nutshell, 7th Edition"
+parent: JN7
+grand_parent: Textbooks
+title: "JN7: Chapter 1"
 chapter: 1
 sort_key: "01"
 textbook: JN7
-desc: "Introduction to the Java Environment"
+description: "Introduction to the Java Environment"
 ---
 
 # The big picture

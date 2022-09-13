@@ -1,9 +1,11 @@
 ---
-title: "Head First Java, 3rd Edition"
+parent: HFJ3
+grand_parent: Textbooks
+title: "HFJ3: Chapter 2"
 chapter: 2
 sort_key: "02"
 textbook: HFJ3
-desc: "A Trip to Objectville: Classes and Objects"
+description: "A Trip to Objectville: Classes and Objects"
 ---
 
 # {{page.title}}—{{page.desc}}

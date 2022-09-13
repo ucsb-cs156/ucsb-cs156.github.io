@@ -1,9 +1,12 @@
 ---
-title: "Head First Java, 3rd Edition"
+parent: HFJ3
+grand_parent: Textbooks
+title: "HFJ3: Chapter 1"
 chapter: 1
 sort_key: "01"
 textbook: HFJ3
-desc: "Breaking The Surface"
+description: "Breaking The Surface"
+layout: default
 ---
 
 The big picture

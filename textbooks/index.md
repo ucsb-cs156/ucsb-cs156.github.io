@@ -3,27 +3,17 @@ layout: default
 title: "Textbooks"
 nav_order: 3
 description: "Textbooks used in CMPSC 156"
+has_children: true
 ---
 
-## Textbooks Used This Quarter
-
-{% assign textbooks = site.textbooks | sort: 'custom_sort_order' %}
-{% for textbook in textbooks %}
-{% if textbook.used_this_quarter %}
-* [{{ textbook.title }}]({{textbook.url | relative_url }})&mdash;{{textbook.desc}}
-{% endif %}
-{% endfor %}
+## "Required" Textbooks Used This Quarter
 
 
-## Other Textbooks
 
-{% assign textbooks = site.textbooks | sort: 'custom_sort_order' %}
-{% for textbook in textbooks %}
-{% if textbook.used_this_quarter %}
-{% else %}
-* [{{ textbook.title }}]({{textbook.url | relative_url }})&mdash;{{textbook.desc}}
-{% endif %}
-{% endfor %}
+
+## Other Useful Textbooks
+
+
 
 # Note about the textbooks for the course
 

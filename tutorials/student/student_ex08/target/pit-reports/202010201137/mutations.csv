@@ -1,0 +1,10 @@
+Main.java,edu.ucsb.cs156.student.Main,org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator,main,9,NO_COVERAGE,none
+Main.java,edu.ucsb.cs156.student.Main,org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator,main,10,NO_COVERAGE,none
+Main.java,edu.ucsb.cs156.student.Main,org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator,main,11,NO_COVERAGE,none
+Main.java,edu.ucsb.cs156.student.Main,org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator,main,19,NO_COVERAGE,none
+Main.java,edu.ucsb.cs156.student.Main,org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator,main,20,NO_COVERAGE,none
+Main.java,edu.ucsb.cs156.student.Main,org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator,main,26,NO_COVERAGE,none
+Main.java,edu.ucsb.cs156.student.Main,org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator,main,27,NO_COVERAGE,none
+Student.java,edu.ucsb.cs156.student.Student,org.pitest.mutationtest.engine.gregor.mutators.EmptyObjectReturnValsMutator,getName,17,KILLED,edu.ucsb.cs156.student.StudentTest.test_getName2(edu.ucsb.cs156.student.StudentTest)
+Student.java,edu.ucsb.cs156.student.Student,org.pitest.mutationtest.engine.gregor.mutators.PrimitiveReturnsMutator,getPerm,21,KILLED,edu.ucsb.cs156.student.StudentTest.test_getPerm1(edu.ucsb.cs156.student.StudentTest)
+Student.java,edu.ucsb.cs156.student.Student,org.pitest.mutationtest.engine.gregor.mutators.EmptyObjectReturnValsMutator,toString,26,NO_COVERAGE,none

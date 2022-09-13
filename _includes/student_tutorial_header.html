@@ -1,0 +1,30 @@
+
+<style>
+    div.niceTable table {
+       border-collapse: collapse;
+    }
+    
+    
+    div.niceTable table * td {
+       border: 1px solid black;
+       border-collapse: collapse;
+    }
+      
+    div.niceTable table * td:first-child {
+       font-family: monospace;
+       white-space: pre;
+    }
+      
+      
+    div.niceTable table * th {
+       border: 1px solid black;
+       border-collapse: collapse;
+    }
+      
+</style>
+    
+    
+<em>Part of a [series of tutorial articles about a Student class](/tutorials/student/).</em>
+    
+{% if page.code_repo and page.code_branch %} Code examples referred to on this page can be found here: <a href="{{page.code_repo}}/tree/{{page.code_branch}}">{{page.code_repo}}/tree/{{page.code_branch}}</a>.
+{% endif %}

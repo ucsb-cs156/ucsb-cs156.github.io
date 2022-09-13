@@ -3,7 +3,7 @@ theme: just-the-docs
 
 incremental: true
 
-title: "CS156 Docs"
+title: "CS156"
 
 mermaid:
   # Version of mermaid library
@@ -13,11 +13,12 @@ mermaid:
 
 # Aux links for the upper right navigation
 aux_links:
-  "ucsb-cs156 main site":
-    - "//ucsb-cs156.github.io"
+  "F22":
+    - "//ucsb-cs156.github.io/f22"
+  "S22":
+    - "//ucsb-cs156.github.io/s22"
   "cs156 docs repo":
-    - "//github.com/ucsb-cs156/docs"
-
+    - "//github.com/ucsb-cs156/ucsb-cs156.github.io"
 
 # Footer last edited timestamp
 last_edit_timestamp: true # show or hide edit time - page must have `last_modified_date` defined in the frontmatter
@@ -30,24 +31,29 @@ gh_edit_repository: "https://github.com/ucsb-cs156/docs" # the github URL for yo
 gh_edit_branch: "main" # the branch that your docs is served from
 gh_edit_view_mode: "edit" # "tree" or "edit" if you want the user to jump into the editor immediately
 
+defaults:
+  -
+    scope:
+      path: "" # an empty string here means all files in the project
+    values:
+      layout: "default"
+  
 
-collections:
-  textbooks:
-    output: true
-    permalink: /textbooks/:path/
-    used_this_quarter: true
+# collections:
+#   textbooks:
+#     output: true
+#     permalink: /textbooks/:path/
+#     used_this_quarter: true
 
-  hfj3:
-    output: true
-    layout: default
-    permalink: /hfj3/:path/
+#   hfj3:
+#     output: true
+#     permalink: /hfj3/:path/
 
-  jn7:
-    output: true
-    layout: default
-    permalink: /jn7/:path/
+#   jn7:
+#     output: true
+#     permalink: /jn7/:path/
 
-  jn8:
-    output: true
-    layout: default
-    permalink: /jn8/:path/
+#   jn8:
+#     output: true
+#     permalink: /jn8/:path/
+

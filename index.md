@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "CS156 Docs"
+title: "CS156"
 nav_order: 0
 description: "Documentation for CMPSC 156 at UC Santa Barbara"
 permalink: /

@@ -1,11 +1,11 @@
 ---
 layout: default
-title: "Offerings"
+title: "Past Offerings"
 nav_order: 1
-description: "CS56/156 offerings"
+description: "Past offerings of CS156/CS56"
 ---
 
-# Offerings of CMPSC 156
+## Past Offerings of CMPSC 156
 
 | Term | Instructor |
 |------|------------|
@@ -15,7 +15,7 @@ description: "CS56/156 offerings"
 | [W21](https://ucsb-cs156.github.io/w21/) | P. Conrad |
 | [F20](https://ucsb-cs156.github.io/f20/) | P. Conrad |
 
-# Offerings of CMPSC 56
+## Past Offerings of CMPSC 56
 
 From Winter 2011-Winter 2022, this course was a lower-division course taught under the
 course number CMPSC 56.
