@@ -19,7 +19,7 @@ aux_links:
     - "//ucsb-cs156.github.io/s22"
   "cs156 docs repo":
     - "//github.com/ucsb-cs156/ucsb-cs156.github.io"
-  "Canvas"
+  "Canvas":
     - "https://www.canvas.ucsb.edu/"
 
 # Footer last edited timestamp
