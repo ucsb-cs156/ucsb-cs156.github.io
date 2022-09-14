@@ -19,6 +19,8 @@ aux_links:
     - "//ucsb-cs156.github.io/s22"
   "cs156 docs repo":
     - "//github.com/ucsb-cs156/ucsb-cs156.github.io"
+  "Canvas"
+    - "https://www.canvas.ucsb.edu/"
 
 # Footer last edited timestamp
 last_edit_timestamp: true # show or hide edit time - page must have `last_modified_date` defined in the frontmatter
