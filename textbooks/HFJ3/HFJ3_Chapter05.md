@@ -78,22 +78,36 @@ Here, they introduce the foreach style loop, as well as post-increment (which sh
 
 ### Final code for SimpleStartup and SimpleStartupTestDrive
 
-### Prep code for the SimpleStartupGame class Everything happens in main()
+They provide code here, but it has a bug.  Can you find it without running the code?
+
+### Prep code for the SimpleStartupGame class Everything happens in `main()`
+
+This is just pseudocode for the main method.
 
 ### The game’s main() method
 
+And now the Java code for the main method.
+
 ### random() and getUserInput()
+
+This is stuff you may want to pay attention to, since it introduces some tools that may be useful (and unfamiliar if you are new to Java).
 
 ### One last class: GameHelper
 
+This is a small helper class to deal with the specifics of getting user input.
+
 ### Let’s play
+
+This shows the user playing the game.
 
 ### What’s this? A bug ?
 
+There's a bug, but the answer isnt revealed until the next chapter.  Can you find it?
+
 ### More about for loops
 
-### Trips through a loop
-
-### The enhanced for loop
+There are some good details here about for loops in Java, and how they may differ a bit from what you are used to in C++, so check these out.
 
 ### Casting primitives
+
+It's helpful to check on this part as well, so that you understand what happens when you do various strange type casts.
