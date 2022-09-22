@@ -36,10 +36,11 @@ gh_edit_view_mode: "edit" # "tree" or "edit" if you want the user to jump into t
 defaults:
   -
     scope:
-      path: "" # an empty string here means all files in the project
+      path: "textbooks"
     values:
       layout: "default"
-  
+ 
+   
 
 # collections:
 #   textbooks:
