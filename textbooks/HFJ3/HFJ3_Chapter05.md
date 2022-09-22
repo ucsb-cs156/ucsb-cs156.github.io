@@ -58,7 +58,13 @@ Ok, this is a good section to read carefully, since it helps to reinforce the id
 
 ### Writing test code for the SimpleStartup class
 
+I don't love the fact that they aren't using JUnit here; you'd think that by now, that would be standard.   But at least they are doing testing.
+
+In this course, we'll use a more professional approach to testing (specifically, the JUnit framework). That's covered in the student tutorial here: <https://ucsb-cs156.github.io/tutorials/student/student_ex04.html>
+
 ### Test code for the SimpleStartup class
+
+
 
 ### The checkYourself() method
 
