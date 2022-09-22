@@ -22,6 +22,49 @@ for (int cell: locationCells) {
 }
 ```
 
+
 There are also introductions to 
 * using `Math.random()`
 * using type casts on primitive types
+
+## Sections
+
+### Let’s build a Battleship-style game: “Sink a Startup”
+
+### First, a high-level design
+
+### The “Simple Startup Game” a gentler introduction
+
+### Developing a Class
+
+### Writing the method implementations
+
+### Writing test code for the SimpleStartup class
+
+### Test code for the SimpleStartup class
+
+### The checkYourself() method
+
+### Just the new stuff
+
+### Final code for SimpleStartup and SimpleStartupTestDrive
+
+### Prep code for the SimpleStartupGame class Everything happens in main()
+
+### The game’s main() method
+
+### random() and getUserInput()
+
+### One last class: GameHelper
+
+### Let’s play
+
+### What’s this? A bug ?
+
+### More about for loops
+
+### Trips through a loop
+
+### The enhanced for loop
+
+### Casting primitives
