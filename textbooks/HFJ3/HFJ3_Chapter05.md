@@ -54,6 +54,7 @@ I wouldn't get too hung on up their particular approach; I'm neither recommendin
 
 ### Writing the method implementations
 
+Ok, this is a good section to read carefully, since it helps to reinforce the idea of test-driven development.
 
 ### Writing test code for the SimpleStartup class
 
