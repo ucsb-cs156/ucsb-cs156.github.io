@@ -64,11 +64,17 @@ In this course, we'll use a more professional approach to testing (specifically,
 
 ### Test code for the SimpleStartup class
 
+The code here is basically a very small test harness.  Why write that, though, when JUnit has already done it for you?
 
+See <https://ucsb-cs156.github.io/tutorials/student/student_ex04.html>
 
 ### The checkYourself() method
 
+So this is the step where they try to get the test to pass by implementing the method.
+
 ### Just the new stuff
+
+Here, they introduce the foreach style loop, as well as post-increment (which should be familiar to you from C++), and the `break` keyword.
 
 ### Final code for SimpleStartup and SimpleStartupTestDrive
 
