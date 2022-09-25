@@ -87,7 +87,7 @@ fail the tests.
 
 Now we also write some tests:
 
-```
+```java
 package edu.ucsb.cs156.student;
 
 import static org.junit.Assert.assertEquals;
@@ -116,7 +116,7 @@ public class LuhnTest {
 We observe that these tests fail on the stub, then we replace the stub
 with what we beleive to be a correct implementation:
 
-```
+```java
 public static int checkDigit(int num) {
         
         int currentPlace = 0;
