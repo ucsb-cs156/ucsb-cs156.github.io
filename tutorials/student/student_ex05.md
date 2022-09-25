@@ -82,22 +82,24 @@ jobs:
   
 The directory structure should look like this:
 
-![maven-dir-with-github-actions-50.png](maven-dir-with-github-actions-50.png)
+<img width="638" alt="maven-dir-with-github-actions-50.png" src="https://user-images.githubusercontent.com/1119017/192169886-198412c4-f15d-4547-9bf7-42d7da185e30.png">
+
 
 With this in place, if we commit a change and put it to GitHub, we should see that our commit has either a yellow circle, green check or red X next to it, as illustrated by these three images:
 
 Green check indicates all tests passed:
 
-![green check](green-check-50.png)
+<img width="471" alt="green-check-50.png" src="https://user-images.githubusercontent.com/1119017/192169902-3450aef9-3f13-47a7-b2e3-bd7e0bfed549.png">
+
 
 Yellow circle indicates tests are still running (no results yet):
 
-![yellow circle](yellow-circle-50.png)
+<img width="474" alt="yellow-circle-50.png" src="https://user-images.githubusercontent.com/1119017/192169910-e180f35f-69ab-42ff-8b0a-cde4eab1191b.png">
 
 Red X indicates either that at least one test failed, or the 
 entire testing script failed in some way:
 
-![red X](red-x-50.png)
+<img width="485" alt="red-x-50.png" src="https://user-images.githubusercontent.com/1119017/192169917-db665a61-917f-458d-9664-a16c88ffa71e.png">
 
 If you click on the green check, yellow circle, or red X, you'll 
 get a pop up with more information, and a link to the details.
