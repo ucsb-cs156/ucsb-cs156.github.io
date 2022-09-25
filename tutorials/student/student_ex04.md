@@ -272,3 +272,15 @@ Tests run: 3, Failures: 0, Errors: 0, Skipped: 0
 Now, this is good, but this still relies on us to remember to run the tests.   In the next tutorial, we'll see that we can use GitHub Actions to automate this process for us.
 
 (updated for JUnit 5/Java 17, 01/05/22)
+
+# The directory listing after adding tests
+
+Note that we add a `src/test` subdirectory to put the tests in. This isn't just a "suggestion"; maven is set up to expect this directory to exist.  If you put tests under the `src/main`, then you may find that they don't compile.  
+
+Maven typically only puts the JUnit software in the classpath when it is compiling code under the `src/test` directory, and it does *not* put it in the classpath when compiling code under the `src/main` directory.   This helps to keep the size of the code smaller when we deliver a final tested application; we typically need the test code (and the test libraries) only while doing development.
+
+Here's what the new directory structure looks like:
+
+<img width="644" alt="maven-dir-basic-with-tests-50" src="https://user-images.githubusercontent.com/1119017/192168634-bc89a022-ee14-4ae7-8b94-cafd649532e5.png">
+
+
