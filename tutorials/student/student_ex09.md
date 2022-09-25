@@ -55,7 +55,7 @@ is the line for the `toString` method:
 
 * Remember: the file to open up to see the reports is this one: <tt>target/pit-reports/<i>yyyymmddhhmmss</i>/index.html</tt> where <tt><i>yyyymmddhhmmss</i></tt> is a date/time stamp.
 
-![student.java-50.png](student.java-50.png)
+<img width="390" alt="student.java-50.png" src="https://user-images.githubusercontent.com/1119017/192170273-2445bdbb-7230-404c-beed-6751a8946406.png">
 
 So, let's write a JUnit test for the `toString` method.
 
