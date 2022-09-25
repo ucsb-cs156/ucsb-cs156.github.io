@@ -180,7 +180,7 @@ It may be convenient to use `mvn clean` before running a pitest mutation report;
 
 Here's an example of what that report looks like:
 
-![pit-report-example-50.png](pit-report-example-50.png)
+<img width="364" alt="pit-report-example-50.png" src="https://user-images.githubusercontent.com/1119017/192170019-05bb5dfb-9d93-462c-be36-88191660f53b.png">
 
 As you can see, this a web page that contains a link to the package `edu.ucsb.cs156.student`.  I made a copy of the entire report at this link so that you can explore the entire report, including how it looks when you click on the links:
 * [target/pit-reports/202010201137/index.html](target/pit-reports/202010201137/index.html)
@@ -188,20 +188,21 @@ As you can see, this a web page that contains a link to the package `edu.ucsb.cs
 As you click on the package name, you see this screen
 which shows you the two source files in the package:
 
-![package-50.png](package-50.png)
+<img width="274" alt="package-50.png" src="https://user-images.githubusercontent.com/1119017/192170028-607f58ba-5e63-40ce-9207-f4996aaf14d9.png">
+
 
 Clicking on the link for `Student.java`, we see
 that it's only the body of the `toString` method
 that is showing up in red as not being covered
 by tests.   We'll add this test coverage in ex09.
 
-![student.java-50.png](student.java-50.png)
+<img width="390" alt="student.java-50.png" src="https://user-images.githubusercontent.com/1119017/192170032-632b8b15-b44c-47a6-994b-e3e8581b448a.png">
 
 Clicking on the link for `Main.java`, we see
 that the entire Main method is uncovered.  We'll
 discuss that in ex09 as well.
 
-![main.java-50.png](main.java-50.png)
+<img width="410" alt="main.java-50.png" src="https://user-images.githubusercontent.com/1119017/192170039-e095a0a3-b9e6-413c-b48f-74f46df1cae4.png">
 
 
 # Adding pitest to our GitHub workflow
@@ -257,13 +258,15 @@ If you download the artifacts, you'll get a .zip file that you can download, and
 open.  Inside that zip file, you'll find an `index.html` file that you can open in a
 web browser.  That will show you the Pitest mutation report.
 
-![click the green check](click-green-check-50.png)
 
-![click where it says details](click-details-50.png)
+<img width="318" alt="click-green-check-50.png" src="https://user-images.githubusercontent.com/1119017/192170063-669ae0e5-334a-4fe2-87f2-e84d7b71b9d5.png">
 
-![click on artifacts](click-artifacts-50.png)
+<img width="237" alt="click-details-50.png" src="https://user-images.githubusercontent.com/1119017/192170091-f4e1bcd5-7c0f-46bc-8cec-881ef703de60.png">
 
-![click to download zip](click-to-download-zip-50.png)
+<img width="442" alt="click-artifacts-50.png" src="https://user-images.githubusercontent.com/1119017/192170094-95cbfc38-d145-4f51-969b-039fc38f46ac.png">
+
+<img width="223" alt="click-to-download-zip-50.png" src="https://user-images.githubusercontent.com/1119017/192170102-bad87141-f6c4-4930-8eaa-5627794903db.png">
+
 
 # So now what?
 
