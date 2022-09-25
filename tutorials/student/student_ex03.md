@@ -78,7 +78,7 @@ once we switch to Maven:
 
 Finally, we need a `pom.xml` file.  Here's a minimal one.  An explanation of this file, which you are
 *strongly encouraged to read*, can be found
-here: <https://ucsb-cs156.github.io/topics/maven_hello_world/>.
+here: <https://ucsb-cs156.github.io/topics/maven/maven_hello_world.html>
 
 Seriously, go read that.  I would have included it in the tutorial here, but it seemed redundant to copy/paste,
 when you can just go read it.
