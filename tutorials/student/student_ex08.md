@@ -183,7 +183,7 @@ Here's an example of what that report looks like:
 <img width="364" alt="pit-report-example-50.png" src="https://user-images.githubusercontent.com/1119017/192170019-05bb5dfb-9d93-462c-be36-88191660f53b.png">
 
 As you can see, this a web page that contains a link to the package `edu.ucsb.cs156.student`.  I made a copy of the entire report at this link so that you can explore the entire report, including how it looks when you click on the links:
-* [target/pit-reports/202010201137/index.html](target/pit-reports/202010201137/index.html)
+* [target/pit-reports/202010201137/index.html](student_ex08/target/pit-reports/202010201137/index.html)
 
 As you click on the package name, you see this screen
 which shows you the two source files in the package:
