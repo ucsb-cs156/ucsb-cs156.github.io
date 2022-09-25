@@ -76,12 +76,12 @@ For this exercise, we focus on the report from ex11, and what needs to be done t
 
 A snapshot of the mutation coverage report can be found here:
 
-* [`../student_ex11/target/{{page.pit_report}}/index.html`](../student_ex11/{{page.pit_report}}/index.html)
+* [/target/pit-reports/202201051554/index.html`](https://ucsb-cs156.github.io/tutorials/student/student_ex11/target/pit-reports/202201051554/index.html)
 
 
 # Uncovered lines in `Student.java` 
 
-We can see that there are three places in `Student.java` that are not covered by tests; we've marked those lines with comments `//RED` below, based on the [report for `Student.java`](../student_ex11/target/{{page.pit_report}}/edu.ucsb.cs156.student/Student.java.html)
+We can see that there are three places in `Student.java` that are not covered by tests; we've marked those lines with comments `//RED` below, based on the [report for `Student.java`](https://ucsb-cs156.github.io/tutorials/student/student_ex11/target/pit-reports/202201051554/edu.ucsb.cs156.student/Student.java.html)
 
 
 ```java
@@ -323,7 +323,7 @@ in production code.   So here are two other options we could have chosen:
 # What's next?
 
 That's it for ex12.   In the next exercise, we start to look at reading
-student records from files into an ArrayList, as preparation for sorting.
+student records from files into an `ArrayList`, as preparation for sorting.
 
 
 
