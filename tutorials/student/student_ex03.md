@@ -58,7 +58,7 @@ To convert a regular Java project to a Maven project, you really only need to do
 
 The directory structure needed by Maven is shown here:
 
-![maven basic directory structure](maven-basic-dir-50.png)
+<img width="454" alt="maven-basic-directory-structure" src="https://user-images.githubusercontent.com/1119017/192168376-a83ccc1a-4a0b-49d9-97e4-ad88f671b40d.png">
 
 To turn a "flat" project where everything is in one directory into a Maven project, the first
 thing we do is create the `src/main/java` directory tree.  We can do this in an IDE such as VSCode by pointing and
