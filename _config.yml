@@ -39,6 +39,11 @@ defaults:
       path: "textbooks"
     values:
       layout: "default"
+  -
+    scope:
+      path: "tutorials/student/*"
+    values:
+      layout: "default"
  
    
 
