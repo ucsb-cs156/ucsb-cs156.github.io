@@ -104,19 +104,19 @@ To enable codecov for our repo, there are several steps.
   
   Login with your GitHub account at: <https://codecov.io/>
 
-  * Note to course staff: You authorize students at the link: <https://codecov.io/account/gh/ucsb-cs156-f20/users>.  Be sure that the student has the blue "Student" tag next to their name (indicating that they have the GitHub Student Developer Pack).   
+  * Note to course staff: You authorize students at the link: <https://codecov.io/account/gh/ucsb-cs156-f22/users>.  Be sure that the student has the blue "Student" tag next to their name (indicating that they have the GitHub Student Developer Pack).   
   
   (Note 
-  that after Fall 2020, you may need to edit that URL
+  that after Fall 2022, you may need to edit that URL
   to point to the correct organization instead of
-  `ucsb-cs156-f20`.)
+  `ucsb-cs156-f22`.)
 
 * Once your account is activated, you can get the 
   *Upload Token* for your repo by visiting this link
   (note that you must edit the link, replacing
   the organization and repo name as needed:)
 
-  <https://codecov.io/gh/ucsb-cs156-f20/repo-name-here>
+  <https://codecov.io/gh/ucsb-cs156-f22/repo-name-here>
 
 * Once you have your Upload Token, you need to
   add that as a *secret* on your GitHub repo.
@@ -126,7 +126,7 @@ To enable codecov for our repo, there are several steps.
 * Visit your repo, go to the Settings tab for the 
   repo (not the Settings tab for your GitHub account) and then find Secrets in the left navigation, and click on it.
 
-  Or, equivalently, visit the URL <https://github.com/ucsb-cs156-f20/YOUR-REPO-NAME-HERE/settings/secrets>
+  Or, equivalently, visit the URL <https://github.com/ucsb-cs156-f22/YOUR-REPO-NAME-HERE/settings/secrets>
 
   You should see a `New Secret` button at the upper right. Click on this, and add a new secret called `CODECOV_TOKEN` (must be all uppercase, with underscore). The value of the secret will be the one you found on the codecov.io page.
 
@@ -243,7 +243,7 @@ Here's a link to an example report:
 
 And here's a screenshot of that report, in case it doesn't load:
 
-![coverage report](coverage-report-50.png)
+<img width="578" alt="coverage-report-50.png" src="https://user-images.githubusercontent.com/1119017/192169961-6a956910-6192-45ea-8c74-9ef08e41b654.png">
 
 That's all for this exercise.  In future exercises,
 we'll use the test results and test coverage results
