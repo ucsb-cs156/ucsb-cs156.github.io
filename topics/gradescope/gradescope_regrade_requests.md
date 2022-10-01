@@ -13,11 +13,14 @@ category_prefix	: "Gradescope: "
 If you have a question about something that was graded through Gradescope, there is a "Request Regrade" button that
 looks like this at the lower right hand corner of the screen on each problem:
 
-![regrade request button](regrade_request_button.png)
+
+![regrade_request_button](https://user-images.githubusercontent.com/1119017/193421911-31f6f753-223f-4a13-9df2-80b53bb09177.png)
+
 
 When you click it, you can enter a regrade request such as this one:
 
-![sample regrade request](regrade_request.png)
+![regrade_request](https://user-images.githubusercontent.com/1119017/193421934-0a84d068-125d-487d-a14d-18f37d488eab.png)
+
 
 # Make your request on the page for the <em>specific</em> homework question that you have concerns about
 
