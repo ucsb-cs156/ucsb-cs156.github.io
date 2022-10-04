@@ -2,8 +2,8 @@
 parent: Webapps
 grand_parent: Topics
 layout: default
-title: "Webapps: Webapps vs. Websites (Static Web Sites/Pages)"
-description:  "What's the difference between a web app and a web site/page"
+title: "Webapps vs. Websites"
+description:  "Difference between a (dynamic) web app and a (static) web site/page"
 category_prefix: "webapps: "
 indent: true
 ---
