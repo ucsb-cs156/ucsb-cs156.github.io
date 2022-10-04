@@ -173,4 +173,5 @@ A `GET` request is only one kind of request that can be made to a webapp.  There
 We'll cover those other kinds of requests, and the difference between `GET` and `POST` in another article.
 
 * For now, if you want to learn more, see: "Get vs. Post" <http://blog.teamtreehouse.com/the-definitive-guide-to-get-vs-post> 
+* Also see the article about [REST](https://ucsb-cs156.github.io/topics/rest.html)
 
