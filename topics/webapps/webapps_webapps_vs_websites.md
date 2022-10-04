@@ -68,10 +68,16 @@ These various types of requests are called "HTTP methods".
 
 -   Technically, GET and POST are just two of a long list of requests types called <b>HTTP Methods</b>
 -   The full list of them is defined in [Section 9 of the HTTP 1.1 standard, RFC2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html), and includes in addition to GET and POST, these types: OPTIONS, HEAD, DELETE, PUT, TRACE, CONNECT
--   The ones other than GET and POST, though, are rarely used by folks that are just getting started with web app programming.
--   GET and POST requests for dynamic content often have *parameters* that are used to compute a result.   More on that later.
+-   In terms of learning, its typical to learn about GET first, then POST, then finally PUT and DELETE.
+-   GET is typically used to simply lookup content, i.e. to retrieve content, but not change anything on the server.
+-   POST is typically used to change something on the server, especially when a new record is being created.
+-   DELETE is typically used (no surprise) to delete some content on the server.
+-   PUT is typically used to update some content, i.e. to make changes to an object that already exists.  
+-   GET, POST, DELETE and PUT requests for dynamic content often have *parameters* that are used to compute a result.   More on that later.
 
-That's why many of the books, web sites, and other resources you read will only mention GET and POST, and emphasize when to use one vs. the other. We'll do the same—do keep in mind though, that as your understanding of web applications progresses and you move into the topic of [RESTful APIs](/topics/rest), you'll need to move beyond just GET and POST.   (If you just can't wait to learn more, here is an article on [what is beyond GET and POST](/topics/http_beyond_get_and_post).)
+Many of the books, web sites, and other resources you read will only mention GET and POST, and emphasize when to use one vs. the other. 
+
+At first, we'll do the same.  Do keep in mind though, that as your understanding of web applications progresses and you move into the topic of [RESTful APIs](/topics/rest), you'll need to move beyond just GET and POST.   
 
 A request for static content typically uses the GET method.  We'll discuss the POST method later in this article.
 
