@@ -57,3 +57,7 @@ When testing APIs that use authentication, you may need to get an extension call
 * <https://en.wikipedia.org/wiki/Representational_state_transfer#Relationship_between_URL_and_HTTP_methods>
 * PUT vs. PATCH: <https://stackoverflow.com/questions/28459418/rest-api-put-vs-patch-with-real-life-examples/39338329#39338329>
    * Note that there is the notion of a "PATCH language" (or "PATCH protocol") some common agreed upon set of operations that both the client and server understand.  
+
+# Beyond GET and POST
+
+* <https://www.iana.org/assignments/http-methods/http-methods.xhtml>
