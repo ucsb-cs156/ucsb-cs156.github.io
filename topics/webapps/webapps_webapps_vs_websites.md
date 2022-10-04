@@ -8,7 +8,7 @@ category_prefix: "webapps: "
 indent: true
 ---
 
-% {{page.title}}
+# {{page.title}}
 
 This page explains the difference between:
 
