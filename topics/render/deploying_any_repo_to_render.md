@@ -67,6 +67,7 @@ That will take you to this screen where you can monitor the build:
 
 <img width="1108" alt="image" src="https://user-images.githubusercontent.com/1119017/194431707-ed338ff4-f512-4bdd-8d3f-9e534fb5bc2c.png">
 
+
 ## Step 6: Deploy a specific commit
 
 
@@ -83,5 +84,3 @@ If you are working on a branch and you want to deploy a specific commit, here's 
    ![cs156-render-deploy-commit](https://user-images.githubusercontent.com/1119017/194436094-51935468-25b5-4864-a64f-71d8b7d7a1b1.gif)
 
 
-   
-<img width="1108" alt="image" src="https://user-images.githubusercontent.com/1119017/194431707-ed338ff4-f512-4bdd-8d3f-9e534fb5bc2c.png">
