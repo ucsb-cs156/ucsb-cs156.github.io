@@ -6,6 +6,10 @@ title: "Deploying any repo to Render"
 description:  "Getting started"
 ---
 
+<style>
+   img { border: 2px solid black; }
+</style>
+
 # {{ page.title }}
 
 These instructions allow you to deploy any repo to render, even if it is a private repo.
@@ -39,7 +43,7 @@ need to click where it says "Configure Account"
 
 And then add the organization (e.g. `ucsb-cs156-f22`) to your account.
 
-Assuming the organization is there, you shoudl be able to select the repo you want to deploy.
+Assuming the organization is there, you should be able to select the repo you want to deploy.
 
 ## Step 4: Name your app
 
