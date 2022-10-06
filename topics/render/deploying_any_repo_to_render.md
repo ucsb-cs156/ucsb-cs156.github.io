@@ -2,7 +2,7 @@
 parent: Render
 grand_parent: Topics
 layout: default
-title: "Deploying a public repo to Render"
+title: "Deploying any repo to Render"
 description:  "Getting started"
 ---
 
