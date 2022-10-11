@@ -33,7 +33,7 @@ It may very well be that we end up replacing Heroku with multiple services:
     - Requires separate Postgres provision
     - Requires a Dockerfile to be setup
   
-* [heliohost.com](https://heliohost.com)
+* [heliohost.org](https://heliohost.org/)
   - NOT YET TESTED
   - PROS:
     - Non profit... see: <https://www.hostingadvice.com/blog/heliohost-provides-free-hosting-to-a-tight-knit-community/>
