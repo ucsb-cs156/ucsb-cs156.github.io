@@ -38,8 +38,12 @@ It may very well be that we end up replacing Heroku with multiple services:
   * [bit.io](https://bit.io/)
     - NOT TESTED YET
     - PROS: 
-      - Has a free tier [pricing]()
-      - 
+      - Has a free tier [pricing](https://bit.io/pricing)
+      - 3 Databases, 3GB storage
+    - CONS:
+      - Databases are "public".. not sure what that means.
+      - If it's read only, could work for SOME apps, but not all
+      - If it's public read/write, that's a deal breaker (unusable)
     
     
   * [www.elephantsql.com](www.elephantsql.com)
