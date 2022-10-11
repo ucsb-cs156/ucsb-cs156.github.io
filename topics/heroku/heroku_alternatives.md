@@ -33,22 +33,29 @@ It may very well be that we end up replacing Heroku with multiple services:
     - Requires separate Postgres provision
     - Requires a Dockerfile to be setup
   
-  # Postgres Hosting alternatives
+* [heliohost.com](https://heliohost.com)
+  - NOT YET TESTED
+  - PROS:
+    - Non profit... see: <https://www.hostingadvice.com/blog/heliohost-provides-free-hosting-to-a-tight-knit-community/>
+    
   
-  * [bit.io](https://bit.io/)
-    - NOT TESTED YET
-    - PROS: 
-      - Has a free tier [pricing](https://bit.io/pricing)
-      - 3 Databases, 3GB storage
-    - CONS:
-      - Databases are "public".. not sure what that means.
-      - If it's read only, could work for SOME apps, but not all
-      - If it's public read/write, that's a deal breaker (unusable)
+# Postgres Hosting alternatives
+  
+* [bit.io](https://bit.io/)
+  - NOT TESTED YET
+  - PROS: 
+    - Has a free tier [pricing](https://bit.io/pricing)
+    - 3 Databases, 3GB storage
+  - CONS:
+    - Databases are "public".. not sure what that means.
+    - If it's read only, could work for SOME apps, but not all
+    - If it's public read/write, that's a deal breaker (unusable)
+
     
-    
-  * [www.elephantsql.com](www.elephantsql.com)
-    - NOT TESTED YET
-    - PROS: 
-      - Has a free tier [pricing](https://www.elephantsql.com/plans.html)
-      - 20MB Data, 5 concurrent connections
-    
+* [www.elephantsql.com](www.elephantsql.com)
+  - NOT TESTED YET
+  - PROS: 
+    - Has a free tier [pricing](https://www.elephantsql.com/plans.html)
+    - 20MB Data, 5 concurrent connections
+
+  
