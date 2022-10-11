@@ -38,5 +38,13 @@ It may very well be that we end up replacing Heroku with multiple services:
   * [bit.io](https://bit.io/)
     - NOT TESTED YET
     - PROS: 
-      - Has a free tier
+      - Has a free tier [pricing]()
+      - 
+    
+    
+  * [www.elephantsql.com](www.elephantsql.com)
+    - NOT TESTED YET
+    - PROS: 
+      - Has a free tier [pricing](https://www.elephantsql.com/plans.html)
+      - 20MB Data, 5 concurrent connections
     
