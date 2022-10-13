@@ -17,3 +17,19 @@ Here are some resources that describe how this works:
 * <https://www.springboottutorial.com/spring-boot-swagger-documentation-for-rest-services>
 * <https://www.dariawan.com/tutorials/spring/documenting-spring-boot-rest-api-swagger/>
 * <https://howtodoinjava.com/swagger2/swagger-spring-mvc-rest-example/>
+
+# Tips
+
+For certain errors with implementing Swagger, the following fix may help.
+
+In your `main`, i.e. the `public static void main` method that is annotated with `@SpringBootApplication`, add this annotation (as described in this [Stack Overflow answer](https://stackoverflow.com/a/54941282)
+
+```
+@EnableSwagger2
+```
+
+The import is this:
+
+```
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+```
