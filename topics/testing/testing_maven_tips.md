@@ -10,8 +10,9 @@ indent: true
 
 | Command | What it does | 
 |-|-|
-| `mvn test` | Run all tests (front end and backend) |
-| `mvn test -Dskip.npm` | Run only backend tests |
-| `mvn test jacoco:report -Dskip.npm` | Run only backend tests, and generate jacoco report |
+| `mvn test` | Run only backend tests |
+| `mvn test jacoco:report` | Run only backend tests, and generate jacoco report |
 | In web browser: `target/site/jacoco/index.html` | The detailed backend coverage report |
-| `mvn test -Dskip.npm -DFooTests ` | Run just a single test file from the backend (specify filename) |
+| `mvn test pitest:mutationCoverage` | Run only backend tests, and generate mutation coverage |
+| `mvn test -DFooTests ` | Run just a single test file from the backend (specify filename) |
+| `mvn test -DFooTests\#test_method_name ` | Run just a single *test*  from the backend (specify filename, then `\#`, then method name of test) |
