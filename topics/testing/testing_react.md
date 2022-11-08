@@ -325,3 +325,48 @@ So we can add a test that includes this:
 ```
 
 (Note that the other two uncovered lines in this example, lines 17-18 in `BasicCourseSearchForm.js` were another instance of the same problem, and the solution was nearly identical.)
+
+
+# Mutation Coverage
+
+To test for mutation coverage locally, we can `cd frontend` and then run `npx stryker run`
+
+Shortly before the table of percentages, we'll get a list of the surviving mutations, such as this one:
+
+```
+#4. [Survived] OptionalChaining
+src/main/components/BasicCourseSearch/BasicCourseSearchForm.js:17:20
+-     const startQtr = systemInfo?.startQtrYYYYQ || "20211";
++     const startQtr = systemInfo.startQtrYYYYQ || "20211";
+Ran all tests for this mutant.
+
+#5. [Survived] StringLiteral
+src/main/components/BasicCourseSearch/BasicCourseSearchForm.js:17:49
+-     const startQtr = systemInfo?.startQtrYYYYQ || "20211";
++     const startQtr = systemInfo?.startQtrYYYYQ || "";
+Ran all tests for this mutant.
+
+#9. [Survived] OptionalChaining
+src/main/components/BasicCourseSearch/BasicCourseSearchForm.js:18:18
+-     const endQtr = systemInfo?.endQtrYYYYQ || "20214";
++     const endQtr = systemInfo.endQtrYYYYQ || "20214";
+Ran all tests for this mutant.
+
+#10. [Survived] StringLiteral
+src/main/components/BasicCourseSearch/BasicCourseSearchForm.js:18:45
+-     const endQtr = systemInfo?.endQtrYYYYQ || "20214";
++     const endQtr = systemInfo?.endQtrYYYYQ || "";
+Ran all tests for this mutant.
+
+#178. [Survived] OptionalChaining
+src/main/components/PersonalSchedules/PersonalScheduleForm.js:15:22
+-       const startQtr = systemInfo?.startQtrYYYYQ || "20211";
++       const startQtr = systemInfo.startQtrYYYYQ || "20211";
+Ran all tests for this mutant.
+
+#183. [Survived] OptionalChaining
+src/main/components/PersonalSchedules/PersonalScheduleForm.js:16:20
+-       const endQtr = systemInfo?.endQtrYYYYQ || "20214";
++       const endQtr = systemInfo.endQtrYYYYQ || "20214";
+Ran all tests for this mutant.
+```
