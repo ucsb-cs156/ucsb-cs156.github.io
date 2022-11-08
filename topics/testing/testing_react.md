@@ -324,3 +324,4 @@ So we can add a test that includes this:
 
 ```
 
+(Note that the other two uncovered lines in this example, lines 17-18 in `BasicCourseSearchForm.js` were another instance of the same problem, and the solution was nearly identical.)
