@@ -202,3 +202,125 @@ And this `beforeEach` function:
     });
 ```
 
+# Test Coverage for React Components
+
+To check the test coverage for React components (or any JavaScript code), we use `npm run coverage`, and we get a report such as this one.
+
+The things to pay attention to are the numbers that are less than `100` in the `%` columns, and the `Uncovered Line #s`.
+
+In the example below, there are just four lines in two files that have coverage issues:
+
+* `components/BasicCourseSearch/BasicCourseSearchForm.js`, lines `17-18`
+* `components/PersonalSchedules/PersonalScheduleForm.js`, lines `15-16`
+
+```
+----------------------------------|---------|----------|---------|---------|-------------------
+File                              | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+----------------------------------|---------|----------|---------|---------|-------------------
+All files                         |     100 |    97.84 |     100 |     100 |                   
+ components                       |     100 |      100 |     100 |     100 |                   
+  OurTable.js                     |     100 |      100 |     100 |     100 |                   
+  SectionsTableBase.js            |     100 |      100 |     100 |     100 |                   
+ components/BasicCourseSearch     |     100 |       80 |     100 |     100 |                   
+  BasicCourseSearchForm.js        |     100 |       80 |     100 |     100 | 17-18             
+ components/Courses               |     100 |      100 |     100 |     100 |                   
+  BasicCourseTable.js             |     100 |      100 |     100 |     100 |                   
+  CourseForm.js                   |     100 |      100 |     100 |     100 |                   
+  CourseTable.js                  |     100 |      100 |     100 |     100 |                   
+ components/Levels                |     100 |      100 |     100 |     100 |                   
+  SingleLevelDropdown.js          |     100 |      100 |     100 |     100 |                   
+ components/Nav                   |     100 |      100 |     100 |     100 |                   
+  AppNavbar.js                    |     100 |      100 |     100 |     100 |                   
+  AppNavbarLocalhost.js           |     100 |      100 |     100 |     100 |                   
+  Footer.js                       |     100 |      100 |     100 |     100 |                   
+ components/PersonalSchedules     |     100 |    83.33 |     100 |     100 |                   
+  PersonalScheduleForm.js         |     100 |    77.77 |     100 |     100 | 15-16             
+  PersonalSchedulesTable.js       |     100 |      100 |     100 |     100 |                   
+ components/Profile               |     100 |      100 |     100 |     100 |                   
+  RoleBadge.js                    |     100 |      100 |     100 |     100 |                   
+ components/Quarters              |     100 |      100 |     100 |     100 |                   
+  SingleQuarterDropdown.js        |     100 |      100 |     100 |     100 |                   
+ components/Sections              |     100 |      100 |     100 |     100 |                   
+  SectionsTable.js                |     100 |      100 |     100 |     100 |                   
+ components/Subjects              |     100 |      100 |     100 |     100 |                   
+  SingleSubjectDropdown.js        |     100 |      100 |     100 |     100 |                   
+ components/UCSBSubjects          |     100 |      100 |     100 |     100 |                   
+  UCSBSubjectsTable.js            |     100 |      100 |     100 |     100 |                   
+ components/Users                 |     100 |      100 |     100 |     100 |                   
+  UsersTable.js                   |     100 |      100 |     100 |     100 |                   
+ layouts/BasicLayout              |     100 |      100 |     100 |     100 |                   
+  BasicLayout.js                  |     100 |      100 |     100 |     100 |                   
+ pages                            |     100 |      100 |     100 |     100 |                   
+  AdminLoadSubjectsPage.js        |     100 |      100 |     100 |     100 |                   
+  AdminPersonalSchedulePage.js    |     100 |      100 |     100 |     100 |                   
+  AdminUsersPage.js               |     100 |      100 |     100 |     100 |                   
+  HomePage.js                     |     100 |      100 |     100 |     100 |                   
+  ProfilePage.js                  |     100 |      100 |     100 |     100 |                   
+ pages/Courses                    |     100 |      100 |     100 |     100 |                   
+  PSCourseCreatePage.js           |     100 |      100 |     100 |     100 |                   
+  PSCourseIndexPage.js            |     100 |      100 |     100 |     100 |                   
+ pages/PersonalSchedules          |     100 |      100 |     100 |     100 |                   
+  PersonalSchedulesCreatePage.js  |     100 |      100 |     100 |     100 |                   
+  PersonalSchedulesDetailsPage.js |     100 |      100 |     100 |     100 |                   
+  PersonalSchedulesEditPage.js    |     100 |      100 |     100 |     100 |                   
+  PersonalSchedulesIndexPage.js   |     100 |      100 |     100 |     100 |                   
+ pages/SectionSearches            |     100 |      100 |     100 |     100 |                   
+  SectionSearchesIndexPage.js     |     100 |      100 |     100 |     100 |                   
+ utils                            |     100 |      100 |     100 |     100 |                   
+  CoursesUtils.js                 |     100 |      100 |     100 |     100 |                   
+  PersonalScheduleUtils.js        |     100 |      100 |     100 |     100 |                   
+  UCSBSubjectUtils.js             |     100 |      100 |     100 |     100 |                   
+  arrayUtils.js                   |     100 |      100 |     100 |     100 |                   
+  currentUser.js                  |     100 |      100 |     100 |     100 |                   
+  minMax_NoStryker.js             |     100 |      100 |     100 |     100 |                   
+  quarterUtilities.js             |     100 |      100 |     100 |     100 |                   
+  sectionUtils.js                 |     100 |      100 |     100 |     100 |                   
+  sortHelper.js                   |     100 |      100 |     100 |     100 |                   
+  systemInfo.js                   |     100 |      100 |     100 |     100 |                   
+  timeUtils.js                    |     100 |      100 |     100 |     100 |                   
+  useBackend.js                   |     100 |      100 |     100 |     100 |                   
+----------------------------------|---------|----------|---------|---------|-------------------
+Jest: "global" coverage threshold for branches (100%) not met: 97.84%
+
+Test Suites: 44 passed, 44 total
+Tests:       200 passed, 200 total
+Snapshots:   0 total
+Time:        6.075 s
+Ran all test suites.
+pconrad@Phillips-MacBook-Air frontend % 
+```
+
+We can zero in on these lines by opening up the file `coverage/lcov-report/index.html` in a web browser.  Here's a (partial) screen shot of what that looks like:
+
+<img width="1029" alt="partial screenshot of jest coverage report" src="https://user-images.githubusercontent.com/1119017/200697518-2c98a0a2-ced3-4801-beec-d59eac6575e7.png">
+
+Note the yellow shading shows the coverage gaps; we can then click on the links to the files to get to the listings:
+
+That leads to this screenshot:
+
+<img width="621" alt="image" src="https://user-images.githubusercontent.com/1119017/200697676-cbbdcd24-8496-45fc-8455-df36c7ffa9e7.png">
+
+As we can see, the lines of code that are uncovered are these, and not the entire lines; just the right operands of the logical or operators (`||`):
+
+```jsx
+  const startQtr = systemInfo?.startQtrYYYYQ || "20211";
+  const endQtr = systemInfo?.endQtrYYYYQ || "20214";
+```
+
+The values `"20211"` and `"20214"` here are default fallback values used in the case that either `systemInfo` or `systemInfo.startQtrYYYYQ` doesn't evalute to a "truthy" value (like, not undefined, not null, not false, not empty string).  So to have full test coverage, we'd need to set up a test 
+where systemInfo is null, or else doesn't contain the values `startQtrYYYYQ` and `endQtrYYYYQ`.
+
+So we can add a test that includes this:
+
+``` 
+          axiosMock
+            .onGet("/api/systemInfo")
+            .reply(200, {
+                "springH2ConsoleEnabled": false,
+                "showSwaggerUILink": false,
+                "startQtrYYYYQ": null, // use fallback value
+                "endQtrYYYYQ": null  // use fallback value
+            });
+
+```
+
