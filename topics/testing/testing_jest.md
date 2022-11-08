@@ -155,7 +155,65 @@ the "real" backend is not running, so *of course* we get a connection refused!
 
 If the diagnosis of the problem leads to the conclusion in the sentence above, i.e. that the frontend component is trying to contact a backend endpoint, the solution is to mock that backend endpoint.  If this is a test that was passing before a change to the code was made, look for a new kind of network request that may be happening. For example, if you added code that would result in a `GET` call to `/api/systeminfo` than you may need to mock that network call.   
 
-(Note: Another approach would be to mock the call to `useSystemInfo`; that would arguably be a better approach, since mocking the GET to `/api/systeminfo` is really causing the test to depend on implementation details of `useSystemInfo`.   However: we already have examples in the code base of mocking the GET call to `/api/systeminfo` so that may be more straightforward, even though it's arguably not the "best" approach in terms of testing principles.)
+We can verify that hypothesis by looking further into the output, where we find this:
 
-To mock a call to a GET on `/api/systeminfo`, we can do this:
+```
+  Error invoking axios.get:  Error: Network Error
+          at createError (/Users/pconrad/github/ucsb-cs156/proj-courses/frontend/node_modules/axios/lib/core/createError.js:16:15)
+          at XMLHttpRequest.handleError (/Users/pconrad/github/ucsb-cs156/proj-courses/frontend/node_modules/axios/lib/adapters/xhr.js:99:14)
+          
+          [ MANY LINES OF OUTPUT REMOVED HERE]
+          
+          at processTicksAndRejections (node:internal/process/task_queues:83:21) {
+        config: {
+          url: '/api/systemInfo',
+          method: 'get',
+``` 
+
+Note the value of `url` and `method`: this confirms what we need to mock.
+
+Note: Another approach would be to mock the call to `useSystemInfo`; that would arguably be a better approach, since mocking the GET to `/api/systeminfo` is really causing the test to depend on implementation details of `useSystemInfo`.   
+
+However: we already have examples in the code base of mocking the GET call to `/api/systeminfo` so that may be more straightforward, even though it's arguably not the "best" approach in terms of testing principles.  Specifically, here's an example from `frontend/src/tests/components/BasicCourseSearch/BasicCourseSearchForm.test.js` of how to mock a call to a GET on `/api/systeminfo`:
+
+```jsx
+ const axiosMock = new AxiosMockAdapter(axios);
+  beforeEach(() => {
+    axiosMock
+      .onGet("/api/currentUser")
+      .reply(200, apiCurrentUserFixtures.userOnly);
+    axiosMock
+      .onGet("/api/systemInfo")
+      .reply(200, systemInfoFixtures.showingNeither);
+  });
+```
+
+The `systemInfoFixtures` show different values for the systemInfo, in case we need to set up specific conditions for our test.  In the example used
+in this case, we are adding a start quarter and end quarter to values that returned by the `/api/systemInfo` endpoint, so we may need to adjust those
+test fixtures.
+
+Here is the final code we added to fix the `ECONNREFUSED` problem in this case:
+
+These two imports:
+
+```jsx
+import axios from "axios";
+import AxiosMockAdapter from "axios-mock-adapter";
+```
+
+And this `beforeEach` function:
+
+```jsx
+ const axiosMock = new AxiosMockAdapter(axios);
+    beforeEach(() => {
+      axiosMock
+        .onGet("/api/systemInfo")
+        .reply(200, {
+            "springH2ConsoleEnabled": false,
+            "showSwaggerUILink": false,
+            "startQtrYYYYQ": "20154",
+            "endQtrYYYYQ": "20162"
+        });
+    });
+```
 
