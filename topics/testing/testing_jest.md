@@ -137,4 +137,25 @@ test("renders correctly", async () => {
     });
 ```
 
+# `Error: connect ECONNREFUSED`: what is this?
+
+Another error you may encounter is this one: 
+
+```
+ console.error
+      Error: Error: connect ECONNREFUSED ::1:80
+```
+
+As in this example:
+
+<img width="1086" alt="ECONNREFUSED stack trace" src="https://user-images.githubusercontent.com/1119017/200693681-9fdef873-1b32-43d9-b837-cdae57d1f6e1.png">
+
+At a basic level, this means that the test tried to connect to some network resources, and the connection was refused.  This often means that the frontend component being tested is trying to actually contact a backend endpoint *for real*, when what we probably should be doing in a *unit test* is mocking that dependency.   During a *unit* test (in contradistiction to, for example, an *integration* test or an *end-to-end* test), 
+the "real" backend is not running, so *of course* we get a connection refused!
+
+If the diagnosis of the problem leads to the conclusion in the sentence above, i.e. that the frontend component is trying to contact a backend endpoint, the solution is to mock that backend endpoint.  If this is a test that was passing before a change to the code was made, look for a new kind of network request that may be happening. For example, if you added code that would result in a `GET` call to `/api/systeminfo` than you may need to mock that network call.   
+
+(Note: Another approach would be to mock the call to `useSystemInfo`; that would arguably be a better approach, since mocking the GET to `/api/systeminfo` is really causing the test to depend on implementation details of `useSystemInfo`.   However: we already have examples in the code base of mocking the GET call to `/api/systeminfo` so that may be more straightforward, even though it's arguably not the "best" approach in terms of testing principles.)
+
+To mock a call to a GET on `/api/systeminfo`, we can do this:
 
