@@ -546,7 +546,7 @@ test("renders without crashing when fallback values are used", () => {
   });
 ```
 
- Now we need to go further than coverage; we also want to make sure that we can actually use the values.  So we assert that the dropdown contains exactly four quarters (Winter, Spring, Summer and Fall of 2021 to be precise):
+ Now we need to go further than coverage; we also want to make sure that we can actually use the values.  So we assert that the dropdown contains exactly four quarters (Winter, Spring, Summer and Fall of 2021 to be precise).   Here's a test that just checks that the first element is 20211 and the third element is 20214:
 
 ```
 test("renders without crashing when fallback values are used", () => {
@@ -567,5 +567,13 @@ test("renders without crashing when fallback values are used", () => {
         </MemoryRouter>
       </QueryClientProvider>
     );
+    
+      // Make sure the first and last options 
+    expect(await screen.findByTestId(/BasicSearch.Quarter-option-0/)).toHaveValue("20211")
+    expect(await screen.findByTestId(/BasicSearch.Quarter-option-3/)).toHaveValue("20214")
+
+    
   });
 ```
+
+While there are other things we could test here, this was enough to make Stryker happy.
