@@ -370,3 +370,202 @@ src/main/components/PersonalSchedules/PersonalScheduleForm.js:16:20
 +       const endQtr = systemInfo.endQtrYYYYQ || "20214";
 Ran all tests for this mutant.
 ```
+
+Here's an analysis of each of these individually:
+
+```
+#4. [Survived] OptionalChaining
+src/main/components/BasicCourseSearch/BasicCourseSearchForm.js:17:20
+-     const startQtr = systemInfo?.startQtrYYYYQ || "20211";
++     const startQtr = systemInfo.startQtrYYYYQ || "20211";
+```
+
+The `-` and `+` show lines that were deleted and added.  In this case, the change (i.e. the mutation) is that we removed the `?` after `systemInfo`, replacing the `?.` operator with the `.` operator. 
+
+The thing is, we don't really need a separate test for this.  Regardless of whether systemInfo is undefined, or systemInfo.startQtrYYYYQ is undefined, we want the same behavior.  So this is an example of a mutation we may want to simply ignore, rather than catching with a test.
+
+To do this, we can use a special comment like this one:
+
+```
+// Stryker disable next-line OptionalChaining
+```
+
+We put this immediately before the line about which Stryker is complaining (in this case, line 16 of `src/main/components/PersonalSchedules/PersonalScheduleForm.js`):
+
+```
+    const { data: systemInfo } = useSystemInfo();
+    // Stryker disable next-line OptionalChaining
+    const startQtr = systemInfo?.startQtrYYYYQ || "20211";
+    const endQtr = systemInfo?.endQtrYYYYQ || "20214";
+    const quarters = quarterRange(startQtr, endQtr);
+```
+
+However, noting that the same problem occurs on the following line, instead we can do this, which disables `OptionalChaining` until we enable it again, two lines later:
+
+```
+    const { data: systemInfo } = useSystemInfo();
+    // Stryker disable OptionalChaining
+    const startQtr = systemInfo?.startQtrYYYYQ || "20211";
+    const endQtr = systemInfo?.endQtrYYYYQ || "20214";
+    // Stryker enable OptionalChaining
+    const quarters = quarterRange(startQtr, endQtr);
+ ```
+ 
+ We might then want to see whether this worked. We note that running Stryker on a large code base takes a very long time.  
+ 
+ But, if we have the previous stryker report handy, we can take a short cut: we can just mutate the files that we *know* had problems, and skip the others!  For example, based on this report, we'd only need to do mutation testing on two files.  Can you see which ones?
+ 
+ ```
+ -----------------------------------|---------|----------|-----------|------------|----------|---------|
+File                               | % score | # killed | # timeout | # survived | # no cov | # error |
+-----------------------------------|---------|----------|-----------|------------|----------|---------|
+All files                          |   99.14 |      605 |        83 |          6 |        0 |       0 |
+ components                        |   97.46 |      205 |        25 |          6 |        0 |       0 |
+  BasicCourseSearch                |   63.64 |        7 |         0 |          4 |        0 |       0 |
+   BasicCourseSearchForm.js        |   63.64 |        7 |         0 |          4 |        0 |       0 |
+  Courses                          |  100.00 |       28 |         0 |          0 |        0 |       0 |
+   BasicCourseTable.js             |  100.00 |       25 |         0 |          0 |        0 |       0 |
+   CourseForm.js                   |  100.00 |        2 |         0 |          0 |        0 |       0 |
+   CourseTable.js                  |  100.00 |        1 |         0 |          0 |        0 |       0 |
+  Levels                           |  100.00 |        9 |         0 |          0 |        0 |       0 |
+   SingleLevelDropdown.js          |  100.00 |        9 |         0 |          0 |        0 |       0 |
+  Nav                              |  100.00 |       22 |        13 |          0 |        0 |       0 |
+   AppNavbar.js                    |  100.00 |       19 |        13 |          0 |        0 |       0 |
+   AppNavbarLocalhost.js           |  100.00 |        1 |         0 |          0 |        0 |       0 |
+   Footer.js                       |  100.00 |        2 |         0 |          0 |        0 |       0 |
+  PersonalSchedules                |   88.89 |       16 |         0 |          2 |        0 |       0 |
+   PersonalScheduleForm.js         |   83.33 |       10 |         0 |          2 |        0 |       0 |
+   PersonalSchedulesTable.js       |  100.00 |        6 |         0 |          0 |        0 |       0 |
+  Profile                          |  100.00 |        6 |         0 |          0 |        0 |       0 |
+   RoleBadge.js                    |  100.00 |        6 |         0 |          0 |        0 |       0 |
+  Quarters                         |  100.00 |        9 |         0 |          0 |        0 |       0 |
+   SingleQuarterDropdown.js        |  100.00 |        9 |         0 |          0 |        0 |       0 |
+  Sections                         |  100.00 |       57 |         0 |          0 |        0 |       0 |
+   SectionsTable.js                |  100.00 |       57 |         0 |          0 |        0 |       0 |
+  Subjects                         |  100.00 |        8 |         2 |          0 |        0 |       0 |
+   SingleSubjectDropdown.js        |  100.00 |        8 |         2 |          0 |        0 |       0 |
+  UCSBSubjects                     |  100.00 |        3 |         0 |          0 |        0 |       0 |
+   UCSBSubjectsTable.js            |  100.00 |        3 |         0 |          0 |        0 |       0 |
+  Users                            |  100.00 |       19 |         0 |          0 |        0 |       0 |
+   UsersTable.js                   |  100.00 |       19 |         0 |          0 |        0 |       0 |
+  OurTable.js                      |  100.00 |       10 |        10 |          0 |        0 |       0 |
+  SectionsTableBase.js             |  100.00 |       11 |         0 |          0 |        0 |       0 |
+ layouts                           |  100.00 |        0 |         1 |          0 |        0 |       0 |
+  BasicLayout                      |  100.00 |        0 |         1 |          0 |        0 |       0 |
+   BasicLayout.js                  |  100.00 |        0 |         1 |          0 |        0 |       0 |
+ pages                             |  100.00 |       80 |         0 |          0 |        0 |       0 |
+  Courses                          |  100.00 |       18 |         0 |          0 |        0 |       0 |
+   PSCourseCreatePage.js           |  100.00 |       13 |         0 |          0 |        0 |       0 |
+   PSCourseIndexPage.js            |  100.00 |        5 |         0 |          0 |        0 |       0 |
+  PersonalSchedules                |  100.00 |       22 |         0 |          0 |        0 |       0 |
+   PersonalSchedulesCreatePage.js  |  100.00 |       15 |         0 |          0 |        0 |       0 |
+   PersonalSchedulesDetailsPage.js |  100.00 |        1 |         0 |          0 |        0 |       0 |
+   PersonalSchedulesEditPage.js    |  100.00 |        1 |         0 |          0 |        0 |       0 |
+   PersonalSchedulesIndexPage.js   |  100.00 |        5 |         0 |          0 |        0 |       0 |
+  SectionSearches                  |  100.00 |        8 |         0 |          0 |        0 |       0 |
+   SectionSearchesIndexPage.js     |  100.00 |        8 |         0 |          0 |        0 |       0 |
+  AdminLoadSubjectsPage.js         |  100.00 |       10 |         0 |          0 |        0 |       0 |
+  AdminPersonalSchedulePage.js     |  100.00 |        1 |         0 |          0 |        0 |       0 |
+  AdminUsersPage.js                |  100.00 |        5 |         0 |          0 |        0 |       0 |
+  HomePage.js                      |  100.00 |        8 |         0 |          0 |        0 |       0 |
+  ProfilePage.js                   |  100.00 |        8 |         0 |          0 |        0 |       0 |
+ utils                             |  100.00 |      320 |        57 |          0 |        0 |       0 |
+  arrayUtils.js                    |  100.00 |        2 |         0 |          0 |        0 |       0 |
+  CoursesUtils.js                  |  100.00 |        6 |         0 |          0 |        0 |       0 |
+  currentUser.js                   |  100.00 |       24 |        25 |          0 |        0 |       0 |
+  PersonalScheduleUtils.js         |  100.00 |        6 |         0 |          0 |        0 |       0 |
+  quarterUtilities.js              |  100.00 |       64 |        12 |          0 |        0 |       0 |
+  sectionUtils.js                  |  100.00 |       96 |         0 |          0 |        0 |       0 |
+  sortHelper.js                    |  100.00 |       26 |         0 |          0 |        0 |       0 |
+  systemInfo.js                    |  100.00 |       10 |         9 |          0 |        0 |       0 |
+  timeUtils.js                     |  100.00 |       74 |         0 |          0 |        0 |       0 |
+  UCSBSubjectUtils.js              |  100.00 |        6 |         0 |          0 |        0 |       0 |
+  useBackend.js                    |  100.00 |        6 |        11 |          0 |        0 |       0 |
+-----------------------------------|---------|----------|-----------|------------|----------|---------|
+
+ ```
+ 
+ If you said these two, you are correct:
+ 
+ * `components/BasicCourseSearch/BasicCourseSearchForm.js` 
+ * `components/PersonalSchedules/PersonalScheduleForm.js`
+
+To do that, we'd run these two commands sequentially:
+
+* `npx stryker run -m src/main/components/BasicCourseSearch/BasicCourseSearchForm.js`
+* `npx stryker run -m src/main/components/PersonalSchedules/PersonalScheduleForm.js`
+
+Where running mutation testing on this entire codebase took 15 minutes on my Macbook Air, running mutation testing on just these two files took 9 seconds, and 7 seconds (respectively).  
+
+The code above took care of the mutation test failures from the original report except for these:
+
+```
+#5. [Survived] StringLiteral
+src/main/components/BasicCourseSearch/BasicCourseSearchForm.js:18:49
+-     const startQtr = systemInfo?.startQtrYYYYQ || "20211";
++     const startQtr = systemInfo?.startQtrYYYYQ || "";
+Ran all tests for this mutant.
+
+#10. [Survived] StringLiteral
+src/main/components/BasicCourseSearch/BasicCourseSearchForm.js:19:45
+-     const endQtr = systemInfo?.endQtrYYYYQ || "20214";
++     const endQtr = systemInfo?.endQtrYYYYQ || "";
+```
+
+In this case, the test that we don't have is one that ensures that the values  20211 and 20214 are the ones that are used in the case that we need to use the "fallback" values that appear after the `||` operator; i.e. Stryker is telling us that the test outcomes would be no different if we didn't have this fallback at all.
+
+So we need a test that actually uses these fallback values.
+
+The following page shows how to test dropdowns (which is what these values are used to populate on the screen):
+
+* <https://cathalmacdonnacha.com/how-to-test-a-select-element-with-react-testing-library>
+
+We can use the techniques explained there to write a test that will check that when we use the fallback values, the dropdown for selecting a quarter starts with `20211` (i.e. Winter 2021) and ends with `20214` (Fall 2021).  One way to do that is to assert that there are exactly four quarters in the dropdown.  This actually tests a lot of things at the same time (including whether the `quarterRange` function works properly, so from a "purist" standpoing, one might reasonably question whether this is the best approach.  But we are going to forge ahead and leave that question for another day.
+
+We already have a test that is set up to do most of what we need; it is a test we wrote to get coverage for the fallback values.  
+
+```
+test("renders without crashing when fallback values are used", () => {
+
+    axiosMock
+      .onGet("/api/systemInfo")
+      .reply(200, {
+        "springH2ConsoleEnabled": false,
+        "showSwaggerUILink": false,
+        "startQtrYYYYQ": null, // use fallback value
+        "endQtrYYYYQ": null  // use fallback value
+      });
+
+    render(
+      <QueryClientProvider client={queryClient}>
+        <MemoryRouter>
+          <BasicCourseSearchForm />
+        </MemoryRouter>
+      </QueryClientProvider>
+    );
+  });
+```
+
+ Now we need to go further than coverage; we also want to make sure that we can actually use the values.  So we assert that the dropdown contains exactly four quarters (Winter, Spring, Summer and Fall of 2021 to be precise):
+
+```
+test("renders without crashing when fallback values are used", () => {
+
+    axiosMock
+      .onGet("/api/systemInfo")
+      .reply(200, {
+        "springH2ConsoleEnabled": false,
+        "showSwaggerUILink": false,
+        "startQtrYYYYQ": null, // use fallback value
+        "endQtrYYYYQ": null  // use fallback value
+      });
+
+    render(
+      <QueryClientProvider client={queryClient}>
+        <MemoryRouter>
+          <BasicCourseSearchForm />
+        </MemoryRouter>
+      </QueryClientProvider>
+    );
+  });
+```
