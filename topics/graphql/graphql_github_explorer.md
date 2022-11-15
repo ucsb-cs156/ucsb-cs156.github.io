@@ -37,6 +37,24 @@ It is important to note that you need to copy the JSON after the word `variables
 
 # Queries
 
+
+This query will get information about the viewer, and about a single repo:
+
+
+```graphql
+query {
+  viewer {
+    id
+    name
+    login
+  }
+  repository(owner:"ucsb-cs156-f22", name:"f22-5pm-courses") {
+     name
+     id
+    }
+  }
+```
+
 This query will get all of the labels (for issues) associated with the repo `ucsb-cs156-f22/f22-5pm-courses`
 
 
@@ -114,66 +132,4 @@ Sample output:
 }
 ```
 
-
-# Mutations
-
-Adding new labels can be done with mutations.  
-
-The mutation for adding new labels, as of 11/15/22 was part of the "Labels API *preview*"  which means you have to add special headers, as explained here: 
-
-* [Labels API *preview*](https://docs.github.com/en/graphql/overview/schema-previews#labels-preview) 
-
-The special header is this one: 
-
-```
-application/vnd.github.slothette-preview+json
-```
-
-To create a label, we need this information.  The first three items are straightforward; the last two less so.
-
-```
-* name: e.g. `"10"`
-* color: e.g. `"FBCA04"`
-* description: e.g. `"10 pts"` 
-* clientMutationId: This needs to be the id of the user requesting the mutation.
-* repositoryId: This needs to be the id of the repository, not its name. 
-```
-
-To get the last two, we can do a query like this one:
-
-```graphql
-query {
-  viewer {
-    id
-    name
-    login
-  }
-  repository(owner:"ucsb-cs156-f22", name:"f22-5pm-courses") {
-     name
-     id
-    }
-  }
-```
-
-The output is this:
-
-```json
-{
-  "data": {
-    "viewer": {
-      "id": "MDQ6VXNlcjExMTkwMTc=",
-      "name": "Phill Conrad",
-      "login": "pconrad"
-    },
-    "repository": {
-      "name": "f22-5pm-courses",
-      "id": "R_kgDOIb3KRA"
-    }
-  }
-}
-```
-
-We see here that:
-* the id needed for the `clientMutationId` is `"MDQ6VXNlcjExMTkwMTc="`
-* the id for the repo is: `"R_kgDOIb3KRA"`
 
