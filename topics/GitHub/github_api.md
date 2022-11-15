@@ -20,6 +20,13 @@ One easy way to access the GitHub API is through the GitHub CLI
 
 * See here for some basic documentation: <https://docs.github.com/en/rest/quickstart>
 
+A simple example:
+
+* Use `gh auth login` to login
+* Use `gh api repos/ucsb-cs156-f22/f22-5pm-courses` to list information about the repo <https://github.com/ucsb-cs156-f22/f22-5pm-courses>
+
+
+
 # Java Packages for the GitHub API
 
 
