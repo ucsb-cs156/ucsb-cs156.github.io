@@ -36,6 +36,13 @@ description:  "aka PRs; a checklist for doing them properly"
    - If you have other merge conflicts that you don't know how to resolve, ask for help.
 1. Is it still a "draft PR"?  If so, you need to convert it to a regular PR before it can be merged.
    
+# Keeping PRs small and focused
+
+It's good to avoid PRs that have changes to many files in them; fewer than 10 files is ideal.    Especially true if the files span both front and backend.
+
+Sometimes though, it's unavoidable.  In that case, a guide to the changes, as shown in this PR description, can be really helpful to your code reviewers:
+* <https://github.com/ucsb-cs156/proj-courses/pull/9>
+
 
 # Linking a PR to an issue
 
