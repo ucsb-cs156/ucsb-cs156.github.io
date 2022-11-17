@@ -50,7 +50,7 @@ Sometimes though, it's unavoidable.  In that case, a guide to the changes, as sh
  
  But if that doesn't work, here's how to do it manually:
  
- ![Animated Gif that shows how to link a PR to an issue](link-PR.gif)
+![link-PR](https://user-images.githubusercontent.com/1119017/202532386-2108c4b7-3d01-4594-9a50-665d07556c35.gif)
  
  
 # Doing a Code Review
