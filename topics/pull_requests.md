@@ -63,7 +63,7 @@ For these code reviews to "count", i.e. to make the PR mergeable, the code revie
 
 Here's what that looks like. 
 
-![Approving Code Review](LGTM-Code-Review.gif)
+![LGTM-Code-Review.gif](https://user-images.githubusercontent.com/1119017/202531839-3852da2d-0d51-4bef-8110-2b2baa34e46d.png)
 
 
 # What to look for in a Code Review?
