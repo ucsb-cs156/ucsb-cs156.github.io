@@ -18,7 +18,7 @@ description:  "aka PRs; a checklist for doing them properly"
    - In that case, use the manual feature for linking to an issue (see below)
 3. Linked Issue is in the "In Review" column on team's Kanban board.
 4. PR is tagged with the Team's tag, like this one:
-   ![tagged PR](tagged-PR.png)
+   ![image](https://user-images.githubusercontent.com/1119017/202531598-e935a3eb-98dd-4816-8b0c-434e512e9207.png)
 5. Test cases all pass.
    - If you have difficulty with this one, ask for help from a team member first.
    - Then ask for help on the Slack help channel associated with the project, e.g. `#proj-ucsb-courses-search`, `#proj-ucsb-cs-las`, `#proj-mapache-search` on the slack.
