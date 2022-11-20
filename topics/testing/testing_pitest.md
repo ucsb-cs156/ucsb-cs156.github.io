@@ -76,4 +76,5 @@ Or, if you are running pitest through GitHub Actions, you can get the pitest rep
 
 The animation below shows how:
 
+![download-pitest-artifacts](https://user-images.githubusercontent.com/1119017/202891110-71fa0a24-10d3-4dd9-b502-b384d3a2eef8.gif)
 
