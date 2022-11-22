@@ -77,4 +77,6 @@ So that it looks like this:
 
 Then click "Review".
 
-Note that if you already have duplicate data, adding this constraint will not eliminate those. You may need to drop the database and recreate it with the constraint in place (i.e. add the constraint before you start adding data.)
+Note that if you already have duplicate data, adding this constraint will not eliminate those. You may need to drop the collection and recreate it with the constraint in place (i.e. add the constraint before you start adding data.)
+
+
