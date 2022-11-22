@@ -79,4 +79,30 @@ Then click "Review".
 
 Note that if you already have duplicate data, adding this constraint will not eliminate those. You may need to drop the collection and recreate it with the constraint in place (i.e. add the constraint before you start adding data.)
 
+# Querying Data in MongoDB
+
+The animation below shows how to do some basic queries in MongoDB.
+
+A few tips:
+* Use single quotes, not double quotes.
+* Query by simply listing the keys (using dot notation for nested fields) and the values those fields should have.
+* Examples:
+
+  ```
+  { 'courseInfo.quarter' : '20231'}
+  ```
+
+  ```
+  { 'courseInfo.quarter' : '20231', 'courseInfo.title': 'INTRO DATA SCI 1' }
+  ```
+  
+  
+  ```
+  { 'courseInfo.quarter' : '20231', 'courseInfo.title': 'INTRO DATA SCI 1' , 'section.enrollCode' : '07443'}
+  ```
+
+  
+
+
+![see-mongodb-data](https://user-images.githubusercontent.com/1119017/203417526-acb3ebab-3669-4940-a434-5e3953022541.gif)
 
