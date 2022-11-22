@@ -106,3 +106,11 @@ A few tips:
 
 ![see-mongodb-data](https://user-images.githubusercontent.com/1119017/203417526-acb3ebab-3669-4940-a434-5e3953022541.gif)
 
+# Queries with regex
+
+You can use regular expressions to match course ids that start with a certain subject area.  For example, this will find courses
+in quarter `20231` where the `courseInfo.courseId` field starts with `MATH`:
+
+```
+{ 'courseInfo.quarter' : '20231', 'courseInfo.courseId': { $regex: /MATH/ }}
+```
