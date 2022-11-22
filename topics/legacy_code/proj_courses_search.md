@@ -26,5 +26,55 @@ In addition, it provides an opportunity to learn about how to work with a MongoD
 
 The main database in your MongoDB deployment should be called `database`, and the main collection should be called `courses`.
 
-In addition, it is helpful to define some indexes on this collection.  Here's how.
+You can do queries like as shown below.  This is a query that finds all records for quarter `20231` (Winter 2023) and the enroll code `07443`. 
 
+```
+{ 'courseInfo.quarter' : '20231', 'section.enrollCode' : '07443' }
+```
+
+<img width="967" alt="image" src="https://user-images.githubusercontent.com/1119017/203236404-32c67f00-11b7-46ae-8c98-d1b6f27548ce.png">
+
+As we can see here, this brings up two records; this is the result of loading the data for this quarter twice without first defining an index to prevent duplicates (as illustrated below).
+
+
+## Avoiding Duplicate Data
+
+To avoid duplicate data, it is helpful to define an indexes that prevents storing multiple documents with the same quarter and enroll code.  Here's how.
+
+First, we want to ensure that the combination of `courseInfo.quarter` (e.g. "20231") and `section.enrollCode` (e.g. `07443`) is unique, so that we don't end up storing duplicate data.  We can do that by defining an index like this:
+
+Go to the index tab (second over in MongoDB.com collections page):
+
+<img width="977" alt="image" src="https://user-images.githubusercontent.com/1119017/203235608-4ba7d26b-65c2-4042-800f-b303fcc920ae.png">
+
+Click the `Create Index` button at right: 
+
+<img width="126" alt="image" src="https://user-images.githubusercontent.com/1119017/203235693-e4e97ab5-b9fd-4a4c-adcd-a40c460edc3c.png">
+
+That brings up this modal: 
+
+<img width="714" alt="image" src="https://user-images.githubusercontent.com/1119017/203235761-c7918199-2af8-481e-b529-97351301de54.png">
+
+Fill in `Fields` with:
+
+```
+{
+  "courseInfo.quarter": 1,
+  "section.enrollCode" : 1
+}
+```
+
+Then fill in options with:
+
+```
+{unique:true}
+```
+
+So that it looks like this:
+
+<img width="701" alt="image" src="https://user-images.githubusercontent.com/1119017/203236005-98152214-4f72-435f-9344-c5f43a7a95a5.png">
+
+
+Then click "Review".
+
+Note that if you already have duplicate data, adding this constraint will not eliminate those. You may need to drop the database and recreate it with the constraint in place (i.e. add the constraint before you start adding data.)
