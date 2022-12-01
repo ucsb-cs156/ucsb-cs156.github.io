@@ -8,6 +8,10 @@ category_prefix: "Testing: "
 indent: true
 ---
 
+# Links
+
+* [Write Unit Tests using React Testing Library](https://www.freecodecamp.org/news/write-unit-tests-using-react-testing-library/)
+
 # Testing for presence of a link
 
 Here's an example:
