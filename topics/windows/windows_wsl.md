@@ -74,7 +74,7 @@ git --version
 Your output should look like this:
 
 ```
-git version 2.38.0
+git version 2.40.0
 ```
 
 You are now ready to set up your Git environment using the steps below.
@@ -127,20 +127,20 @@ The projects in this class use Maven 3.8.x, which is necessary for Java 17.
 
 The `apt` package manager does not yet have Maven 3.8.x, so we need to manually download and extract Maven.
 
-(As of this writing, the current version of Maven is 3.8.6; but it is possible that by the time you are reading
+(As of this writing, the current version of Maven is 3.8.8; but it is possible that by the time you are reading
 these instructions, the current version may have been updated, and the links to this version will no longer work.  If the links appear broken, see if there is a newer version available.)
 
 Here are two links that have been reported to work for downloading Maven 3.8.6 (the only difference is `downloads` vs. `dlcdn`)
-* <https://downloads.apache.org/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-bin.tar.gz>
-* <https://dlcdn.apache.org/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-bin.tar.gz>
+* <https://downloads.apache.org/maven/maven-3/3.8.8/binaries/apache-maven-3.8.8-bin.tar.gz>
+* <https://dlcdn.apache.org/maven/maven-3/3.8.8/binaries/apache-maven-3.8.8-bin.tar.gz>
 
 If the first one doesn't work, try the second.
 
 ```sh
-export MAVEN_VERSION=3.8.6
+export MAVEN_VERSION=3.8.8
 curl -O https://downloads.apache.org/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz
 tar -zxvf apache-maven-${MAVEN_VERSION}-bin.tar.gz
-mv apache-maven-${MAVEN_VERSION} /opt/maven
+sudo mv apache-maven-${MAVEN_VERSION} /opt/maven
 ```
 
 You may need to prefix some of the above commands with `sudo` to grant necessary permissions.
@@ -160,9 +160,9 @@ mvn --version
 Your output should look something like this:
 
 ```
-Apache Maven 3.8.6 (84538c9988a25aec085021c365c560670ad80f63)
+Apache Maven 3.8.8 (4c87b05d9aesdfce574290d1acc98575as5eb6cd39)
 Maven home: /opt/maven
-Java version: 17.0.2, vendor: Private Build, runtime: /usr/lib/jvm/java-17-openjdk-amd64
+Java version: 17.0.6, vendor: Private Build, runtime: /usr/lib/jvm/java-17-openjdk-amd64
 Default locale: en_US, platform encoding: UTF-8
 OS name: "linux", version: "5.4.0-72-generic", arch: "amd64", family: "unix"
 ```
@@ -207,7 +207,7 @@ Successfully running the above command should install the latest version of Node
 node -v
 ```
 
-Your output should say `v16.17.1` or something similar.
+Your output should say `v16.20.0` or something similar.
 
 ## Update npm on WSL
 
@@ -225,7 +225,7 @@ Successfully running the above command should install the latest version of npm 
 npm -v
 ```
 
-Your output should say `8.19.2` or something similar.
+Your output should say `9.6.3` or something similar.
 
 **Keep in mind that each version of Node installed through `nvm` has its own installation of `npm`.** This means that, whenever you install a new version of Node, you will need to update `npm` to the correct version. The pre-bundled versions of `npm` tend to be out-of-date.
 
@@ -245,7 +245,7 @@ Successfully running the above command should install the latest version of the 
 heroku --version
 ```
 
-Your output should say `heroku/7.63.4 linux-x64 node-v14.19.0` or something similar.
+Your output should say `heroku/7.69.1 linux-x64 node-v14.19.0` or something similar.
 
 Now that we have Heroku installed, we can log in. Run the following command to log in:
 
