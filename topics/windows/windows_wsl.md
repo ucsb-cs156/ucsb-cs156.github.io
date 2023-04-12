@@ -171,7 +171,9 @@ OS name: "linux", version: "5.4.0-72-generic", arch: "amd64", family: "unix"
 
 ## Install nvm and Node on WSL
 
-The projects in this class use Node 16.x LTS and npm 8.x.
+The projects in this class currently use Node 16.x LTS and npm 8.x.
+
+You can see the various versions of node at this link: <https://nodejs.org/en/download/releases>.  As of S23, the current LTS for node is 18.x.  We may migrate the code bases to Node 18 this quarter if time permits.
 
 While we could install Node 16.x directly, a better way to install Node on development computers is through Node Version Manager, or `nvm`. This is a program that allows you to easily install and switch between different versions of Node.
 
