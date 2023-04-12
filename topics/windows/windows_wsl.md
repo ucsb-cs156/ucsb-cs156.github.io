@@ -7,6 +7,8 @@ description:  "Setting up a development environment under Windows Subsystem for 
 indent: true
 category_prefix: "Windows: "
 maven_version: 3.8.5
+nvm_version: v0.39.3
+nvm_install_command: "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash"
 ---
 
 For advanced users who are looking to have a full Linux command-line interface on their Windows machine (which may be helpful for CMPSC 156 work), we recommend using Windows Subsystem for Linux (WSL). WSL is a tool that basically creates a separate Linux environment alongside your Windows environment, with access to your local filesystem. This will allow you to access package managers (such as `apt-get` for Ubuntu/Debian) and the full suite of UNIX commands.
@@ -173,11 +175,14 @@ The projects in this class use Node 16.x LTS and npm 8.x.
 
 While we could install Node 16.x directly, a better way to install Node on development computers is through Node Version Manager, or `nvm`. This is a program that allows you to easily install and switch between different versions of Node.
 
-To install `nvm`, run the following command. As of the time of writing, the latest version is 0.39.1.
+To install `nvm`, run the following command. As of the time of writing, the latest version is <tt>{{page.nvm_version}}</tt>
+* To check whether this command is the latest version, visit [this link](https://github.com/nvm-sh/nvm#install--update-script)
 
-```
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-```
+
+<tt>
+{{page.nvm_install_command}}
+</tt>
+
 
 The install script should add the following lines to the end of your `~/.bashrc` file. If the following lines are not present, add them:
 
@@ -187,13 +192,13 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 ```
 
-Successfully running the above commands should install nvm 0.39.1. To verify that the install was successful, open a new terminal and run the following command:
+Successfully running the above commands should install <tt>nvm {{page.nvm_version}}</tt> To verify that the install was successful, open a new terminal and run the following command:
 
 ```
 nvm -v
 ```
 
-Your output should say `0.39.1`.
+Your output should say <tt>{{page.nvm_version}}</tt>
 
 Now that we have `nvm` installed, we can use `nvm` to install the latest version of Node 16 with the following command. As of the time of writing, the latest version of Node 16 LTS is 16.17.1.
 
