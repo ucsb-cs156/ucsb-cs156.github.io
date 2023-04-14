@@ -15,6 +15,12 @@ Main page: <https://reactjs.org/>
 
 Online Books:
 
+* [React Key Concepts](https://learning.oreilly.com/library/view/react-key-concepts/9781803234502/)
+  - A decent basic textbook for React suitable for beginners
+* [Fluent React](https://learning.oreilly.com/library/view/fluent-react/9781098138707/)
+  - A slightly deeper dive into some of the technical concepts of React
+  - Good if you already know some React, and want a deeper understanding of how the pieces work together
+
 Video Courses:
 
 * [React JS Masterclass - Go From Zero To Job Ready (34 hours)](https://learning.oreilly.com/videos/react-js-masterclass/9781805125549/)
