@@ -13,15 +13,22 @@ Main page: <https://reactjs.org/>
 
 **Important**: These resources available to UCSB students/faculty/staff by **first** logging in at https://bit.ly/ucsb-or **then** navigating to the links below.
 
-Online Books:
+## Online Books:
 
+Tutorials for beginners
+
+* [Learning React, 2nd Edition](https://learning.oreilly.com/library/view/learning-react-2nd/9781492051718/)
+   - Best intro I've found in the O'Reilly library
 * [React Key Concepts](https://learning.oreilly.com/library/view/react-key-concepts/9781803234502/)
-  - A decent basic textbook for React suitable for beginners
+  - Another intro to React
+
+Deeper Dives for folks with some React background
+
 * [Fluent React](https://learning.oreilly.com/library/view/fluent-react/9781098138707/)
   - A slightly deeper dive into some of the technical concepts of React
   - Good if you already know some React, and want a deeper understanding of how the pieces work together
 
-Video Courses:
+## Video Courses:
 
 * [React JS Masterclass - Go From Zero To Job Ready (34 hours)](https://learning.oreilly.com/videos/react-js-masterclass/9781805125549/)
   - I suggest that if you use this resources, don't necessarily expect to do all 34 hours!
