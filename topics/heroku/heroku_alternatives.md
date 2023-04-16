@@ -33,6 +33,10 @@ It may very well be that we end up replacing Heroku with multiple services:
     - Requires separate Postgres provision
     - Requires a Dockerfile to be setup
   
+* [replit.com](https://replit.com)
+  - A simple Spring Boot RESTFul API app seems to work; example here: <https://replit.com/@phtcon/SpringBootApplicationStarter#README.md>
+  - No testing beyond that yet  
+  
 * [heliohost.org](https://heliohost.org/)
   - NOT YET TESTED
   - PROS:
