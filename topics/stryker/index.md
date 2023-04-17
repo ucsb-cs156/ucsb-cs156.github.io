@@ -28,5 +28,5 @@ If you know that all of your current changes are in a specific file, it is much 
 For example, if your changed file is `src/main/components/Nav/AppNavbar.js` you can restrict stryker to this file by running:
 
 ```
-npx stryker run -m npx stryker run -m src/main/components/Nav/AppNavbar.js 
+npx stryker run -m src/main/components/Nav/AppNavbar.js 
 ```
