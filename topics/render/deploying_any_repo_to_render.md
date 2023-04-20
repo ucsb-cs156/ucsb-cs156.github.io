@@ -4,6 +4,7 @@ grand_parent: Topics
 layout: default
 title: "Deploying any repo to Render"
 description:  "Getting started"
+example_org: ucsb-cs156-s23
 ---
 
 <style>
@@ -41,7 +42,7 @@ need to click where it says "Configure Account"
 
 <img width="264" alt="image" src="https://user-images.githubusercontent.com/1119017/194433361-890d99cd-bffb-4ee2-88c8-d296101b03cd.png">
 
-And then add the organization (e.g. `ucsb-cs156-f22`) to your account.
+And then add the organization (e.g. <tt>{{page.example_org}}</tt>) to your account.
 
 Assuming the organization is there, you should be able to select the repo you want to deploy.
 
