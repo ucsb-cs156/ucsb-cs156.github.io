@@ -123,4 +123,95 @@ ziv-try-dokku
 pconrad@dokku:~$ 
 ```
 
+## Deploying an app 
+
+To link your app to a GitHub repo, **you actually need two terminal windows**
+* one on the **Dokku Server**
+* another on **`csil.cs.ucsb.edu`**
+
+1. In the ordinary **csil** window, create a directory where you can clone your repo.
+2. Clone your repo there.  
+   - For instance, suppose we want to deploy the repo <https://github.com/ucsb-cs156-s23/jpa02-pconrad>.  
+   - We start by cloning this repo at the shell prompt on CSIL and cd'ing into this directory.  For example:
+
+     ```
+     [pconrad@csilvm-07 ucsb-cs156-s23]$ pwd
+     /cs/faculty/pconrad/github/ucsb-cs156-s23
+     [pconrad@csilvm-07 ucsb-cs156-s23]$ git clone https://github.com/ucsb-cs156-s23/jpa02-pconrad
+     Cloning into 'jpa02-pconrad'...
+     remote: Enumerating objects: 1578, done.
+     remote: Counting objects: 100% (1578/1578), done.
+     remote: Compressing objects: 100% (471/471), done.
+     remote: Total 1578 (delta 995), reused 1572 (delta 989), pack-reused 0
+     Receiving objects: 100% (1578/1578), 699.17 KiB | 2.17 MiB/s, done.
+     Resolving deltas: 100% (995/995), done.
+     [pconrad@csilvm-07 ucsb-cs156-s23]$ cd jpa02-pconrad/
+     [pconrad@csilvm-07 jpa02-pconrad]$ pwd
+     /cs/faculty/pconrad/github/ucsb-cs156-s23/jpa02-pconrad
+     [pconrad@csilvm-07 jpa02-pconrad]$ 
+     ```
+ 3. Now add a remote for `dokku`. The remote url will be formed as follows:
+
+    <tt>dokku@dokku-<b><i>xx</i></b>.cs.ucsb.edu:<b></i>app-name<b></i></tt>
+
+    Note that:
+    * The part at the beginning, <tt>dokku@dokku-</tt>, should be literally that, always
+    * The <tt><b><i>xx</i></b></tt> part should be one of <tt>00</tt> through <tt>12</tt>, i.e. the number for the Dokku server you are using.
+    * The <tt><b></i>app-name<b></i></tt> part should be the name of the app you created with `dokku apps:create app-name`; this may or may not
+      be the same as your repo name.
+  
+    For example, if you are running on `dokku-07.cs.ucsb.edu` and your  app is `jpa02-cgaucho`, you'll create a remote for dokku with:
+
+    ```
+    git remote add dokku dokku@dokku-07.cs.ucsb.edu:jpa02-cgaucho
+    ```
+
+    Then, any time you want to deploy the app, you simply do:
+
+    ```
+    git push dokku main
+    ```
+
+    The first time you do this, you might get this output; if so, type `yes` and hit enter, and you'll never get that question again.
+
+    ```
+    pconrad@dokku:~/jpa02-pconrad$ git push dokku main
+    The authenticity of host 'dokku.engr.ucsb.edu (128.111.27.65)' can't be established.
+    ECDSA key fingerprint is SHA256:vFS3l4zh+M2oVksNJFwo5/vQTQBHll3l9Lf5ecm8b3o.
+    Are you sure you want to continue connecting (yes/no)? yes
+    ```
+
+    That should start the deploy as shown here:
+    ```
+    [pconrad@csilvm-07 jpa02-pconrad]$ git push dokku main
+    Enumerating objects: 1578, done.
+    Counting objects: 100% (1578/1578), done.
+    Delta compression using up to 8 threads
+    Compressing objects: 100% (465/465), done.
+    Writing objects: 100% (1578/1578), 699.17 KiB | 139.83 MiB/s, done.
+    Total 1578 (delta 995), reused 1578 (delta 995), pack-reused 0
+    remote: Resolving deltas: 100% (995/995), done.
+    -----> Set main to DOKKU_DEPLOY_BRANCH.
+    -----> Cleaning up...
+    -----> Building jpa02-cgaucho from Dockerfile
+    remote: build context to Docker daemon  39.42kB
+    Step 1/26 : FROM bellsoft/liberica-openjdk-alpine:17.0.2
+    
+    ... *** MANY LINES OF OUTPUT OMITTED ***
+    
+    =====> Application deployed:
+       http://jpa02-cgaucho.dokku-07.cs.ucsb.edu
+
+    To dokku.engr.ucsb.edu:jpa02-cgaucho
+     * [new branch]      main -> main
+    [pconrad@csilvm-07 jpa02-pconrad]$ 
+    ```
+ 4. Now you should be able to open the app on the URL shown, e.g. <http://jpa02-cgaucho.dokku-07.cs.ucsb.edu>
+
+For a simple `Hello World` type Spring Boot app, this should be sufficient to get started.
+
+Refer to the main Dokku help page for apps that have more complex requirements, such as:
+* Setting up a Postgres Database
+* Setting up environment variables
+
 
