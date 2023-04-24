@@ -61,3 +61,66 @@ Then use, for example, `ssh username@dokku-xx.cs.ucsb.edu` where `xx` is replace
 
 You should get access to a shell prompt on the Dokku server.
 
+## The `dokku` command
+
+Most functions of Dokku will be accessed via the `dokku` command.  You can see a complete list of dokku commands by typing `dokku --help`, like this (the output has been shortened):
+
+```
+pconrad@dokku:~$ dokku --help
+Usage: dokku [--quiet|--trace|--force] COMMAND <app> [command-specific-options]
+
+Primary help options, type "dokku COMMAND:help" for more details, or dokku help --all to see all commands.
+
+Commands:
+
+    app-json                 Manage app-json settings for an app
+    apps                     Manage apps
+    builder                  Manage builder settings for an app
+    builder-dockerfile       Manage the dockerfile builder integration for an app
+    builder-lambda           Manage the lambda builder integration for an app
+    ... [**** MANY LINES OF OUTPUT OMITTED ****]
+    url                      Show the first URL for an application (compatibility)
+    urls                     Show all URLs for an application
+    version                  Print dokku's version
+
+Community plugin commands:
+
+    letsencrypt   Manage the letsencrypt integration
+    postgres      Plugin for managing Postgres services
+pconrad@dokku:~$ 
+```
+
+Make sure you can access the `dokku` command by trying `dokku --help`
+
+## Creating a new app
+
+To create a new app called `jpa02-cgaucho`, type:
+
+That will look like this:
+
+```
+pconrad@dokku:~$ dokku apps:create jpa02-cgaucho
+-----> Creating jpa02-cgaucho...
+-----> Creating new app virtual host file...
+pconrad@dokku:~$ 
+```
+
+Once you've created a new app, you should be able to see it by typing `dokku apps:list`, like this:
+
+```
+pconrad@dokku:~$ dokku apps:list
+=====> My Apps
+christian-frontend
+christian-try-dokku
+jpa02-cgaucho
+julia-try-dokku
+my-new-app
+pconrad-jpa02
+pconrad-jpa03
+pconrad-try-dokku
+rn-ruby-getting-started
+ziv-try-dokku
+pconrad@dokku:~$ 
+```
+
+
