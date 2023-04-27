@@ -16,11 +16,11 @@ To create this, login to the Dokku server and do the following:
 
 ```
 dokku postgres:create my-new-app-db
-dokku postgres:link my-new-app my-new-app-db
+dokku postgres:link my-new-app-db my-new-app
 ```
 
 * The command `dokku postgres:create my-new-app-db` creates the database. While it is not required that the name be the app name with `-db` appended, we encourage following  this naming convention (or a similar one) to reduce confusion.
-* The command  `dokku postgres:link my-new-app my-new-app-db` links the app to the database
+* The command  `dokku postgres:link my-new-app-db my-new-app` links the app to the database
 
 
 
