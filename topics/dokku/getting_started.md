@@ -152,12 +152,12 @@ To link your app to a GitHub repo, **you actually need two terminal windows**
      ```
  3. Now add a remote for `dokku`. The remote url will be formed as follows:
 
-    <tt>dokku@dokku-<b><i>xx</i></b>.cs.ucsb.edu:<b></i>app-name<b></i></tt>
+    <tt>dokku@dokku-<b><i>xx</i></b>.cs.ucsb.edu:<b></i>app-name</i></b></tt>
 
     Note that:
     * The part at the beginning, <tt>dokku@dokku-</tt>, should be literally that, always
     * The <tt><b><i>xx</i></b></tt> part should be one of <tt>00</tt> through <tt>12</tt>, i.e. the number for the Dokku server you are using.
-    * The <tt><b></i>app-name<b></i></tt> part should be the name of the app you created with `dokku apps:create app-name`; this may or may not
+    * The <tt><b><i>app-name</i></b></tt> part should be the name of the app you created with `dokku apps:create app-name`; this may or may not
       be the same as your repo name.
   
     For example, if you are running on `dokku-07.cs.ucsb.edu` and your  app is `jpa02-cgaucho`, you'll create a remote for dokku with:
