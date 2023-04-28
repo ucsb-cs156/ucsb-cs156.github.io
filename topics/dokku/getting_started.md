@@ -211,7 +211,7 @@ To link your app to a GitHub repo, **you actually need two terminal windows**
 For a simple `Hello World` type Spring Boot app, this should be sufficient to get started.
 
 Refer to the main Dokku help page for apps that have more complex requirements, such as:
-* Setting up a Postgres Database
-* Setting up environment variables
+* Setting up a [Postgres Database](/topics/dokku/postgres_database)
+* Setting up [Environment Variables](/topics/dokku/environment_variables)
 
 
