@@ -23,3 +23,10 @@ But there's an better way that doesn't involved making fake changes to the code:
 ... Dokku starts deploying
 ```
 
+# An even better way, if it works
+
+If you have a terminal open to the shell prompt on `dokku-xx.cs.ucsb.edu`, you can also try these commands:
+
+* `dokku ps:restart app-name`
+* `dokku ps:rebuild app-name`
+
