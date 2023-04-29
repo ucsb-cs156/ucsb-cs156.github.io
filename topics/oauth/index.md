@@ -7,6 +7,10 @@ category_prefix: "OAuth: "
 has_children: true
 ---
 
+# {{page.title}}
+
+<b>{{page.description}}</b>
+
 When implementing a login feature (i.e. usernames/passwords, and a "logged in" vs "not logged in" status), we have two choices:
 * Roll our own authentication, storing the usernames/passwords ourselves.
 * Delegate that to some other identify provider.
