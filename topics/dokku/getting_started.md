@@ -62,6 +62,21 @@ Then use, for example, `ssh username@dokku-xx.cs.ucsb.edu` where `xx` is replace
 
 You should get access to a shell prompt on the Dokku server.
 
+## Changing your shell to bash
+
+If you find that command line editing (e.g. the up-arrow, etc.) isn't working, it's probably because your default shell is `/bin/sh` instead of `/bin/bash`. Here's how to change it:
+
+```
+$ chsh
+Password: 
+Changing the login shell for pconrad
+Enter the new value, or press ENTER for the default
+	Login Shell [/bin/sh]: /bin/bash
+$ 
+```
+
+Then logout and log back in again.
+
 ## The `dokku` command
 
 Most functions of Dokku will be accessed via the `dokku` command.  You can see a complete list of dokku commands by typing `dokku --help`, like this (the output has been shortened):
