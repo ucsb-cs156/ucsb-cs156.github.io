@@ -5,6 +5,7 @@ layout: default
 title: "Getting Started"
 description:  "How to deploy a Hello World Spring Boot app to Dokku"
 ssh_key_form: https://docs.google.com/forms/d/e/1FAIpQLSemcZiZ7B8v5zxlWmaWw-YRkr4dip_t6qgpinYoo9xchw_IOg/viewform
+nav_order: 1
 ---
 
 # {{page.title}} - {{page.description}}
