@@ -6,7 +6,7 @@ title: "Preparing Your App"
 description:  "Converting an existing Spring Boot app to use Dokku"
 ---
 
-# {{page.title} - {{page.description}}
+# {{page.title}} - {{page.description}}
 
 Here are things that must be true about your app in order to deploy it on [UCSB ECI's](https://eci.ucsb.edu/) implementation of Dokku:
 
