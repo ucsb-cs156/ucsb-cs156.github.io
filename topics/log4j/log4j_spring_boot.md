@@ -8,7 +8,7 @@ category_prefix: "Log4J: "
 indent: true
 ---
 
-# {{page.title} - {{page.description}}
+# {{page.title}} - {{page.description}}
 
 A common debugging technique in any application, language or framework is to put in "debugging print statements", e.g.
 
