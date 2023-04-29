@@ -9,7 +9,7 @@ description:  "One time step before you can create client-id/client-secret"
 # {{page.title}} - {{page.description}}
 
 Before you [set up your first Google OAuth application](/topics/oauth/oauth_google_setup.html), you need to:
-* First: [Created a Google Developer Project](/topics/oauth/google_create_developer_project.html)
+* First: [Create a Google Developer Project](/topics/oauth/google_create_developer_project.html)
 * Second: Configure the Google OAuth consent screen, described below.
    
 # How to configure the OAuth Consent Screen
