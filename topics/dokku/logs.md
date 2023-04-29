@@ -2,8 +2,8 @@
 parent: Dokku
 grand_parent: Topics
 layout: default
-title: "logs"
-description:  "How to get access to logs"
+title: "Logs"
+description:  "How to get access to logs to see the console output from the backend"
 ---
 
 For access to the logs for an app running on dokku:
