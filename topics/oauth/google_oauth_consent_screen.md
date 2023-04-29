@@ -8,28 +8,9 @@ description:  "One time step before you can create client-id/client-secret"
 
 # {{page.title}} - {{page.description}}
 
-Before you [set up your first Google OAuth application](topics/oauth/oauth_google_setup.html), you need to:
-* First: [created a Google Developer Project](topics/oauth/google_create_google_developer_project.html)
-* Second: configured the Google OAuth consent screen, described below.
-
-# How to create a new Google Developer Project
-
-1. Navigate to <https://console.cloud.google.com/cloud-resource-manager> and login with your UCSB Google Account.
-   
-   If you haven't already [created a Google Developer Project](topics/oauth/google_create_google_developer_project.html), you'll need to do that first.
-   
-   You'll see something like this, except you might not have anything under the `UnPaid` folder.  (That is where you'll create your projecct).
-   
-   <img width="698" alt="Google Developer Console Project List" src="https://user-images.githubusercontent.com/1119017/235321567-ada58904-ce9e-41eb-b7f7-6d4ceff71cb8.png">
-
-2. Click the `Create Project` button (<img width="147" alt="Create Project Button" src="https://user-images.githubusercontent.com/1119017/235321614-e4e663dc-34c7-494f-8e97-ba2b3caaa6be.png">).  
-   You should then see a page like this one.  
-   * Fill in the name of the project with something meaningful such as the course and quarter (e.g. `cs156-s23, `cs156-m23`, etc.)  
-   * The organization should be `ucsb.edu`
-   * Under `Location` click `Browse` and then select `UnPaid` so that it looks like the image below
-
-   <img width="564" alt="Create Project form (filled in)" src="https://user-images.githubusercontent.com/1119017/235321749-ed77039d-101e-418e-a9a8-2bd267f130b2.png">
-
+Before you [set up your first Google OAuth application](/topics/oauth/oauth_google_setup.html), you need to:
+* First: [Created a Google Developer Project](/topics/oauth/google_create_developer_project.html)
+* Second: Configure the Google OAuth consent screen, described below.
    
 # How to configure the OAuth Consent Screen
 
@@ -108,3 +89,8 @@ That should change the screen to look like this.
 <img width="740" alt="image" src="https://user-images.githubusercontent.com/1119017/159813656-30755f02-d386-49ff-8efc-7908daf1b6ac.png">
 
 <img width="540" alt="image" src="https://user-images.githubusercontent.com/1119017/159960643-dc95bec9-bfd7-4a1d-87c6-4d0da32d6ab7.png">
+
+# What's next
+
+A typical next step is to set up a Google OAuth app so that you can obtain a `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` values, [as 
+described here](/topics/oauth/oauth_google_setup.html).
