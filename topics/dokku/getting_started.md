@@ -139,9 +139,25 @@ ziv-try-dokku
 pconrad@dokku:~$ 
 ```
 
+## Before deploying your app
+
+If you are deploying a simple "Hello World" app, you may be able to skip this section.  
+
+But, before you deploy your app, if the instructions indicate that you need to configure any of the following,
+you'll need to do that first, or your app may not deploy properly:
+
+* Environment Variables (e.g. `GOOGLE_CLIENT_ID` and/or `GOOGLE_CLIENT_SECRET` for OAuth)
+  - To configure these, see: [Environment Variables](/topics/dokku/environment_variables.html)
+* Postgres Database
+  - To configure the database, see: [Postgres Database](/topics/dokku/postgres_database.html)
+
+
 ## Deploying an app 
 
-To link your app to a GitHub repo, **you actually need two terminal windows**
+Once you've set up any environment variables and/or databases that you need, here's how you get
+your app deployed.
+
+You will need **two terminal windows**
 * one on the **Dokku Server**
 * another on **`csil.cs.ucsb.edu`**
 
