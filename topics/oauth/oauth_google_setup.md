@@ -22,7 +22,11 @@ If you've already done these, then you are ready to set up a Google OAuth app so
 1. Login to the Google Developer Console at <https://console.cloud.google.com/>
    - You probably want to open this in a separate tab so that you can still see these instructions.
 
-2. Select the project you would like to create your OAuth app in.
+2. Select the project you would like to create your OAuth app in.  You do this in the little dropdown with the triangle, upper left
+   next to the "Google Cloud" logo:
+   
+   <img width="200" alt="image" src="https://user-images.githubusercontent.com/1119017/235767833-66131e44-78e9-4014-a09d-0f506b7dcec1.png">
+
 
 2. On the upper left, there is a hamburger menu icon that provides a left navigation menu.
    
