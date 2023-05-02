@@ -18,6 +18,25 @@ To do this, we can use this command:
 dokku config:set --no-restart my-app PRODUCTION=true
 ```
 
+# Typical configuration
+
+Our apps typically also require you to set the environment variables for OAuth, such as these. 
+* Note that these are example values
+* You need to change these commands to the values appropriate to your app.
+* The `my-app` values is your application name
+* The values for the variables are the same as those you used in your `.env` file on `localhost`
+
+```
+dokku config:set --no-restart my-app PRODUCTION=true
+dokku config:set --no-restart my-app GOOGLE_CLIENT_ID=26622685272-ofq4729s9nt8loednuuv5c0opja1vaeb.apps.googleusercontent.com
+dokku config:set --no-restart my-app GOOGLE_CLIENT_SECRET=GOCSPX-fakeCredentials99_fakefake-_fake
+dokku config:set --no-restart my-app ADMIN_EMAILS=phtcon@ucsb.edu,cgaucho@ucsb.edu,avishekde@ucsb.edu,vivianross@ucsb.edu
+```
+
+Our apps also typically require some environment variables for postgres; see this article for details: [Postgres Database](/topics/dokku/postgres_database.html) 
+
+# Listing the Environment variables
+
 To list the environment variables for a given app, we can use 
 
 ```
