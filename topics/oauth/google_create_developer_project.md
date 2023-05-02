@@ -8,7 +8,7 @@ description: "One time step to get started with Google Developer Console"
 
 # {{page.title}} - {{page.description}}
 
-Before you [set up your first Google OAuth application](topics/oauth/oauth_google_setup.html) or do any other actions with the Google Developer
+Before you [set up your first Google OAuth application](/topics/oauth/oauth_google_setup.html) or do any other actions with the Google Developer
 Console, you need to **create a new project**.  This page describes how to do that.
 
 # Steps to Create a New Project
