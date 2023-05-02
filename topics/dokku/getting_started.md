@@ -139,6 +139,18 @@ ziv-try-dokku
 pconrad@dokku:~$ 
 ```
 
+## Setting up https for your app
+
+In order to use Google OAuth in production mode, we need to enable https for our apps; here's how:
+
+The commands below show <tt><b><i>app-name</i></b></tt> as the name of your app; be sure to
+substitute in <tt><b><i>jpa03-cgaucho</i></b></tt>, for example.
+
+On your assigned dokku machine, at the prompt, type these two commands, substituting in your UCSB email in place of `cgaucho@ucsb.edu`
+
+*  <tt>dokku letsencrypt:set <b><i>app-name</i></b> email <b><i>cgaucho@ucsb.edu</i></b></tt>
+*  <tt>dokku letsencrypt:enable <b><i>app-name</i></b></tt>
+
 ## Before deploying your app
 
 If you are deploying a simple "Hello World" app, you may be able to skip this section.  
