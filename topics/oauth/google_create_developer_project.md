@@ -15,7 +15,7 @@ Console, you need to **create a new project**.  This page describes how to do th
 
 1. Navigate to <https://console.cloud.google.com/cloud-resource-manager> and login with your UCSB Google Account.
    
-   If you haven't already [created a Google Developer Project](topics/oauth/google_create_google_developer_project.html), you'll need to do that first.
+   If you haven't already [created a Google Developer Project](/topics/oauth/google_create_google_developer_project.html), you'll need to do that first.
    
    You'll see something like this, except you might not have anything under the `UnPaid` folder.  (That is where you'll create your projecct).
    
@@ -33,7 +33,7 @@ Console, you need to **create a new project**.  This page describes how to do th
 
 Typical next steps are: 
 
-* First, [Configuring the OAuth Consent Screen](topics/oauth/google_oauth_consent_screen.html),
+* First, [Configuring the OAuth Consent Screen](/topics/oauth/google_oauth_consent_screen.html),
 * Followed by [Setting up a `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` for an OAuth app](/topics/oauth/oauth_google_setup.html)
   
 
