@@ -161,8 +161,14 @@ You will need **two terminal windows**
 * one on the **Dokku Server**
 * another on **`csil.cs.ucsb.edu`**
 
-1. In the ordinary **csil** window, create a directory where you can clone your repo.
-2. Clone your repo there.  
+1. In the ordinary **csil** window, create a directory where you can clone your repo.  
+   - NOTE: we are not going to *run* our app on CSIL.  We are just using a CSIL command line as the place from which
+     we can push to dokku.
+   - So in general, you'll only do `git` command on CSIL.  You'll do your main editing and localhost testing on your
+     own laptop, or in a Github Codespace.
+   - The reason for this is that the dokku servers are configured to accept connections from your CSIL account, using
+     your CSIL ssh public key.
+3. Clone your repo in the directory on your CSIL account.  
    - For instance, suppose we want to deploy the repo <https://github.com/ucsb-cs156-s23/jpa02-pconrad>.  
    - We start by cloning this repo at the shell prompt on CSIL and cd'ing into this directory.  For example:
 
