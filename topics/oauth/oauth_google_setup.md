@@ -41,10 +41,10 @@ If you've already done these, then you are ready to set up a Google OAuth app so
 
    * For localhost, enter: <tt>http://localhost:8080/login/oauth2/code/google</tt>
      - Note that this *must* be `http` not `https`
-   * For Dokku, enter: <tt>http://<b><i>myappname</i></b>.dokku-<b><i>xx</i></b>.cs.ucsb.edu/login/oauth2/code/google</tt>
+   * For Dokku, enter: <tt>https://<b><i>myappname</i></b>.dokku-<b><i>xx</i></b>.cs.ucsb.edu/login/oauth2/code/google</tt>
      - Note that you should substitute your app name in place of <b><i>myappname</i></b>
      - Be sure to also change <b><i>xx</i></b> to your actual dokku server number (`00` through `12`)
-     - Note that this *must* be `http` not `https`, and requires that the OAuth Consent Screen be in "Test Mode".
+     - Note that this *must* be `https` not `http`.
    * We are not currently using Heroku, but if we were you would enter: <tt>https://<b><i>myappname</i></b>.herokuapp.com/login/oauth2/code/google</tt>
      - Note that you should substitute in *your* Heroku app name in place of `my-app-name`
      - Note that this *must* be `https` not `http`
