@@ -34,7 +34,7 @@ If you've already done these, then you are ready to set up a Google OAuth app so
    * On that page, near the top, click the button for `+ CREATE CREDENTIALS`
    * This makes a pull-down menu where you can select `OAuth Client ID`
    * For Application Type, select `Web Application`
-   * For name, choose something you will remember; I suggest using the name of your repo, or the name of the Heroku application
+   * For name, choose something you will remember; I suggest using the name of your repo, or the name of the Dokku/Heroku application
    * Scroll down to the part of the page that says: `Authorized redirect URIs`
 
 3. Under `Authorized redirect URIs`, you'll need to click the `+ ADD URI` button twice to enter two addresses:
