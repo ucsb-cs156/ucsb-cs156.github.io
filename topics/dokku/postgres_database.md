@@ -34,7 +34,7 @@ To configure a Spring-Boot application to access Postgres, you'll need to take t
    It will be something like this:
    
    ```
-   DATABASE_URL:  postgres://postgres:93402a78c99a6bcb2e98cb89a98b348@dokku-postgres-starter-team02-db:5432/starter_team02_db
+   DATABASE_URL:  postgres://postgres:93402a78c99a6bcb2e98cb89a98b348@dokku-postgres-starter-team02-db:5432/jpa03_cgaucho_db
    ```
     
    This value has the following parts:
@@ -46,7 +46,7 @@ To configure a Spring-Boot application to access Postgres, you'll need to take t
    | `93402a78c99a6bcb2e98cb89a98b348` | password |
    | `dokku-postgres-starter-team02-db` | hostname |
    | `5432` | port | 
-   | `starter_team02_db` | database |
+   | `jpa03_cgaucho_db` | database |
    
    Although, in principle, it should be possible to simply use this value for Spring Boot, as of this writing I have been unable to 
    determine how to get Spring Boot to accept this value unmodified.  The next step shows how we need to pick this value apart.
@@ -56,6 +56,7 @@ To configure a Spring-Boot application to access Postgres, you'll need to take t
    ```
    dokku config:set --no-restart jpa03-cgaucho JDBC_DATABASE_USERNAME=postgres
    ```
+   
 
 3. Set up a config variable called `JDBC_DATABASE_PASSWORD` with the value of the password from *your* `DATABASE_URL` (not the one shown in the example below, but the output between the colon (`:`) and the at-sign (`@`) in the `DATABASE_URL` value on your screen.
 
@@ -63,20 +64,57 @@ To configure a Spring-Boot application to access Postgres, you'll need to take t
    dokku config:set --no-restart jpa03-cgaucho JDBC_DATABASE_PASSWORD=93402a78c99a6bcb2e98cb89a98b348
    ```
 
-4. Set up a config variable called `JDBC_DATABASE_URL` constructed as follows:
+   
+4. Now, you need to determine the IP address of the virtual host where the database server is running.  To do this, type
+   this command (substituting in your database name instead of <tt><b><i>jpa03-cgaucho-db</i></b></tt>):
+   
+   * <tt>dokku postgres:info <b><i>jpa03-cgaucho-db</i></b></tt>
+   
+   You'll get output like this.  The part we care about is the part labelled `Internal ip:`, i.e. in this case the value `172.17.0.18`
+   
+   You need that value in the next step.
+   
+   ```
+   pconrad@dokku-00:~$ dokku postgres:info jpa03-cgaucho-db
+   =====> jpa03-cgaucho-db postgres service information
+          Config dir:          /var/lib/dokku/services/postgres/jpa03-cgaucho-db/data
+          Config options:                               
+          Data dir:            /var/lib/dokku/services/postgres/jpa03-cgaucho-db/data
+          Dsn:                 postgres://postgres:71d9cacbd1a4ed9c20884691199a4a9a@dokku-postgres-jpa03-cgaucho-db:5432/jpa03_cgaucho_db
+          Exposed ports:       -                        
+          Id:                  e61728e1c3450d86fdfbab2f836eb5e142607dbabcffb6508d5cba049581359e
+          Internal ip:         172.17.0.18              
+          Initial network:                              
+          Links:               jpa03-cgaucho            
+          Post create network:                          
+          Post start network:                           
+          Service root:        /var/lib/dokku/services/postgres/jpa03-cgaucho-db
+          Status:              running                  
+          Version:             postgres:15.2            
+   pconrad@dokku-00:~$ 
+```
 
-   * Starts with `jdbc:postgresql://localhost:5432/` followed by *your* database name
-   * For example: `jdbc:postgresql://localhost:5432/starter_team02_db`
+
+5. Set up a config variable called `JDBC_DATABASE_URL` constructed as follows:
+
+   * Starts with `jdbc:postgresql://`
+   * Then list the IP address from the previous step, e.g. `172.17.0.18`
+   * Then we need `:5432/` 
+   * Finally, *your* database name 
+     - Note that it may have underscores (`_`) in place of hyphens (`-`). Use the underscores.
+   * For example: `jdbc:postgresql://172.17.0.18:5432/jpa03_cgaucho_db`
    
    So the command will be something like:
    
    ```
-   dokku config:set --no-restart jpa03-cgaucho JDBC_DATABASE_URL=jdbc:postgresql://localhost:5432/starter_team02_db
+   dokku config:set --no-restart jpa03-cgaucho JDBC_DATABASE_URL=jdbc:postgresql://172.17.0.18:5432/jpa03_cgaucho_db
    ```
 
-Once these values are all set up, you can restart the app with `dokku ps:restart jpa03-cgaucho`, or by pushing an empty commit.
+Once these values are all set up, you can start the app by:
+* Pushing a commit (if you are deploying for the first time; see:[Getting Started](https://ucsb-cs156.github.io/topics/dokku/getting_started.html))
+* With `dokku ps:restart jpa03-cgaucho` if you have built the application already.
 
-Note that we **do not put these values in `.env`** since that file is used for `localhost`, and we do not typically use postgres when running on localhost (we use H2, an database embedded in the Spring Boot server instead).
+Note that we **do not put the `JDBC_DATABASE_*` values in `.env`** since that file is used for `localhost`, and we do not typically use postgres when running on localhost (we use H2, an database embedded in the Spring Boot server instead).
 
 # Postgres command line
 
