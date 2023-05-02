@@ -15,7 +15,7 @@ Suppose your app called `my-app` requires you to define an environment variable 
 To do this, we can use this command:
 
 ```
-dokku config:set my-app PRODUCTION=true
+dokku config:set --no-restart my-app PRODUCTION=true
 ```
 
 To list the environment variables for a given app, we can use 
