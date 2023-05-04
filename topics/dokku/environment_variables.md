@@ -35,6 +35,56 @@ dokku config:set --no-restart my-app ADMIN_EMAILS=phtcon@ucsb.edu,cgaucho@ucsb.e
 
 Our apps also typically require some environment variables for postgres; see this article for details: [Postgres Database](/topics/dokku/postgres_database.html) 
 
+# `PRODUCTION=true`
+
+The code base that we use for most of the apps in CMPSC 156 requires that you set `PRODUCTION=true` when 
+deploying on a service such as Dokku, Heroku or Render:
+
+```
+dokku config:set --no-restart my-app PRODUCTION=true
+```
+
+<details markdown="1">
+<summary markdown="1">What does this do? (click triangle to find out)</summary>
+
+What this does is to tell the `pom.xml` file that when building the app, it should also build an optimized version of the frontend code and bundle it together with the backend, to deliver it from one endpoint.
+
+If this is not set, it tries to launch only the backend, expecting the frontend to be launched separately (as we do when running in development mode.)
+
+</details>
+
+# `ADMIN_EMAILS=phtcon.ucsb.edu,...`
+
+The code base that we use for most of the apps in CMPSC 156 requires that you set the variable `ADMIN_EMAILS` to a
+comma-separated list of emails that will be given admin privileges, e.g.
+
+```
+ADMIN_EMAILS=phtcon@ucsb.edu,cgaucho@ucsb.edu,ldelplaya@ucsb.edu
+```
+
+You set this like this:
+
+```
+dokku config:set --no-restart my-app ADMIN_EMAILS=phtcon@ucsb.edu,cgaucho@ucsb.edu,ldelplaya@ucsb.edu
+```
+
+Generally speaking, this list should contain your instructor's email, your mentor's email, and each member of your team, separated by commas (no spaces).
+
+*Do not separate emails with spaces*; only commas:
+* ❌ WRONG: `ADMIN_EMAILS=phtcon@ucsb.edu, cgaucho@ucsb.edu, ldelplaya@ucsb.edu`
+* ✅ Correct: `ADMIN_EMAILS=phtcon@ucsb.edu,cgaucho@ucsb.edu,ldelplaya@ucsb.edu`
+
+* Add your own UCSB email address
+* Add `phtcon@ucsb.edu` (your instructor)
+* Add the mentor for your team (look up the mentor's name on the course team listing, then ask them in your channel)
+* Add everyone else on your team
+
+I suggest that, as a team, you collaborate in your team slack channel on getting a standard list of these, and then
+that you pin that post in your team slack channel for easy reference.
+
+The `ADMIN_EMAILS` value is used to determine which users have access to administrative features in the app.  One of those
+is the ability to list the users that have logged in.
+
 # Listing the Environment variables
 
 To list the environment variables for a given app, we can use 
