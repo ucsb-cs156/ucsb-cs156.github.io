@@ -19,6 +19,9 @@ It allows you to have various versions of node loaded on your system, and switch
 
 # Installing
 
-* For MacOS, you can use `brew install nvm`
-* For other platforms, good luck (check with staff if you need assistance, and we'll do our best to help.)
-
+* For MacOS, you can use `brew install nvm`, or refer to the nvm website where you will find [installation instructions] (https://github.com/nvm-sh/nvm#install--update-script) and a section on [troubleshooting for MacOS](https://github.com/nvm-sh/nvm#troubleshooting-on-macos)
+* For Linux, refer to the nvm website where you will find [installation instructions] (https://github.com/nvm-sh/nvm#install--update-script) and a section on [troubleshooting for Linux]([https://github.com/nvm-sh/nvm#troubleshooting-on-macos](https://github.com/nvm-sh/nvm#troubleshooting-on-macos)
+* Since there is no section on troubleshooting for Windows, we suggest using Windows Subsystem for Linux (WSL) and then
+  follow the instructions for Linux above.
+* For folks working in Github Codespaces, you do not need `nvm` since you can specify a specific version of node
+  in the `Dockerfile` that you use to set up the codespace.
