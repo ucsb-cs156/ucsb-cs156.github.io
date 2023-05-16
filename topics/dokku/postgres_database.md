@@ -136,5 +136,43 @@ At this command:
 A cheatsheet of other `psql` commands can be found here:  <https://www.geeksforgeeks.org/postgresql-psql-commands/>
 
 
+# Resetting the postgres database
+
+During development, sometimes you may find that the database tables get corrupted, and this leads to SQL errors, even when your code is correct.
+
+The cause is typically a change in the database schema, i.e. adding, changing, or removing a column from an `@Entity` class in your Spring Boot backend.
+
+There are two ways to reset the database:
+1. If you know which table is causing the problem, you can just delete (`DROP`) a single table, and Spring Boot will rebuild it when the app is redeployed.
+2. If you don't know which table is causing the problem, you can remove the entire database, and then relink it.
+
+More details on each way below
+
+## Dropping a Single Table
+
+To drop a single table:
+
+1. Login to your dokku server (e.g., from CSIL, `ssh dokku-15.cs.ucsb.edu`
+2. Connect to the postgres database, e.g.
+   ```
+   dokku postgres:connect my-app-name-db
+   ```
+3. This gives you a postgres problem. Use `\dt` to list the database tables
+4. Use `DROP TABLE table_name;` to drop the table.  Make sure the command ends in a semicolon (`;`).
+5. Use `\q` to quit the postgres command line
+6. Restart the application with: `dokku ps:restart app-name`
+
+## Resettig the entire database
+
+This is the heavyweight approach.  It best to use this only as a last resort, since it's time consuming.
+
+To rebuild the entire database:
+
+1. Login to your dokku server (e.g., from CSIL, `ssh dokku-15.cs.ucsb.edu`
+2. Stop the application, e.g. `dokku ps:stop app-name`
+3. Unlink the database, e.g. `dokku postgres:unlink app-name-db app-name`
+4. Destroy the database, e.g. `dokku postgres:destroy app-name-db`
+5. Follow all of the procedures to recreate and relink the database, including updating all of the relevant config vars, from the very top of this page.
+6. Restart the app, e.g. `dokku ps:restart app-name`
 
 
