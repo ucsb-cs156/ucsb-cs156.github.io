@@ -136,7 +136,7 @@ At this command:
 A cheatsheet of other `psql` commands can be found here:  <https://www.geeksforgeeks.org/postgresql-psql-commands/>
 
 
-# Resetting the postgres database
+# Resetting the Database
 
 During development, sometimes you may find that the database tables get corrupted, and this leads to SQL errors, even when your code is correct.
 
@@ -162,7 +162,7 @@ To drop a single table:
 5. Use `\q` to quit the postgres command line
 6. Restart the application with: `dokku ps:restart app-name`
 
-## Resettig the entire database
+## Resetting the entire database
 
 This is the heavyweight approach.  It best to use this only as a last resort, since it's time consuming.
 
