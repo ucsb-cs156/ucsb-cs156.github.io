@@ -65,8 +65,8 @@ Explaining each of the lines of code:
 | `const restoreConsole = mockConsole();` | sets up the mock, and returns a handle to a function that can be invoked to restore `console` to it's normal function (instead of the mock) |
 | `expect(console.log).toHaveBeenCalled();` | self explanatory; uses the `expect` and `toHaveBeenCalled` functions from jest [documented here](https://jestjs.io/docs/expect) |
 | `const message = console.log.mock.calls[0][0];` | the object `console.log.mock` has information about calls to the mock.  The first `[0]` returns an array of the parameters to the first call to `console.log`, and the second `[0]` indexes into that array to return the first parameter to that call to `console.log` |
-| `const expectedMessage = `...`; | This sets up the message we expect to see.  You want to look at the original `console.log` call, as well as the test and test fixtures to determine what this will look like, or use the hacky shortcut described below. |
-| `expect(message).toBe(expectedMessage); | Uses the jest `expect` and `toBe` syntax [documented here](https://jestjs.io/docs/expect) to determine if the message is the expected one. |
+| `const expectedMessage = "...";` | This sets up the message we expect to see.  You want to look at the original `console.log` call, as well as the test and test fixtures to determine what this will look like, or use the hacky shortcut described below. |
+| `expect(message).toBe(expectedMessage); | Uses the jest `expect` and `toBe` syntax [documented here](https://jestjs.io/docs/expect) to determine if the message is the expected one.  You may see `match` instead of `toBe` in some example code; `match` works a bit differently (see the documentation). |
 
 # The hacky shortcut
 
@@ -76,7 +76,8 @@ The *better* more *rigorous* way is to think through the code, trace it out, and
 
 But, in a pinch, if you are short on time, there's a hacky shortcut to determine what the expected output is.
 
-* Set the expected output to "empty string".
+* Set the expected output to "empty string".  
+* Be sure that the test uses `expect` with `toBe` (if you use `match`, use `"foo"` for the expected value instead of empty string, since empty string will pass for `match` on anything.) 
 * Run the test once.  It will fail, and show you what the actual value is.
 * As long as the value makes sense, you can then populate the test with that value.  
 
