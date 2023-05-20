@@ -10,4 +10,22 @@ Here is an example of a mutation report showing that a mutation eliminating a co
 
 <img width="453" alt="image" src="https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/a65b6eec-7c02-487f-b972-37f6d61d009e">
 
+This is showing that the code:
+```
+console.log(`detailsCallback: ${showCell(cell)}`);
+``` 
+
+Was mutated to the following, without any tests failing (i.e. "the mutant survived").
+```
+console.log(``);
+``` 
+
 To cover this with a test, we can use `mockConsole`
+
+Use this import:
+
+```
+import mockConsole from "jest-mock-console";
+```
+
+Then, 
