@@ -12,7 +12,7 @@ Here is an example of a mutation report showing that a mutation eliminating a co
 
 This is showing that the code:
 ```
-console.log(`detailsCallback: ${showCell(cell)}`);
+console.log(`editCallback: ${showCell(cell)}`);
 ``` 
 
 Was mutated to the following, without any tests failing (i.e. "the mutant survived").
