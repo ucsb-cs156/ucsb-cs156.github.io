@@ -66,7 +66,7 @@ Explaining each of the lines of code:
 | `expect(console.log).toHaveBeenCalled();` | self explanatory; uses the `expect` and `toHaveBeenCalled` functions from jest [documented here](https://jestjs.io/docs/expect) |
 | `const message = console.log.mock.calls[0][0];` | the object `console.log.mock` has information about calls to the mock.  The first `[0]` returns an array of the parameters to the first call to `console.log`, and the second `[0]` indexes into that array to return the first parameter to that call to `console.log` |
 | `const expectedMessage = "...";` | This sets up the message we expect to see.  You want to look at the original `console.log` call, as well as the test and test fixtures to determine what this will look like, or use the hacky shortcut described below. |
-| `expect(message).toBe(expectedMessage); | Uses the jest `expect` and `toBe` syntax [documented here](https://jestjs.io/docs/expect) to determine if the message is the expected one.  You may see `match` instead of `toBe` in some example code; `match` works a bit differently (see the documentation). |
+| `expect(message).toBe(expectedMessage);` | Uses the jest `expect` and `toBe` syntax [documented here](https://jestjs.io/docs/expect) to determine if the message is the expected one.  You may see `match` instead of `toBe` in some example code; `match` works a bit differently (see the documentation). |
 
 # The hacky shortcut
 
