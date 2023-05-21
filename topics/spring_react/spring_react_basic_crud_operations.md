@@ -8,7 +8,7 @@ category_prefix: "Spring React: "
 indent: true
 ---
 
-# {{ page.title } &mdash; {{ page.description }}
+# {{ page.title }} &mdash; {{ page.description }}
 
 CRUD refers to Create/Read/Update/Destroy, which are the four basic operations that users need to do on a database table.
 
