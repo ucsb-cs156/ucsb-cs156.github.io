@@ -231,7 +231,11 @@ not:
 
 ## Edit page
  
- TODO: fill this in
+ 
+Here is some example code for integrating the frontend of an edit page with the backend, along with explanation. The sample code is 
+ [`frontend/src/main/pages/UCSBDates/UCSBDatesEditPage.js`](https://github.com/ucsb-cs156-s23/STARTER-team03/blob/main/frontend/src/main/pages/UCSBDates/UCSBDatesEditPage.js) from <https://github.com/ucsb-cs156-s23/STARTER-team03>.
+ 
+TODO: continue this... 
  
 ## Details page
  
