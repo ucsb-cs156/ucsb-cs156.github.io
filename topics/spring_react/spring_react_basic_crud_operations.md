@@ -39,4 +39,12 @@ Our implementation of the basic CRUD operations includes the following features.
     - Uses the `GET` endpoint for a single row to populate the table with a single row to show the data
     - On this page, the detail button should not appear; the edit and delete buttons are nice to have but optional.
  
+ # Integration of the Frontend and Backend
  
+ ## Index page
+ 
+ ## Create page
+
+ ## Edit page
+ 
+ ## Details page
