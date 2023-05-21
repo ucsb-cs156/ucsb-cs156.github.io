@@ -106,14 +106,133 @@ The value that is returned, `dates` is passed into the component to render the t
 
 A common error is getting this variable incorrect due to copy/paste errors from example code (e.g. forgetting to change `dates` to `hotels`).
 
- ## Create page
+## Create page
  
- TODO: fill this in
+Here is some example code for integrating the frontend of an create page with the backend, along with explanation. The sample code is 
+ [`frontend/src/main/pages/UCSBDates/UCSBDatesCreatePage.js`](https://github.com/ucsb-cs156-s23/STARTER-team03/blob/main/frontend/src/main/pages/UCSBDates/UCSBDatesCreatePage.js) from <https://github.com/ucsb-cs156-s23/STARTER-team03>.
+ 
+The parts that may need some explanation are these:
 
- ## Edit page
+First, we have this function, which takes an object representing one row in the database (i.e. a newly created object that we want to `POST` to the database) and turns it into an object that represents the parameters we pass to [`axios`](https://axios-http.com/docs/intro), which is the library we use to connect to the backend.
+
+This function typically requires us to specify the url (e.g.`"/api/ucsbdates/post",` , the http method (`POST`), and then an object
+that is in the format expected by the backend endpoint.
+
+```js
+  const objectToAxiosParams = (ucsbDate) => ({
+    url: "/api/ucsbdates/post",
+    method: "POST",
+    params: {
+      quarterYYYYQ: ucsbDate.quarterYYYYQ,
+      name: ucsbDate.name,
+      localDateTime: ucsbDate.localDateTime
+    }
+  });
+```
+
+The next section of code is a function that is called when the operation is succesful.  In this case, it uses the `react-toastify` library (documented here: <https://fkhadra.github.io/react-toastify/introduction/> ) to put a message on the screen with information to confirm that the add was sucessful.   This isn't always strictly necessary, but it can be helpful to have an indication that the operation worked, especially when debugging.   For real applications, it's up to the application designers whether this is helpful, or distracting.
+
+```js
+  const onSuccess = (ucsbDate) => {
+    toast(`New ucsbDate Created - id: ${ucsbDate.id} name: ${ucsbDate.name}`);
+  }
+```
+
+The next section of code is the part that is used to actually do the `POST` operation.  It uses the function `useBackendMutation` which is a wrapper around the `useMutation` function from `react-query`.  
+
+```js
+  const mutation = useBackendMutation(
+    objectToAxiosParams,
+     { onSuccess }, 
+     // Stryker disable next-line all : hard to set up test for caching
+     ["/api/ucsbdates/all"]
+     );
+```
+
+`useBackendMutation` takes three parameters:
+
+* `objectToAxiosParams`, which was explained above; but note that we actually *pass the function itself*, not the result of a function call, 
+* `useMutationParams`, which is a way of adding parameters to the useMutation call.  
+* `queryKey`, with a default value of `null`; this is a list of query keys for `useQuery` that should be invalidated by this mutation. For example, in this case, since we are adding a new record to the `ucsbdates` table, we invalidate the key for any previous `GET` operation to the url `"/api/ucsbdates/all"`.  Failing to do this means the table on the index page may not refresh properly.  Doing this means that the table will do a new `GET` operation and pick up the new record.
+
+The next section of code is this:
+
+```js
+  const { isSuccess } = mutation
+```
+
+This pulls out the variable `isSuccess` from the return values of `useBackendMutation`; this variable is used in the later block of code:
+
+```js
+  if (isSuccess) {
+    return <Navigate to="/ucsbdates/list" />
+  }
+```
+
+This code says that if we've successfully added a new record, we can navigate back to the url shown (which is the URL for the index page.)
+
+Finally, we skipped over this bit:
+
+```
+  const onSubmit = async (data) => {
+    mutation.mutate(data);
+  }
+```
+
+This is the function that is called to actually perform the mutation when we click the button; the code that links the button to this function is this:
+
+```js
+  <UCSBDateForm submitAction={onSubmit} />
+```
+
+### Be careful with the second parameter to `useBackendMutation`
+
+A special note about the second parameter to `useBackendMutation`, which is called `useMutationParams`.  Since this parameter is a javascript object, **it is important to use the correct variable name**.  That's because the syntax:
+```js
+{onSuccess },
+```
+
+Is a shorthand for:
+```js
+{onSuccess: onSuccess },
+```
+
+So, if you need to rename the variable `onSuccess` for any reason (e.g. to `onPostSuccess`, make sure you replace this with:
+
+```js
+{onSuccess: onPostSuccess}, // correct
+```
+
+and not:
+
+```js
+{ onPostSuccess }, // incorrect
+```
+
+The return value `mutation` is an object, and is the return value from a call to the [`useMutation` function from `react-query`](https://tanstack.com/query/v4/docs/react/reference/useMutation).
+
+The same advice applies to the left hand side of this assignment:
+
+```
+  const { isSuccess } = mutation
+```
+
+If you want to call it `foo` instead of `isSuccess`, use:
+
+```
+  const { isSuccess: foo } = mutation;  // correct
+```
+
+not:
+
+```
+  const { foo } = mutation;  // incorrect
+```
+
+## Edit page
  
  TODO: fill this in
  
- ## Details page
+## Details page
  
  TODO: fill this in
