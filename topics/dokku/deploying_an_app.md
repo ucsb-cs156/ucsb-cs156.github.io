@@ -111,4 +111,33 @@ You will need **two terminal windows**
  4. Now you should be able to open the app on the URL shown, e.g. <http://jpa02-cgaucho.dokku-07.cs.ucsb.edu>
 
 
+# An alternative way to deploy your app
 
+Here is a new way to deploy your app on Dokku that may be more straightforward than the approach described above.
+
+This requires *only* an ssh shell on the Dokku machine.  You still need to login to csil, then dokku, but you do *not* have to do anything at the command line on csil.
+
+1. `ssh username@csil.cs.ucsb.edu` then to your dokku machine (e.g. `ssh dokku-01.cs.ucsb.edu`) substituting your dokku number in place of `01`.
+
+2. To set the git branch that your dokku app will deploy on its next build, do this:
+   ```
+   dokku git:sync your-app-name https://github.com/ucsb-cs156-s23/your-repo-name.git branch-to-deploy
+   ```
+
+   For example:
+   ```
+   dokku git:sync team03-qa https://github.com/ucsb-cs156-s23/team03-s23-7pm-4.git KT-add-hotels
+   ```
+
+   This doesn't deploy the app, but it does set things up so that the command below will deploy from
+   the specified repo and this branch.
+
+3. Then, to deploy, use `dokku ps:rebuild app-name`
+   
+   For example:
+   ```
+   dokku ps:rebuild team03-qa
+   ```
+   You should see then see the output from the deployment of the branch specified in the earlier `dokku git:sync ...` step.
+   
+  
