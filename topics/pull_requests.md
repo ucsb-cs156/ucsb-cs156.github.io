@@ -79,3 +79,27 @@ In general, you are looking for any opportunities to make the code better, and/o
 
 These are just a few examples to give the idea of the kinds of things you can be looking for.
 
+# Did I mention: Keep them small?
+
+I want to strongly encourage everyone on all teams to submit smaller PRs.
+
+This is an important real world skill, and it's also really, really, helpful to success in this course.
+What I would prefer to see:
+
+* A separate PR for the @Entity and @Repository class for a new database table, with nothing else in the PR  (5 pts)
+* A separate PR for the frontend fixtures that match a new Entity from the backend, or an anticipated api endpoint. (5 pts)
+* A separate PR for a form and/or table component along with the storybook entry and tests for it.  (10 pts)
+* A separate PR for the GET/POST endpoints for a new database table entry for CRUD operations. (10 pts)
+* A separate PR for DELETE endpoint for a new database table entry. (10 pts)
+* A separate PR for UPDATE endpoint for a new database table entry (10 pts)
+* A separate PR for any additional backend endpoints; one PR per one or two new endpoints. (10 pts)
+* A separate PR for a new frontend Page that brings together preexisting components and calls to a backend api that now exists (and was merged in an earlier PR), including the App.js and AppNavbar modifications  (10 pts)
+
+That's a total of 70 points, and these PRs sail through the review process like sports cars.  They are dead simple to review, and test.
+
+What I'm getting instead, often, is one PR that tries to do 5 or 6 things from the list above, or even ALL of them.  That maxes out at 20 points, leaving points on the table.  It's also much, much, much, harder to code review and test.
+
+It requires dedicated concentration by one of the staff members for perhaps up to an hour.   We try to spread out time among multiple teams, and we also have other tasks.  This will be true of your real world software engineering colleagues too.   It's much easier to get five colleagues to each do a 10 minute code review than to get one colleague to do a 50 minute code review.
+
+Plus: if there are rounds of "revise and resubmit" for your PRs after code reviews find issues, these go much faster on smaller PRs.
+Please, please, please take this to heart!
