@@ -116,3 +116,19 @@ What are the non-programmers doing reading PR descriptions?  They may be going t
 So it is important that your PR descriptions include, first, a *brief description of the impact on the end user*, in terms that an end user (or a non-programmer that's very, very familiar with the app from an end user perspective) would understand.
 
 It's ok if you then go on to provide some technical details.   But lead with the *non-technical description*.
+
+# Screenshots, Storybook, Swagger, etc.
+
+When doing a frontend PR, you should include, where applicable (and it almost always is):
+* Active before and after links to the published storybook.  
+  - Before typically comes from the storybook for the main branch that is published on the Github pages site
+  - After typically comes from the storybook link for the PR
+* Screenshots of before and after; these may seem redundant with the storybook links, but they are not for these reasons:
+  - The storybooks will change over time; after your PR is merged, the "before" becomes the "after", and the "after" link for the PR will eventually be purged.
+  - The screenshots, though, become a permanent record of what was changed.
+  - Plus: the screenshots give your code reviewers an idea of what's in your frontend PR at a glance: "a picture is worth a 1000 words".
+ 
+When doing a backend PR that involves changes to backend API endpoints, especially when you are adding or changing the API, you should include, where applicable:
+* Screen shots of the swagger api endpoints affected (before and after if applicable, or just after if it's new)
+* Advice on a suggested sequence of actions to test the backend endpoints (e.g. sample values to use).
+
