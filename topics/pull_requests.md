@@ -103,3 +103,16 @@ It requires dedicated concentration by one of the staff members for perhaps up t
 
 Plus: if there are rounds of "revise and resubmit" for your PRs after code reviews find issues, these go much faster on smaller PRs.
 Please, please, please take this to heart!
+
+# PR Descriptions
+
+In many organizations, PR descriptions are read by both programmers and non-programmers.
+
+What are the non-programmers doing reading PR descriptions?  They may be going through them to:
+* put together updates about what has changed in the app in the past week, month or quarter that are provided to tech support, sales, and customers
+* determine what extra testing may need to be done before cutting a new branch from main to  deploy  to prod (i.e. to live customers)
+* find "what changed recently" if there is suddenly a big change in performance, new bugs, etc.
+
+So it is important that your PR descriptions include, first, a *brief description of the impact on the end user*, in terms that an end user (or a non-programmer that's very, very familiar with the app from an end user perspective) would understand.
+
+It's ok if you then go on to provide some technical details.   But lead with the *non-technical description*.
