@@ -132,3 +132,25 @@ When doing a backend PR that involves changes to backend API endpoints, especial
 * Screen shots of the swagger api endpoints affected (before and after if applicable, or just after if it's new)
 * Advice on a suggested sequence of actions to test the backend endpoints (e.g. sample values to use).
 
+# PR Titles
+
+These are not acceptable PR titles:
+* Add CRUD operations
+* Add GET/POST to backend
+* Fix PUT route
+
+These are better PR titles:
+* Add backend for CRUD operations for RideRequests
+* Add GET/POST for CowLots
+* Fix PUT route for personal schedule
+
+Do you see the difference? With these titles you can look and at a glance, you know what the PR is referring to.
+
+Why does this matter? You might argue that looking at the files changed, you'd instantly know which models are being changed. So it might seem "picky" and unimportant.
+
+Here's why it's important:
+* Team members needs to be able to look over the list of PRs in the queue, or the list of PRs recently merged, and get the "big picture" of what's happening with the team at a glance.  That information is conveyed in the issue title and/or PR title.
+* Later on when we are trying to figure out which code to take from which of the teams to put into the legacy code base that future students will work on, we look through all of the PRs.  Vague titles make this process much, much, harder.
+* Sometimes we use older PRs as examples for future students.  We want all of the PRs we merge to serve as good examples, and to be easy to locate by topic.
+
+So, please pay attention to the title of your PRs.
