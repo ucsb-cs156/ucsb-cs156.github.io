@@ -36,4 +36,48 @@ so use this sparingly.
 
 * <https://dev.to/martinemmert/hide-red-console-error-log-wall-while-testing-errors-with-jest-2bfn>
 
+# Mocking "today's date" or the "current time"
 
+Suppose you have frontend functionality that depends on "today's date" or the "current time", for example:
+
+* HappyCows: Something that displays how many days have passed since the start of a game in Happy Cows
+* Courses: Something that shows how many hours there are until the next class on your schedule
+* Gauchoride: Something a driver shows how many minutes until the next scheduled drive
+
+These often use code like this to get the current date and time:
+```js
+    const now = new Date();
+```
+
+The problem comes with testing.   Given that this will return a different value each time you run the test, how
+can you ever test this code?
+
+The solution is to mock the `Date()` constructor so that instead of returning the current date/time when no parameters are passed, it 
+return a predictable value set by the programmer.
+
+Here are two possible approaches:
+
+1. Use this feature that is available in Jest since version 26 (which I'm pretty sure our code bases are on) as explained in this [Stack Overflow post](https://stackoverflow.com/a/63377110/6454116):
+
+   ```js
+   jest.useFakeTimers().setSystemTime(new Date('2020-01-01'));
+   ```
+2. If that doesnt' work, here's an older approach as explained in this [Stack Overflow article](https://stackoverflow.com/a/57599680).   
+
+   Note that while the example code uses `new Date(1466424490000)`, you could also use something like
+   `new Date("2023-06-04T13:19:11-07:00")` which is a lot more readable.  The `-07:00` marks the date as "Pacific Daylight Time"; use `-08:00` for Pacific Standard Time.
+
+   ```js
+    test('mocks a constructor like new Date()', () => {
+      console.log('Normal:   ', new Date().getTime())
+
+      const mockDate = new Date(1466424490000)
+      const spy = jest
+        .spyOn(global, 'Date')
+        .mockImplementation(() => mockDate)
+
+      console.log('Mocked:   ', new Date().getTime())
+      spy.mockRestore()
+
+      console.log('Restored: ', new Date().getTime())
+    })
