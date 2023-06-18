@@ -41,7 +41,7 @@ If you ask questions via Piazza or email about the grading of something that was
 
 Instead you'll be referred back to Gradescope. 
 
-## Why can't I just ask on Piazza?
+## Why can't I just ask on Slack/Piazza/Email?
 
 When you submit your concern through Gradescope, it will be presented to me in the context of each of the problems you are asking about, with an interface where I can consult the rubric, adjust your grade, etc.
 
