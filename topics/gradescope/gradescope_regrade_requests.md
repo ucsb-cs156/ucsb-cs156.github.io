@@ -35,7 +35,7 @@ Here's why this is important: if you about question 3, part (b) on the correct p
 
 If you ask about question 3, part (b) but you do so on question 7, part (c), the TA/instructor can neither see the answer you gave, nor do they have an opportunity to change your grade.    So your regrade request will not be likely to be useful.  In fact, you'll likely get the following canned response: `Please resubmit your request on problem you are asking about.`
 
-# For work graded on Gradescope, always use the regrade request, not email or Piazza
+# For work graded on Gradescope, always use the regrade request, not email, Slack, or Piazza
 
 If you ask questions via Piazza or email about the grading of something that was returned through Gradescope (i.e. specific homework assignment problems or exam questions), those questions <b>will not be answered</b> in that forum.
 
