@@ -165,7 +165,7 @@ mvn --version
 Your output should look something like this:
 
 ```
-Apache Maven 3.8.8 (4c87b05d9aesdfce574290d1acc98575as5eb6cd39)
+Apache Maven 3.9.3 (4c87b05d9aesdfce574290d1acc98575as5eb6cd39)
 Maven home: /opt/maven
 Java version: 17.0.6, vendor: Private Build, runtime: /usr/lib/jvm/java-17-openjdk-amd64
 Default locale: en_US, platform encoding: UTF-8
