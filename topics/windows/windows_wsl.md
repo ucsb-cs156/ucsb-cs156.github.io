@@ -125,21 +125,24 @@ OpenJDK 64-Bit Server VM (build 17.0.2+8-Ubuntu-120.04, mixed mode, sharing)
 
 ## Install Maven on WSL
 
-The projects in this class use Maven 3.8.x, which is necessary for Java 17.
+The projects in this class use Maven 3.9.x, which is necessary for Java 17.
 
-The `apt` package manager does not yet have Maven 3.8.x, so we need to manually download and extract Maven.
+The `apt` package manager does not yet have Maven 3.9.x, so we need to manually download and extract Maven.
 
-(As of this writing, the current version of Maven is 3.8.8; but it is possible that by the time you are reading
+(As of this writing, the current version of Maven is 3.9.3; but it is possible that by the time you are reading
 these instructions, the current version may have been updated, and the links to this version will no longer work.  If the links appear broken, see if there is a newer version available.)
 
-Here are two links that have been reported to work for downloading Maven 3.8.6 (the only difference is `downloads` vs. `dlcdn`)
-* <https://downloads.apache.org/maven/maven-3/3.8.8/binaries/apache-maven-3.8.8-bin.tar.gz>
-* <https://dlcdn.apache.org/maven/maven-3/3.8.8/binaries/apache-maven-3.8.8-bin.tar.gz>
+Here are two links that have been reported to work for downloading Maven 3.9.3 (the only difference is `downloads` vs. `dlcdn`)
+* <https://downloads.apache.org/maven/maven-3/3.9.3/binaries/apache-maven-3.9.3-bin.tar.gz>
+* <https://dlcdn.apache.org/maven/maven-3/3.9.3/binaries/apache-maven-3.9.3-bin.tar.gz>
 
 If the first one doesn't work, try the second.
 
+Note: The first `cd` command below is to make sure that you are doing the rest of the commands in your "home directory" (i.e. a directory where you have write permission.)  Sometimes the shell will put you in a system directory by default where you don't have write permission; in that case, downloads will fail even if the link and network connections are fine.
+
 ```sh
-export MAVEN_VERSION=3.8.8
+cd 
+export MAVEN_VERSION=3.9.3
 curl -O https://downloads.apache.org/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz
 tar -zxvf apache-maven-${MAVEN_VERSION}-bin.tar.gz
 sudo mv apache-maven-${MAVEN_VERSION} /opt/maven
