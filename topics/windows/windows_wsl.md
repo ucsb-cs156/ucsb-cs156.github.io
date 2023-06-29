@@ -6,7 +6,7 @@ title: "Windows: WSL"
 description:  "Setting up a development environment under Windows Subsystem for Linux"
 indent: true
 category_prefix: "Windows: "
-maven_version: 3.8.5
+maven_version: 3.9.3
 nvm_version: v0.39.3
 nvm_install_command: "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash"
 ---
