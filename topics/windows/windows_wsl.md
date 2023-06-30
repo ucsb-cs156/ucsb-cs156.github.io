@@ -95,7 +95,7 @@ git config --global user.email "joegaucho@ucsb.edu"
 
 **Be sure that the listed email is linked to your GitHub account.** This is how GitHub is able to attribute a commit to your account, and this will be necessary to receive credit for the code you write. You can check the emails associated with your GitHub account [here](https://github.com/settings/emails).
 
-Next, we will need to generate new SSH keys specific to the WSL environment. For instructions on how to do that, take a look at [this page](/topics/github_ssh_keys/). You are welcome to use any type of key pair you would like - GitHub should support most of them, including those backed by physical security keys.
+Next, we will need to generate new SSH keys specific to the WSL environment. For instructions on how to do that, take a look at [this page](/topics/GitHub/github_ssh_keys.html). You are welcome to use any type of key pair you would like - GitHub should support most of them, including those backed by physical security keys.
 
 Note: While it's not entirely necessary to set up SSH keys, since you can always work remotely with repos via HTTPS, using SSH keys just makes using Git easier since you will not have to re-enter your GitHub login information whenever you want to clone a repo or push/pull.
 
