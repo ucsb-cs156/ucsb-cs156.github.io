@@ -8,6 +8,7 @@ indent: true
 category_prefix: "Windows: "
 maven_version: 3.9.3
 nvm_version: v0.39.3
+git_version: 2.41.0
 nvm_install_command: "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash"
 ---
 
@@ -67,7 +68,7 @@ sudo apt-get update
 sudo apt-get install git
 ```
 
-Successfully running the above commands should install the latest version of Git, which is 2.38.0 as of the time of writing. To verify that the install was successful, run the following command:
+Successfully running the above commands should install the latest version of Git, which is {{page.git_version}} as of the time of writing. To verify that the install was successful, run the following command:
 
 ```
 git --version
@@ -75,9 +76,9 @@ git --version
 
 Your output should look like this:
 
-```
-git version 2.40.0
-```
+<tt>
+git version {{page.git_version}}
+</tt>
 
 You are now ready to set up your Git environment using the steps below.
 
