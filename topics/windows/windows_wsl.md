@@ -240,32 +240,6 @@ Your output should say `9.6.3` or something similar.
 
 **Keep in mind that each version of Node installed through `nvm` has its own installation of `npm`.** This means that, whenever you install a new version of Node, you will need to update `npm` to the correct version. The pre-bundled versions of `npm` tend to be out-of-date.
 
-## Install and Setup Heroku on WSL
-
-Heroku is the deployment platform used for the projects in this class. Some of the scripts in the projects make use of the Heroku CLI.
-
-To install Heroku CLI, run the following command:
-
-```
-curl https://cli-assets.heroku.com/install.sh | sh
-```
-
-Successfully running the above command should install the latest version of the Heroku CLI. To verify that the install was successful, run the following command:
-
-```
-heroku --version
-```
-
-Your output should say `heroku/7.69.1 linux-x64 node-v14.19.0` or something similar.
-
-Now that we have Heroku installed, we can log in. Run the following command to log in:
-
-```
-heroku login
-```
-
-You will be asked to log in through a web browser. The CLI will attempt to open your browser for you, but if it is unable to do so, a link will be visible in the terminal for you to manually copy and paste into your web browser.
-
 ## WSL with VS Code
 
 If you are currently a VS Code user (or are considering becoming one), you can install an extension to be able to access, edit, and track files in the WSL from VS Code. Follow the instructions [here](https://code.visualstudio.com/docs/remote/wsl) to get started.
