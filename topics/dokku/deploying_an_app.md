@@ -25,6 +25,21 @@ This requires *only* an ssh shell on the Dokku machine.  You still need to login
 
 1. `ssh username@csil.cs.ucsb.edu` then to your dokku machine (e.g. `ssh dokku-01.cs.ucsb.edu`) substituting your dokku number in place of `01`.
 
+2. To create your app, use the command:
+
+   ```
+   dokku apps:create jpa02-yourGithubId
+   ```
+
+   For example:
+   
+   ```
+   dokku apps:create jpa02-cgaucho
+   ```
+
+   If your github id has uppercase letters or other symbols are are not legal in a dokku app name, just modify it slightly so that it
+   conforms to the rules.
+
 2. To set the git branch that your dokku app will deploy on its next build, do this:
    ```
    dokku git:sync your-app-name https://github.com/ucsb-cs156-s23/your-repo-name.git branch-to-deploy
