@@ -243,3 +243,32 @@ Your output should say `9.6.3` or something similar.
 ## WSL with VS Code
 
 If you are currently a VS Code user (or are considering becoming one), you can install an extension to be able to access, edit, and track files in the WSL from VS Code. Follow the instructions [here](https://code.visualstudio.com/docs/remote/wsl) to get started.
+
+# Seeing jacoco and pitest output on WSL
+
+On WSL, if you have the output of a jacoco or pitest report, for example in an `index.html` file in a directory such as `target/site/jacoco`,
+here is a way you can get access to that in web browser.
+
+1. At a WSL command prompt, cd into the directory with the index.html file, e.g.
+   ```
+   cd target/site/jacoco
+   ```
+
+   If you do an `ls` in that directory, you should see the `index.html` file
+
+2. In that directory, type this command to start up a web server:
+
+   ```
+   python3 -m http.server
+   ```
+
+   This should start a web server that serves up the files in that directory on an address such as <http://0.0.0.0:8000>
+
+3.  Try navigating to <http://0.0.0.0:8000> in a web browser on the windows side.
+
+    If it doesn't work, then in another WSL window, type `ip route`
+
+    Try substituting the IP address that shows in place of 0.0.0.0, e.g. <http://172.29.192.1:8000>
+
+    There may be more than one IP address shown; try both.
+
