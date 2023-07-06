@@ -47,17 +47,23 @@ This requires *only* an ssh shell on the Dokku machine.  You still need to login
 
    For example:
    ```
+   dokku git:sync jpa02-cgaucho https://github.com/ucsb-cs156-m23/jpa02-cgaucho.git main
+   ```
+
+   OR
+
+   ```
    dokku git:sync team03-qa https://github.com/ucsb-cs156-s23/team03-s23-7pm-4.git KT-add-hotels
    ```
 
    This doesn't deploy the app, but it does set things up so that the command below will deploy from
    the specified repo and this branch.
 
-3. Then, to deploy, use `dokku ps:rebuild app-name`
+4. Then, to deploy, use `dokku ps:rebuild app-name`
    
    For example:
    ```
-   dokku ps:rebuild team03-qa
+   dokku ps:rebuild jpa02-cgaucho
    ```
    You should see then see the output from the deployment of the branch that looks something like this:
    
@@ -85,6 +91,6 @@ This requires *only* an ssh shell on the Dokku machine.  You still need to login
      * [new branch]      main -> main
     [pconrad@csilvm-07 jpa02-pconrad]$ 
    ```
-4. Now you should be able to open the app on the URL shown, e.g. <http://jpa02-cgaucho.dokku-07.cs.ucsb.edu>
+5. Now you should be able to open the app on the URL shown, e.g. <http://jpa02-cgaucho.dokku-07.cs.ucsb.edu>
 
 
