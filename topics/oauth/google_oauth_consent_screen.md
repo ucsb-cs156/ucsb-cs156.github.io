@@ -16,6 +16,7 @@ Before you [set up your first Google OAuth application](/topics/oauth/oauth_goog
 
 1. Navigate to <https://console.cloud.google.com/>.  The upper left hand corner of the page should look like this:
 
+   
    <img width="395" alt="console.cloud.google.com, project selection dropdown" src="https://user-images.githubusercontent.com/1119017/235321850-aba152e7-4179-40e0-a63f-093f50136fff.png">
    
 2. Make sure the project showing (`cmpsc156-s23` in the example) is the one you want to work with. If not, click on the dropdown and select
@@ -37,11 +38,27 @@ For this reason, you need to configure what will be shown to the user when this 
 
 ## What information am I asked for when configuring the OAuth Consent Screen?
 
-Here is a screen shot that shows what I filled in for a sample application running on Heroku called `demo-spring-react-example-s22`:
+You will only need to fill this in once for the project; you may be able to get away with filling this in just once for the entire course (unless
+you run into some limit on the number of apps you can create in your project.)
 
-<img width="400" alt="image" src="https://user-images.githubusercontent.com/1119017/159813247-16ff80dc-cc56-42fa-8f10-42dcda021327.png">
-<img width="400" alt="image" src="https://user-images.githubusercontent.com/1119017/159813299-1122efe4-8940-4aa7-9878-fcfcb9d17d6f.png">
-<img width="400" alt="image" src="https://user-images.githubusercontent.com/1119017/159813319-cbf35953-b7eb-489a-84c2-69a85934515a.png">
+On this screen, click External, then Create:
+
+<img width="729" alt="image" src="https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/242c53aa-0121-41b0-81a2-c6d098024a8a">
+
+Then, fill in these values on the screen that appears.  Use the name of the course and the quarter, and fill in your UCSB email instead of phtcon@ucsb.edu:
+
+<img width="735" alt="image" src="https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/d7b61640-d28c-45c5-bac5-66a8c083fbe5">
+
+Then, scroll down.  You can leave all of these blank:
+* App Logo
+* App Domain
+* Authorized Domains
+
+Scroll down and fill in your UCSB email where it says: `Developer contact information`
+
+<img width="652" alt="image" src="https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/165008c0-c361-4e91-b418-b16920719577">
+
+Then click "Save and Continue"
 
 After you click Save and Continue, you'll be asked about Scopes.
 
