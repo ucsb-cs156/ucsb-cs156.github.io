@@ -92,7 +92,7 @@ To configure a Spring-Boot application to access Postgres, you'll need to take t
           Status:              running                  
           Version:             postgres:15.2            
    pconrad@dokku-00:~$ 
-```
+   ```
 
 
 5. Set up a config variable called `JDBC_DATABASE_URL` constructed as follows:
