@@ -111,8 +111,8 @@ To configure a Spring-Boot application to access Postgres, you'll need to take t
    ```
 
 Once these values are all set up, you can start the app by:
-* Following the instructions in the `Deploying An App` section of [Getting Starter](https://github.com/ucsb-cs156/ucsb-cs156.github.io/blob/main/topics/dokku/getting_started.md#deploying-an-app)
-* With `dokku ps:restart jpa03-cgaucho` if you have built the application already.
+* Following the instructions in the `Deploying An App` section of [Getting Started](https://github.com/ucsb-cs156/ucsb-cs156.github.io/blob/main/topics/dokku/getting_started.md#deploying-an-app)
+* With `dokku ps:rebuild jpa03-cgaucho`
 
 Note that we **do not put the `JDBC_DATABASE_*` values in `.env`** since that file is used for `localhost`, and we do not typically use postgres when running on localhost (we use H2, an database embedded in the Spring Boot server instead).
 
