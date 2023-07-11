@@ -175,4 +175,11 @@ To rebuild the entire database:
 5. Follow all of the procedures to recreate and relink the database, including updating all of the relevant config vars, from the very top of this page.
 6. Restart the app, e.g. `dokku ps:restart app-name`
 
+## Troubleshooting
 
+When dokku apps are being added and removed, and then the server is powercycled  for some reason, docker can assign different ips for the postgres container.
+
+To fix this, use:
+
+* `dokku postgres:info app-name-db` to learn the new IP address for the database
+* `dokku config:set app-name JDBC_DATABASE_URL=jdbc:postgresql://[NEW IP]:5432/app_name_db` (note underscores in URL; not a typo!)
