@@ -81,6 +81,16 @@ It should then look like this; click "Save and Continue":
 
 <img width="400" alt="image" src="https://user-images.githubusercontent.com/1119017/159813845-72f300d4-093d-4d89-be7e-db29bd1a6421.png">
 
+## Test Users
+
+In this course, we typically don't need to use "test users"; instead we just use normal users to test.
+
+So you can skip past that page by clicking next.
+
+The page after that will have a button at the bottom to return to the main page or something like that.
+
+Just continue; that should get you back to the page where it asks you if you want to publish the app.  The explanation of what to do on the page appears below.
+
 ## Test Mode vs. Production Mode
 
 There are two possible modes for a Google OAuth Application
