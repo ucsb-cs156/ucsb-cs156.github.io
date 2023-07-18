@@ -203,4 +203,34 @@ The only cases I have encountered where taking 196 might be preferred:
 * Check in at least once a week&mdash;probably *more often*, but *at least* once at week to report progress, and ask for feedback, and new goals.
   
 
- 
+ # End of Quarter Report
+
+Here is an outline for an end-of-quarter report in five sections.
+
+1. Introduction
+
+   In this section, write a paragraph or two that introduces the context of your CS192/CS196 experience. Describe the goals of the class.  The audience should be a CS faculty member or CS undergrad (a potential future moderator) that is not familiar with what we did in the course.
+
+2. Your Role 
+
+   Describe what you, specifically, did during the class. Help the reader understand the level of work involved, and the type of work involved so that you implicitly answer the question “why was this worth 4 units of upper division credit”?
+
+3. Your learning
+
+   Describe what you, specifically, learned during the project. This could be technical learning, or it could be non-technical learning. It could be new skills/knowledge, or reinforcing existing skills/knowledge. Again, this helps implicitly answer the question as to why this was worthy of 4 upper division units.
+
+4. Suggestions for future work
+
+   * What would you suggest are the learnings for the entire group?
+
+   * What about this quarter’s experience went well and should be continued?
+
+   * What suggestions do you have for what could be changed or improved for next time?
+
+5. (optional) Summary
+
+   If it helps the essay flow better to a conclusion, you can add a summary section at the end.
+  
+   If that seems superfluous, because Section 4 ended on a good note already, you may omit this.
+  
+   You may also divide any of the sections above into multiple sections if that makes the story easier to tell. The outline above is a suggested guide, not a straightjacket.
