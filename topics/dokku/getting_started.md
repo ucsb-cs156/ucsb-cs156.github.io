@@ -118,7 +118,7 @@ you'll need to do that first, or your app may not deploy properly:
 
 Now you are ready to follow the instructions here to deploy your app:
 
-* [Deploying an App](/topics/dokku/deploying_an_app.html)
+* [Deploying an App](https://ucsb-cs156.github.io/topics/dokku/deploying_an_app.html)
 
 ## Changing your shell to bash
 
