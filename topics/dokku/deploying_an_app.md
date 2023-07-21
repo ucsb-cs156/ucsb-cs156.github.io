@@ -157,6 +157,8 @@ instead of using `dokku git:sync app-name ...` and `dokku ps:rebuild app-name`, 
    may not complete.  If there is an error, you'll see it; otherwise, the output should end with something like:
 
    ```
-   App my-app-name deployed to https://my-app-name.dokku-13.cs.ucsb.edu
+   =====> Application deployed:
+    http://jpa02-cgaucho.dokku-07.cs.ucsb.edu
+    https://jpa02-cgaucho.dokku-07.cs.ucsb.edu
    ```
 
