@@ -27,7 +27,7 @@ the one for their team.
 Click the triangle to see the mappings. If your courses is not listed, see if your assignment materials have a link to the mapping
 for your course.  If not, ask the instructional staff where to find it.
 
-<details>
+<details markdown="1">
 <summary>
 Spring 2023 (S23) team to Dokku mapping	
 </summary>
@@ -53,7 +53,7 @@ Here is the mapping of teams to Dokku servers from S23:
  
 </details>
 
-<details>
+<details markdown="1">
 <summary>
 Summer 2023 (M23) team to Dokku mapping	
 </summary>
