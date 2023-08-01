@@ -7,21 +7,14 @@ description:  "Linting (checking for style and frequent errors) in ECMAScript (i
 
 # {{page.title}}
 
-# NOTE: `eslint` currently disabled.
-
-Eslint is currently disabled in the W22 example repo `demo-spring-react-example-v2`.  
-* [This issue explains why](https://github.com/ucsb-cs156-w22/demo-spring-react-example-v2/issues/76), and proposes that someone fix the problem.
-
 # About `eslint`
 
 The utility `eslint` is used in many of our projects to do *linting* of our JavaScript/ECMAScript code.
-
 
 When working on the frontend code, there is a GitHub actions script that will run a program called `eslint` against your JavaScript/ECMAScript code (the `es` in `eslint` stands for
 ECMAScript.)
 
 This is what it looks like when it fails:
-
 
 <img alt="ESlint fails" src="https://user-images.githubusercontent.com/1119017/153115905-5a6b0360-95fb-429b-8e28-6f31229621aa.png" width="800" />
 
@@ -32,7 +25,7 @@ What `eslint` does is to check your code for certain style issues, including:
 You can check what the eslint problems are by running `npx eslint .` inside the `frontend` directory.  Here's a sample run:
 
 ```text
-pconrad@Phillips-MacBook-Pro frontend % npx eslint .
+pconrad@Phillips-MacBook-Pro frontend % npx eslint --fix .
 
 /Users/pconrad/github/ucsb-cs156-w22/demo-spring-react-example-v2/frontend/src/tests/components/OurTable.test.js
   1:38  error  'within' is defined but never used. Allowed unused vars must match /^_/u  no-unused-vars
@@ -57,7 +50,7 @@ Once you've addressed all of the problems, the `eslint` CI/CD script should give
 If you run `npx eslint .` and get back no output, that means you are good to go:
 
 ```text
-pconrad@Phillips-MacBook-Pro frontend % npx eslint .                              
+pconrad@Phillips-MacBook-Pro frontend % npx eslint --fix .                              
 pconrad@Phillips-MacBook-Pro frontend % 
 ```
 
