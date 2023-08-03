@@ -10,5 +10,5 @@ indent: true
 
 This content has moved to:
 
-<>
+<https://ucsb-cs156.github.io/topics/storybook/setting_up.html>
 
