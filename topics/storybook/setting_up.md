@@ -2,7 +2,7 @@
 parent: Storybook
 grand_parent: Topics
 layout: default
-title: Setting up"
+title: Setting up
 description:  "Adding Storybook to a project"
 ---
 
