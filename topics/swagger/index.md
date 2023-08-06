@@ -3,6 +3,7 @@ parent: Topics
 layout: default
 title: Swagger
 description:  "Automatic documentation of Spring Boot Restful APIs"
+has_children: true
 ---
 
 # {{page.title}}
