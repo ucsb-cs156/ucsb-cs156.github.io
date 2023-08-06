@@ -197,8 +197,10 @@ and a link to the H2-Console; you may put whatever
 links or information you think will be useful to developers
 working with the Swagger page.  Note that the `class` definition is deliberately empty; the `OpenAPIDefinition` annotation is doing all of the work here.
 
+Also be sure to replace the `package` name with one appropriate to your application.
+
 ```java
-package edu.ucsb.cs156.example.config;
+package edu.ucsb.cs156.yourappname.config;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Info;
