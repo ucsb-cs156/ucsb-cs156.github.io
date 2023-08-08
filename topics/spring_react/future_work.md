@@ -25,6 +25,9 @@ The main idea is this: currently the CMPSC 156 legacy code projects (Gauchoride,
 
 It's a challenging project, but you'd potentially have some help; there may be other students working on it as well.
 
+See also:
+* <https://www.youtube.com/watch?v=B2bGxIqkuIM>
+
 # Database Migrations
 
 Currently, whenever we make a change to a CMPSC 156 project that alters the database schema, the application breaks unless we rebuild the database from scratch.
