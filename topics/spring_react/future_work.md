@@ -35,3 +35,20 @@ The work here is to:
 * Examine pros/cons of Liquibase vs. Flyway, and choose one.
 * Construct examples and programming exercises for first staff, then students, to get comfortable with the technology.
 * Incorporate it into our actual practice.
+
+# Speeding up Stryker 
+
+Folks in m23-10am-4 (esp. Iain) worked on a workflow that would only do stryker mutation testing on the changed files in the PR.
+
+We should review this, and consider establishing this as the new workflow for all of our STARTER code bases, and each of our legacy projects.
+
+# Paged database queries
+
+The proj-happycows app has a new example of how to do paged database queries and present those to the user with a paged frontend; there
+are likely many other places in our code bases where this could be done as well.
+
+# Autograders for team01, team02, team03
+
+There is an autograder for team01, but it needs some updating.
+
+It woudl be great to have autograders for team02 and team03 as well.  This may require some updates to the assignments, but that's ok.
