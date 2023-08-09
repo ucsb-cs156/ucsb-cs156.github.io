@@ -144,8 +144,8 @@ Here are the ones you already did in steps 1-3:
 | [SpringFox](https://docs.swagger.io/swagger-core/v1.5.0/apidocs/) | [SpringDoc](https://docs.swagger.io/swagger-core/v2.0.9/apidocs/index.html) |
 |-----------|-----------|
 | `@Api` |  `@Tag` |
-| `@ApiOperation(value = "foo", notes = "bar")` | `@Operation(summary = "foo", description = "bar")
-| `@ApiParam` | `@Parameter
+| `@ApiOperation(value = "foo", notes = "bar")` | `@Operation(summary = "foo", description = "bar") |
+| `@ApiParam` | `@Parameter |
 
 Here are the others you could run into. The headers to the table take you to the javadoc for each:
 
