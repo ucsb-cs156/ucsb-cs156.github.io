@@ -97,10 +97,10 @@ import io.swagger.annotations.ApiParam;
 ``` 
 
 
-Under SpringDoc, `@ApiOperation` is replaced with `@Operation` ([javadoc](https://docs.swagger.io/swagger-core/v2.0.9/apidocs/index.html?io/swagger/v3/oas/annotations/tags/Operation.html)), like this:
+Under SpringDoc, `@ApiParam` is replaced with `@Parameter` ([javadoc](https://docs.swagger.io/swagger-core/v2.0.9/apidocs/index.html?io/swagger/v3/oas/annotations/tags/Parameter.html)), like this:
 
 ```
-import io.swagger.v3.oas.annotations.tags.Operation;
+import io.swagger.v3.oas.annotations.tags.Parameter;
 ...
     @Parameter(name = "id") @RequestParam Long id,
 ```
