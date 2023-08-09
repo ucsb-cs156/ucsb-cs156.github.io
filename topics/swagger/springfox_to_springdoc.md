@@ -115,6 +115,22 @@ So the two search and replaces needed are:
 Be sure afterwards to look for any other instances of
  `@ApiParam(` that your search/replace may have missed.
 
+
+After doing step 3, if you have errors, it may be because of additional parameters to `@ApiParam` that need to be changed.
+
+Consult the documentation for `@Parameter` [here](https://docs.swagger.io/swagger-core/v2.0.9/apidocs/io/swagger/v3/oas/annotations/Parameter.html) to see what parameters are supported.
+
+The most commonly used ones are these; typically, you'll need to figure out how to fit any old parameters from `@ApiParam` into
+one of the following, or else delete it:
+
+| Parameter | type | explanation |
+|-|-|-|
+| `name` | `String` | name of the parameter |
+| `allowEmptyValue` | `boolean` | whether or not the parameter allows empty values |
+| `example` | `String` | an example value for the parameter |
+| `	description`  | `String` |  description of the purpose of the parameter |
+
+
 ## Step 4: Other search/replaces
 
 The search/replaces in Steps 1,2,3 are likely enough to pick up most or all of the SpringFox annotations that we
