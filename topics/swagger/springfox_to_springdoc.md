@@ -128,7 +128,7 @@ one of the following, or else delete it:
 | `name` | `String` | name of the parameter |
 | `allowEmptyValue` | `boolean` | whether or not the parameter allows empty values |
 | `example` | `String` | an example value for the parameter |
-| `	description`  | `String` |  description of the purpose of the parameter |
+| `description`  | `String` |  description of the purpose of the parameter |
 
 
 ## Step 4: Other search/replaces
