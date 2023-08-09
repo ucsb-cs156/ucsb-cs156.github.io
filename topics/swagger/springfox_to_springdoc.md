@@ -37,7 +37,7 @@ import io.swagger.annotations.Api;
 ``` 
 
 
-Under SpringDoc, `@Api` is replaced with `@Tag` ([javadoc](https://docs.swagger.io/swagger-core/v2.0.9/apidocs/index.html?io/swagger/v3/oas/annotations/tags/Tag.html)), like this:
+Under SpringDoc, `@Api` is replaced with `@Tag` ([javadoc](https://docs.swagger.io/swagger-core/v2.0.9/apidocs/io/swagger/v3/oas/annotations/tags/Tag.html)), like this:
 
 ```
 import io.swagger.v3.oas.annotations.tags.Tag;
