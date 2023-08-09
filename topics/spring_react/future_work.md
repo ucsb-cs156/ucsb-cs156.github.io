@@ -54,4 +54,13 @@ are likely many other places in our code bases where this could be done as well.
 
 There is an autograder for team01, but it needs some updating.
 
-It woudl be great to have autograders for team02 and team03 as well.  This may require some updates to the assignments, but that's ok.
+It would be great to have autograders for team02 and team03 as well.  This may require some updates to the assignments, but that's ok.
+
+# Speed up Dokku Deploys
+
+Figure out the mystery of this: https://dokku.com/docs/deployment/zero-downtime-deploys/
+
+```
+No CHECKS file found. Simple container checks will be performed.
+For more efficient zero downtime deployments, create a CHECKS file. See https://dokku.com/docs/deployment/zero-downtime-deploys/ for examples
+```
