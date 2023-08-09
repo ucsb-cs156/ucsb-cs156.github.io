@@ -97,7 +97,7 @@ import io.swagger.annotations.ApiParam;
 ``` 
 
 
-Under SpringDoc, `@ApiParam` is replaced with `@Parameter` ([javadoc](https://docs.swagger.io/swagger-core/v2.0.9/apidocs/index.html?io/swagger/v3/oas/annotations/tags/Parameter.html)), like this:
+Under SpringDoc, `@ApiParam` is replaced with `@Parameter` ([javadoc](https://docs.swagger.io/swagger-core/v2.0.9/apidocs/io/swagger/v3/oas/annotations/Parameter.html)), like this:
 
 ```
 import io.swagger.v3.oas.annotations.tags.Parameter;
