@@ -159,6 +159,15 @@ Here are the others you could run into. The headers to the table take you to the
 | `@ApiModelProperty` | `@Schema` |
 | `@ApiResponse(code = 404, message = "foo")` | `@ApiResponse(responseCode = "404", description = "foo")` |
 
+You can find examples of changing  `@ApiModelProperty` to `@Schema` in this PR that Colin worked on:
+
+* <https://github.com/ucsb-cs156/proj-gauchoride/pull/53>
+
+The import is:
+```
+import io.swagger.v3.oas.annotations.media.Schema;
+```
+
 ## Step 4: Change pom.xml
 
 Remove references to springfox from the `pom.xml` such as these:
