@@ -26,6 +26,11 @@ This page describes the steps to take when migrating a CMPSC 156 code base from 
 This page may also be helpful:
 * <https://springdoc.org/#migrating-from-springfox>
 
+Here, also are some example PRs for this process:
+
+* <https://github.com/ucsb-cs156/proj-happycows/pull/60>
+* <https://github.com/ucsb-cs156/proj-gauchoride/pull/53>
+
 ## Step 1: Replace `@Api` with `@Tag` in Controllers
 
 Under SpringFox, controllers use the `@Api` annotation ([javadoc](https://docs.swagger.io/swagger-core/v1.5.0/apidocs/io/swagger/annotations/Api.html)).  This annotation is found at the top of each controller class.
