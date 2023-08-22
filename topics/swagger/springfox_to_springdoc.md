@@ -250,7 +250,21 @@ class OpenAPIConfig {}
 
 ```
 
-## Step 6: Test it
+## Step 6: Fix application.properties
+
+In `src/main/resources/application.properties`, remove lines like these pertaining to springfox:
+
+```
+springfox.documentation.swagger.v2.path=/api/docs
+```
+
+And add this line, which is needed for springdoc; otherwise POST, PUT, DELETE and any other methods that check CSRF tokens will fail:
+
+```
+springdoc.swagger-ui.csrf.enabled=true
+```
+
+## Step 7: Test it
 
 Now, you should be able to fire up the application
 on localhost and test your swagger page.
