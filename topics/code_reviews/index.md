@@ -6,6 +6,10 @@ description:  "An important part of professional software dev practice"
 has_children: true
 ---
 
+See also: 
+* <https://code-review.tidyverse.org/>
+* <https://google.github.io/eng-practices/review/reviewer/>
+
 # Tips for Performing Code Reviews
 
 Always try to be helpful, not harsh.  Be diplomatic and kind.
