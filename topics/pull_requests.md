@@ -7,11 +7,16 @@ description:  "aka PRs; a checklist for doing them properly"
 
 # {{page.title}}
 
+See also: 
+* <https://code-review.tidyverse.org/>
+* <https://google.github.io/eng-practices/review/developer/> but note that everywhere you see `CL` think `PR` instead (`CL` is Google's internal terminology and stands for "Change List", i.e. a list of the changes in the Pull Request.)
+
 # A Checklist
 
 1. PR Title:
-   - Is it escriptive enough that someone familiar with the project can understand it at first glance?
+   - Is it descriptive enough that someone familiar with the project can understand it at first glance?
    - Is it short enough to be readable at a glance? (For example, don't try to put the entire "As an X I can Y so that Z" story into the title field.)
+   - See also: <https://code-review.tidyverse.org/author/submitting.html#title>
 2. Linked to an Issue?
    - You can link to an issue with certain magic words such as `Closes #15`, `Fixes #27`
    - But if you don't phrase it just right, the link doesn't happen.
@@ -116,6 +121,8 @@ What are the non-programmers doing reading PR descriptions?  They may be going t
 So it is important that your PR descriptions include, first, a *brief description of the impact on the end user*, in terms that an end user (or a non-programmer that's very, very familiar with the app from an end user perspective) would understand.
 
 It's ok if you then go on to provide some technical details.   But lead with the *non-technical description*.
+
+See also: <https://code-review.tidyverse.org/author/submitting.html#sec-body>
 
 # Screenshots, Storybook, Swagger, etc.
 
