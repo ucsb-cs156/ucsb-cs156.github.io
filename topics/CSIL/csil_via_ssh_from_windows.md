@@ -58,31 +58,6 @@ Follow the instructions here: <https://doc.engr.ucsb.edu/display/EPK/Remote+Acce
 
 See: <https://ucsb-cs156.github.io/topics/csil_mount_drive_to_windows_using_samba/>
 
-# X11 via MobaXTerm
-
-Note that this method of connection is now deprecated by ECI according to [this article](https://doc.engr.ucsb.edu/pages/viewpage.action?pageId=5112076), but we provide documentation for it anyway so that it is here as an alternative if the other methods fail.
-
-The most commonly used ssh client in the past has been a program called PuTTY.
-
-PuTTY works fine for any program that doesn't use graphics.  However, to access the graphics capabilities of the 
-CSIL machines, you also need a piece of software known as an *X11 server*, such as XMing.
-
-Configuring PuTTY and XMing to work together can be tedious.   Why bother, when there is now a free program that
-combines both, called MobaXTerm.
-
-You can download MobaXterm from this link: 
-
-# How to use MobaXTerm to connect to CSIL
-
-Once you have downloaded it, you want to use it to create a new session.  The [demo shown at this link](http://mobaxterm.mobatek.net/demo.html) pretty much illustrates the process.  
-
-* Click "new session"
-* Select "ssh"
-* For "remote host", instead of `192.168.56.86` you'll enter `csil.cs.ucsb.edu` 
-  * NOTE: Yes, `csil.cs.ucsb.edu` for Fall 2020, not `csil-01.cs.ucsb.edu` through  `csil-48.cs.ucsb.edu`.  That's new for Fall 2020.
-* For "username", instead of `root`, you'll enter your CSIL username.
-* The first time you connect to a particular system, you may be asked 
-* It should then prompt you for your password.  (I do not recommend "saving the password".)
 
 # SSH Port Forwarding
 
