@@ -227,7 +227,7 @@ Node Package Manager (`npm`) is a package / dependency manager for Node projects
 Run the following command to update `npm` to the latest version (which is 8.19.2 as of the time of writing):
 
 ```
-npm install -g npm
+npm install -g npm@9
 ```
 
 Successfully running the above command should install the latest version of npm 8. To verify that the install was successful, run the following command:
@@ -236,7 +236,7 @@ Successfully running the above command should install the latest version of npm 
 npm -v
 ```
 
-Your output should say `9.6.3` or something similar.
+Your output should say `9.9.0` or something similar.
 
 **Keep in mind that each version of Node installed through `nvm` has its own installation of `npm`.** This means that, whenever you install a new version of Node, you will need to update `npm` to the correct version. The pre-bundled versions of `npm` tend to be out-of-date.
 
