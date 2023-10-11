@@ -84,7 +84,7 @@ So the two search and replaces needed are:
 | Find | Replace |
 |------|---------|
 | `@ApiOperation(value` | `@Operation(summary` |
-| `import io.swagger.annotations.ApiOperation;` | `import io.swagger.v3.oas.annotations.tags.Operation;` |
+| `import io.swagger.annotations.ApiOperation;` | `import io.swagger.v3.oas.annotations.Operation;` |
 
 Be sure afterwards to look for any other instances of
  `@ApiOperation(` that your search/replace may have missed.
