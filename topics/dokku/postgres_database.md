@@ -101,7 +101,7 @@ To configure a Spring-Boot application to access Postgres, you'll need to take t
    * Then list the IP address from the previous step, e.g. `172.17.0.18`
    * Then we need `:5432/` 
    * Finally, *your* database name 
-     - Note that it may have underscores (`_`) in place of hyphens (`-`). Use the underscores.
+     - NOTE: Replace the dashes in your database name with underscores.
    * For example: `jdbc:postgresql://172.17.0.18:5432/jpa03_cgaucho_db`
    
    So the command will be something like:
