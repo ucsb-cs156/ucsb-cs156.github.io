@@ -6,6 +6,7 @@ description:  "Database migration framework"
 has_children: true
 ---
 
+# Liquibase
 Liquibase is a framework utilized to automate changes to existing databases while working on a live codebase.
 
 ## Overview
