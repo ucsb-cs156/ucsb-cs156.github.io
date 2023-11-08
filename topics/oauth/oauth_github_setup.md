@@ -8,7 +8,6 @@ category_prefix: "OAuth: "
 indent: true
 ---
 
-
 To configure an OAuth App for Github:
 
 1. This link should take you directly to the page to create a new OAuth App: <https://github.com/settings/applications/new>
@@ -23,20 +22,28 @@ To configure an OAuth App for Github:
 
     * Application name: Fill in something users will recognize. 
       
-      If it's a lab assignment, use the name of your app, e.g. lab06-githubid
+      For CMPSC 156 assignments, this will typically be something like `jpa03`, `team02`, `team03`, `proj-organic`, `proj-courses`, etc.
      
     * Homepage URL: Typically either something like:
        * `http://localhost:8080` or
-       * `https://cs56-f19-lab06-githubid.herokuapp.com`
+       * `https://organic.dokku-xx.cs.ucsb.edu` (where `xx` is replaced with your dokku number)
        
     * Application Description is optional.  If you fill it in, users will see it when they are asked to authorize access to their GitHub account.
     
     * Authorization callback URL.  
-       * For some applications this is exactly the same as the Homepage URL.  
-       * For others, it is the Homepage URL plus some extra path.  Follow the instructions you were given.
-       
-3.  Once you enter this information, you'll get a client id and a client secret.
+       * For localhost, enter: `http://localhost:8080/login/oauth2/code/github` (Note: on `localhost`, *must* be `http` )
+       * For Dokku, enter: `https://myappname.dokku-xx.cs.ucsb.edu/login/oauth2/code/github` (on dokku, *must* be `https` )
+       * Note that you should substitute in *your* app name in place of `my-app-name` and your dokku number for `xx`
+    
+    Click to create the OAuth App.
+
+    You will now see the client id and client secret values.
+   
+    Keep this window open, since you'll need these values in the next step.
+   
+3.  You now have a client id and a client secret for your `.env` file, or for the `dokku config:set ...` command.
+
     It is important to NOT put the client secret into a file that is committed to GitHub.
     
-    You typically need to enter these values into some configuration file.  Follow the instructions you were given. 
+
    
