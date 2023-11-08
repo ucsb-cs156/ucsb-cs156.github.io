@@ -37,7 +37,7 @@ If you've already done these, then you are ready to set up a Google OAuth app so
    * For name, choose something you will remember; I suggest using the name of your repo, or the name of the Dokku/Heroku application (e.g. `jpa03-cgaucho` `5pm-3-happycows-qa`)
    * Scroll down to the part of the page that says: `Authorized redirect URIs`
 
-3. Under `Authorized redirect URIs`, you'll need to click the `+ ADD URI` button twice to enter two addresses:
+3. Under `Authorized redirect URIs`, you'll need to click the `+ ADD URI` button twice to enter at least two addresses:
 
    * For localhost, enter: <tt>http://localhost:8080/login/oauth2/code/google</tt>
      - Note that this *must* be `http` not `https`
@@ -45,11 +45,9 @@ If you've already done these, then you are ready to set up a Google OAuth app so
      - Note that you should substitute your app name in place of <b><i>myappname</i></b>
      - Be sure to also change <b><i>xx</i></b> to your actual dokku server number (`00` through `12`)
      - Note that this *must* be `https` not `http`.
-   * We are not currently using Heroku, but if we were you would enter: <tt>https://<b><i>myappname</i></b>.herokuapp.com/login/oauth2/code/google</tt>
-     - Note that you should substitute in *your* Heroku app name in place of `my-app-name`
-     - Note that this *must* be `https` not `http`
-   
-   ![image](https://user-images.githubusercontent.com/1119017/149854295-8e1c4c63-929c-4706-972d-1962c644a40a.png)
+   * If you also have a `qa` deployment or additional personal dev deployments, you can add them; they may share the same Google OAuth client id and secret.
+
+   <img width="504" alt="image" src="https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/dbbc5fe5-8b80-49c6-be1f-50d5036c7a47">
 
    Then click the blue `CREATE` button.
    
