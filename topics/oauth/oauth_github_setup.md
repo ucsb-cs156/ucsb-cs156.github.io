@@ -41,7 +41,9 @@ To configure an OAuth App for Github:
        * For Dokku, enter: `https://myappname.dokku-xx.cs.ucsb.edu/login/oauth2/code/github` (on dokku, *must* be `https` )
        * Note that you should substitute in *your* app name in place of `my-app-name` and your dokku number for `xx`
     
-    Click to create the OAuth App.
+    * Leave the `Device Flow` button unchecked unless you are instructed otherwise.
+    
+    Click the `Register Application` button to create the OAuth App.
 
     You will now see the client id and client secret values.
    
