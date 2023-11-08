@@ -22,9 +22,9 @@ To configure an OAuth App for Github:
 
      <img width="300" alt="image" src="https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/4f8479e7-d715-4a58-b600-8a6845ff2deb">
 
-    * Application name: Fill in something users will recognize. 
+    * Application name: Fill in something you and the users will recognize. 
       
-      For CMPSC 156 assignments, this will typically be something like `jpa03`, `team02`, `team03`, `proj-organic`, `proj-courses`, etc.
+      For CMPSC 156 assignments, this will typically be something like `proj-organic on localhost` or `proj-organic-qa on dokku-07`
      
     * Homepage URL: Typically either something like:
        * `http://localhost:8080` or
