@@ -18,7 +18,9 @@ To configure an OAuth App for Github:
       * Click the tab for `OAuth Apps`
       * Click the button `New OAuth App`
 
-2.  You now have a form to fill in.
+2.  You now have a form to fill in that looks like this:
+
+     <img width="300" alt="image" src="https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/4f8479e7-d715-4a58-b600-8a6845ff2deb">
 
     * Application name: Fill in something users will recognize. 
       
@@ -27,6 +29,10 @@ To configure an OAuth App for Github:
     * Homepage URL: Typically either something like:
        * `http://localhost:8080` or
        * `https://organic.dokku-xx.cs.ucsb.edu` (where `xx` is replaced with your dokku number)
+
+       Note that unlike Google OAuth configuration where you can specify multiple URLs that all share the same Client Id and Client Secret,
+       for Github OAuth, each app (e.g. localhost, prod, qa) must be a
+       *separate* Github OAuth App with its own client id and client secret.
        
     * Application Description is optional.  If you fill it in, users will see it when they are asked to authorize access to their GitHub account.
     
@@ -41,7 +47,7 @@ To configure an OAuth App for Github:
    
     Keep this window open, since you'll need these values in the next step.
    
-3.  You now have a client id and a client secret for your `.env` file, or for the `dokku config:set ...` command.
+4.  You now have a client id and a client secret for your `.env` file, or for the `dokku config:set ...` command.
 
     It is important to NOT put the client secret into a file that is committed to GitHub.
     
