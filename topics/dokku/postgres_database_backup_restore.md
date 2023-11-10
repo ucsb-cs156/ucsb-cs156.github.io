@@ -129,13 +129,47 @@ The value marked` Git last updated at:`, which in this case is `1696979162` is a
 
 If you are restoring data to a production application, it's a good idea to practice first on a separate qa instance.
 
-Start by creating a brand new dokku deployment with an empty database.
+Start by creating a brand new dokku deployment with an empty database.  For example:
 
-Using `dokku git:sync ...`, sync this deployment to a carefully chosen commit, either:
+```
+dokku apps:create happycows-restore-practice
+dokku postgres:create happycows-restore-practice-db
+dokku postgres:link happycows-restore-practice-db happycows-restore-practice
+```
+
+Next, *before* taking any other steps, restore the database using the SQL commands in the backup file.  To do that, first get the IP address and password using the command: 
+* <code>dokku postgres:info <i>service-name</i></code>
+
+Then, use this command to restore the data (substituting the ip address from `postgres:info`, the correct backup file in place of `happycows-backup.sql`, and typing in the password from `postgres:info`:
+
+* `psql --host 172.17.0.56 --port 5432 -U postgres < happycows-backup.sql`
+
+At this point, if there are any changes to the database between the commit at the time the backup was made and the commit you are going to restore, you may need to apply those manually now.  If you are restoring the code to the same commit, that doesn't apply, and you can proceed to the next step.
+
+Next proceed with the rest of the steps to set up the application (e.g. setting up https, OAuth, environment variables, etc.; everything except the `dokku git:sync ...` and `dokku ps:rebuild ...` steps, which you should save for last.
+
+When you reach the `dokku git:sync ...` step, sync this deployment to a carefully chosen commit, either:
 * Exactly the same github repo/commit that the production instance was running at the time the backup was made (see above)
 * Or, a specific commit that is early or later than the commit at the time of the backup; in this case, you need to make sure that you understand the changes to the database schema, if any, and what you'll need to do to the database after restoring the data to ensure that it is compatible with the commit you are deploying.
 
-Then, *before* you deploy any code (i.e. before doing `dokku ps:rebuild ...`) but *after* creating and linking the database (`dokku postgres:create ...`; `dokku postgres:link ...`), use theomman following command to 
-load the file with the SQL commands into the database:
+Now check both the database (using `dokku postgres:connect ...` and by running the app itself to make sure that the restore did what you wanted it to do.
 
-TODO: Document how to backup and restore data on dokku
+If so, then you are ready to try this with the production app.
+
+## Production app
+
+Assuming you were successful with the practice run above:
+
+For the production app:
+* First, backup the database as it is before proceeding.
+* Next, clean out the database of all data.  There are several ways to do this.
+  - You can connect using `dokku postgres:connect.. ` or `psql ...` and drop all tables in the database.
+  - A straightforward but tedious way is to use `\dt` to list the tables, then drop them one at a time with `DROP TABLE tablename;`
+  - There are a variety of shortcuts in this [Stackoverflow post](https://stackoverflow.com/questions/3327312/ove:how-can-i-drop-all-the-tables-in-a-postgresql-database); use them at your own risk
+  - You could also just use the dokku commands to unlink the database, destroy it and rebuild it, though that is also tedious.
+* Once you have a clean empty database, proceed as above to restore the data using a command similar to this (substituting in the correct values):
+  * `psql --host 172.17.0.56 --port 5432 -U postgres < happycows-backup.sql`
+* Apply any manual adjustments to the database that may be needed (only if the commit you are on now is different from the one at the time the database was backed up)
+* Then use `dokku git:sync ...` if necessary, and finally `dokku ps:rebuild ...`
+
+Good luck!
