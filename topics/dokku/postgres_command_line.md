@@ -58,6 +58,37 @@ courses_db=# \dt
 courses_db=# 
 ```
 
+# `\d table_name` describes a table
+
+You can use `\d table_name` to describe a table, i.e. show the names of the columns (fields in each row).
+
+Example:
+
+```
+courses_db=# \d users
+                                        Table "public.users"
+     Column     |          Type          | Collation | Nullable |              Default              
+----------------+------------------------+-----------+----------+-----------------------------------
+ id             | bigint                 |           | not null | nextval('users_id_seq'::regclass)
+ admin          | boolean                |           | not null | 
+ email          | character varying(255) |           |          | 
+ email_verified | boolean                |           | not null | 
+ family_name    | character varying(255) |           |          | 
+ full_name      | character varying(255) |           |          | 
+ given_name     | character varying(255) |           |          | 
+ google_sub     | character varying(255) |           |          | 
+ hosted_domain  | character varying(255) |           |          | 
+ locale         | character varying(255) |           |          | 
+ picture_url    | character varying(255) |           |          | 
+Indexes:
+    "users_pkey" PRIMARY KEY, btree (id)
+Referenced by:
+    TABLE "personalschedule" CONSTRAINT "fk4b2ycqqc913cibta56bkwog66" FOREIGN KEY (user_id) REFERENCES users(id)
+    TABLE "courses" CONSTRAINT "fk51k53m6m5gi9n91fnlxkxgpmv" FOREIGN KEY (user_id) REFERENCES users(id)
+    TABLE "jobs" CONSTRAINT "fkkjpyguuyd5shxtabv9v5jpe6x" FOREIGN KEY (created_by_id) REFERENCES users(id)
+
+courses_db=# 
+```
 
 
 # SQL commands
@@ -161,3 +192,37 @@ e Provider |   Access privileges
 
 courses_db=# 
 ```
+
+## `\c dbname` connects to a specific database
+
+After listing the databases with `\l` you can use `\c dbname` to connect to a specfic database.
+
+## `\?` lists all available backslash commands
+
+Example:
+
+```
+courses_db=# \?
+General
+  \copyright             show PostgreSQL usage and distribution terms
+  \crosstabview [COLUMNS] execute query and display result in crosstab
+  \errverbose            show most recent error message at maximum verbosity
+  \g [(OPTIONS)] [FILE]  execute query (and send result to file or |pipe);
+                         \g with no arguments is equivalent to a semicolon
+  \gdesc                 describe result of query, without executing it
+  \gexec                 execute query, then execute each value in its result
+  \gset [PREFIX]         execute query and store result in psql variables
+  \gx [(OPTIONS)] [FILE] as \g, but forces expanded output mode
+  \q                     quit psql
+  \watch [SEC]           execute query every SEC seconds
+
+Help
+  \? [commands]          show help on backslash commands
+  \? options             show help on psql command-line options
+  \? variables           show help on special variables
+  \h [NAME]              help on syntax of SQL commands, * for all commands
+
+... [Output truncated...]
+```
+
+For more information, see: <https://www.geeksforgeeks.org/postgresql-psql-commands/>
