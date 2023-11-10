@@ -58,7 +58,7 @@ courses_db=# \dt
 courses_db=# 
 ```
 
-# `\d table_name` describes a table
+## `\d table_name` describes a table
 
 You can use `\d table_name` to describe a table, i.e. show the names of the columns (fields in each row).
 
