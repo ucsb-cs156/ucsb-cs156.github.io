@@ -140,9 +140,61 @@ dokku postgres:link happycows-restore-practice-db happycows-restore-practice
 Next, *before* taking any other steps, restore the database using the SQL commands in the backup file.  To do that, first get the IP address and password using the command: 
 * <code>dokku postgres:info <i>service-name</i></code>
 
-Then, use this command to restore the data (substituting the ip address from `postgres:info`, the correct backup file in place of `happycows-backup.sql`, and typing in the password from `postgres:info`:
+Then, use this command to restore the data (substituting the ip address from `postgres:info`, using the name of the database *with underscores* instead of hyphens, and typing in the password from `postgres:info`:
 
-* `psql --host 172.17.0.56 --port 5432 -U postgres < happycows-backup.sql`
+* `psql -h 172.17.0.56 -p 5432 -U postgres -d happycows_restore_practice_db`
+
+Now you should have a prompt such as this one:
+
+```
+happycows_restore_practice_db=#
+```
+
+At this point, check that you have a clean database with no tables by typing the `\dt` command:
+
+```
+happycows_restore_practice_db=# \dt
+Did not find any relations.
+happycows_restore_practice_db=# 
+```
+
+You should now be able to use the command `\i filename.sql` where `filename.sql` is the file containing your SQL backup of the database.
+
+After typing this command, if you immediately type `\dt`, you may see no relations. However, if you briefly connect to another database, and then connect back, you should see your data.  Here's an illustration of that:
+
+```
+happycows_restore_practice_db=# \dt
+Did not find any relations.
+happycows_restore_practice_db=# \i happycows-backup.sql
+
+[... MANY LINES OF OUTPUT REMOVED...]
+
+happycows_restore_practice_db=# \dt
+Did not find any relations.
+happycows_restore_practice_db=# \c postgres
+psql (15.4 (Ubuntu 15.4-1.pgdg22.04+1), server 15.2 (Debian 15.2-1.pgdg110+1))
+SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, compression: off)
+You are now connected to database "postgres" as user "postgres".
+postgres=# \c happycows_restore_practice_db
+psql (15.4 (Ubuntu 15.4-1.pgdg22.04+1), server 15.2 (Debian 15.2-1.pgdg110+1))
+SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, compression: off)
+You are now connected to database "happycows_restore_practice_db" as user "postgres".
+happycows_restore_practice_db=# \dt
+            List of relations
+ Schema |     Name     | Type  |  Owner   
+--------+--------------+-------+----------
+ public | commons      | table | postgres
+ public | cowdeath     | table | postgres
+ public | jobs         | table | postgres
+ public | profits      | table | postgres
+ public | report_lines | table | postgres
+ public | reports      | table | postgres
+ public | user_commons | table | postgres
+ public | users        | table | postgres
+(8 rows)
+
+happycows_restore_practice_db=# 
+```
 
 At this point, if there are any changes to the database between the commit at the time the backup was made and the commit you are going to restore, you may need to apply those manually now.  If you are restoring the code to the same commit, that doesn't apply, and you can proceed to the next step.
 
@@ -152,9 +204,13 @@ When you reach the `dokku git:sync ...` step, sync this deployment to a carefull
 * Exactly the same github repo/commit that the production instance was running at the time the backup was made (see above)
 * Or, a specific commit that is early or later than the commit at the time of the backup; in this case, you need to make sure that you understand the changes to the database schema, if any, and what you'll need to do to the database after restoring the data to ensure that it is compatible with the commit you are deploying.
 
-Now check both the database (using `dokku postgres:connect ...` and by running the app itself to make sure that the restore did what you wanted it to do.
+Now check both the database (using `dokku postgres:connect ...`) and by running the app itself to make sure that the restore did what you wanted it to do.
 
-If so, then you are ready to try this with the production app.
+To check the database at the `dokku postgres:connect ...` prompt:
+* Use `\dt` to see that the tables are there
+* Using the table names that show up, use some <code>SELECT * from <i>tablename</i></code>;` commands to see if the tables contain the data that you think they should contain.
+
+If everything looks as it should, and the qa version of the app works properly, you are ready to try this with the production app.
 
 ## Production app
 
@@ -162,14 +218,20 @@ Assuming you were successful with the practice run above:
 
 For the production app:
 * First, backup the database as it is before proceeding.
-* Next, clean out the database of all data.  There are several ways to do this.
-  - You can connect using `dokku postgres:connect.. ` or `psql ...` and drop all tables in the database.
-  - A straightforward but tedious way is to use `\dt` to list the tables, then drop them one at a time with `DROP TABLE tablename;`
-  - There are a variety of shortcuts in this [Stackoverflow post](https://stackoverflow.com/questions/3327312/ove:how-can-i-drop-all-the-tables-in-a-postgresql-database); use them at your own risk
-  - You could also just use the dokku commands to unlink the database, destroy it and rebuild it, though that is also tedious.
+* Next, clean out the database of all data.  Here's the easiest way to do this:
+  - Connect using <code>dokku postgres:connect <i>appname-db</i></code>
+  - Use `\c postgres` to connect to the default dbase instead of `appname_db` (note that inside postgres, the database name uses underscores, not hyphens).
+  - Use the SQL command `DROP DATABASE appname_db;` to drop the database
+  - Use the SQL command `CREATE DATABSE appname_db;` to create a new fresh database
+  - Use `\c appname_db` to connect back to the original database name
+  - Use `\dt to double check that there are no tables (relations) in the database.
 * Once you have a clean empty database, proceed as above to restore the data using a command similar to this (substituting in the correct values):
-  * `psql --host 172.17.0.56 --port 5432 -U postgres < happycows-backup.sql`
-* Apply any manual adjustments to the database that may be needed (only if the commit you are on now is different from the one at the time the database was backed up)
+  * At the dokku Unix command line: `psql --host 172.17.0.56 --port 5432 -U postgres -d appname_db`
+  * At the postgres prompt: `\i filename.sql` where `filename.sql` is the file containing the backup
+  * Now, as we did during the practice run, breifly connect to another database (e.g. `\c postgres`) then connect back to your database (e.g. `\c appname_db`).  It's not clear why this step is needed, but it seems to make sure that the SQL statements actually take effect.
+  * Use `\dt` to see that the tables are there
+  * Using the table names that show up, use some <code>SELECT * from <i>tablename</i></code>;` commands to see if the tables contain the data that you think they should contain.
+* Next, apply any manual adjustments to the database that may be needed (only if the commit you are on now is different from the one at the time the database was backed up)
 * Then use `dokku git:sync ...` if necessary, and finally `dokku ps:rebuild ...`
 
 Good luck!
