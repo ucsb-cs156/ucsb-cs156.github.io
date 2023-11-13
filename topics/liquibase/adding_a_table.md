@@ -11,9 +11,9 @@ indent: true
 
 When not using liquibase, to add a new table, you simple create the `@Entity` class and the `@Repository` class.
 
-When using liquibase, there is an additional step: you must generate the changelog file and store it in `src/main/resources/db`
+When using liquibase, there is an additional step: you must generate the changelog file and store it in `src/main/resources/db/changes`
 
-You can generate the changelog by hand, but it is easier to use a tool to do it.   
+You can generate the changelog by hand, but it is easier to use a tool to do it.   This guide walks you through the process with an example.
 
 # Example: Adding a `course` table
 
