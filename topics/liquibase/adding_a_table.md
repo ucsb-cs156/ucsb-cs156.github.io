@@ -625,7 +625,7 @@ Once inside, the commands are as follows:
 | Command | Explanation |
 |-|-|
 |`\dt` | Describe tables; make sure that they look like they should *before* the migration |
-| `\d tablename ` | Only necessarhy if you are checking the details of a table (i.e. its column definitions, etc.)
+| `\d tablename ` | Only necessary if you are checking the details of a table (i.e. its column definitions, etc.)
 | `\q`  | Quit from postgres |
 
 Here's an example session:
@@ -652,7 +652,7 @@ Once inside, use these commands again to examine the database schema (the defini
 | Command | Explanation |
 |-|-|
 |`\dt` | Describe tables; make sure that they look like they should *before* the migration |
-| `\d tablename ` | Only necessarhy if you are checking the details of a table (i.e. its column definitions, etc.)
+| `\d tablename ` | Only necessary if you are checking the details of a table (i.e. its column definitions, etc.)
 | `\q`  | Quit from postgres |
 
 If everything looks as it should, congratualations: you have successfully built a liquibase migration to create a new table.
