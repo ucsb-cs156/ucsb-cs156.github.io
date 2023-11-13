@@ -15,4 +15,27 @@ When using liquibase, there is an additional step: you must generate the changel
 
 You can generate the changelog by hand, but it is easier to use a tool to do it.   
 
-TODO: continue from here.
+# Example: Adding a `course` table
+
+As an example, suppose you are adding the following `@Entity` (imports omitted to save space):
+
+```java
+@Data
+@AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Builder
+@Entity(name = "courses")
+public class Course {
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private long id;
+
+  private String name;
+  private String school;
+  private String term;
+  private LocalDateTime start;
+  private LocalDateTime end;
+  private String githubOrg;
+}
+```
+
