@@ -540,9 +540,120 @@ CTRL/C and run `mvn spring-boot:run` on localhost a second time.  The second tim
 
 This output shows that all of the migrations were processed in order with no errors.
 
+## Step 9: Test the migration on a dokku qa instance starting from a clean main
+
 You are now ready to try the migrations on a dokku instance, which is where they really matter. A localhost instance is only for development and testing; we typically don't store important real data there. But when we deploy to a dokku qa or dev instance, it's a practice run for when we roll out the new changes to a production database.  So if the database migration doesn't go smoothly when you roll it out to a dokku instance, it's a sign that things may go awry when your PR is merged into production, and the migration hits the production database.
 
 So, pay close attention to whether the migration succeeds when rolling out to dokku.  A good way to start is with a clean database that matches what's on main.  You can do that by first resetting the database of your qa instance, and then redeploying the main branch to it, like this:
 
+
+First, stop your qa instance.  This is necessary, because otherwise you won't be able to drop the database and recreate it (because the app will be using it.)
+
+```sh
+pconrad@dokku-00:~$ dokku ps:stop organic-qa
+Stopping organic-qa
+pconrad@dokku-00:~$
 ```
+
+Next, connect to the postgres console, drop the database, and recreate it.
+
+The command to connect is
+
 ```
+dokku postgres:connect organic-qa-db
+```
+
+Once inside, the commands are as follows:
+
+| Command | Explanation |
+|-|-|
+|`\c postgres` | Disconnect from the `organic_qa_db` database, and connect to a different database, the `postgres` default database. This is needed because you can't drop a database if you are connected to it. |
+| `drop database organic_qa_db;` | This drops the database: all data, and all table definitions. Don't forget the semicolon, since this is an SQL statement |
+| `create database organic_qa_db;` | This recreates a brand new fresh database |
+
+The next three commands are not necessary; you can just use `\q` at this point, but they help to illustrate what's going on:
+
+| Command | Explanation |
+|-|-|
+|`\c organic_qa_db` | Reconnect to the original  `organic_qa_db` database. |
+| `\dt` | `\dt\ is the "describe tables" command in postgres; we should see that there are no tables (aka "relations") |
+| `\q`  | Quit from postgres |
+
+Here's an example session:
+
+```
+pconrad@dokku-00:~$ dokku postgres:connect organic-qa-db
+psql (15.2 (Debian 15.2-1.pgdg110+1))
+SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, compression: off)
+Type "help" for help.
+
+organic_qa_db=# \c postgres
+SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, compression: off)
+You are now connected to database "postgres" as user "postgres".                             ^
+postgres=# drop database organic_qa_db;
+DROP DATABASE
+postgres=# create database organic_qa_db;
+CREATE DATABASE
+postgres=# \c organic_qa_db
+SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, compression: off)
+You are now connected to database "organic_qa_db" as user "postgres".
+organic_qa_db=# \dt
+Did not find any relations.
+organic_qa_db=# \q
+pconrad@dokku-00:~$  
+```
+
+Next, git:sync the main branch and deploy:
+
+```
+dokku git:sync organic-qa https://github.com/ucsb-cs156/proj-organic main
+dokku ps:rebuild
+```
+
+Once the deploy is finished, use the postgres command line to verify that your tables were created by the main branch; the purpose is to get
+the database into the exact state it will be in prior to your migrations hitting it when your PR is merged into main, so that we can be 
+sure they work as intended.  You may have to repeat this test immediately before merging your PR, since the main branch may have changed by then, and indeed other migrations may have been added (in which case you may need to change the number of your migration.)
+
+Once again, the command to connect is:
+
+```
+dokku postgres:connect organic-qa-db
+```
+
+Once inside, the commands are as follows:
+
+| Command | Explanation |
+|-|-|
+|`\dt` | Describe tables; make sure that they look like they should *before* the migration |
+| `\d tablename ` | Only necessarhy if you are checking the details of a table (i.e. its column definitions, etc.)
+| `\q`  | Quit from postgres |
+
+Here's an example session:
+
+```
+TODO: Insert this
+```
+
+Now, you are ready to deploy your branch with the migrations to the qa site: 
+
+```
+dokku git:sync organic-qa https://github.com/ucsb-cs156/proj-organic your-branch-name
+dokku ps:rebuild
+```
+
+After this is deployed, repeat the command to examine the database: 
+
+```
+dokku postgres:connect organic-qa-db
+```
+
+Once inside, use these commands again to examine the database schema (the definitions of tables, columns, indexes, etc.)
+
+| Command | Explanation |
+|-|-|
+|`\dt` | Describe tables; make sure that they look like they should *before* the migration |
+| `\d tablename ` | Only necessarhy if you are checking the details of a table (i.e. its column definitions, etc.)
+| `\q`  | Quit from postgres |
+
+If everything looks as it should, congratualations: you have successfully built a liquibase migration to create a new table.
+
