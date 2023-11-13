@@ -39,6 +39,17 @@ public class Course {
 }
 ```
 
+We also need the `@Repository` class, for example:
+
+```java
+@Repository
+public interface CourseRepository extends CrudRepository<Course, Integer> {
+
+}
+```
+
+We then need to run the application at least once to ensure that the new tables are created.   
+
 We want to generate a change log.  
 
 The first step is to choose a file name.  We should look in the directory `src/main/resources/db/migration/changes/` to see what the next avaiable number is; the naming convention we use in CS156 is a four digit number followed by an underscore, followed by a brief title that describes the migration.   For example, we see: 
@@ -57,5 +68,4 @@ We can do that with the following command:
 mvn liquibase:generateChangeLog > src/main/resources/db/migration/changes/0005_CreateCourseTable.json
 ```
 
-We can then open that file in our editor.
 
