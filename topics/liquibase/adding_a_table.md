@@ -547,6 +547,8 @@ You are now ready to try the migrations on a dokku instance, which is where they
 So, pay close attention to whether the migration succeeds when rolling out to dokku.  A good way to start is with a clean database that matches what's on main.  You can do that by first resetting the database of your qa instance, and then redeploying the main branch to it, like this:
 
 
+### Step 9a: Stop your qa instance
+
 First, stop your qa instance.  This is necessary, because otherwise you won't be able to drop the database and recreate it (because the app will be using it.)
 
 ```sh
@@ -554,6 +556,8 @@ pconrad@dokku-00:~$ dokku ps:stop organic-qa
 Stopping organic-qa
 pconrad@dokku-00:~$
 ```
+
+### Step 9b: Reset qa database to an empty database
 
 Next, connect to the postgres console, drop the database, and recreate it.
 
@@ -603,12 +607,16 @@ organic_qa_db=# \q
 pconrad@dokku-00:~$  
 ```
 
+### Step 9c: Deploy main branch to qa site to create database via existing migrations
+
 Next, git:sync the main branch and deploy:
 
 ```
 dokku git:sync organic-qa https://github.com/ucsb-cs156/proj-organic main
 dokku ps:rebuild organic-qa
 ```
+### Step 9d: Verify that qa database has correct starting tables (before your new migrations)
+
 
 Once the deploy is finished, use the postgres command line to verify that your tables were created by the main branch; the purpose is to get
 the database into the exact state it will be in prior to your migrations hitting it when your PR is merged into main, so that we can be 
@@ -674,12 +682,25 @@ organic_qa_db=# \q
 pconrad@dokku-00:~$ 
 ```
 
+### Step 9e: Commit the migrations and push to your github branch
+
+If you haven't already, commit the files for the entities, repository, and the change set to github.  You need them on your branch 
+so that you can deploy to the qa site.
+
+<img width="1372" alt="image" src="https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/5e4651b2-6305-4bd6-b075-73d46cdaeb0c">
+
+
+### Step 9f: Deploy new branch to qa site
+
 Now, you are ready to deploy your branch with the migrations to the qa site: 
 
 ```
 dokku git:sync organic-qa https://github.com/ucsb-cs156/proj-organic your-branch-name
 dokku ps:rebuild organic-qa
 ```
+
+### Step 9g: Examine the new qa database to see if migrations worked.
+
 
 After this is deployed, repeat the command to examine the database: 
 
@@ -694,6 +715,8 @@ Once inside, use these commands again to examine the database schema (the defini
 |`\dt` | Describe tables; make sure that they look like they should *before* the migration |
 | `\d tablename ` | Only necessary if you are checking the details of a table (i.e. its column definitions, etc.)
 | `\q`  | Quit from postgres |
+
+# Done!
 
 If everything looks as it should, congratualations: you have successfully built a liquibase migration to create a new table.
 
