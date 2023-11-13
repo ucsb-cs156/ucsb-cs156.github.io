@@ -607,7 +607,7 @@ Next, git:sync the main branch and deploy:
 
 ```
 dokku git:sync organic-qa https://github.com/ucsb-cs156/proj-organic main
-dokku ps:rebuild
+dokku ps:rebuild organic-qa
 ```
 
 Once the deploy is finished, use the postgres command line to verify that your tables were created by the main branch; the purpose is to get
@@ -638,7 +638,7 @@ Now, you are ready to deploy your branch with the migrations to the qa site:
 
 ```
 dokku git:sync organic-qa https://github.com/ucsb-cs156/proj-organic your-branch-name
-dokku ps:rebuild
+dokku ps:rebuild organic-qa
 ```
 
 After this is deployed, repeat the command to examine the database: 
