@@ -631,7 +631,47 @@ Once inside, the commands are as follows:
 Here's an example session:
 
 ```
-TODO: Insert this
+pconrad@dokku-00:~$ dokku postgres:connect organic-qa-db
+psql (15.2 (Debian 15.2-1.pgdg110+1))
+SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, compression: off)
+Type "help" for help.
+
+organic_qa_db=# \dt
+                 List of relations
+ Schema |         Name          | Type  |  Owner   
+--------+-----------------------+-------+----------
+ public | databasechangelog     | table | postgres
+ public | databasechangeloglock | table | postgres
+ public | jobs                  | table | postgres
+ public | useremails            | table | postgres
+ public | users                 | table | postgres
+(5 rows)
+
+organic_qa_db=# \d users
+                             Table "public.users"
+     Column     |            Type             | Collation | Nullable | Default 
+----------------+-----------------------------+-----------+----------+---------
+ github_id      | integer                     |           | not null | 
+ access_token   | character varying(255)      |           |          | 
+ admin          | boolean                     |           | not null | 
+ email          | character varying(255)      |           |          | 
+ email_verified | boolean                     |           | not null | 
+ full_name      | character varying(255)      |           |          | 
+ github_login   | character varying(255)      |           |          | 
+ github_node_id | character varying(255)      |           |          | 
+ instructor     | boolean                     |           | not null | 
+ last_online    | timestamp without time zone |           |          | 
+ picture_url    | character varying(255)      |           |          | 
+Indexes:
+    "github_id" PRIMARY KEY, btree (github_id)
+Referenced by:
+    TABLE "useremails" CONSTRAINT "fk8wod0wrceoifbbpwone12smev" FOREIGN KEY (user_github_id) REFERENCES users(github_id) ON UPDATE RESTRICT ON DELETE RESTRICT
+    TABLE "jobs" CONSTRAINT "fkkjpyguuyd5shxtabv9v5jpe6x" FOREIGN KEY (created_by_id) REFERENCES users(github_id) ON UPDATE RESTRICT ON DELETE RESTRICT
+    TABLE "jobs" CONSTRAINT "jobs_created_by_id_fk" FOREIGN KEY (created_by_id) REFERENCES users(github_id) ON UPDATE RESTRICT ON DELETE RESTRICT
+    TABLE "useremails" CONSTRAINT "useremails_user_github_id_fk" FOREIGN KEY (user_github_id) REFERENCES users(github_id) ON UPDATE RESTRICT ON DELETE RESTRICT
+
+organic_qa_db=# \q
+pconrad@dokku-00:~$ 
 ```
 
 Now, you are ready to deploy your branch with the migrations to the qa site: 
