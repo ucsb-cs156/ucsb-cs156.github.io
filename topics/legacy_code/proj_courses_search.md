@@ -157,7 +157,7 @@ This section is for the staff and instructor.  Students and others are welcome t
 </summary>
 
 
-## Set up on MongoDB,com
+## Set up on MongoDB.com
 
 Dokku does have the ability to create MongoDB instances, and eventually it would be nice to migrate to that solution.  For the time being, however, we have not figured out how to take advantage of that capability and connect it to our Spring Boot code bases. Therefore, for the time being, we are using the free tier of <https://mongodb.com> to provision mongodb databases for our courses.
 
@@ -204,7 +204,14 @@ Now that we have one project per team, we'll add users and create deployments.
 
 ### Adding Users to a Project
 
+Next, pull up a roster with the `@ucsb.edu` email addresses of the members of each of the teams
+for which you set up a project; in the example here, that's `f23-7pm-1`, `f23-7pm-2`, `f23-7pm-3`, `f23-7pm-4` as shown on the project page:
 
+<img width="1048" alt="image" src="https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/6ce41d3d-0fdf-49d9-9b35-07e420fa2377">
+
+Choose the first project, e.g. `f23-7pm-1` by clicking its name; that takes you to a page like this one:
+
+<img width="1061" alt="image" src="https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/492fd4fb-46ec-4d03-b9b1-cf19dea70e69">
 
 
 
