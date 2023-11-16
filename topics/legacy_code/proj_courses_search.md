@@ -237,7 +237,15 @@ each individual box, and gives students full permission over their project.
 Repeat for each student on the team.  If you want to delegate this to a TA or LA, you can
 add them as organization owners (we'll cover this below).
 
+After inviting all students, it may be helpful to post a message on each of their team slack channels, or on the proj-courses slack channel saying something like the following.
 
+```
+@channel Please look in your email for an invitation to create a MongoDB.com account, and join the project for your team (e.g. `f23-7pm-1`, `f23-7pm-2`, `f23-7pm-3`, `f23-7pm-4`).  Please accept that invitation before your next scheduled class, or during your next scheduled class. 
+
+You will need this access in order to work on proj-courses. We'll explain more in class, and/or in future posts to this slack channel.
+
+We'd like to see that all team members have done so by the end of the next scheduled class.
+```
 
 </details>
 
