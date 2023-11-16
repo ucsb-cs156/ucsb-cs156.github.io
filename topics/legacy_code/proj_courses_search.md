@@ -56,6 +56,107 @@ While it might seem redundant to cache curriculum information in a separate data
 
 In addition, it provides an opportunity to learn about how to work with a MongoDB database.
 
+## Getting the value for `MONGODB_URI`
+
+In the `.env` file for `proj-courses`, you'll need a value for `MONGODB_URI`.  That URI contains the hostname, username, password, and other information needed to connect to a MongoDB database provided by MongoDB.com.  
+
+To start, in order to keep things simple, we will use the same database credentials for localhost, dev, qa and prod.  We acknowledge that this is not in keeping with "best practices" which would keep these separate (as they are for the SQL databases).  You have the option of learning how to create your own databases on MongoDB.com and then getting separate credentials for these if this becomes an issue that you need to tackle.
+
+To get the value for MONGODB_URI, here's what you need to do.
+
+1. Login to MongoDB.com; you should have gotten an invitation to a project in your email that matches your team name e.g. `f23-7pm-1`, `f23-7pm-2`, etc. under an organization that matches your class name (e.g. `ucsb-cs156-f23`).
+2. Find your project. That should be a page that looks like this:
+   <img width="1262" alt="image" src="https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/4e593aa1-1bf9-4ce1-8886-c7c5ec5e3f9d">
+3. On the card for the deployment, there should be a `Connect` button, as shown below. Click that button
+   <img width="1250" alt="click-the-connect-button" src="https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/dbc82141-9cd8-4591-865f-0b2e76ddb69c">
+4. That brings up this modal.  Click Drivers (the first option).
+   <img width="782" alt="image" src="https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/1f855c4a-971c-41ca-8aef-f8eae9543da2">
+5. That takes you to a page like this one.  The page asks you to choose a driver, but as it turns out that for both the default option (`Node.js`) and the actual option we are using (`Java`), the URI is exactly the same, and that's all we need here.  You will get the URI from the box as shown below.  Note, however, that this is *not* the final form of the URI; we'll have to do some editing here.  But, go ahead and copy that URI and paste it into your `.env` file as the value of `MONGODB_URI`.  For example, if the screen looks like this:
+   <img width="786" alt="image" src="https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/7b10f1fa-42ee-4320-ad74-c042244cecf8">
+   
+   Then in your `.env` file, you'll start with this:
+   ```
+   MONGODB_URI=mongodb+srv://user:<password>@cluster0.vwrcszq.mongodb.net/?retryWrites=true&w=majority
+   ```
+6. Now, we need to do two things. The first one is to add in the name of our database, which we are calling `database`
+   in order to keep things simple. The text `database` goes right after the single `/` and before the `?retryWrites`,
+   like this:
+
+   * OLD: <tt>MONGODB_URI=mongodb+srv://user:&lt;password&gt;@cluster0.vwrcszq.mongodb.net/?retryWrites=true&w=majority</tt>
+   * NEW: <tt>MONGODB_URI=mongodb+srv://user:&lt;password&gt;@cluster0.vwrcszq.mongodb.net/<b>database</b>?retryWrites=true&w=majority</tt>
+
+   Note that by convention, our projects use `database` as the database name, but if you use something else (say `potato`)
+   then this should go in this spot in the URI.
+
+7. I said there were two things.  The second thing is to replace `<password>` (including the `<>`) with the actual
+   password.  Note that while there is a password that's already set for the username `user`, it is not possible to
+   look that up; the only thing we can do is reset it.  So the next few steps are to reset this password, and then
+   copy that value in, replacing the `<password>` in the URI.
+
+   Note that another option is to add addtional users with names other than `user`; each of those can have a different
+   password.  This may be important, because otherwise, if everyone on the team is sharing the same password, any time
+   you need to update it, you have to coordinate with the entire team; changing it changes it for *everyone*.  So, it's
+   up to the team how to manage this.  Decide whether its easier to have just one user/password combination, or whether
+   it's easier to create separate user/passwords for each team member.
+
+   To change the password value, navigate to the main page of the project, so that it looks like this:
+   <img width="1240" alt="image" src="https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/f6449825-6383-4497-92ea-6a80868da467">
+   
+   Find `Database Access` on the left nav and click. You'll see a page like this one:
+
+   <img width="1243" alt="image" src="https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/9db6a69e-653f-4e46-bd5a-1c4e833bf316">
+
+   Here, you have a choice; edit the user called `user` to reset the password, or create additional users.  If you create
+   additional users, you'll need to change the `user` in the MONGODB_URI as well; for example, if you create `cgaucho`,
+   then the MONGO_URI changes like this:
+
+   * OLD: <tt>MONGODB_URI=mongodb+srv://<b>user</b>:&lt;password&gt;@cluster0.vwrcszq.mongodb.net/database?retryWrites=true&w=majority</tt>
+   * NEW: <tt>MONGODB_URI=mongodb+srv://<b>cgaucho</b>:&lt;password&gt;@cluster0.vwrcszq.mongodb.net/database?retryWrites=true&w=majority</tt>
+
+   In any case, to change the password, you go into the `edit` button beside the user.  You'll see this:
+
+   <img width="925" alt="image" src="https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/ac81a43f-9a34-46a1-9992-44b811063a5d">
+
+   Click the `Edit Password` button.
+
+   Click `Autogenerate Secure Password`.  Then either click the `Copy` button to copy the password, or click the `Show` button and copy it manually.  Either way, it's probably a good idea to `Show` the password and copy/paste it into your URI before you click `Update User` to make sure they match.  And **you must scroll down and click `Update User`!** This is easy to forget because the `Update User` is *not visible*  until you *scroll down*.  I have made this mistaken dozens of times, and it's a time-consuming one to make.
+
+   Here's what that looks like, including copying the password into the `MONGODB_URI` in `.env` and *scrolling down*
+   to *click Update User*:
+
+   ![mongo-db-password-update](https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/3bd3c18c-7061-4209-8879-c552ee6f9f40)
+
+ With that (along with configuring the other values in `.env`), you should be able to run `mvn spring-boot:run`
+
+ To check if it is working, login as an admin, and try loading courses for a quarter, like this:
+
+ ![load-courses-for-quarter](https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/81423036-76d1-45ab-ad72-26a315d542be)
+
+ As shown in the animation above, if the MongoDB database is working, you'll be able to see messages indicating success.
+
+ At that point, you can also browse the MongoDB collection manually, as shown below.
+
+## Navigating to the databases and collections
+
+Your team should have a deployment with the default name (typically `cluster0`).  Inside this deployment, there should be a database called `database`, which can contain multiple *collections*.  
+
+Collections functions similar to tables in an SQL database, although they have a differerent structure: they are key/value stores that function similar to JSON objects.
+In fact, they use a variant of JSON known as BSON (which stands for "Binary Javascript Object Notation").  It's the same idea, except, internally, the objects are not literally stored in JSON, but in binary encoding of JSON.
+
+To navigate to your database and collections, follow this path in MongoDB.com:
+
+From the deployment card, click `Browse Collections`:
+
+<img width="593" alt="image" src="https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/98c3314a-7cb2-45c6-a4c0-87f3b8273c51">
+
+You should see an interface similar to this one:
+
+<img width="1039" alt="image" src="https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/7f17f105-cc5a-4fd3-8bf6-2e9ad20ae38b">
+
+The collections themselves are explained in further detail below.
+
+
+
 ## The main collection
 
 The main database in your MongoDB deployment should be called `database`, and the main collection should be called `courses`.
