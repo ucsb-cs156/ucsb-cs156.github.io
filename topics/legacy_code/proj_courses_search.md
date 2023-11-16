@@ -26,6 +26,20 @@ in this course, you will also need a value for UCSB_API_KEY.  This is a key that
 You can request your own account, but it is typically faster to get one from the instructor, who will provide it to you on your
 team slack channel.
 
+When setting up API keys, we typically enable all of the API endpoints that are not sensitive or protected (i.e. the auto-approved endpoints.)  As of this writing, those are these endpoints:
+
+* Academics - Events
+* Academics - Academic Quarter Calendar
+* Academics - Curriculums
+* Dining - Dining Commons
+* Dining - Dining Menu
+* Students - Student Record Code Lookups
+
+The ones that are currently used in the app are:
+
+* Academics - Curriculums
+* Students - Student Record Code Lookups
+
 ## MongoDB Collections
 
 The Courses Search application uses a MongoDB collection as backup storage for the UCSB Curriculum information, so you will also 
