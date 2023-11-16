@@ -305,7 +305,7 @@ Here's how to open the deployment to connections from all IP addresses:
 1. Enter `0.0.0.0` for the IP address, and `Entire internet` as the description.
 2. Add that entry
 3. If desired, remove the specific entry for the ip address you were at when you create the deployment.
-4. Then click Save to save the changes
+4. Then click `Finish and Close` to save the changes
 
 That is illustrated here:
 
