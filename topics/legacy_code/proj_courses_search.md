@@ -312,8 +312,11 @@ That is illustrated here:
 ![mongo-all-ip-addresses](https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/27e582f5-3ca6-4b9e-8c78-589e743aa2ed)
 
 
+### Updating Access 
 
+If you need to modify the user or password, you can get back to edit those from the project page by selecting `Database Access` from the left nav of the project page, as shown below.  Be sure that if you change the password, you click `Save Changes`, or they *will not take effect* and the old password will still be the one in use.
 
+![mongo-db-access](https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/694fa093-83ed-467f-8bad-a1fc5bc9c32f)
 
 
 </details>
