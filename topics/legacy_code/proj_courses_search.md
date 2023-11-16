@@ -148,3 +148,49 @@ in quarter `20231` where the `courseInfo.courseId` field starts with `MATH`:
 ```
 { 'courseInfo.quarter' : '20231', 'courseInfo.courseId': { $regex: /MATH/ }}
 ```
+
+# Staff Setup for proj-courses 
+
+<details markdown="1">
+<summary markdown="1">
+This section is for the staff and instructor.  Students and others are welcome to look at it, but it typically doesn't pertain unless you are on the staff of the course (instructor/TA/LA).  Click the triangle to reveal the details.
+</summary>
+
+
+## Set up on MongoDB,com
+
+Dokku does have the ability to create MongoDB instances, and eventually it would be nice to migrate to that solution.  For the time being, however, we have not figured out how to take advantage of that capability and connect it to our Spring Boot code bases. Therefore, for the time being, we are using the free tier of <https://mongodb.com> to provision mongodb databases for our courses.
+
+To set up resources for proj-courses for CS156 using mongodb.com, here is how we've proceeded in the past.
+
+First, login to MongoDB.com with your UCSB Google Account.
+
+### Creating an organization
+
+Here is how you navigate to the page where you can create a new organization, as illustrated in the animation below:
+
+1. Select the dropdown, upper left, that shows your organizations.
+2. Scroll to the bottom where it says: `All Organizations`
+3. On that page, a `Create New Organization` button appears at upper left.
+
+![mongodb-navigate-to-create-new-org](https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/4d1979d4-6230-4e42-ae1f-aab771ccc5f7)
+
+The form to create a new organization has multiple pages.  On the first page, put in the name
+of your organization (e.g. `ucsb-cs156-f23`), select `MongoDB Atlas` and then scroll down and click `Next`
+
+<img width="781" alt="image" src="https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/06817ce4-583a-47f6-acd6-913888a169c5">
+
+<img width="820" alt="image" src="https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/327d3573-8f01-4450-9d21-f8d8d1918646">
+
+On the next screen, take the default (which is that the option `Require IP Access List for the Atlas Administration API` is selected) and click `Create Organization`
+
+<img width="716" alt="image" src="https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/bb16b946-68df-404a-9d41-7333bb514ec7">
+
+That takes you to this screen, where you can create projects:
+
+<img width="1082" alt="image" src="https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/53052694-18ab-4102-9390-268a3902d571">
+
+</details>
+
+
+
