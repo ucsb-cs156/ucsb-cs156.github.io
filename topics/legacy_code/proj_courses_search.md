@@ -190,6 +190,27 @@ That takes you to this screen, where you can create projects:
 
 <img width="1082" alt="image" src="https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/53052694-18ab-4102-9390-268a3902d571">
 
+### Creating Projects in a MongoDB Organization
+
+If you just created your organization, it will probably be selected as the default organization, upper left, but if not, select your organization like this:
+
+![mongo-db-select-org](https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/abb89820-a37a-4eb9-89f7-40f6a904389f)
+
+Then, click `Projects` in the left nav to get to the Projects page where you can see your projects and create a new project by clicking the `New Project` button.  I suggest creating one project per team (for the teams that need a MongoDB deployment, which includes, at least, all teams working on proj-courses).  Here, we'll just create the projects, and deal with adding users as a separate step.
+
+![mongo-db-create-projects](https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/9d65cc3f-416f-44e5-a16a-01d69982c5fc)
+
+Now that we have one project per team, we'll add users and create deployments.
+
+### Adding Users to a Project
+
+
+
+
+
+
+
+
 </details>
 
 
