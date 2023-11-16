@@ -213,8 +213,29 @@ Choose the first project, e.g. `f23-7pm-1` by clicking its name; that takes you 
 
 <img width="1061" alt="image" src="https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/492fd4fb-46ec-4d03-b9b1-cf19dea70e69">
 
+Find the `Access Manager` tab at the top of the page, like this, and select `Project Access`
 
+<img width="535" alt="image" src="https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/dc30014a-53d6-46fc-993b-d98e5dbb9db0">
 
+That takes you here:
+
+<img width="1059" alt="image" src="https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/5928a130-5ae6-4d44-9b82-9b8eb0a7066c">
+
+Clicking `Invite to Project` takes you here:
+
+<img width="1057" alt="image" src="https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/195958a6-ca83-4b0e-af4d-8012d423eb5f">
+
+Regrettably, it does not seem to be possible to paste in multiple email addresses, even if
+separated by spaces or commas; this has to be done one at a time.
+
+Paste in each email address to create an invitation.  As you do, for each invitation,
+click `Project Owner` in addition to `Project Read Only`; this makes it unnecessary to click
+each individual box, and gives students full permission over their project.
+
+<img width="825" alt="image" src="https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/62c19dc2-cd81-4ec7-8f41-2ae9b68d3846">
+
+Repeat for each student on the team.  If you want to delegate this to a TA or LA, you can
+add them as organization owners (we'll cover this below).
 
 
 
