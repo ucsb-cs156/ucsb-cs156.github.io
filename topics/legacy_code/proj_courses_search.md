@@ -247,6 +247,75 @@ You will need this access in order to work on proj-courses. We'll explain more i
 We'd like to see that all team members have done so by the end of the next scheduled class.
 ```
 
+### Creating Deployments
+
+For each team (in course terms), i.e. each project (in Mongodb.com terms), it is now necessary to create a deployment.  The deployment is where the MongoDB databases and collections are actually deployed, i.e. it is a kind of virtual server where the databases are deployed.
+
+To create a deployment for a team/project, navigate to the project page and select the `Data Services` tab (leftmost at top).  If it is a new project with no deployments yet, you'll likely see
+the very prominent `Create a deployment` card with a `Create` button in the middle of it, like this:
+
+<img width="1039" alt="image" src="https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/97206e4e-fab3-4e31-b004-653e942fa420">
+
+When you click that button you'll be taken to this screen, where the obvious choice is the free tier.  Click on that to select it so that it is outlined in dark green, like this (note that the free tier is *not* the default option!)
+
+<img width="1163" alt="image" src="https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/fa1fcabd-f9a3-40cb-9258-8dad18fb11ac">
+
+The scroll down, where you can choose a provider: AWS, Google Cloud, or Microsoft Azure.  At present, all three are options for the free tier, so choose whichever you like.  AWS is the current default, so that's what I usually choose.
+
+The default region is `US East (Virginia)`; I typically change this to `US West (Oregon)` since we are located on the West Coast, but that's again up to you.
+
+<img width="501" alt="image" src="https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/9debca75-2fe0-4e36-891d-622c106644a4">
+
+I typically take the default name for the cluster:
+
+<img width="455" alt="image" src="https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/fab0bfd3-078a-4082-869d-7429713481c2">
+
+Finally, click `Create`:
+
+<img width="1112" alt="image" src="https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/c7b94d9f-31da-4677-9a29-056945ca49a2">
+
+When you do, you'll be directed to this screen where we'll set up the security for the cluster:
+
+<img width="1061" alt="image" src="https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/4d63ad15-127f-4b38-a62f-2f795ca873cc">
+
+For the first question, take the default (Username/Password authentication):
+
+<img width="816" alt="image" src="https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/9ec8063b-488d-4c04-9bc9-ace365641df8">
+
+Scroll down to this page.  Here, the default username will probably be the  username from email address of the person creating the deployment; *you should not take this default*.  This username is the one that will be embedded in the credentials for the database, so it's more typically something like `user`.  I suggest changing it to `user`.
+
+<img width="739" alt="image" src="https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/ae607a84-a9c5-40ef-a2f3-df97d8b1b574">
+
+So change it to this:
+
+<img width="755" alt="image" src="https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/d2c1650a-de2b-40df-b412-9e375e885286">
+
+The default generated password is fine; the one shown in this screenshot is NOT the one I used; I clicked the `Autogenerate Secure Password` to create a new one after taking this screenshot.
+
+Click `Create User`.  Note that the password is now no longer available; it will be necessary, later, for the students to generate their own password when they want to embed the password in their URL.  That's fine; we'll provide instructions to walk them through that.
+
+The next step is to scroll down to this section, where you'll need to change the IP address restrictions:
+
+<img width="821" alt="image" src="https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/caea17e5-76c0-47ef-9b37-9a8acbfeddca">
+
+We need to change this to allow connections from all IP addresses.  An alternative would be to get the public IP address of their dokku server, or the IP address range for UCSB, and put that in.   That would be preferable, but as of this writing, we are still just leaving this open; we used to have to do that since we were using Heroku, and could not predict the IP address ranges that Heroku would be coming from when connecting to MongoDB.
+
+Here's how to open the deployment to connections from all IP addresses:
+
+1. Enter `0.0.0.0` for the IP address, and `Entire internet` as the comment.
+2. Add that entry
+3. If desired, delete the specific entry for the ip address you were at when you create the deployment.
+4. Then click Save to save the changes
+
+That is illustrated here:
+
+![mongo-all-ip-addresses](https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/27e582f5-3ca6-4b9e-8c78-589e743aa2ed)
+
+
+
+
+
+
 </details>
 
 
