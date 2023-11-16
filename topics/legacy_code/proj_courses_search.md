@@ -18,6 +18,12 @@ For example:
 * Search by course over a range of quarters (Who has taught CMPSC 130A over time?)
 * and many more
 
+| Explanation | Link |
+|-------------|------|
+| Source code | <https://github.com/ucsb-cs156/proj-courses> |
+| Production Deployment | <https://courses.dokku-00.cs.ucsb.edu> |
+| QA Deployment (for CMPSC156 course staff) | <https://courses-qa.dokku-00.cs.ucsb.edu> |
+
 ## UCSB_API_KEY values
 
 To deploy proj-courses, in addition to the usual GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET needed for other OAuth apps
