@@ -6,10 +6,30 @@ title: "Legacy Code: Courses Search"
 description:  "Project specific documentation"
 ---
 
+# {{page.title}}
 
-# MongoDB Collections
+Courses search is intended as an application that provides a more functional version of the official public
+facing course search app available at the address: <https://my.sa.ucsb.edu/public/curriculum/coursesearch.aspx>
 
-The Courses Search application uses a MongoDB collection as backup storage for the UCSB Curriculum information.
+Our version, currently deployed at <https://courses.dokku-00.cs.ucsb.edu> provides many more features:
+
+For example:
+* Search by instructor (What courses has Diba Mirza taught?)
+* Search by course over a range of quarters (Who has taught CMPSC 130A over time?)
+* and many more
+
+## UCSB_API_KEY values
+
+To deploy proj-courses, in addition to the usual GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET needed for other OAuth apps
+in this course, you will also need a value for UCSB_API_KEY.  This is a key that gives you access to the API for UCSB course information.  These keys are obtained from the website <https://developer.ucsb.edu>.
+
+You can request your own account, but it is typically faster to get one from the instructor, who will provide it to you on your
+team slack channel.
+
+## MongoDB Collections
+
+The Courses Search application uses a MongoDB collection as backup storage for the UCSB Curriculum information, so you will also 
+need to set up a MongoDB collection and put the URL for that collection in your environment variables.  Read on for more explanation.
 
 ## Why MongoDB for UCSB Courses Search
 
