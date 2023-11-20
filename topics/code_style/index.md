@@ -6,8 +6,10 @@ description:  "formatting, indenting, names, and much more"
 has_children: true
 ---
 
-# References
 
+See also: <https://ucsb-cs156.github.io/topics/formatting.html>
+
+# References
 
 * [Google's Java Style guide](https://google.github.io/styleguide/javaguide.html)
 
