@@ -7,7 +7,7 @@ description:  "Don't include in PRs unless package.json changed"
 indent: true
 ---
 
-# {{page.topic}} - {{page.description}}
+# {{page.title}} - {{page.description}}
 
 A problem frequently observed on PRs in CMPSC 156 is that the student will include changes to `package-lock.json` when there has been no change to `package.json`.
 
@@ -65,8 +65,8 @@ read the changed files.  This will lose the detailed commit history, but in the 
 5. Do `git add` commands to all of the files you want to commit, but *not* `package-lock.json`.
 6.
 7. You can do files one at a time, like this (though it may be tedious):
-8. ```
-9. git add filename1
+   ```
+   git add filename1
    git add filename2
    etc.
    ```
