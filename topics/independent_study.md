@@ -203,7 +203,7 @@ The only cases I have encountered where taking 196 might be preferred:
 * Check in at least once a week&mdash;probably *more often*, but *at least* once at week to report progress, and ask for feedback, and new goals.
   
 
- # End of Quarter Report
+# End of Quarter Report
 
 Here is an outline for an end-of-quarter report in five sections.
 
