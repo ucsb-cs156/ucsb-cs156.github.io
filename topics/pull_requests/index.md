@@ -3,7 +3,10 @@ parent: Topics
 layout: default
 title: "Pull Requests"
 description:  "aka PRs; a checklist for doing them properly"
+has_children: true
 ---
+
+
 
 # {{page.title}}
 
