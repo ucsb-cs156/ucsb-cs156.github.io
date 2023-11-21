@@ -7,7 +7,7 @@ description:  "Don't include in PRs unless package.json changed"
 indent: true
 ---
 
-# {{page.topic} - {{page.description}}
+# {{page.topic}} - {{page.description}}
 
 A problem frequently observed on PRs in CMPSC 156 is that the student will include changes to `package-lock.json` when there has been no change to `package.json`.
 
