@@ -6,7 +6,7 @@ title: "SQL: Queries"
 description:  "Let the database do the work for you"
 ---
 
-# {{page.topic}}
+# {{page.title}}
 
 Suppose you have a database table of users, a database table of courses, and a database table of staff members that has these columns:
 * id (for the staff table)
