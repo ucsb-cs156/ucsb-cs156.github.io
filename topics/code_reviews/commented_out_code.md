@@ -6,7 +6,7 @@ title: "Code Reviews: Commented Out Code"
 description:  "Why commented out code should typically be removed"
 ---
 
-## {{page.title}
+## {{page.title}}
 
 When working on an issue, you may, from time to time, comment out some code, like this:
 
