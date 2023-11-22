@@ -34,12 +34,12 @@ They all assume that it's there for some good reason (otherwise, why would the p
 
 The fact is: commented out code almost never serves any good purpose, and detracts from readability. It's just clutter.
 
-## Get :clap: rid :clap: of :clap: it! :clap:
+## Get 👏 rid 👏 of 👏 it! 👏
 
 I can't say it any more plainly that this.
 
 You can leave commented out code in while you are working.  But once you are at the stage of making a PR, look over your own PR, and if you see commented out code, then:
-* Get :clap: rid :clap: of :clap: it! :clap:
+*  Get 👏 rid 👏 of 👏 it! 👏
 
 And if you see it as a reviewer, you should flag it as an issue, with something diplomatic such as:
 > I wonder if we can remove this commented out code?
