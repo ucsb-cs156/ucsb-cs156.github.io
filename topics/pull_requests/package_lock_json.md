@@ -14,6 +14,14 @@ A problem frequently observed on PRs in CMPSC 156 is that the student will inclu
 When there has been no change to `package.json`<br />
 changes to `package-lock.json` *should not be included* in a PR.
 
+## Why does this problem occur
+
+We've been telling folks to use `npm install` after first cloning a new repo, and many of our instructions still include this advice.  A better choice, as it turns out, is to use `npm ci` as a substitute for `npm install`; the key difference being that `npm ci` will attempt to the dependencies exactly as they already exist in `package-lock.json`, while `npm install` can sometimes update the `package-lock.json` file.
+
+If you start using `npm ci` any time the previous instructions said `npm install`, you'll avoid this problem.
+
+But, if you are reading this, it may be because you already have a PR with changes to `package-lock.json` in them, and you are trying to fix that problem.   So, read on for how to do that.
+
 ## How do I fix it?
 
 Suppose you have a PR where `package-lock.json` is included, but there has been no change to `package.json`.
