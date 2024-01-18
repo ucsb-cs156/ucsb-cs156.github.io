@@ -247,7 +247,15 @@ If you are currently a VS Code user (or are considering becoming one), you can i
 # Seeing jacoco and pitest output on WSL
 
 On WSL, if you have the output of a jacoco or pitest report, for example in an `index.html` file in a directory such as `target/site/jacoco`,
-here is a way you can get access to that in web browser.
+here is a way you can get access to that in your web browser.
+
+1. In File Explorer, enter the path `\\WSL$` to access your WSL file system.
+
+2. Navigate to `home\[your-username]\` then navigate to your project directory.
+
+3. You can simply double-click your HTML files to open them in your browser.
+
+If this doesn't work, try the following steps:
 
 1. At a WSL command prompt, cd into the directory with the index.html file, e.g.
    ```
@@ -271,4 +279,6 @@ here is a way you can get access to that in web browser.
     Try substituting the IP address that shows in place of 0.0.0.0, e.g. <http://172.29.192.1:8000>
 
     There may be more than one IP address shown; try both.
+
+
 
