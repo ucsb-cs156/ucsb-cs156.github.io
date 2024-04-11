@@ -6,6 +6,8 @@ title: "Legacy Code: Organic"
 description:  "Project specific documentation"
 ---
 
+# {{page.title}}
+
 Organic is a webapp that, when complete, will offer a replacement for the app <https://ucsb-cs-github-linker.herokuapp.com>.
 The purpose of the app is to help instructors manage Github Organizations that are being used for programming and software development courses
 (whether individual assignments, or group assignments.)
