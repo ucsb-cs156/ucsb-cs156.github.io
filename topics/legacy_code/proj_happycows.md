@@ -6,6 +6,9 @@ title: "Legacy Code: Happy Cows"
 description:  "Project specific documentation"
 ---
 
+# {{page.title}}
+
+
 HappyCows is a simulation game devised by Mattanjah de Vries, Distinguished Professor of Chemistry at UCSB, primarily for his course CHEM123,
 a course in environmental chemistry.
 
