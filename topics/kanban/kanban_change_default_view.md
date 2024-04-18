@@ -2,7 +2,7 @@
 parent: Kanban
 grand_parent: Topics
 layout: default
-title: "Kanban: Add Column"
+title: "Kanban: Change Default View"
 description:  "Changing default view on Github Projects"
 indent: true
 ---
