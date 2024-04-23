@@ -23,6 +23,22 @@ Steps:
 
 This animation shows what that looks like:
 
+![reviewing-a-merged-PR](https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/837c2da7-0f8e-47f1-b1eb-74f094b8c4bd)
+
 
 And here's what that looks like in the timeline of the PR:
 
+<img width="1033" alt="image" src="https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/8fcb09a6-4b35-40b2-8fc4-be411f14ea27">
+
+Note the difference:
+
+By contrast, this is what a regular comment looks like:
+
+<img width="1034" alt="image" src="https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/4c93aa00-a06a-40df-8609-16fbe6cfad89">
+
+## Why does it matter?
+
+It may seem "picky" that we are making a distinction between these two things, but it does actually matter&mdash;one difference is that when you set up something
+called [branch protection rules]() in Github, a proper approving "code review" will make a PR *eligble to be merged*, while a simple "LGTM" comment will not.
+
+In the case of an already merged PR, of course it *doesn't* matter.  But we want to make sure that you do understand the difference, so that you don't end up doing it the wrong way at an internship or job later on.
