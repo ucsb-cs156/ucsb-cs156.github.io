@@ -40,11 +40,23 @@ to do things like start with a table of Users that has 5 rows, delete 2 users, a
 Clearly, if there were more than one test running against the same database, adding and deleting users, with the tests running in parallel,
 this could get dodgy.
 
-The way we accomplish this in the code is with the annotation: 
+The way we accomplish this in the code is with the following lines in the code base:
 
-```
-@DirtiesContext(classMode = ClassMode.BEFORE_EACH_TEST_METHOD)
+1. The line: `spring.datasource.url=jdbc:h2:mem:${random.uuid}` in `src/main/resources/application-integration.properties`
+2. The  annotation `@DirtiesContext(classMode = ClassMode.BEFORE_EACH_TEST_METHOD)` in the tests themselves.
+3. 
 ```
 
 ANDREW: Continue from here.
 ```
+
+## Running the Integration Tests
+
+ANDREW: describe the commands for running the tests
+
+## Debugging the Integration Tests
+
+ANDREW: describe the commands for running the tests with `HEADLESS=false` and why you might want to do that, and maybe even show some
+animations of what it looks like when you do.
+
+You can use licecap to create the animations...
