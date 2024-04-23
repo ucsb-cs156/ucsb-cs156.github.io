@@ -30,11 +30,15 @@ And here's what that looks like in the timeline of the PR:
 
 <img width="1033" alt="image" src="https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/8fcb09a6-4b35-40b2-8fc4-be411f14ea27">
 
-Note the difference:
 
 By contrast, this is what a regular comment looks like:
 
 <img width="1034" alt="image" src="https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/4c93aa00-a06a-40df-8609-16fbe6cfad89">
+
+Note the difference: the code review has the words `reviewed` and a link to the reviewed changes.
+
+<img width="1005" alt="image" src="https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/934298d3-1dcb-41d1-8785-e901b16a4195">
+
 
 ## Why does it matter?
 
