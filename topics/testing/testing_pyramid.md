@@ -2,8 +2,8 @@
 parent: "Testing"
 grand_parent: Topics
 layout: default
-title: "Testing: End2End"
-description:  "End to End testing with our stack"
+title: "Testing: Pyramid"
+description:  "Integration and End to End testing with our stack"
 ---
 
 The [testing pyramid](https://testing.googleblog.com/2015/04/just-say-no-to-more-end-to-end-tests.html#testing_pyramid:~:text=units%20work%20together.-,Testing%20Pyramid,-Even%20with%20both) puts 
