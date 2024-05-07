@@ -8,12 +8,26 @@ description:  "The three levels"
 
 # The Testing Pyramid
 
-The [testing pyramid](https://testing.googleblog.com/2015/04/just-say-no-to-more-end-to-end-tests.html#testing_pyramid:~:text=units%20work%20together.-,Testing%20Pyramid,-Even%20with%20both) puts 
-end-to-end testing (also sometimes called UI testing) at the top of the pyramid. While the testing pyramid is not a perfect representation of the importantance of each level of testing, it serves as a very good high level overview of what kind of balance to strike between the various kinds of tests in an application.  The idea is that you should have lots of unit tests (which are 
-fast, but only test the code in a shallow way) and very few end-to-end tests, which test the code the way a real user interacts with your application,
-but are expensive to run and expensive to maintain.
+The [testing pyramid](https://testing.googleblog.com/2015/04/just-say-no-to-more-end-to-end-tests.html#testing_pyramid:~:text=units%20work%20together.-,Testing%20Pyramid,-Even%20with%20both) (shown below) is a way of thinking about three kinds of tests:
+
+* Unit tests, at the bottom of the pyramid, test each unit of the system *in isolation from all other units*.  Ideally, for unit tests, anything external to the unit (e.g. database calls, api calls, etc.) is *mocked*; i.e. instead of the test depending on the correct behavior of the external method or function, a mock of that method or function is supplied that supplies the values that the test expects.
+* Integration tests, in the middle, test how two or more units function together.  Here, we are still testing some individual unit of software (for example, a backend controller), but in this case, we might actually use actual database calls to a real live database. That allows us, for example, to perform a `POST` operations on an end point, and then assert that the number of rows in the appropriate database table went up by one, and that the contents of the affected database row are correct. In this case, it's important that the external dependencies (e.g. the database) be in a *known start state* and are *isolated* from the effects of other tests.  Some things, though, that are external might still need to be mocked (for example, an API that changes the state of the world in some way in a system other than the one under test, or an API that might return different information depending on the time of day.)
+* End to End tests, at the top, are tests where we try as much as possible to *not* depend on specific implementations of features, but instead, just interact with the system the way a human user would.  For end to end tests, we use a testing framework that can simulate the actions of a human user interacting with a real browser. 
 
 <img width="454" alt="testing pyramid" src="https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/cfbc9f96-af05-45de-bf54-bff7472a262a">
+
+The pyramid puts 
+end-to-end testing (also sometimes called UI testing) at the top of the pyramid and unit tests at the bottom.  The pyramid is meant to represent the idea that most of your tests
+should be unit tests, with fewer integration tests, and even fewer end-to-end tests.  Unit tests are tend to run quickly, and test failures are typically easier to debug.  However, units
+testing only tests the code in a relatively shallow way; bugs may remain even if all of the unit tests pass.  End-to-end tests test the code much more thoroughly, and interact 
+wtih your systems the way a real user interacts with your application, which can be more valuable in terms of finding problems. However, they run much more slowly,  are expensive to write
+and maintain, and it can be much more difficult to pin down the reason for a test failure.  Integration tests fall somewhere in the middle.
+
+This article from a blog maintained by developers at Google goes into more detail about this idea:
+
+* <https://testing.googleblog.com/2015/04/just-say-no-to-more-end-to-end-tests.html#testing_pyramid:~:text=units%20work%20together.-,Testing%20Pyramid,-Even%20with%20both>
+
+
 
 # The Three Levels 
 
