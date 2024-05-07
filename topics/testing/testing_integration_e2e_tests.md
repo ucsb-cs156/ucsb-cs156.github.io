@@ -20,13 +20,32 @@ This article describes various aspects about these tools that you may need to kn
 
 ## Playwright
 
-Playwright is an automation library for browser testing that allows us to simulate actions that a user might perform when interacting with our web application. You may have heard of similar libraries like Cypress and Selenium. 
-ANDREW FILL THIS IN.  You may make reference to the code in the STARTER-jpa03 and/or STARTER-team03 repos if it helps.
+[Playwright](https://playwright.dev/java/docs/intro) is an automation library for browser testing that allows us to simulate actions that a user might perform when interacting with our web application. You may have heard of similar libraries like Cypress and Selenium. 
+
+Playwright, like other similar librarires, allows us to perform tests on our application in an instance of a real browser. We use it to click buttons, fill out fields, and make assertions about the contents of the page we are viewing.
+
+In our simplest team03 Playwright test, [`HomePageWebIT.java`](https://github.com/ucsb-cs156-s24/STARTER-team03/blob/main/src/test/java/edu/ucsb/cs156/example/web/HomePageWebIT.java):
+
 
 ## Wiremock
 
-The projects in this course all use third party authentication providers, in most cases Google, and in the case of Organic, Github. Using authentication providers give
-ANDREW FILL THIS IN.  You may make reference to the code in the STARTER-jpa03 and/or STARTER-team03 repos if it helps.
+The projects in this course all use third party authentication providers, in most cases Google, and in the case of [Organic](https://github.com/ucsb-cs156/proj-organic), Github. Using authentication providers gives a secure way of implementing a user system without having to involve ourselves with the implementation of our own authenitication service, with all of the security and logistical considerations that come with it. What that also means, is that when we want to do things like end-to-end testing, if we wanted to use Google's oauth, it would require us to use legitimate user information which would be unwise. To make up for this, without having to implement an oauth provider for ourselves, we use [Wiremock](https://wiremock.org/).
+
+Wiremock is a tool that allows for the mocking of API calls. We use it to mock the API calls our application makes that interact with Google's service, so instead of getting the Google account sign in screen, we get our own fake sign in screen and the app uses the fake user info that we have specified.
+
+Regular Google login:
+
+![regularlogin](https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/56096744/8bd2c64c-0f45-4938-bdbf-a54a738ce955)
+
+Using Wiremock:
+
+![wiremocklogin](https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/56096744/f95c958d-b443-4719-8973-981a3df17bfb)
+
+Wiremock runs on its own port, in our applications it is on 8090, and when requests are made to our mocked APIs, the API call is redirected to Wiremock server on port 8090 which fulfills the request to our specificiation.
+
+In our applications Wiremock is used in two profiles, a dedicated `WIREMOCK` profile, and the `INTEGRATION` profile. 
+
+
 
 ## H2
 
@@ -49,13 +68,40 @@ The way we accomplish this in the code is with the following lines in the code b
 ANDREW: Continue from here.
 ```
 
-## Running the Integration Tests
+## Running the Integration and End-to-end Tests
 
-ANDREW: describe the commands for running the tests
+You may be used to running `mvn test` in order to run the test suite for the application, but integration and end-to-end tests run with a seperate command.
 
-## Debugging the Integration Tests
+In order to run the integration and end-to-end test suite you should use the following series of commands.
 
-ANDREW: describe the commands for running the tests with `HEADLESS=false` and why you might want to do that, and maybe even show some
-animations of what it looks like when you do.
+```
+mvn clean
+```
 
-You can use licecap to create the animations...
+To make sure that we do not have anything lingering from previous test runs. Running `mvn clean` is important because the tests are highly sensitive and can fail if this is not done before the next steps.
+
+```
+INTEGRATION=true mvn test-compile
+```
+
+This step is this test compile command that has this `INTEGRATION=true` command at the front. What this does is specifies that the program should run in the profile for integration tests. This command may take a while becuase it compiles the frontend with the backend.
+
+```
+INTEGRATION=true mvn failsafe:integration-test
+```
+
+This command actually runs the test suite. If you have previously gone through these three commands and have **ONLY** modified the test cases then you may just use the last command,`INTEGRATION=true mvn failsafe:integration-test`. Otherwise you may need to recompile. 
+
+## Debugging the End-to-end Tests
+
+End-to-end test can typically be run in two modes.
+
+1.  "headless", where there is no real browser being rendered on a screen; it's all just simulated in memory.  This is the usual way of running end-to-end tests because its a lot faster.
+
+2. "not headless" where the tester can actually watch all of the interactions happen on screen (albeit very quickly) as the tests are being run. This is typically only used when developing or debugging the end-to-end tests.
+
+Our tests run "headless" by default and you can configure the tests to run "not headless" with the following:
+
+```
+INTEGRATION=true HEADLESS=false mvn failsafe:integration-test
+```
