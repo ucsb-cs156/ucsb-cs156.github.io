@@ -74,6 +74,8 @@ In our applications Wiremock is used in two profiles, a dedicated `WIREMOCK` pro
 
 ## H2
 
+H2 is a SQL database that can be embedded into Java applications, which we use in many of this course's applications for localhost development.
+
 One of the very important considerations when using a database in integration tests is to ensure that the contents of the database from one test don't interfere with the contents of the database in another test.  We want to maintain control over the database so that we can make deterministic assertions about its contents before and after a test. This can mean either wiping the database clean after each test run or giving each test its own "private copy" of the database to work with.
 
 That would allow us to do things like start with a table of Users that has 5 rows, delete 2 users, and then assert that the number of rows in the table is 3.
@@ -124,3 +126,7 @@ Our tests run "headless" by default and you can configure the tests to run "not 
 ```
 INTEGRATION=true HEADLESS=false mvn failsafe:integration-test
 ```
+
+Here is a gif of what it looks like to run "not headless" for the team03 tests.
+
+![notheadlessexample](https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/56096744/8242de41-1b1d-4335-8730-422e197655e6)
