@@ -8,7 +8,7 @@ description:  "The three levels"
 
 # The Testing Pyramid
 
-The [testing pyramid](https://testing.googleblog.com/2015/04/just-say-no-to-more-end-to-end-tests.html#testing_pyramid:~:text=units%20work%20together.-,Testing%20Pyramid,-Even%20with%20both) (shown below) is a way of thinking about three kinds of tests:
+The testing pyramid (shown below) is a way of thinking about three kinds of tests:
 
 * Unit tests, at the bottom of the pyramid, test each unit of the system *in isolation from all other units*.  Ideally, for unit tests, anything external to the unit (e.g. database calls, api calls, etc.) is *mocked*; i.e. instead of the test depending on the correct behavior of the external method or function, a mock of that method or function is supplied that supplies the values that the test expects.
 * Integration tests, in the middle, test how two or more units function together.  Here, we are still testing some individual unit of software (for example, a backend controller), but in this case, we might actually use actual database calls to a real live database. That allows us, for example, to perform a `POST` operations on an end point, and then assert that the number of rows in the appropriate database table went up by one, and that the contents of the affected database row are correct. In this case, it's important that the external dependencies (e.g. the database) be in a *known start state* and are *isolated* from the effects of other tests.  Some things, though, that are external might still need to be mocked (for example, an API that changes the state of the world in some way in a system other than the one under test, or an API that might return different information depending on the time of day.)
@@ -25,7 +25,7 @@ and maintain, and it can be much more difficult to pin down the reason for a tes
 
 This article from a blog maintained by developers at Google goes into more detail about this idea:
 
-* <https://testing.googleblog.com/2015/04/just-say-no-to-more-end-to-end-tests.html#testing_pyramid:~:text=units%20work%20together.-,Testing%20Pyramid,-Even%20with%20both>
+* <https://testing.googleblog.com/2015/04/just-say-no-to-more-end-to-end-tests.html>
 
 If you want to know even more, there's an entire chapter of the book [Software Engineering at Google](https://abseil.io/resources/swe-book) devoted to testing:
 * [Chapter 11: Testing](https://abseil.io/resources/swe-book/html/ch11.html)
