@@ -39,4 +39,15 @@ This brings up some of the important considerations for tests in a test suite be
 
 ## End-to-end Testing
 
-...despite all this, not to burst anyone's bubble, but even with more advanced topics in testing (fuzzing, concolic execution), it is impossilbe to prove for non-trivial applications, that they are free of bugs.
+End-to-end testing is the level closest to manual testing. Conceptually, it is basically an automated form of manual testing. Writing end-to-end tests requires little or no knowledge of the application's implementation, and treats the application as a "black box". Some kind of browser automation software is used to simulate the actions a user would take on an instance of a real browser. The software can simulate clicking buttons, filling out fields, and can make assertions about the contents of the web page.
+
+The point of end-to-end tests is not quite to catch any specific issue in a single unit (thats what unit tests are for), rather it's for verifying that the application behaves as expected for various tasks.
+
+End-to-end tests have two modes they are typically run in:
+
+1. “headless”, where there is no real browser being rendered on a screen; it’s all just simulated in memory. This is the usual way of running end-to-end tests because its a lot faster.
+2. “not headless” where the tester can actually watch all of the interactions happen on screen (albeit very quickly) as the tests are being run. This is typically only used when developing or debugging the end-to-end tests.
+
+You can find out more about the tools we have used for end-to-end testing in our stack here: 
+
+[Testing: Integration and End-to-end Testing](https://ucsb-cs156.github.io/topics/testing/testing_integration_e2e_tests.html)
