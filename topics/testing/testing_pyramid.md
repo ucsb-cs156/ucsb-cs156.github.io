@@ -3,8 +3,10 @@ parent: "Testing"
 grand_parent: Topics
 layout: default
 title: "Testing: Pyramid"
-description:  "Integration and End to End testing with our stack"
+description:  "The three levels"
 ---
+
+# The Testing Pyramid
 
 The [testing pyramid](https://testing.googleblog.com/2015/04/just-say-no-to-more-end-to-end-tests.html#testing_pyramid:~:text=units%20work%20together.-,Testing%20Pyramid,-Even%20with%20both) puts 
 end-to-end testing (also sometimes called UI testing) at the top of the pyramid. While the testing pyramid is not a perfect representation of the importantance of each level of testing, it serves as a very good high level overview of what kind of balance to strike between the various kinds of tests in an application.  The idea is that you should have lots of unit tests (which are 
@@ -33,59 +35,8 @@ Integration tests come in many forms and can even have the same structure as a u
 
 For example, a controller integration test may have the exact same structure as a controller unit test, but instead of mocking the calls to the database, a real database is used with real calls made to it. 
 
-This brings up some of the important considerations for tests in a test suite beyond unit testing, maintaing the database in a controlled way such that we can make assumptions about its contents prior to the test, and assertions after. If we have consecutive tests that involve database operations we do not want stuff from the first test to affect the second test, as it can result in uncertainty about the state of the database in the second test. There are a number of options to achieve this, all of which incur some level of cost. More on how we decided to tackle this issue in [`H2`](https://ucsb-cs156.github.io/topics/testing/testing_pyramid.html#h2) below.
+This brings up some of the important considerations for tests in a test suite beyond unit testing, maintaing the database in a controlled way such that we can make assumptions about its contents prior to the test, and assertions after. If we have consecutive tests that involve database operations we do not want stuff from the first test to affect the second test, as it can result in uncertainty about the state of the database in the second test. There are a number of options to achieve this, all of which incur some level of cost. More on how we decided to tackle this issue in [`this article`](https://ucsb-cs156.github.io/topics/testing/testing_integration_e2e_tests.html).
 
 ## End-to-end Testing
 
 ...despite all this, not to burst anyone's bubble, but even with more advanced topics in testing (fuzzing, concolic execution), it is impossilbe to prove for non-trivial applications, that they are free of bugs.
-
-# In the Context of our Stack
-In our applications, we run end to end tests using these tools:
-
-* Playwright (the Java version), to simulate how a user interacts with the application in a browser
-* Wiremock, to simulate OAuth2 authentication with external OAuth providers (e.g. Google, Github) so that we don't have to hardcode real usernames and passwords
-* H2 to set up a database for these end-to-end tests.
-
-This article describes various aspects about these tools that you may need to know when working with our stack.
-
-## Playwright
-
-Playwright is an automation library for browser testing that allows us to simulate actions that a user might perform when interacting with our web application. You may have heard of similar libraries like Cypress and Selenium. 
-ANDREW FILL THIS IN.  You may make reference to the code in the STARTER-jpa03 and/or STARTER-team03 repos if it helps.
-
-## Wiremock
-
-The projects in this course all use third party authentication providers, in most cases Google, and in the case of Organic, Github. Using authentication providers give
-ANDREW FILL THIS IN.  You may make reference to the code in the STARTER-jpa03 and/or STARTER-team03 repos if it helps.
-
-## H2
-
-One of the issues when using a database in integration tests is to ensure that the contents of the database from one test don't interfere with the contents
-of the database in another test.  Essentially, we want each integration test to have its own "private copy" of the database.  
-
-That allows us
-to do things like start with a table of Users that has 5 rows, delete 2 users, and then assert that the number of rows in the table is 3.
-
-Clearly, if there were more than one test running against the same database, adding and deleting users, with the tests running in parallel,
-this could get dodgy.
-
-The way we accomplish this in the code is with the following lines in the code base:
-
-1. The line: `spring.datasource.url=jdbc:h2:mem:${random.uuid}` in `src/main/resources/application-integration.properties`
-2. The  annotation `@DirtiesContext(classMode = ClassMode.BEFORE_EACH_TEST_METHOD)` in the tests themselves.
-3.
-```
-
-ANDREW: Continue from here.
-```
-
-## Running the Integration Tests
-
-ANDREW: describe the commands for running the tests
-
-## Debugging the Integration Tests
-
-ANDREW: describe the commands for running the tests with `HEADLESS=false` and why you might want to do that, and maybe even show some
-animations of what it looks like when you do.
-
-You can use licecap to create the animations...
