@@ -27,7 +27,8 @@ This article from a blog maintained by developers at Google goes into more detai
 
 * <https://testing.googleblog.com/2015/04/just-say-no-to-more-end-to-end-tests.html#testing_pyramid:~:text=units%20work%20together.-,Testing%20Pyramid,-Even%20with%20both>
 
-
+If you want to know even more, there's an entire chapter of the book [Software Engineering at Google](https://abseil.io/resources/swe-book) devoted to testing:
+* [Chapter 11: Testing](https://abseil.io/resources/swe-book/html/ch11.html)
 
 # The Three Levels 
 
