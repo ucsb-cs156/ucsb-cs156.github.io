@@ -24,8 +24,35 @@ This article describes various aspects about these tools that you may need to kn
 
 Playwright, like other similar librarires, allows us to perform tests on our application in an instance of a real browser. We use it to click buttons, fill out fields, and make assertions about the contents of the page we are viewing.
 
-In our simplest team03 Playwright test, [`HomePageWebIT.java`](https://github.com/ucsb-cs156-s24/STARTER-team03/blob/main/src/test/java/edu/ucsb/cs156/example/web/HomePageWebIT.java):
+Using our simplest team03 Playwright test, [`HomePageWebIT.java`](https://github.com/ucsb-cs156-s24/STARTER-team03/blob/main/src/test/java/edu/ucsb/cs156/example/web/HomePageWebIT.java) as an example, we'll break down some important code blocks that allow Playwright to work.
 
+The class annotation `@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)` tells the test to load the application onto our `DEFINED_PORT` of 8080 so that we can interact with the web application from that port on localhost.
+
+```
+@Value("${app.playwright.headless:true}")
+private boolean runHeadless;
+
+@LocalServerPort
+private int port;
+
+private Browser browser;
+private Page page;
+
+@BeforeEach
+public void setup() {
+    browser = Playwright.create().chromium().launch(new BrowserType.LaunchOptions().setHeadless(runHeadless));
+
+    BrowserContext context = browser.newContext();
+    page = context.newPage();
+}
+
+@AfterEach
+public void teardown() {
+    browser.close();
+}
+```
+
+This is the core of what allows us to use Playwright in our end-to-end tests...
 
 ## Wiremock
 
@@ -43,30 +70,22 @@ Using Wiremock:
 
 Wiremock runs on its own port, in our applications it is on 8090, and when requests are made to our mocked APIs, the API call is redirected to Wiremock server on port 8090 which fulfills the request to our specificiation.
 
-In our applications Wiremock is used in two profiles, a dedicated `WIREMOCK` profile, and the `INTEGRATION` profile. 
-
-
+In our applications Wiremock is used in two profiles, a dedicated `WIREMOCK` profile, and the `INTEGRATION` profile...
 
 ## H2
 
-One of the issues when using a database in integration tests is to ensure that the contents of the database from one test don't interfere with the contents
-of the database in another test.  Essentially, we want each integration test to have its own "private copy" of the database.  
+One of the very important considerations when using a database in integration tests is to ensure that the contents of the database from one test don't interfere with the contents of the database in another test.  We want to maintain control over the database so that we can make deterministic assertions about its contents before and after a test. This can mean either wiping the database clean after each test run or giving each test its own "private copy" of the database to work with.
 
-That allows us
-to do things like start with a table of Users that has 5 rows, delete 2 users, and then assert that the number of rows in the table is 3.
+That would allow us to do things like start with a table of Users that has 5 rows, delete 2 users, and then assert that the number of rows in the table is 3.
 
-Clearly, if there were more than one test running against the same database, adding and deleting users, with the tests running in parallel,
-this could get dodgy.
+Clearly, if there were more than one test running against the same database, adding and deleting users, with the tests running in parallel, this has the potential to get dodgy.
 
 The way we accomplish this in the code is with the following lines in the code base:
 
-1. The line: `spring.datasource.url=jdbc:h2:mem:${random.uuid}` in `src/main/resources/application-integration.properties`
-2. The  annotation `@DirtiesContext(classMode = ClassMode.BEFORE_EACH_TEST_METHOD)` in the tests themselves.
-3.
-```
+1. The line: `spring.datasource.url=jdbc:h2:mem:${random.uuid}` in `src/main/resources/application-integration.properties`. When running in the `INTEGRATION` profile, this line instructs the application, when assigning a database, to choose a random uuid.
+2. The annotation `@DirtiesContext(classMode = ClassMode.BEFORE_EACH_TEST_METHOD)` in the tests themselves. This tells the application to "mark" the "context" (database) as dirty before each test. 
 
-ANDREW: Continue from here.
-```
+The combination of these two lines allows us to get a clean database for each test. When the database is marked as "dirty" before each test, the application sets up a new database with a new uuid. Now this is not perfect as there is still a chance that the same uuid is selected when spinning up a new databse.
 
 ## Running the Integration and End-to-end Tests
 
