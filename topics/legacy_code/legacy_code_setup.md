@@ -68,13 +68,12 @@ git push origin w24-4pm-2
 Then create a Pull Request by opening the url, for example: <https://github.com/ucsb-cs156/proj-happycows/pull/new/w24-4pm-2>
 
 
-The pull request might have a description such as this one.  Note that `url-goes-here` is a placeholder; we'll discuss getting those release notes into the repo
-in a moment.
+The pull request might have a description such as this one.  Note that the url for the release notes won't work yet, but we'll fix that in the next step.
 
 ```
-In this PR, we bring over all of the work of the CS156 team w24-4pm-2.
+This PR incorporate all of the changes from the CS156 team w24-6pm-1.
 
-[Release Notes](url-goes-here)
+[Release Notes](https://github.com/ucsb-cs156/proj-organic/blob/w24-6pm-1/docs/release-notes/w24-6pm-1.pdf)
 ```
 
 ## Step 3: Release Notes
@@ -85,13 +84,12 @@ Now, find the release notes from the winning team, and if they are not in markdo
 
 Working in the branch for the winning team in the main project repo, add a commit that adds a `docs/release-notes/w24-4pm-2.pdf` file.
 
-Then, get the link to that file (on the new branch) and replace it in the PR description; for example:
+Then, make sure the link in the PR description now works, and if needed, update the link to that file (on the new branch) in the PR description:
 
 ```
-This PR incroporates all of the changes from the CS156 team w24-4pm-2.
+This PR incorporate all of the changes from the CS156 team w24-6pm-1.
 
-[Release Notes](https://github.com/ucsb-cs156/proj-happycows/blob/w24-4pm-2/docs/release-notes/w24-4pm-2.pdf)
-
+[Release Notes](https://github.com/ucsb-cs156/proj-organic/blob/w24-6pm-1/docs/release-notes/w24-6pm-1.pdf)
 ```
 
 ## Step 4: Code review, Test, Fix PR to get ready to merge
