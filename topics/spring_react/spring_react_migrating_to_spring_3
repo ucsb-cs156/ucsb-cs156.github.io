@@ -9,6 +9,7 @@ indent: true
 ---
 
 # {{page.title} 
+
 ## {{page.description}}
 
 All of the Spring/React legacy code apps used in CMPSC 156 that were started in S24 or earlier used Spring 2.
