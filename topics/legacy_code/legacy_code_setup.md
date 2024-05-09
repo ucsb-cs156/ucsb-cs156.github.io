@@ -85,7 +85,14 @@ Now, find the release notes from the winning team, and if they are not in markdo
 
 Working in the branch for the winning team in the main project repo, add a commit that adds a `docs/release-notes/w24-4pm-2.pdf` file.
 
-Then, get the link to that file and replace it in the PR description.
+Then, get the link to that file (on the new branch) and replace it in the PR description; for example:
+
+```
+This PR incroporates all of the changes from the CS156 team w24-4pm-2.
+
+[Release Notes](https://github.com/ucsb-cs156/proj-happycows/blob/w24-4pm-2/docs/release-notes/w24-4pm-2.pdf)
+
+```
 
 ## Step 4: Code review, Test, Fix PR to get ready to merge
 
