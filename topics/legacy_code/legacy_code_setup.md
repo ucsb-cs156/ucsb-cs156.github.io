@@ -80,9 +80,23 @@ This PR incorporate all of the changes from the CS156 team w24-6pm-1.
 
 Note: starting with S24/F24, this step may become less necessary, since we'll try to incorporate the PDF of the release notes into the workflow, or else ask that the release notes be in markdown format.
 
-Now, find the release notes from the winning team, and if they are not in markdown format (e.g. if they are in a Google Drive document), convert them to PDF.
+Working on the branch for the team in the main project repo (e.g. branch `w24-6pm-1` in `proj-organic`), create a directory for the release notes if it doesn't already exist:
 
-Working in the branch for the winning team in the main project repo, add a commit that adds a `docs/release-notes/w24-4pm-2.pdf` file.
+```
+mkdir -p docs/release-notes
+```
+
+Now, find the release notes from the winning team, and if they are not in markdown format (e.g. if they are in a Google Drive document), convert them to PDF, and save into `docs/release-notes/w24-6pm-1.pdf` (changing the name to match the team).
+
+Still working in the branch for the winning team in the main project repo, add a commit that adds a `docs/release-notes/w24-4pm-2.pdf` file, and push this commit:
+
+
+```
+git add docs
+git status
+git commit -m "pc - add release notes for w24-6pm-1"
+git push origin w24-6pm-1
+```
 
 Then, make sure the link in the PR description now works, and if needed, update the link to that file (on the new branch) in the PR description:
 
