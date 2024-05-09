@@ -66,7 +66,7 @@ git push origin w24-4pm-2
 ```
 
 Then create a Pull Request by opening the url, for example: <https://github.com/ucsb-cs156/proj-happycows/pull/new/w24-4pm-2>
-```
+
 
 The pull request might have a description such as this one.  Note that `url-goes-here` is a placeholder; we'll discuss getting those release notes into the repo
 in a moment.
