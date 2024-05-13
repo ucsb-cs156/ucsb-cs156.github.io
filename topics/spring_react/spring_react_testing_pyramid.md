@@ -25,7 +25,7 @@ This guide explains, step-by-step, how to introduce integration and end-to-end t
 
 For this tutorial we are using the `proj-happycows` codebase as an example.
 
-I highly recommend reading the following article prior to getting started with this guide, as man of the new tools and techincal details are broken down in the article, as opposed to repeated in this guide.
+I highly recommend reading the following article prior to getting started with this guide, as man of the new tools and techincal details are broken down and explained in the article, as opposed to repeated in this guide.
 
 [Integration and End-to-end Testing in our Stack](https://ucsb-cs156.github.io/topics/testing/testing_integration_e2e_tests.html)
 
@@ -50,7 +50,7 @@ Playwright and Wiremock dependencies:
 </dependency>
 ```
 
-The next thing to add is an additional plugin, `maven-surefire-plugin` which enables us to use the command `mvn failsafe:integration-test` which runs all of our integration and end-to-end tests. Some projects may already have this plugin added, please use the following if possible.
+The next thing to add is an additional plugin, `maven-surefire-plugin` which enables us to use the command `mvn failsafe:integration-test` which runs all of our integration and end-to-end tests. Some projects may already have this plugin added, please use the following/latest version if possible.
 
 ```
 <!-- This fixes a problem as explained in this SO article:
@@ -170,6 +170,8 @@ Lastly we add the following two profiles, wiremock and integration. The wiremock
   </build>
 </profile>
 ```
+
+You can specify the application to run in either of these profiles by appending either `WIREMOCK=true` or `INTEGRATION=true` before the Maven command you wish to do. This is equivalent to putting the variable inside your `.env`, but its more convenient to do it from the command line especially when changing profiles frequently.
 
 ## Step 2: Spring Profiles
 
@@ -322,13 +324,78 @@ and in the `/frontend` directory
 npm start
 ```
 
-If our login button redirects us correctly to our html page, and we are able to succesfully login with the fake user (admingaucho@ucsb.edu) then this step is complete.
+If our login button redirects us correctly to our html page, and we are able to succesfully login with the fake admin user (admingaucho@ucsb.edu) then this step is complete.
 
 ## Step 4: Integration Tests
 
 Finally, after all that setup, we can begin working on adding some integration tests.
 
-Mockcurrentuserserviceimpl
+Note that, our goal with this guide is not to have a complete integration or end-to-end test suite, rather it is to present a baseline example of what the test suite should look like and hopefully provide enough such that any future work can continue from that point.
+
+Before starting, you may run into a potential issue with conflicting bean definitions. This arises when Spring is attempting to auto-inject beans, but it is unable to determine which definition to use when two beans have the same signature. This currently happens in our application between the `CurrentUserServiceImpl.java` and `MockCurrentUserServiceImpl.java`. To resolve this, we must add the `@Primary` annotation to our `CurrentUserServiceImpl` class as well as change the name of the `@Service()` in `MockCurrentUserServiceImpl` from `currentUser` to `testingUser`.
+
+Next, we'll select a controller to begin writing integration tests for. For the proj-happycows application we will use the `CommonsController.java`, and we'll add a file `CommonsIT.java` under a new `/integration` folder with a simple integration test for GET (imports excluded): 
+
+```
+@ExtendWith(SpringExtension.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@AutoConfigureMockMvc
+@ActiveProfiles("integration")
+@Import(TestConfig.class)
+@DirtiesContext(classMode = ClassMode.BEFORE_EACH_TEST_METHOD)
+public class CommonsIT {
+    @Autowired
+    public CurrentUserService currentUserService;
+
+    @Autowired
+    public GrantedAuthoritiesService grantedAuthoritiesService;
+
+    @Autowired
+    CommonsRepository commonsRepository;
+
+    @Autowired
+    public MockMvc mockMvc;
+
+    @Autowired
+    public ObjectMapper mapper;
+
+    @MockBean
+    UserRepository userRepository;
+
+    @Autowired
+    private ObjectMapper objectMapper;
+
+    @WithMockUser(roles = {"USER"})
+    @Test
+    public void getCommonsTest() throws Exception {
+        List<Commons> expectedCommons = new ArrayList<Commons>();
+        Commons Commons1 = Commons.builder().name("TestCommons1").build();
+        expectedCommons.add(Commons1);
+
+        commonsRepository.save(Commons1);
+        
+        MvcResult response = mockMvc.perform(get("/api/commons/all").contentType("application/json"))
+                .andExpect(status().isOk()).andReturn();
+
+        String responseString = response.getResponse().getContentAsString();
+        List<Commons> actualCommons = objectMapper.readValue(responseString, new TypeReference<List<Commons>>() {
+        });
+        assertEquals(actualCommons, expectedCommons);
+    }
+}
+```
+
+You may want to consider writing a parent class for integration tests, like we have for unit tests, especially considering future growth of the test suite.
+
+In order to run our new integration test, first `mvn clean`, then:
+
+```
+INTEGRATION=true mvn test-compile
+```
+Then
+```
+INTEGRATION=true mvn failsafe:integration-test
+```
 
 ## Step 5: End-to-end Tests
 
