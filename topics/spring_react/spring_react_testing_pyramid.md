@@ -175,7 +175,7 @@ Lastly we add the following two profiles, wiremock and integration. The wiremock
 
 Now that we have added additional Maven profiles, we must add some `.properties` to support the Spring profiles that they depend on.
 
-These properties files are not application generic and require some attention to detail. Under `src\main\resources`, both of the two new files have the same intial contents and `application-development.properties` with the required changes for each new file below.
+These properties files are not application generic and require some attention to detail. Under `src/main/resources`, both of the two new files have the same intial contents and `application-development.properties` with the required changes for each new file below.
 
 Create `application-wiremock.properties` with the same contents as `application-development.properties` however you must add the following.
 
@@ -196,7 +196,7 @@ spring.security.oauth2.client.provider.my-oauth-provider.user-info-authenticatio
 spring.security.oauth2.client.provider.my-oauth-provider.user-name-attribute=sub
 
 app.oauth.login=${OAUTH_LOGIN:${env.OAUTH_LOGIN:/oauth2/authorization/my-oauth-provider}}
-app.admin.emails=${ADMIN_EMAILS:${env.ADMIN_EMAILS:admingaucho@ucsb.edu}}
+app.admin.emails=admingaucho@ucsb.edu
 ```
 
 Create `application-integration.properties` now with the same contents as the newly created `application-wiremock.properties`, and add the following line:
@@ -217,11 +217,118 @@ To this:
 spring.datasource.url=jdbc:h2:mem:${random.uuid}
 ```
 
-The changes described in Steps 1 and 2 can be seen in the following [pull request]().
+Add the following line to `application.properties`.
+
+```
+app.oauth.login=${OAUTH_LOGIN:${env.OAUTH_LOGIN:/oauth2/authorization/google}}
+```
 
 ## Step 3: Wiremock Service
 
+Now we are going to introduce the `WiremockService`. This service is used in the `Wiremock` profile for localhost debugging of the mocked oauth flow, and in the `Integration` profile in each of our end-to-end tests.
+
+The addition of this service requires multiple new files as well as changes to a number of files in both the frontend and backend.
+
+First, under `src/test/resources/__files` (create the necessary folders if they do not exist) create a file `login.html` with:
+
+```
+<html>
+<body>
+Login page for wiremock oauth
+<br />
+<form method="POST" action="/login">
+    <input type="hidden" name="state" value="{{request.query.state}}"/>
+    <input type="hidden" name="redirectUri" value="{{request.query.redirect_uri}}"/>
+
+    <p>Note: username and password are currently ignored when using wiremock</p>
+    <input id=username type="text" name="username" />
+    <input id=password type="password" name="password" />
+
+    <input id=submit type="submit" value="Login" />
+</form>
+</body>
+</html>
+```
+
+This HTML page serves as our 'login' page. At this point in time, the fields do not affect the result.
+
+Next we'll add the three files that make up the `WiremockService`. 
+
+* [`WiremockService.java`](https://github.com/ucsb-cs156-s24/STARTER-team03/blob/main/src/main/java/edu/ucsb/cs156/example/services/wiremock/WiremockService.java)
+* [`WiremockServiceDummy.java`](https://github.com/ucsb-cs156-s24/STARTER-team03/blob/main/src/main/java/edu/ucsb/cs156/example/services/wiremock/WiremockServiceDummy.java)
+* [`WiremockServiceImpl.java`](https://github.com/ucsb-cs156-s24/STARTER-team03/blob/main/src/main/java/edu/ucsb/cs156/example/services/wiremock/WiremockServiceImpl.java)
+
+In order to utilize the service we have added, we need to add two application runners to `_Application.java`, in our case `HappierCowsApplication.java`.
+
+```
+@Autowired
+WiremockService wiremockService;
+
+@Profile("wiremock")
+@Bean
+public ApplicationRunner wiremockApplicationRunner() {
+  return arg -> {
+    log.info("wiremock mode");
+    wiremockService.init();
+    log.info("wiremockApplicationRunner completed");
+  };
+}
+
+@Profile("development")
+@Bean
+public ApplicationRunner developmentApplicationRunner() {
+  return arg -> {
+    log.info("development mode");
+    log.info("developmentApplicationRunner completed");
+  };
+}
+```
+
+The first uses our new service when in the Spring profile 'wiremock' and the second does not have any functionality but rather serves as an example.
+
+Now that we have added this new service, we must update our test case parent class `ControllerTestCase.java` and any tests that do not use it as a parent, including a mock bean:
+
+```
+@MockBean
+WiremockService mockWiremockService;
+```
+
+Next, one of the functions we desire from the 'wiremock' profile is the ability to click the login button on the navbar and be directed to our 'fake' login page. To do this we must add a field `private String oauthLogin;` to our `SystemInfo.java` so that we can use the value in our navbar. In `SystemInfoServiceImpl.java` we extract this value from the properties files we addeed earlier using the following annotation.
+
+```
+@Value("${app.oauth.login:/oauth2/authorization/google}")
+private String oauthLogin;
+```
+
+We must also approprirately update the `getSystemInfo()` method as well as the `SystemInfoControllerTests.java`.
+
+Now, to the frontend navbar `AppNavbar.js`, we'll add a variable that extracts this value from the `systemInfo` passed to the navbar component, and we'll change the href of our login button to use this variable instead of the hardcoded string we have.
+
+```
+var oauthLogin = systemInfo?.oauthLogin || "/oauth2/authorization/google";
+```
+
+For proj-happycows, we also have a login page that replaces the home page if the user is not yet logged in. We must also modify that. With these frontend changes we must also update the unit tests.
+
+Now to test whether or not the `wiremock` profile works, we can deploy the application using:
+
+```
+WIREMOCK=true mvn spring-boot:run
+```
+
+and in the `/frontend` directory
+
+```
+npm start
+```
+
+If our login button redirects us correctly to our html page, and we are able to succesfully login with the fake user (admingaucho@ucsb.edu) then this step is complete.
+
 ## Step 4: Integration Tests
+
+Finally, after all that setup, we can begin working on adding some integration tests.
+
+Mockcurrentuserserviceimpl
 
 ## Step 5: End-to-end Tests
 
@@ -262,7 +369,7 @@ jobs:
       run: INTEGRATION=true mvn -B test-compile failsafe:integration-test
 ```
 
-## Step 7: Documentation
+## Step 7: Testing Documentation
 
 ## Considerations for Future Work
 
