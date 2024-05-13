@@ -260,6 +260,20 @@ Next we'll add the three files that make up the `WiremockService`.
 * [`WiremockServiceDummy.java`](https://github.com/ucsb-cs156-s24/STARTER-team03/blob/main/src/main/java/edu/ucsb/cs156/example/services/wiremock/WiremockServiceDummy.java)
 * [`WiremockServiceImpl.java`](https://github.com/ucsb-cs156-s24/STARTER-team03/blob/main/src/main/java/edu/ucsb/cs156/example/services/wiremock/WiremockServiceImpl.java)
 
+Since this service is only used for testing purposes, we can exclude them from Jacoco and Pitest.
+
+Add this line to the `pom.xml` under the Jacoco plugin:
+
+```
+<exclude>**/edu/ucsb/cs156/happiercows/services/wiremock/*</exclude>
+```
+And these lines under the Pitest plugin:
+```
+<param>edu.ucsb.cs156.happiercows.services.wiremock.WiremockService</param>
+<param>edu.ucsb.cs156.happiercows.services.wiremock.WiremockServiceDummy</param>
+<param>edu.ucsb.cs156.happiercows.services.wiremock.WiremockServiceImpl</param>
+```
+
 In order to utilize the service we have added, we need to add two application runners to `_Application.java`, in our case `HappierCowsApplication.java`.
 
 ```
@@ -397,7 +411,11 @@ Then
 INTEGRATION=true mvn failsafe:integration-test
 ```
 
+In this example, I've selected a somewhat basic unit test to emulate since it is good to begin with a test that is easy to debug in order to make sure that the integration test setup has been done correctly. As soon as we have a single working integration test, we can consider adding tests for more complex series of requests.
+
 ## Step 5: End-to-end Tests
+
+
 
 ## Step 6: New Github Workflow
 
