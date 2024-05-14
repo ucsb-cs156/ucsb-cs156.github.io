@@ -565,13 +565,27 @@ jobs:
 
 The last step in introduce integration and end-to-end tests is to document the new tests. To do this, we can add a section to the readme called `To Run Integration and End-to-end Tests`.
 
-We'll include the three commands that we described earlier, and the instructions for running 'not headless'.
+This section in the README should include the three commands that we described earlier, and the instructions for running 'not headless'.
 
-![image](https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/56096744/5c687846-911b-4eee-b173-61ac554bfa6c)
+```
+# To Run Integration and End-to-end tests
+
+In order to run the integration and end-to-end tests, use the following series of commands
+
+* mvn clean
+* INTEGRATION=true mvn test-compile
+* INTEGRATION=true mvn failsafe:integration-test
+
+For more information on these commands, see: https://ucsb-cs156.github.io/topics/testing/testing_integration_e2e_tests.html#running-the-integration-and-end-to-end-tests
+
+In order to run 'not headless', use the following instead of the last command:
+
+* INTEGRATION=true HEADLESS=false mvn failsafe:integration-test
+```
 
 ## Considerations for Future Work
 
 This guide to adding integration and end-to-end testing to a CS156 Spring/React application was based on the `proj-happycows` codebase. Additional codebases may offer additional challenges and require some considerations. For example, `proj-courses` will need:
 
 * Wiremock endpoints for the UCSB API
-* Equivalent in-memory implementation of MongoDB, smiilar to the in-memory H@ for the SQL database (see: [MongoDB in-memory storage engine](https://www.mongodb.com/docs/manual/core/inmemory/) )
+* Equivalent in-memory implementation of MongoDB, smiilar to the in-memory H2 for the SQL database (see: [MongoDB in-memory storage engine](https://www.mongodb.com/docs/manual/core/inmemory/) )
