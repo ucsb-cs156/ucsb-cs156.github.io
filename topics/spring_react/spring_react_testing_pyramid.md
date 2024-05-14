@@ -35,7 +35,7 @@ We must first start by adding the neccessary dependencies and profiles to our `p
 
 Playwright and Wiremock dependencies:
 
-```
+```xml
 <dependency>
   <groupId>com.microsoft.playwright</groupId>
   <artifactId>playwright</artifactId>
@@ -52,7 +52,7 @@ Playwright and Wiremock dependencies:
 
 The next thing to add is an additional plugin, `maven-surefire-plugin` which enables us to use the command `mvn failsafe:integration-test` which runs all of our integration and end-to-end tests. Some projects may already have this plugin added, please use the following/latest version if possible.
 
-```
+```xml
 <!-- This fixes a problem as explained in this SO article:
 https://stackoverflow.com/a/61936537/13960329
 -->
@@ -68,7 +68,7 @@ https://stackoverflow.com/a/61936537/13960329
 
 Lastly we add the following two profiles, wiremock and integration. The wiremock profile is for localhost debugging of any mocked API's and the integration profile is for running our new tests.
 
-```
+```xml
 <!-- to run with this profile use "WIREMOCK=true mvn spring-boot:run" -->
 <profile>
   <id>wiremock</id>
@@ -233,7 +233,7 @@ The addition of this service requires multiple new files as well as changes to a
 
 First, under `src/test/resources/__files` (create the necessary folders if they do not exist) create a file `login.html` with:
 
-```
+```html
 <html>
 <body>
 Login page for wiremock oauth
@@ -264,13 +264,13 @@ Since this service is only used for testing purposes, we can exclude them from J
 
 Add this line to the `pom.xml` under the Jacoco plugin:
 
-```
+```xml
 <exclude>**/edu/ucsb/cs156/happiercows/services/wiremock/*</exclude>
 ```
 
 And these lines under the Pitest plugin:
 
-```
+```xml
 <param>edu.ucsb.cs156.happiercows.services.wiremock.WiremockService</param>
 <param>edu.ucsb.cs156.happiercows.services.wiremock.WiremockServiceDummy</param>
 <param>edu.ucsb.cs156.happiercows.services.wiremock.WiremockServiceImpl</param>
@@ -278,7 +278,7 @@ And these lines under the Pitest plugin:
 
 as well as 
 
-```
+```xml
 <param>edu.ucsb.cs156.happiercows.web.*</param>
 ```
 
@@ -286,7 +286,7 @@ Under the Pitest `<excludedTestClasses>`.
 
 In order to utilize the service we have added, we need to add two application runners to `_Application.java`, in our case `HappierCowsApplication.java`.
 
-```
+```java
 @Autowired
 WiremockService wiremockService;
 
@@ -314,14 +314,14 @@ The first uses our new service when in the Spring profile 'wiremock' and the sec
 
 Now that we have added this new service, we must update our test case parent class `ControllerTestCase.java` and any tests that do not use it as a parent, including a mock bean:
 
-```
+```java
 @MockBean
 WiremockService mockWiremockService;
 ```
 
 Next, one of the functions we desire from the 'wiremock' profile is the ability to click the login button on the navbar and be directed to our 'fake' login page. To do this we must add a field `private String oauthLogin;` to our `SystemInfo.java` so that we can use the value in our navbar. In `SystemInfoServiceImpl.java` we extract this value from the properties files we addeed earlier using the following annotation.
 
-```
+```java
 @Value("${app.oauth.login:/oauth2/authorization/google}")
 private String oauthLogin;
 ```
@@ -330,7 +330,7 @@ We must also approprirately update the `getSystemInfo()` method as well as the `
 
 Now, to the frontend navbar `AppNavbar.js`, we'll add a variable that extracts this value from the `systemInfo` passed to the navbar component, and we'll change the href of our login button to use this variable instead of the hardcoded string we have.
 
-```
+```java
 var oauthLogin = systemInfo?.oauthLogin || "/oauth2/authorization/google";
 ```
 
@@ -360,7 +360,7 @@ Before starting, you may run into a potential issue with conflicting bean defini
 
 Next, we'll select a controller to begin writing integration tests for. For the proj-happycows application we will use the `CommonsController.java`, and we'll add a file `CommonsIT.java` under a new `/integration` folder with a simple integration test for GET (imports excluded): 
 
-```
+```java
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
@@ -427,7 +427,7 @@ In this example, I've selected a somewhat basic unit test to emulate since it is
 
 For end-to-end tests, we will have a parent test case class, similar to the `ControllerTestCase.java` for unit tests. The reason being, all of the end-to-end tests for this application will end up sharing ~50 lines of common code. We'll call it `WebTestCase.java`.
 
-```
+```java
 @ActiveProfiles("integration")
 public abstract class WebTestCase {
     @LocalServerPort
@@ -491,7 +491,7 @@ public abstract class WebTestCase {
 
  Just like our integration tests, our end-to-end tests will sit in their own folder `/web`.
 
-```
+```java
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @ActiveProfiles("integration")
@@ -530,7 +530,7 @@ Now that we have added some integration and end-to-end tests, we must add an add
 
 Create a file called `XX-backend-integration.yml` in the `.github/workflows` directory with the following contents, replacing `XX` with an appropriate, non-conflicting number. In our case, 11.
 
-```
+```yml
 # This workflow will build a Java project with Maven
 # For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
 
