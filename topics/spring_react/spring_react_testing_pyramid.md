@@ -415,7 +415,104 @@ In this example, I've selected a somewhat basic unit test to emulate since it is
 
 ## Step 5: End-to-end Tests
 
+For end-to-end tests, we will have a parent test case class, similar to the `ControllerTestCase.java` for unit tests. The reason being, all of the end-to-end tests for this application will end up sharing ~50 lines of common code. We'll call it `WebTestCase.java`.
 
+```
+@ActiveProfiles("integration")
+public abstract class WebTestCase {
+    @LocalServerPort
+    private int port;
+
+    @Value("${app.playwright.headless:true}")
+    private boolean runHeadless;
+
+    private static WireMockServer wireMockServer;
+
+    protected Browser browser;
+    protected Page page;
+
+    @BeforeAll
+    public static void setupWireMock() {
+        wireMockServer = new WireMockServer(options()
+                .port(8090)
+                .extensions(new ResponseTemplateTransformer(true)));
+
+        WiremockServiceImpl.setupOauthMocks(wireMockServer, false);
+
+        wireMockServer.start();
+    }
+
+    @AfterAll
+    public static void teardownWiremock() {
+        wireMockServer.stop();
+    }
+
+    @AfterEach
+    public void teardown() {
+        browser.close();
+    }
+
+    public void setupUser(boolean isAdmin) {
+        WiremockServiceImpl.setupOauthMocks(wireMockServer, isAdmin);
+
+        browser = Playwright.create().chromium().launch(new BrowserType.LaunchOptions().setHeadless(runHeadless));
+
+        BrowserContext context = browser.newContext();
+        page = context.newPage();
+
+        String url = String.format("http://localhost:%d/oauth2/authorization/my-oauth-provider", port);
+        page.navigate(url);
+
+        if (isAdmin) {
+            page.locator("#username").fill("admingaucho@ucsb.edu");
+        } else {
+            page.locator("#username").fill("cgaucho@ucsb.edu");
+        }
+
+        page.locator("#password").fill("password");
+        page.locator("#submit").click();
+    }
+}
+```
+
+ Our new parent class contains all of the code necessary for setting up each end-to-end test: WireMockServer setup, Playwright browser and page setup(headless or not), and logging in either as an admin or a regular user. 
+
+ With that, we can now write our first end-to-end test. The test we'll create will test whether or not an admin can succesfully create a new commons.
+
+ Just like our integration tests, our end-to-end tests will sit in their own folder `/web`.
+
+```
+@ExtendWith(SpringExtension.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
+@ActiveProfiles("integration")
+@DirtiesContext(classMode = ClassMode.BEFORE_EACH_TEST_METHOD)
+public class CommonsWebIT extends WebTestCase {
+    @Test
+    public void adminCreateCommonsTest() throws Exception {
+        setupUser(true);
+
+        page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Admin")).click();
+        page.getByText("Create Commons").click();
+
+        page.getByTestId("CommonsForm-name").fill("Web Test Commons");
+        page.getByTestId("CommonsForm-Submit-Button").click();
+
+        assertThat(page.getByTestId("commonsCard-name-1")).hasText("Web Test Commons");
+    }
+}
+```
+
+Now we have a simple test that tests whether or not an admin can succesfully create a commons using the `Create Commons` page. Luckily, the proj-happycows application has all of the fields already filled with default values, which means the minimum we have to do it fill in the name of the commons and click create.
+
+More on various Playwright actions here: [Playwright Actions](https://playwright.dev/java/docs/input)
+
+In order to run our new test, we follow the same three commands as described at the end of Step 4. 
+
+To run 'not headless' use:
+
+```
+INTEGRATION=true HEADLESS=false mvn failsafe:integration-test
+```
 
 ## Step 6: New Github Workflow
 
@@ -455,6 +552,12 @@ jobs:
 ```
 
 ## Step 7: Testing Documentation
+
+The last step in introduce integration and end-to-end tests is to document the new tests. To do this, we can add a section to the readme called `To Run Integration and End-to-end Tests`.
+
+We'll include the three commands that we described earlier, and the instructions for running 'not headless'.
+
+![image](https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/56096744/5c687846-911b-4eee-b173-61ac554bfa6c)
 
 ## Considerations for Future Work
 
