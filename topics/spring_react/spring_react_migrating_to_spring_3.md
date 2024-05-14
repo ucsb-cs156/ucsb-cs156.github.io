@@ -8,7 +8,7 @@ category_prefix: "Spring React: "
 indent: true
 ---
 
-# {{page.title} 
+# {{page.title}}
 
 ## {{page.description}}
 
