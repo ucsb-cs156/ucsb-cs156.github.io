@@ -267,12 +267,22 @@ Add this line to the `pom.xml` under the Jacoco plugin:
 ```
 <exclude>**/edu/ucsb/cs156/happiercows/services/wiremock/*</exclude>
 ```
+
 And these lines under the Pitest plugin:
+
 ```
 <param>edu.ucsb.cs156.happiercows.services.wiremock.WiremockService</param>
 <param>edu.ucsb.cs156.happiercows.services.wiremock.WiremockServiceDummy</param>
 <param>edu.ucsb.cs156.happiercows.services.wiremock.WiremockServiceImpl</param>
 ```
+
+as well as 
+
+```
+<param>edu.ucsb.cs156.happiercows.web.*</param>
+```
+
+Under the Pitest `<excludedTestClasses>`.
 
 In order to utilize the service we have added, we need to add two application runners to `_Application.java`, in our case `HappierCowsApplication.java`.
 
