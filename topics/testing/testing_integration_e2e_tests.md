@@ -52,7 +52,13 @@ public void teardown() {
 }
 ```
 
-This is the core of what allows us to use Playwright in our end-to-end tests...
+This is the core of what allows us to use Playwright in our end-to-end tests.
+
+`@Value(${app.playwright.headless:true}")` allows us to decide wether to run 'headless' or 'not headless' through and environment variable. The default value is true.
+
+The `setup()` function launches a Chromium browser with the headless option determined by the environment variable. Using the browser we can create a page from its context. The `@BeforeEach` annotation basically instructs the program to run this function before every test.
+
+In `teardown()` we just ensures that we close the browser after each test.
 
 ## Wiremock
 
@@ -70,7 +76,19 @@ Using Wiremock:
 
 Wiremock runs on its own port, in our applications it is on 8090, and when requests are made to our mocked APIs, the API call is redirected to Wiremock server on port 8090 which fulfills the request to our specificiation.
 
-In our applications Wiremock is used in two profiles, a dedicated `WIREMOCK` profile, and the `INTEGRATION` profile...
+In our applications Wiremock is used in two profiles, a dedicated `WIREMOCK` profile, and the `INTEGRATION` profile.
+
+The `WIREMOCK` profile, we have a `WiremockService` that when we launch the application locally under the `WIREMOCK` profile, the Google OAuth is replaced with our own 'fake' oauth provider. This profile exists for debugging purposes and can also be used as an alternative to the default localhost configuration.
+
+You can find an example of the three files that make up the `WiremockService` here:
+
+* [`WiremockService.java`](https://github.com/ucsb-cs156-s24/STARTER-team03/blob/main/src/main/java/edu/ucsb/cs156/example/services/wiremock/WiremockService.java)
+* [`WiremockServiceDummy.java`](https://github.com/ucsb-cs156-s24/STARTER-team03/blob/main/src/main/java/edu/ucsb/cs156/example/services/wiremock/WiremockServiceDummy.java)
+* [`WiremockServiceImpl.java`](https://github.com/ucsb-cs156-s24/STARTER-team03/blob/main/src/main/java/edu/ucsb/cs156/example/services/wiremock/WiremockServiceImpl.java)
+
+The `INTEGRATION` profile is the one we use to run our entire integration and end-to-end test suite. When running in this profile, the frontend is compiled with the backend so that our end-to-end tests can see the frontend interface.
+
+Both of these profiles can be enabled with an environment variable. Simply add either `WIREMOCK=true` or `INTEGRATION=true` to a Maven command. More in the section below 'Running the Integration and End-to-end Tests'.
 
 ## H2
 
@@ -112,6 +130,20 @@ INTEGRATION=true mvn failsafe:integration-test
 ```
 
 This command actually runs the test suite. If you have previously gone through these three commands and have **ONLY** modified the test cases then you may just use the last command,`INTEGRATION=true mvn failsafe:integration-test`. Otherwise you may need to recompile. 
+
+To run the `WIREMOCK` profile use the following:
+
+```
+mvn clean
+WIREMOCK=true mvn spring-boot:run
+```
+
+and in another terminal window:
+
+```
+cd frontend
+npm start
+```
 
 ## Debugging the End-to-end Tests
 
