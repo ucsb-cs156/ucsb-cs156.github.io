@@ -27,6 +27,8 @@ you would be supplied with separately.
 
 When you replace the values, do not include the `<>` characters.
 
+Note that the `<dbname>` is typically just `database` (if you follow the instructions in the next step).
+
 # Creating the database
 
 One person on the team will need to create the database.  Here's how that looks.
