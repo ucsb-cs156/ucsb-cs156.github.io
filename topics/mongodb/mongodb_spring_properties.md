@@ -27,6 +27,19 @@ you would be supplied with separately.
 
 When you replace the values, do not include the `<>` characters.
 
+# Creating the database
+
+One person on the team will need to create the database.  Here's how that looks.
+
+* Navigate to Database
+* Click "Browse Collections"
+* Click "Add my own data"
+* Put in `database` as the name of the database and `courses` as the name of the collection
+
+Now you have a database called "database"
+
+![mongodb-create-db](https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/f9a751dc-b7e4-4c56-a778-e3f290889eab)
+
 
 # Get the value for the connection URI
 
