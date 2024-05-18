@@ -18,4 +18,9 @@ At a certain point, it became imperative to move to Spring 3 because some of the
 
 This page describes the changes you need to make to a legacy Spring 2 app that uses the set of dependencies and code conventions associated with CMPSC 156 Spring/React apps.
 
+For the time being, this PR can serve as a guide (until we have time to write a coherent short article):
+
+* <https://github.com/ucsb-cs156-f24/STARTER-team03/pull/1>
+
 ## TODO: Fill this in
+
