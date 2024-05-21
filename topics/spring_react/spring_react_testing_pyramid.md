@@ -558,7 +558,7 @@ jobs:
          java-version-file: ./.java-version
 
     - name: Run tests with Maven
-      run: INTEGRATION=true mvn -B test-compile failsafe:integration-test
+      run: INTEGRATION=true mvn -B test-compile failsafe:integration-test failsafe:verify
 ```
 
 ## Step 7: Testing Documentation
@@ -578,9 +578,21 @@ In order to run the integration and end-to-end tests, use the following series o
 
 For more information on these commands, see: https://ucsb-cs156.github.io/topics/testing/testing_integration_e2e_tests.html#running-the-integration-and-end-to-end-tests
 
-In order to run 'not headless', use the following instead of the last command:
+To run a particular integration test (e.g. only HomePageWebIT.java) use -Dit.test=ClassName, for example:
+
+* INTEGRATION=true mvn test-compile failsafe:integration-test -Dit.test=HomePageWebIT
+
+In order to run 'not headless':
 
 * INTEGRATION=true HEADLESS=false mvn failsafe:integration-test
+
+Integration tests are any methods labelled with @Test annotation, that are under the /src/test/java hierarchy, and have names starting with IT (specifically capital I, capital T).
+
+By convention, we are putting Integration tests (the ones that run with Playwright) under the package src/test/java/edu/ucsb/cs156/example/web.
+
+Unless you want a particular integration test to also be run when you type mvn test, do not use the suffixes Test or Tests for the filename.
+
+Note that while mvn test is typically sufficient to run tests, we have found that if you haven't compiled the test code yet, running mvn failsafe:integration-test may not actually run any of the tests.
 ```
 
 ## Considerations for Future Work
