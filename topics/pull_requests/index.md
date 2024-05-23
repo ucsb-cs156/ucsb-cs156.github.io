@@ -16,33 +16,55 @@ See also:
 
 # A Checklist
 
-1. PR Title:
-   - Is it descriptive enough that someone familiar with the project can understand it at first glance?
-   - Is it short enough to be readable at a glance? (For example, don't try to put the entire "As an X I can Y so that Z" story into the title field.)
-   - See also: <https://code-review.tidyverse.org/author/submitting.html#title>
-2. Linked to an Issue?
-   - You can link to an issue with certain magic words such as `Closes #15`, `Fixes #27`
-   - But if you don't phrase it just right, the link doesn't happen.
-   - In that case, use the manual feature for linking to an issue (see below)
-3. Linked Issue is in the "In Review" column on team's Kanban board.
-4. PR is tagged with the Team's tag, like this one:
-   ![image](https://user-images.githubusercontent.com/1119017/202531598-e935a3eb-98dd-4816-8b0c-434e512e9207.png)
-5. Test cases all pass.
-   - If you have difficulty with this one, ask for help from a team member first.
-   - Then ask for help on the Slack help channel associated with the project, e.g. `#proj-ucsb-courses-search`, `#proj-ucsb-cs-las`, `#proj-mapache-search` on the slack.
-   - Then ask for help during staff office hours or during lecture/discussion work time.
-6. You have requested (and gotten) a code review from a fellow team members.
-7. You have requested (and gotten) a code review from a member of staff (i.e. an LA, TA, or the instructor)
-   - Please consult the page with team assignments (e.g. for W21 that's here: ) to see which LA and TA are assigned to your team. 
-   - Request those members of staff first; however anyone on staff can review your PR.
-8. Address all concerns brought up in the code review. This doesn't mean that you have to do exactly as the code reviewer says, but it does mean
-   that you can't just ignore what they suggest.  Acceptable ways of resolving a code review concern include:
-   - Doing what the code reviewer asks
-   - Presenting a good case why you are not going to do that (e.g. "that's a good point, but let's do that in a different issue", or "I see the situation differently; here's my point of view; let's discuss.")
-9. Address any merge conflicts that exist between your feature branch and the then current `main` branch.  You may need to "rebase" your branch on main.
-   - Merge conflicts with `package-lock.json` are a special case covered here: <https://ucsb-cs156.github.io/topics/spring_react_package_lock_json_merge_conflicts/>
-   - If you have other merge conflicts that you don't know how to resolve, ask for help.
-1. Is it still a "draft PR"?  If so, you need to convert it to a regular PR before it can be merged.
+(Revised with input from TA Anika Arora, S24)
+
+Here are a few tips when working on PRs. We won't review PRs until all these items have been taken care of, so please read this carefully and ask us if you have any questions!
+
+1.  Remove commented out code (as explained [here](https://ucsb-cs156.github.io/topics/code_reviews/commented_out_code.html)).
+2.  Each PR should deal with only *one concern* (i.e. one feature or bug fix).   This makes PRs easier to review and merge. If you have a very large PR, it may not be clear to the reviewers what it's achieving and may take longer to review and merge. [Smaller PRs are better PRs.](https://ucsb-cs156.github.io/topics/pull_requests/#did-i-mention-keep-them-small)
+3.  PR Title:
+    - Is it descriptive enough that someone familiar with the project can understand it at first glance?
+    - Is it short enough to be readable at a glance? (For example, don't try to put the entire "As an X I can Y so that Z" story into the title field.)
+    - See also: <https://code-review.tidyverse.org/author/submitting.html#title>
+4.  In your PR descriptions, lead with a sentence about what a *user or developer will notice is different*, e.g. 
+    * "This PR adds an button to the Foobar table that allows the user to delete a Foobar.  This table is only available to Admins and users with the Wizard role".
+    * "In this PR, we bump the version of the jabberwocky npm module to 3.5.1 to avoid a security vulnerability".
+    * "We've refactored code in the `BandersnatchController`, factoring out common copy/pasted code into a `validateBanderSnatch` method".
+    You can *include* "what you did" (e.g. "I added a button to the form, a deleteParams function in the utilties, etc.")  but don't *lead* with that. That's the "how".  In the first sentence, give us the "what" (what's different?) and the "why" (why is this change helpful?)
+    Then be clear about about the original functionality, the changes, and the new functionality. See [below](https://ucsb-cs156.github.io/topics/pull_requests/#pr-descriptions) for more detail.  Include before and after screenshots where possible.
+5.  Fix merge conflicts.
+    - Merge conflicts with `package-lock.json` are a special case covered here: <https://ucsb-cs156.github.io/topics/spring_react_package_lock_json_merge_conflicts/>
+    - If you have other merge conflicts that you don't know how to resolve, ask for help.
+6.  Deploy it and link to your deployment:
+    * For any change that's even moderately complex, deploy it to a dokku dev instance, and include a link to that in the PR description.  
+    * If and only if it's a frontend only change to components not yet accessiblle in the app, link to the Storybook for that PR. Note that it's *automatically published* to the Github Pages page associated with your repo.
+7.  Always **start with a new branch** that is an **up to date copy of main** (as described [here](https://ucsb-cs156.github.io/topics/git/git_feature_branch_workflow.html#more-detail-about-creating-feature-branches)), so that we can avoid merge conflicts.
+    * The only exception is when it is *absolutely necessary* to branch off an existing branch.  See [here](https://ucsb-cs156.github.io/topics/git/git_feature_branch_workflow.html#more-detail-about-creating-feature-branches) for more details.
+8.  Each PR is linked to a branch, so if you're waiting for a PR to be reviewed and starting something else in the meantime, make sure to *make a new branch from main* and then start working on the next issue.  If you don't, then the branch you are working on (and which the staff is trying to review) *becomes a moving target* and you are likely to find that it won't get merged promptly or easily.
+9. Linked to an Issue?
+    - You can link to an issue with certain magic words such as `Closes #15`, `Fixes #27`
+    - But if you don't phrase it just right, the link doesn't happen.
+    - In that case, use the manual feature for linking to an issue (see below)
+    - If you link to an issue with words like "Closes" or "Fixes", be sure that your PR *entirely* addresses the issue, becuase it will be automatically "closed" (marked as done) when the PR is merged.  If it doesn't close the issue completely use languages like "Partially addresses #5" and then explain in the PR description what is and is NOT addressed.
+10.  Linked Issue is in the "In Review" column on team's Kanban board.
+11.  PR is tagged with the Team's tag, like this one:
+     ![image](https://user-images.githubusercontent.com/1119017/202531598-e935a3eb-98dd-4816-8b0c-434e512e9207.png)
+12.  Test cases all pass.
+     - If you have difficulty with this one, ask for help from a team member first.
+     - Then ask for help on the Slack help channel associated with the project, e.g. `#proj-ucsb-courses-search`, `#proj-ucsb-cs-las`, `#proj-mapache-search` on the slack.
+     - Then ask for help during staff office hours or during lecture/discussion work time.
+   
+Now you are ready for code review, so next steps:
+
+1. Is it still a "draft PR"?  If so, you need to convert it to a regular PR before it can be code reviwed and merged.
+2.  Get a code review from a fellow team members.
+3.  Get a code review from a member of staff (i.e. an LA, TA, or the instructor)
+     - Please consult the page with team assignments (e.g. for W21 that's here: ) to see which LA and TA are assigned to your team. 
+     - Request those members of staff first; however anyone on staff can review your PR.
+4.  Address all concerns brought up in the code review. This doesn't mean that you have to do exactly as the code reviewer says, but it does mean
+    that you can't just ignore what they suggest.  Acceptable ways of resolving a code review concern include:
+    - Doing what the code reviewer asks
+    - Presenting a good case why you are not going to do that (e.g. "that's a good point, but let's do that in a different issue", or "I see the situation differently; here's my point of view; let's discuss.")
    
 # Keeping PRs small and focused
 
@@ -50,7 +72,6 @@ It's good to avoid PRs that have changes to many files in them; fewer than 10 fi
 
 Sometimes though, it's unavoidable.  In that case, a guide to the changes, as shown in this PR description, can be really helpful to your code reviewers:
 * <https://github.com/ucsb-cs156/proj-courses/pull/9>
-
 
 # Linking a PR to an issue
 
