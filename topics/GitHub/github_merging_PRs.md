@@ -45,3 +45,21 @@ But since this does happen, here's the takeaway for CMPSC 156 staff:
 * One way to tell: when you merge a PR, either (a) assign points immediately, or (b) add a tag that says: "Points Pending". 
 * Then, you can look to see if there are any other PRs that got merged that don't have points or a "Points Pending" tag.
 * If there are, add a tag for "0" points, and then add an explanation in the comments.
+
+Here's a specific example to illustrate the problem that can occur:
+
+Here's a specific example so you can see what this looks like in the wild:
+
+* [This PR](https://github.com/ucsb-cs156-s24/proj-gauchoride-s24-5pm-5/pull/35) was merged by an course staff member who did everything right.  The code was good, reviewed, passing on CI/CD.  He definitely did the right thing to merge it and assign points, and I'm grateful for his help.
+* But this also inadvertently merged [This PR](https://github.com/ucsb-cs156-s24/proj-gauchoride-s24-5pm-5/pull/31), one that on the face of it, had some problematic code and test failures.
+* So, it *looked like* the staff member had merged a PR with test failures and bad code.  They did nothing of the kind, but it sure looked like they had!
+
+To be clear, there was never any harm to the code base.   From the standpoint of whether this would "be a problem in the real world", the answer is "not really".
+
+But from the standpoint of managing the class *as an academic class*, it *appeared* that:
+* a PR had been merged (which normally earns a team points), but points had not been assigned (which would lead students to question their grade)
+* that PR was one that had significant problems that should have *prevented* it from passing the quality assurance controls that the staff are supposed to be enforcing both from the standpoint of good practice, but also *from the standpoint of teaching good practice*, which in an academic context, is crucial.
+
+Bottom line:
+* It's helpful to try to prevent this by teaching good practices for managing branches and PRs (for example, [here](https://ucsb-cs156.github.io/topics/git/git_feature_branch_workflow.html))
+* But staff also need to be on the lookout for this scenario to avoid confusion.
