@@ -39,16 +39,21 @@ Beginning with Java 9, many `javax`-namespaced libraries have been moved to the 
 Spring Boot 3 overhauled the old method of configuring various security settings. For a full description of how to refactor your code, see <https://spring.io/blog/2022/02/21/spring-security-without-the-websecurityconfigureradapter>. Here are the changes we made in the team03 project:
 
 - Use `EnableGlobalMethodSecurity`
+  
 ```diff
 - @EnableGlobalMethodSecurity(prePostEnabled = true)
 + @EnableMethodSecurity
 ```
+
 - Do not extend `WebSecurityConfigurerAdapter`
+
 ```diff
 - public class SecurityConfig extends WebSecurityConfigurerAdapter {
 + public class SecurityConfig {
 ```
+
 - Replace the `HttpSecurity` configurer with a `SecurityFilterChain` bean (note CSRF changes)
+
 ```diff
 - @Override
 - protected void configure(HttpSecurity http) throws Exception {
@@ -79,7 +84,9 @@ Spring Boot 3 overhauled the old method of configuring various security settings
 +   return http.build();
 + }
 ```
+
 - Replace the `WebSecurity` configurer with a `WebSecurityCustomizer` bean
+
 ```diff
 - @Override
 - public void configure(WebSecurity web) throws Exception {
@@ -90,7 +97,9 @@ Spring Boot 3 overhauled the old method of configuring various security settings
 +   return web -> web.ignoring().requestMatchers("/h2-console/**");
 + }
 ```
+
 - Add CSRF token distribution
+
 ```diff
 + final class SpaCsrfTokenRequestHandler extends CsrfTokenRequestAttributeHandler {
 +   private final CsrfTokenRequestHandler delegate = new XorCsrfTokenRequestAttributeHandler();
@@ -141,7 +150,9 @@ Spring Boot 3 overhauled the old method of configuring various security settings
 +   }
 + }
 ```
+
 - Update `application-integration.properties` and `application-wiremock.properties`
+
 ```diff
 - spring.security.oauth2.client.registration.my-oauth-provider.client-authentication-method=basic
 ```
@@ -149,17 +160,22 @@ Spring Boot 3 overhauled the old method of configuring various security settings
 ### Tests
 
 - Fix abstract class mocks
+
 ```diff
 - CurrentUserService currentUserService = mock(CurrentUserService.class);
 + CurrentUserService currentUserService = mock(CurrentUserService.class, Answers.CALLS_REAL_METHODS);
 ```
+
 - The `SecurityConfig` was no longer being pulled into tests automatically
+
 ```diff
 @TestConfiguration
 + @Import(SecurityConfig.class)
 public class TestConfig {
 ```
+
 - `LocalServerPort` was re-namespaced
+
 ```diff
 - import org.springframework.boot.web.server.LocalServerPort;
 + import org.springframework.boot.test.web.server.LocalServerPort;
