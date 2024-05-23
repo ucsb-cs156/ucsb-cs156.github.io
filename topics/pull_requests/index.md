@@ -6,12 +6,9 @@ description:  "aka PRs; a checklist for doing them properly"
 has_children: true
 ---
 
-
-
 # {{page.title}}
 
-
-# A Checklist
+## PR Checklist
 
 (Revised with input from TA Anika Arora, S24)
 
