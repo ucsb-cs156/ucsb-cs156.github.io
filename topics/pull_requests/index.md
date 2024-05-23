@@ -10,9 +10,6 @@ has_children: true
 
 # {{page.title}}
 
-See also: 
-* <https://code-review.tidyverse.org/>
-* <https://google.github.io/eng-practices/review/developer/> but note that everywhere you see `CL` think `PR` instead (`CL` is Google's internal terminology and stands for "Change List", i.e. a list of the changes in the Pull Request.)
 
 # A Checklist
 
@@ -53,6 +50,11 @@ Here are a few tips when working on PRs. We won't review PRs until all these ite
      - If you have difficulty with this one, ask for help from a team member first.
      - Then ask for help on the Slack help channel associated with the project, e.g. `#proj-ucsb-courses-search`, `#proj-ucsb-cs-las`, `#proj-mapache-search` on the slack.
      - Then ask for help during staff office hours or during lecture/discussion work time.
+
+For advice from industry folks, see also: 
+* <https://code-review.tidyverse.org/>
+* <https://google.github.io/eng-practices/review/developer/> but note that everywhere you see `CL` think `PR` instead (`CL` is Google's internal terminology and stands for "Change List", i.e. a list of the changes in the Pull Request.)
+
    
 Now you are ready for code review, so next steps:
 
