@@ -11,7 +11,7 @@ indent: true
 
 ## {{page.description}}
 
-We advise to [always start with a fresh copy of main]() when creating a feature branch, so that each feature branch is independent of all of the others.
+We advise to [always start with a fresh copy of main](/topics/git/git_feature_branch_workflow.html#more-detail-about-creating-feature-branches) when creating a feature branch, so that each feature branch is independent of all of the others.
 
 But what if you accidentally create a "branch off a branch" when you didn't intend to do so?
 
