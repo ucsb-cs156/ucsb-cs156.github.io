@@ -7,6 +7,9 @@ description:  "The basics: git add..., git commit..., git push ... "
 indent: true
 ---
 
+# {{page.title}} 
+## {{page.description}}
+
 This page describes the typical workflow that is used with git.
 
 # The short version
