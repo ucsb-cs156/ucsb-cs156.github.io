@@ -135,7 +135,37 @@ Please, please, please take this to heart!
 
 # PR Descriptions
 
-In many organizations, PR descriptions are read by both programmers and non-programmers.
+## PR Descriptions are an important professional skill
+
+One of the things you have an opportunity to practice and master in this class is a super important professional skill.
+
+I'm speaking of the ability to write:
+* concise and clear descriptions of issues and pull requests that:
+* set up code reviewers immediately to know what to look for
+* set up folks testing your code to know immediately how to test and what to test.
+
+If you get a reputation for being good at that, your colleagues will *really* appreciate you.  
+
+But why? Why is this skill so valued?
+
+**Concise, clear PR Descriptions are important for efficient code review and testing**.  
+
+In this course, as in a professional sw dev shop, the folks doing code review and testing are juggling dozens of issues, PRs, parts of the application, even different applications, all day.  Folks need to get through reviewing your PR quickly.  Therefore, they need your help to set the context.   
+
+That's a big part of what the PR description is for: tell the person that's reviewing and/or testing what they need to do to demonstrate that your code works properly.
+
+In this course there are 72-96 of you on 12-16 teams.  Many of you have multiple PRs.  The number of issues across all of the apps and teams is pretty staggering; it's not something that you can expect the instructor, TAs, or LAs to have in their head.  
+
+This isn't a class where "everyone is working on the same problem".  Instead, by design its set up to be a class that tries to simulate the complexity of a large real-world software development organization.  There are four apps, and dozens and dozens of issues. Even when multiple students on different teams are working on the same issue for the same app, they may take very different approaches.
+
+The point is: it if takes me 5 minutes of reading to figure out what you were trying to do, the PR reviewing is going to go very slowly. That's going to be frustating for you, but in actually *has an impact on everyone in the course*. 
+
+Whereas, if you help me by writing a very clear concise summary of what I need to know in order to review and test your code, with me having to click on another page where the issue is described, that's super helpful, again, not just to you, but to *everyone in the course*.
+
+
+## PR Descriptions need to start with non-technical language
+
+Furthemore, in many organizations, PR descriptions are read by both programmers and non-programmers.
 
 What are the non-programmers doing reading PR descriptions?  They may be going through them to:
 * put together updates about what has changed in the app in the past week, month or quarter that are provided to tech support, sales, and customers
@@ -145,6 +175,7 @@ What are the non-programmers doing reading PR descriptions?  They may be going t
 So it is important that your PR descriptions include, first, a *brief description of the impact on the end user*, in terms that an end user (or a non-programmer that's very, very familiar with the app from an end user perspective) would understand.
 
 It's ok if you then go on to provide some technical details.   But lead with the *non-technical description*.
+
 
 See also: <https://code-review.tidyverse.org/author/submitting.html#sec-body>
 
