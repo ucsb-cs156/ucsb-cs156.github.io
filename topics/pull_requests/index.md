@@ -169,11 +169,15 @@ These are not acceptable PR titles:
 * Add CRUD operations
 * Add GET/POST to backend
 * Fix PUT route
+* Fred Schools
+* Emily Staff
 
 These are better PR titles:
 * Add backend for CRUD operations for RideRequests
 * Add GET/POST for CowLots
 * Fix PUT route for personal schedule
+* Frontend for CRUD operations for Schools
+* Backend CRUD operations for Staff
 
 Do you see the difference? With these titles you can look and at a glance, you know what the PR is referring to.
 
