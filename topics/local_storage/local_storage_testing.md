@@ -10,7 +10,7 @@ description:  "how to write jest tests involving local storage"
 
 Here are some examples of writing jest tests that involve local storage.
 
-## Disclaimer about code examples
+## Disclaimer
 
 Keep in mind that all code examples on this page were up-to-date at the time they were posted, but that the
 code base is ever changing.  We have used "github permalinks" to link to the source code *as it was* at the time
@@ -42,6 +42,8 @@ If you want your mock to always return a specific value, say `"1"`, you can crea
 ```
     getItemSpy.mockImplementation(() => "1");
 ```
+
+An example can be found in [frontend/src/tests/components/PersonalSchedules/PersonalScheduleDropdown.test.js](https://github.com/ucsb-cs156/proj-courses/blob/55f42a4f2d31dd0b785e51bf23a202ce82add854/frontend/src/tests/components/PersonalSchedules/PersonalScheduleDropdown.test.js#L123) (See: [Disclaimer](#Disclaimer)). 
 
 If your mock implementation needed to be more sophisticated, you could set up an object with the mapping of what you expect to be in `localStorage`,
 and then return `null` if the key is not found:
