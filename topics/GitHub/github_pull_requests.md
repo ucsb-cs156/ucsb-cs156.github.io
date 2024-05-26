@@ -22,7 +22,7 @@ A PR is typically associated with one or more issues (see: <https://ucsb-cs156.g
 
 # PR Descriptions
 
-See also: <https://github.com/ucsb-cs156/ucsb-cs156.github.io/blob/main/topics/pull_requests/index.md#pr-descriptions>
+See also: <https://ucsb-cs156.github.io/topics/pull_requests/#pr-descriptions>
 
 When submitting a PR, it is considered good practice to write a brief description of the PR.
 
