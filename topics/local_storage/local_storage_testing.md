@@ -58,3 +58,43 @@ and then return `null` if the key is not found:
     });
 ```
 
+## Expect tests on`localStorage` values
+
+We can use expect clauses on `localStorage` to check that the values were set correctly:
+
+```
+    expect(localStorage.getItem("controlId")).toBe("schedule2");
+```
+
+Here's an example that shows this in context: 
+
+It comes from: [`frontend/src/tests/components/PersonalSchedules/PersonalScheduleSelector.test.js`](https://github.com/ucsb-cs156/proj-courses/blob/55f42a4f2d31dd0b785e51bf23a202ce82add854/frontend/src/tests/components/PersonalSchedules/PersonalScheduleSelector.test.js)
+
+First, we [clear `localStorage` in the `beforeEach`]  on  [this line](https://github.com/ucsb-cs156/proj-courses/blob/55f42a4f2d31dd0b785e51bf23a202ce82add854/frontend/src/tests/components/PersonalSchedules/PersonalScheduleSelector.test.js)
+
+```js
+beforeEach(() => {
+    localStorage.clear();
+    // other code
+  });
+```
+
+Then, in the [test](https://github.com/ucsb-cs156/proj-courses/blob/55f42a4f2d31dd0b785e51bf23a202ce82add854/frontend/src/tests/components/PersonalSchedules/PersonalScheduleSelector.test.js#L45), we render the component, click on a certain element, and then `expect` the `localStorage` value to have been set correctly:
+
+```js
+ test("updates the schedule state and calls setSchedule when a schedule is selected", () => {
+    const setSchedule = jest.fn();
+    render(
+      <PersonalScheduleSelector
+        controlId="controlId"
+        setSchedule={setSchedule}
+      />,
+    );
+    fireEvent.change(screen.getByLabelText("Schedule"), {
+      target: { value: "schedule2" },
+    });
+    expect(localStorage.getItem("controlId")).toBe("schedule2");
+    expect(setSchedule).toHaveBeenCalledWith("schedule2");
+  });
+```
+
