@@ -196,27 +196,30 @@ When doing a backend PR that involves changes to backend API endpoints, especial
 
 # PR Titles
 
-These are not acceptable PR titles:
-* Add CRUD operations
-* Add GET/POST to backend
-* Fix PUT route
-* Fred Schools
-* Emily Staff
+On the left are PR titles submitted by actual CMPSC 156 students (with small details 
+changed to protect student identity).
 
-These are better PR titles:
-* Add backend for CRUD operations for RideRequests
-* Add GET/POST for CowLots
-* Fix PUT route for personal schedule
-* Frontend for CRUD operations for Schools
-* Backend CRUD operations for Staff
+| Unhelpful PR titles                          | More helpful PR titles                              |
+|----------------------------------------------|-----------------------------------------------------|
+| Add CRUD operations                          | Add backend for CRUD operations for RideRequests    |
+| Add GET/POST to backend                      | Add GET/POST for CowLots                            |
+| Fix PUT route                                | Fix PUT route for personal schedule                 |
+| Fred Schools                                 | Frontend for CRUD operations for Schools            |
+| Emily Staff                                  | Backend CRUD operations for Staff                   |
+| Carly rider frontend part 3 of Epic #17      | Carly: Improve user experience on Driver Shift Create Page |
 
-Do you see the difference? With these titles you can look and at a glance, you know what the PR is referring to.
+Do you see the difference? 
 
-Why does this matter? You might argue that looking at the files changed, you'd instantly know which models are being changed. So it might seem "picky" and unimportant.
+The improved titles convey **at a glance** the main information that someone needs to know about your PR.
 
-Here's why it's important:
-* Team members needs to be able to look over the list of PRs in the queue, or the list of PRs recently merged, and get the "big picture" of what's happening with the team at a glance.  That information is conveyed in the issue title and/or PR title.
-* Later on when we are trying to figure out which code to take from which of the teams to put into the legacy code base that future students will work on, we look through all of the PRs.  Vague titles make this process much, much, harder.
-* Sometimes we use older PRs as examples for future students.  We want all of the PRs we merge to serve as good examples, and to be easy to locate by topic.
+Who will be looking at these in the real world?
+* Your fellow team members
+* Folks code reviewing your work
+* Folks testing your work
+* Tech support folks investigating bugs
+* Managers assessing your contributions
 
-So, please pay attention to the title of your PRs.
+It turns out: these titles are really important!  Learning how to write them well is an important job skill.
+
+That's why I'm picky about them.  Your colleagues at your internship and/or job will judge you and your work,
+in part, based on (or that the very least, in the context of) your PR titles, so I want you do learn good habits now.
