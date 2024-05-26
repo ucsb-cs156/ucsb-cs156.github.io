@@ -135,6 +135,8 @@ Please, please, please take this to heart!
 
 # PR Descriptions
 
+See also: <https://ucsb-cs156.github.io/topics/GitHub/github_pull_requests.html#pr-descriptions>
+
 ## PR Descriptions are an important professional skill
 
 One of the things you have an opportunity to practice and master in this class is a super important professional skill.
@@ -178,6 +180,8 @@ It's ok if you then go on to provide some technical details.   But lead with the
 
 
 See also: <https://code-review.tidyverse.org/author/submitting.html#sec-body>
+
+
 
 # Screenshots, Storybook, Swagger, etc.
 
