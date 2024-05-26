@@ -84,7 +84,14 @@ on each of the red circles in turn to see the mutation.
 
 ![Stryker Optional Chaining mutations](https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/6bcb0ab8-f93c-4554-8fc1-be39955ccd9f)
 
+There are two approaches to addressing the surviving mutations here:
 
+* The hard way: write tests for each of the possibilities that each of the levels in this nested hierarchy *might* be null.
+  * If any of those is a *real* bug that you encounter, or reasonaly expect to encounter, than it might make sense to do that.
+  * But often, the chaining is just a "defensive programming" move to make the code more robust to failure and you don't expect this to crop up.
+* The easy way: use `// Stryker disable next-line OptionalChaining` right above this line to exclude *only* the optional chaining from mutation testing.
+  * The risk is that you might not have tests that cover what happens if one or more of these reference does end up being null.
+  * But sometimes that's risk is worth taking vs the effort of writing tests for each level in a hierarchy like this one.
           
           
 
