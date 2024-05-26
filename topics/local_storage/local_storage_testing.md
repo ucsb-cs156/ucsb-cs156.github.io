@@ -28,3 +28,31 @@ This example is from [frontend/src/tests/components/PersonalSchedules/PersonalSc
     // ... other code might go here
   });
 ```
+
+## Mocking `localStorage` 
+
+You can use this lines of code to create a jest `mock` for localStorage:
+
+```js
+    const getItemSpy = jest.spyOn(Storage.prototype, "getItem");
+```
+
+If you want your mock to always return a specific value, say `"1"`, you can create a mock implementation:
+
+```
+    getItemSpy.mockImplementation(() => "1");
+```
+
+If your mock implementation needed to be more sophisticated, you could set up an object with the mapping of what you expect to be in `localStorage`,
+and then return `null` if the key is not found:
+
+```
+    getItemSpy.mockImplementation((key) => {
+       const values = {
+         "key1" : "value1",
+         "key2" : "value2"
+       }
+       return ( key in values ? values[key] : null );
+    });
+```
+
