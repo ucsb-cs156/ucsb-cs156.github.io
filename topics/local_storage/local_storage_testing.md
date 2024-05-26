@@ -98,3 +98,20 @@ Then, in the [test](https://github.com/ucsb-cs156/proj-courses/blob/55f42a4f2d31
   });
 ```
 
+## Legacy Stryker exceptions
+
+You may encounter code in the code base where a Stryker exception was used to 
+bypass mutation testing for code involving localStorage.   **This should no longer be done**, and code that
+contains such exceptions **should be updated to test using the techniques explained earlier on this page**.
+
+Here's an example (which, we can hope, by the time you read this, may already be fixed):
+
+```
+ // Stryker disable all : not sure how to test/mock local storage
+  const localSchedule = localStorage.getItem("CourseForm-psId");
+  const [schedule, setSchedule] = useState(localSchedule || "");
+  if (schedule) {
+    localStorage.setItem("CourseForm-psId", schedule);
+  }
+  // Stryker restore all
+```
