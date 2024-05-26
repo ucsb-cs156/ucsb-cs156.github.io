@@ -181,9 +181,19 @@ It's ok if you then go on to provide some technical details.   But lead with the
 
 See also: <https://code-review.tidyverse.org/author/submitting.html#sec-body>
 
+## PR Descriptions should include whatever is needed for Testing, Review
 
+If your PR involves any kind of complex functionality or interaction between backend and frontend, it will need to be tested before it's merged.  That means:
+* creating a dev deployment, and linking to it in the PR.
+* explaing, step-by-step, how to test your change
 
-# Screenshots, Storybook, Swagger, etc.
+## Merge order
+
+If your PR should be merged before or after another PR, please put that *right at the top*, e.g. 
+
+> Merge after PR #12, and before PR #17.
+
+## Screenshots, Storybook, Swagger, etc.
 
 When doing a frontend PR, you should include, where applicable (and it almost always is):
 * Active before and after links to the published storybook.  
