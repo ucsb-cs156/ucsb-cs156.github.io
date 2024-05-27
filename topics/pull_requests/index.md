@@ -221,6 +221,7 @@ changed to protect student identity).
 | Fred Schools                                 | Frontend for CRUD operations for Schools            |
 | Emily Staff                                  | Backend CRUD operations for Staff                   |
 | Carly rider frontend part 3 of Epic #17      | Carly: Improve user experience on Driver Shift Create Page |
+| Done with Home Page                          | Home Page: added explanation; refactored code      |
 
 Do you see the difference? 
 
