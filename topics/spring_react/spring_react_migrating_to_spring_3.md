@@ -185,4 +185,6 @@ public class TestConfig {
 
 # Sample PRs:
 
+* <https://github.com/ucsb-cs156-f24/STARTER-team03/pull/13>
 * <https://github.com/ucsb-cs156-s24/proj-organic-s24-5pm-2/pull/12>
+* <https://github.com/ucsb-cs156-s24/proj-organic-s24-5pm-4/pull/12>
