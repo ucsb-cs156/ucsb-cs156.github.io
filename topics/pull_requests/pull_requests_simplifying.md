@@ -55,29 +55,85 @@ git pull origin AaronR-addStudentTable  # make sure we have an up to date copy o
 
 Our next task is to find the sha (i.e. the hexadecimal hash code) of the commit before all of our changes started.
 
-We can find this in one of two ways: (1) `git log` (2) looking at a PR on Github.
-
-**(1) `git log` approach**
-
-First, lets try the `git log` approach. We can use the `git log` command to look at all of the commits in this branch starting with the most recent.  We are looking back for the last commit right *before* we started making our changes.   When using `git log`, you may have to press enter a few times to scroll through all of the commits.  Use `q` to quit (or press control-C).
-
-Type this:
-
-```
-git log
-```
-
-Here's what the output of that looks like: 
-
-<img width="1279" alt="image" src="https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/d72db2ff-dbf2-4945-9786-11cac82e4e56">
-
-In this case, it seems that the commit right *before* we started creating the student table react component was the one starting with `f4fcfbd` (usually the first seven digits of the SHA are plenty to identify it.)
-
-We'l need that number at the next step.
-
-**(2) Github PR approach**
-
-If we already have an open PR for our branch, the PR appraoch is similar; here we navigate to the page of Github for the PR in question and find
+We can find this by looking at a PR on Github.  Navigate to the page of Github for the PR in question and find
 the list of commits.  Here's what that looks like:
+
+![find-commits](https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/76a02835-b611-4e8a-890c-e6d748f96896)
+
+You can then explore the list of commits (as shown in the animation below) until you find the one right before you started making the changes that you want to include.
+In this case, we want the creation of the four files related to our `<StudentTable>` component.   We can click on each commit SHA to
+figure out what code was changed in that commit.
+
+In this case by exploring, we find that the commit right before we started making the `<StudentTable>` component was this one: `4c3524a`. We can click the button
+to copy the full SHA into our copy/paste buffer.
+
+![explore-commits](https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/607f099e-3835-468e-a837-a22ee2cfc6ec)
+
+With that SHA ready to paste, we can move to the next step.
+
+### Step 3: Create a new branch from this one
+
+Next, we are going to create our new branch.  Let's call it `AaronR-StudentTable-v2`
+
+```
+git checkout -b AaronR-StudentTable2`
+```
+
+But we are *not* going to push this branch yet.  We need to do the surgery on this branch so that it point where we want.
+
+### Step 4: Use `git reset --soft ...` to go back in time
+
+Next, we use this command, pasting in the SHA from before:
+
+```
+git reset --soft 4c3524ae67f50338a16c8607fdc9244e7479bc9f
+git status
+```
+
+Let's explore what happened here:
+* The branch we are on, `AaronR-StudentTable2` has been reset to point to the commit `4c3524a`, the one before we started our changes.
+* HOWEVER, because we used `--soft`, the files in our directory *did not change*. They still have all of our code changes in them!
+
+So when we do a `git status` we see, in red, all of the files that we changed.
+
+### Step 5: `git add` on *only* the files we want
+
+Now is the magic part: we only commit the changes to the files that we want, very carefully:
+
+```
+git add frontend/src/fixtures/studentsFixtures.js
+git add frontend/src/main/components/Students/StudentsTable.js
+git add frontend/src/stories/components/Students/StudentsTable.stories.js
+git add frontend/src/tests/components/Students/StudentsTable.test.js
+```
+
+### Step 5: `git commit... ` on *only* the files we want, and push the branch
+
+Now we commit:
+
+```
+git commit -m "ar - create StudentTable component with fixtures, stories, and tests"
+```
+
+And now we push:
+
+```
+git push origin AaronR-StudentTable-v2
+```
+
+### Step 6: Make a new PR for this branch
+
+You can now make a new PR for this new simplified branch, copying over the parts of the description that make sense.
+
+### What next
+
+If you have other branches you want to create from the other files, you can now repeat the steps for those branches.
+
+If you just want to get back to the main branch or some other branch, you can use `git stash` to set aside all of the "red" files in your `git status`.
+
+
+
+
+
 
 
