@@ -43,5 +43,31 @@ In this case, we are creating a new branch that's just a new react component alo
 Also note that we are going to *leave the original branch unchanged* so that we have something to fall back on, and are not afraid of losing any work.  If/when we succesfully create
 multiple new branches that cover all of the changes in the original branch, then we close the PR for the first one, and proceed with the three smaller ones.
 
+### Step 1: Get a clean copy of our branch
 
+```
+git fetch origin   # update all branch pointers
+git checkout AaronR-addStudentTable   #  get on our branch
+git pull origin AaronR-addStudentTable  # make sure we have an up to date copy of the branch
+```
+
+### Step 2: Find the place where our branch started
+
+Our next task is to find the sha (i.e. the hexadecimal hash code) of the commit before all of our changes started.
+
+We can find this in one of two ways: (1) `git log` (2) looking at a PR on Github.
+
+**(1) `git log` approach**
+
+First, lets try the `git log` approach. We can use the `git log` command to look at all of the commits in this branch starting with the most recent.  We are looking back for the last commit right *before* we started making our changes.   When using `git log`, you may have to press enter a few times to scroll through all of the commits.  Use `q` to quit (or press control-C).
+
+Type this:
+
+```
+git log
+```
+
+Here's what the output of that looks like: 
+
+**(2) Githubn PR approach**
 
