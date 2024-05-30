@@ -69,5 +69,15 @@ git log
 
 Here's what the output of that looks like: 
 
-**(2) Githubn PR approach**
+<img width="1279" alt="image" src="https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/d72db2ff-dbf2-4945-9786-11cac82e4e56">
+
+In this case, it seems that the commit right *before* we started creating the student table react component was the one starting with `f4fcfbd` (usually the first seven digits of the SHA are plenty to identify it.)
+
+We'l need that number at the next step.
+
+**(2) Github PR approach**
+
+If we already have an open PR for our branch, the PR appraoch is similar; here we navigate to the page of Github for the PR in question and find
+the list of commits.  Here's what that looks like:
+
 
