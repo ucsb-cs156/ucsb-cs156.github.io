@@ -142,7 +142,17 @@ You can now make a new PR for this new simplified branch, copying over the parts
 
 If you have other branches you want to create from the other files, you can now repeat the steps for those branches.
 
-If you just want to get back to the main branch or some other branch, you can use `git stash` to set aside all of the "red" files in your `git status`.
+If you just want to get back to the main branch or some other branch, you can use the following commands to clean things up so
+that you can return to your normal workflow:
+
+```
+git stash       # throw away changes to files git knows about
+git clean -f    # throw away changes to files git does *not* know about
+git checkout main  # or git checkout my-branch
+git pull origin main  # or git pull origin my-branch
+```
+
+* More information about `git clean` is here:  [`git clean`](https://ucsb-cs156.github.io/topics/git/git_clean.html)
 
 
 
