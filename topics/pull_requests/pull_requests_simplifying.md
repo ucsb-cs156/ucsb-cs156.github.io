@@ -96,7 +96,20 @@ Let's explore what happened here:
 
 So when we do a `git status` we see, in red, all of the files that we changed.
 
-### Step 5: `git add` on *only* the files we want
+### Step 5: Do a `git restore --staged .` to make everything red instead of green
+
+Now, type the following commands:
+
+```
+git restore --staged .
+git status
+```
+
+You should see all of your changed files, but now they are all red instead of green on the `git status` output,
+meaning that they are not staged for the next commit.  So, now you can choose *only the files you want to include* in
+the next commit.
+
+### Step 6: `git add` on *only* the files we want
 
 Now is the magic part: we only commit the changes to the files that we want, very carefully:
 
@@ -107,7 +120,7 @@ git add frontend/src/stories/components/Students/StudentsTable.stories.js
 git add frontend/src/tests/components/Students/StudentsTable.test.js
 ```
 
-### Step 5: `git commit... ` on *only* the files we want, and push the branch
+### Step 7: `git commit... ` on *only* the files we want, and push the branch
 
 Now we commit:
 
@@ -121,7 +134,7 @@ And now we push:
 git push origin AaronR-StudentTable-v2
 ```
 
-### Step 6: Make a new PR for this branch
+### Step 8: Make a new PR for this branch
 
 You can now make a new PR for this new simplified branch, copying over the parts of the description that make sense.
 
