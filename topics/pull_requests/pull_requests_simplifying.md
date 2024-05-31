@@ -76,7 +76,7 @@ With that SHA ready to paste, we can move to the next step.
 Next, we are going to create our new branch.  Let's call it `AaronR-StudentTable-v2`
 
 ```
-git checkout -b AaronR-StudentTable-v2`
+git checkout -b AaronR-StudentTable-v2
 ```
 
 But we are *not* going to push this branch yet.  We need to do the surgery on this branch so that it point where we want.
