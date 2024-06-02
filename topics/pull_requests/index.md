@@ -30,7 +30,11 @@ Here are a few tips when working on PRs. We won't review PRs until all these ite
     - Merge conflicts with `package-lock.json` are a special case covered here: <https://ucsb-cs156.github.io/topics/spring_react_package_lock_json_merge_conflicts/>
     - If you have other merge conflicts that you don't know how to resolve, ask for help.
 6.  Deploy it and link to your deployment:
-    * For any change that's even moderately complex, deploy it to a dokku dev instance, and include a link to that in the PR description.  
+    * For any change that's even moderately complex, deploy it to a dokku dev instance, and include a link to that in the PR description.
+    * Once you link to a dokku deployment in a PR description:
+      * Don't use that particular dokku deployment for any other branch; code reviewers will be expecting that deployment to correspond to the code in the PR.
+      * If/when you change the code on the branch, remember to do a new `dokku git:sync ...` and `dokku ps:redeploy ...` on the deployment
+      * Make sure that the staff and fellow team members have admin access if needed to test your feature. 
     * If and only if it's a frontend only change to components not yet accessiblle in the app, link to the Storybook for that PR. Note that it's *automatically published* to the Github Pages page associated with your repo.
 7.  Always **start with a new branch** that is an **up to date copy of main** (as described [here](https://ucsb-cs156.github.io/topics/git/git_feature_branch_workflow.html#more-detail-about-creating-feature-branches)), so that we can avoid merge conflicts.
     * The only exception is when it is *absolutely necessary* to branch off an existing branch.  See [here](https://ucsb-cs156.github.io/topics/git/git_feature_branch_workflow.html#more-detail-about-creating-feature-branches) for more details.
