@@ -64,3 +64,7 @@ Figure out the mystery of this: https://dokku.com/docs/deployment/zero-downtime-
 No CHECKS file found. Simple container checks will be performed.
 For more efficient zero downtime deployments, create a CHECKS file. See https://dokku.com/docs/deployment/zero-downtime-deploys/ for examples
 ```
+
+# Add more observability 
+
+* <https://codeline24.com/spring-boot-observability-tracing-monitoring-logging/>
