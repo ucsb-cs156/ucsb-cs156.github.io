@@ -27,6 +27,7 @@ It's a challenging project, but you'd potentially have some help; there may be o
 
 See also:
 * <https://www.youtube.com/watch?v=B2bGxIqkuIM>
+* <https://www.lukegjpotter.com/2024/07/spring-boot-testcontainers-with.html?m=1>
 
 # Database Migrations
 
