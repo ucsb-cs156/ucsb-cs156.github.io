@@ -55,16 +55,18 @@ Youll then see this page.  Click on "Storybook"
 
 <img width="669" alt="image" src="https://github.com/user-attachments/assets/89c4fde4-b395-448f-9171-ece9559ebeec">
 
-On the next page, you'll see some `npm` and `npx` commands; for repos in this course, you typically won't need to use these commands since support for Storybook and Chromatic will already be built into the project. 
+On the next page, you'll see some `npm` and `npx` commands; for repos in this course, you typically won't need to use the `npm` commands since support for Storybook and Chromatic will already be built into the project. 
 
 <img width="640" alt="image" src="https://github.com/user-attachments/assets/e903bb97-cc72-4e94-aea3-9c7abe95e641">
 
-However, if you look at the second command, it will contain a token value, something like this:
+However, if you look at the second command, you should go ahead and run it to connect the project to Chromatic.
 
 ```
 npx chromatic --project-token=chpt_beef1234567890a  
 ```
 
-You want to copy the value after the `=` sign (e.g. `chpt_beef1234567890a`) and use this as the value of `CHROMATIC_PROJECT_TOKEN`; put it in the `.env` file (which does NOT get committed to Github), and define it as a Github Actions Repository Secret.
+In addition, you should copy the value after the `=` sign (e.g. `chpt_beef1234567890a`) and use this as the value of `CHROMATIC_PROJECT_TOKEN`; put it in the `.env` file (which does NOT get committed to Github), and define it as a Github Actions Repository Secret.  (Note that the value above is a fake example value.)
 
-## Looking up `CHROMATIC_PROJECT_TOKEN` for existing project
+# For more information
+
+See: <https://www.chromatic.com/docs/cli/#chromatic-options>
