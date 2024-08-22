@@ -67,6 +67,19 @@ npx chromatic --project-token=chpt_beef1234567890a
 
 In addition, you should copy the value after the `=` sign (e.g. `chpt_beef1234567890a`) and use this as the value of `CHROMATIC_PROJECT_TOKEN`; put it in the `.env` file (which does NOT get committed to Github), and define it as a Github Actions Repository Secret.  (Note that the value above is a fake example value.)
 
+To add a Github Actions Repo Secret, navigate to the Setting page for the repo, and find this in the side navigation:
+
+<img width="322" alt="image" src="https://github.com/user-attachments/assets/f76e4073-a8d0-4839-ba0e-44e239ef9a4c">
+
+Click `New Repository Secret`
+
+<img width="603" alt="image" src="https://github.com/user-attachments/assets/fa94e858-b4a7-4f34-92fe-0a92d5660f54">
+
+Paste in `CHROMATIC_PROJECT_TOKEN` as the name, and the token value, then click 'Add secret'
+
+<img width="427" alt="image" src="https://github.com/user-attachments/assets/39a8dafd-1aa4-4cc6-a587-cfb5635f1044">
+
+
 # For more information
 
 See: <https://www.chromatic.com/docs/cli/#chromatic-options>
