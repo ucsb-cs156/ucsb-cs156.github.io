@@ -35,6 +35,7 @@ helpful to factor out some of these into custom actions so that there is less du
 | `40-check-production-build.yml` | Makes sure that when the backend and frontend are built with `PRODUCTION=true` that the build succeeds. |
 | `52-storybook-main-branch.yml` | Build the storybook for the main branch |
 | `54-storybook-pr.yml` | Build the storybook for a PR |
+| `55-chromatic-pr` | Update chromatic (online storybook and visual difference testing) for a pr to main |
 | `56-javadoc-main-branch.yml` | Build the javadoc for the main branch |
 | `58-javadoc-pr.yml` | Build the javadoc for a PR |
 | `82-pull-request-slack-msg.yml` | When there is a Pull Request, send a slack message |
@@ -288,6 +289,22 @@ Build the storybook for a PR.
 
 </details>
 
+
+
+
+<details markdown="1">
+<summary markdown="1">
+`55-chromatic-pr``
+</summary>
+Update chromatic (online storybook and visual difference testing) for a pr to main. 
+  
+*If it fails*: It may be an issue with setting the `CHROMATIC_PROJECT_TOKEN`; see <https://ucsb-cs156.github.io/topics/chromatic/> for details.
+
+Locally: Make sure you have a value for`CHROMATIC_PROJECT_TOKEN` set in `.env`, then from the frontend directory, use: `npm run chromatic`.   
+
+On Github Actions, you need to set the `CHROMATIC_PROJECT_TOKEN`  as a repository secret.
+
+</details>
 
 
 <details markdown="1">
