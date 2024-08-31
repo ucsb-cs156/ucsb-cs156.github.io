@@ -22,6 +22,8 @@ A PR is typically associated with one or more issues (see: <https://ucsb-cs156.g
 
 # PR Descriptions
 
+See also: <https://ucsb-cs156.github.io/topics/pull_requests/#pr-descriptions>
+
 When submitting a PR, it is considered good practice to write a brief description of the PR.
 
 Sometimes this may seem redundant with the description that is associated with the issue.  The difference is that

@@ -33,14 +33,6 @@ have more information about connecting via ssh from various operating systems:
 * [CSIL: via ssh from Mac OS](csil_via_ssh_from_macos.md)
 * [CSIL: via ssh from Linux](csil_via_ssh_from_linux.md)
 
-# Use `csil-01` through `csil-48`, not `csil.cs.ucsb.edu` 
-
-* Students and faculty are encouraged to use `csil-01.cs.ucsb.edu` through `csil-48.cs.ucsb.edu`.   These are the preferred remote
-    access machines.
-* Although many instructions suggest that `csil.cs.ucsb.edu` should be used for remote access, this is no longer encouraged,
-     since this machine tends to be heavily loaded.
-* The `cstl-00.cs.ucsb.edu` through `cstl-35.cs.ucsb.edu` machines are not recommended for remote access, with the exception of 
-    TA and instructor testing (to ensure that programming assignment materials run properly on these machines—see support information, below.)
   
   
 # The Physical CSIL Lab

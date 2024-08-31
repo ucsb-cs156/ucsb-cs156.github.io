@@ -203,9 +203,18 @@ The only cases I have encountered where taking 196 might be preferred:
 * Check in at least once a week&mdash;probably *more often*, but *at least* once at week to report progress, and ask for feedback, and new goals.
   
 
- # End of Quarter Report
+# End of Quarter Report
 
-Here is an outline for an end-of-quarter report in five sections.
+Here is an outline for an end-of-quarter report in five sections. 
+
+Students often ask "what should the length be".  I try to avoid answering this question, or else say: the length it needs to be to answer the five questions in a thoughtful way: no shorter, and no longer than that.
+
+But: if you really, really want me to say:
+* Most reports are at least a page and a half.  If it isn't at least that long, you probably haven't really answered the questions in a complete and thoughtful way (or, possibly you have, and you are just a brilliant writer that packs a lot of meaning into very few words?)
+* Few reports are more than three pages
+* But I did get a report once that was 10 pages, because they included lots of screenshots, and lots of examples, and it was a good report.
+
+
 
 1. Introduction
 

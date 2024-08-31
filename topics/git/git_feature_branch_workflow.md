@@ -37,7 +37,6 @@ An explanation of each of these comamnds:
 {:.table .table-sm .table-striped .table-bordered}
 
 
-
 # A workflow based on feature branches
 
 In most "real-world" uses of git/github (e.g. at software companies), rather than working on the `master` branch being the common case,
@@ -82,3 +81,56 @@ As you work on this branch, you will use:
 * `git pull origin teamName-text-color` rather than `git pull origin master`
 
 After you've committed all your changes on this feature branch, push it, and then open a new pull request repo from the branch you were working on and include the issue in the pull request description.
+
+# More detail about creating feature branches
+
+When starting a new PR, you should typically start with a new branch off of main.  Remember to get a fresh copy of main:
+
+## Normal flow: fresh copy of main
+
+```
+git fetch 
+git checkout main
+git pull origin main
+git checkout -b my-new-branch
+```
+The only exception would be when your work builds on work that's in a branch that hasn't been merged to main yet. In this case, you may need to branch off an older branch.  However, it is important that you either (a) rebase that branch on main, or (b) merge in the code from main.
+Here's what each of those options looks like:
+
+## (a) branch-off-branch, rebasing on main
+
+Always prefer rebasing if it doesn't result in a messy merge conflict;
+it leaves the git history cleaner and easier to understand:
+
+```
+git checkout old-branch
+git pull origin old-branch
+git checkout -b new-branch
+git pull --rebase origin main
+```
+
+At this stage if all is well, proceed with force pushing the rebased new-branch
+
+```
+git push origin new-branch -f
+```
+
+But If you get a ton of merge conflicts, then do this
+```
+git rebase --abort
+```
+and start over with the merging in main (option (b) below).
+
+## (b) branch-off-branch, merging in main
+
+This technique results in a "messier" git history, but is less likely to lead to merge conflicts,
+so use it as a backup option:
+
+```
+git checkout old-branch
+git pull origin old-branch
+git checkout -b new-branch
+git fetch
+git merge origin/main
+git push origin new-branch
+```

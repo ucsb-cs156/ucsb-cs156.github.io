@@ -24,6 +24,8 @@ frigga:/local/home/student
 
 There are two parts to being limited on CSIL. You are limited by your blocks (disk space) and by your number of files. First shown here is how to check and clean up disk space.
 
+If you are wondering what a disk quota or file quota is, you can scroll down to the section with the title "Why Quotas?".
+
 # Block limit problems (too many bytes)
 
 To see what is causing the problem with we can do two commands:
@@ -199,3 +201,12 @@ If you've taken a number of CS classes and are not bumping up against the blocks
 [goodman@booboo ~]$ tar -cvzf cs24.tar.gz cs24
 ```
 
+# Why Quotas?
+
+On large shared systems, it's important to make sure that users share the resource fairly.   If any user has unrestricted access to create files without limit, any user could block *all* users from the system by simply filling up the disk.  It woudl essentially be a "denial of service" attack, whether intentional or unintentional.
+
+Quotas help prevent that.
+
+For example, a CS8 or CS16 student might be learing how to write to files, but they end up with an infinite loop in their program.  That would fill up the entire disk and crash the system for *everyone* if we didn't have quotas.
+
+But with quotas in place, instead, the students program just writes until that user's quota is exceeded, and then it crashes *only that user's program*.   Everyone else is able to continue working.

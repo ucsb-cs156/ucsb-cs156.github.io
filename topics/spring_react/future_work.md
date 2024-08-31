@@ -25,6 +25,10 @@ The main idea is this: currently the CMPSC 156 legacy code projects (Gauchoride,
 
 It's a challenging project, but you'd potentially have some help; there may be other students working on it as well.
 
+See also:
+* <https://www.youtube.com/watch?v=B2bGxIqkuIM>
+* <https://www.lukegjpotter.com/2024/07/spring-boot-testcontainers-with.html?m=1>
+
 # Database Migrations
 
 Currently, whenever we make a change to a CMPSC 156 project that alters the database schema, the application breaks unless we rebuild the database from scratch.
@@ -35,3 +39,33 @@ The work here is to:
 * Examine pros/cons of Liquibase vs. Flyway, and choose one.
 * Construct examples and programming exercises for first staff, then students, to get comfortable with the technology.
 * Incorporate it into our actual practice.
+
+# Speeding up Stryker 
+
+Folks in m23-10am-4 (esp. Iain) worked on a workflow that would only do stryker mutation testing on the changed files in the PR.
+
+We should review this, and consider establishing this as the new workflow for all of our STARTER code bases, and each of our legacy projects.
+
+# Paged database queries
+
+The proj-happycows app has a new example of how to do paged database queries and present those to the user with a paged frontend; there
+are likely many other places in our code bases where this could be done as well.
+
+# Autograders for team01, team02, team03
+
+There is an autograder for team01, but it needs some updating.
+
+It would be great to have autograders for team02 and team03 as well.  This may require some updates to the assignments, but that's ok.
+
+# Speed up Dokku Deploys
+
+Figure out the mystery of this: https://dokku.com/docs/deployment/zero-downtime-deploys/
+
+```
+No CHECKS file found. Simple container checks will be performed.
+For more efficient zero downtime deployments, create a CHECKS file. See https://dokku.com/docs/deployment/zero-downtime-deploys/ for examples
+```
+
+# Add more observability 
+
+* <https://codeline24.com/spring-boot-observability-tracing-monitoring-logging/>

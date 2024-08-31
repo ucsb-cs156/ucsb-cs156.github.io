@@ -26,6 +26,11 @@ This page describes the steps to take when migrating a CMPSC 156 code base from 
 This page may also be helpful:
 * <https://springdoc.org/#migrating-from-springfox>
 
+Here, also are some example PRs for this process:
+
+* <https://github.com/ucsb-cs156/proj-happycows/pull/60>
+* <https://github.com/ucsb-cs156/proj-gauchoride/pull/53>
+
 ## Step 1: Replace `@Api` with `@Tag` in Controllers
 
 Under SpringFox, controllers use the `@Api` annotation ([javadoc](https://docs.swagger.io/swagger-core/v1.5.0/apidocs/io/swagger/annotations/Api.html)).  This annotation is found at the top of each controller class.
@@ -37,7 +42,7 @@ import io.swagger.annotations.Api;
 ``` 
 
 
-Under SpringDoc, `@Api` is replaced with `@Tag` ([javadoc](https://docs.swagger.io/swagger-core/v2.0.9/apidocs/index.html?io/swagger/v3/oas/annotations/tags/Tag.html)), like this:
+Under SpringDoc, `@Api` is replaced with `@Tag` ([javadoc](https://docs.swagger.io/swagger-core/v2.0.9/apidocs/io/swagger/v3/oas/annotations/tags/Tag.html)), like this:
 
 ```
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -68,8 +73,9 @@ import io.swagger.annotations.ApiOperation;
 
 Under SpringDoc, `@ApiOperation` is replaced with `@Operation` ([javadoc](https://docs.swagger.io/swagger-core/v2.0.9/apidocs/index.html?io/swagger/v3/oas/annotations/Operation.html)), like this:
 
+
 ```
-import io.swagger.v3.oas.annotations.tags.Operation;
+import io.swagger.v3.oas.annotations.Operation;
 ...
 @Operation(summary = "Restaurants")
 ```
@@ -99,8 +105,9 @@ import io.swagger.annotations.ApiParam;
 
 Under SpringDoc, `@ApiParam` is replaced with `@Parameter` ([javadoc](https://docs.swagger.io/swagger-core/v2.0.9/apidocs/index.html?io/swagger/v3/oas/annotations/Parameter.html)), like this:
 
+
 ```
-import io.swagger.v3.oas.annotations.tags.Operation;
+import io.swagger.v3.oas.annotations.tags.Parameter;
 ...
     @Parameter(name = "id") @RequestParam Long id,
 ```
@@ -115,6 +122,22 @@ So the two search and replaces needed are:
 Be sure afterwards to look for any other instances of
  `@ApiParam(` that your search/replace may have missed.
 
+
+After doing step 3, if you have errors, it may be because of additional parameters to `@ApiParam` that need to be changed.
+
+Consult the documentation for `@Parameter` [here](https://docs.swagger.io/swagger-core/v2.0.9/apidocs/io/swagger/v3/oas/annotations/Parameter.html) to see what parameters are supported.
+
+The most commonly used ones are these; typically, you'll need to figure out how to fit any old parameters from `@ApiParam` into
+one of the following, or else delete it:
+
+| Parameter | type | explanation |
+|-|-|-|
+| `name` | `String` | name of the parameter |
+| `allowEmptyValue` | `boolean` | whether or not the parameter allows empty values |
+| `example` | `String` | an example value for the parameter |
+| `description`  | `String` |  description of the purpose of the parameter |
+
+
 ## Step 4: Other search/replaces
 
 The search/replaces in Steps 1,2,3 are likely enough to pick up most or all of the SpringFox annotations that we
@@ -128,8 +151,8 @@ Here are the ones you already did in steps 1-3:
 | [SpringFox](https://docs.swagger.io/swagger-core/v1.5.0/apidocs/) | [SpringDoc](https://docs.swagger.io/swagger-core/v2.0.9/apidocs/index.html) |
 |-----------|-----------|
 | `@Api` |  `@Tag` |
-| `@ApiOperation(value = "foo", notes = "bar")` | `@Operation(summary = "foo", description = "bar")
-| `@ApiParam` | `@Parameter
+| `@ApiOperation(value = "foo", notes = "bar")` | `@Operation(summary = "foo", description = "bar") |
+| `@ApiParam` | `@Parameter |
 
 Here are the others you could run into. The headers to the table take you to the javadoc for each.
 
@@ -146,6 +169,15 @@ is rare.
 | `@ApiModelProperty(hidden = true)` | `@Schema(accessMode = READ_ONLY)` |
 | `@ApiModelProperty` | `@Schema` |
 | `@ApiResponse(code = 404, message = "foo")` | `@ApiResponse(responseCode = "404", description = "foo")` |
+
+You can find examples of changing  `@ApiModelProperty` to `@Schema` in this PR that Colin worked on:
+
+* <https://github.com/ucsb-cs156/proj-gauchoride/pull/53>
+
+The import is:
+```
+import io.swagger.v3.oas.annotations.media.Schema;
+```
 
 ## Step 4: Change pom.xml
 
@@ -245,6 +277,8 @@ springdoc.swagger-ui.csrf.enabled=true
 This article explains the last line:
 *  <https://medium.com/@thecodinganalyst/configure-spring-security-csrf-for-testing-on-swagger-e9e6461ee0c1>
 
+
+
 ## Step 7: Test it
 
 Now, you should be able to fire up the application
@@ -266,4 +300,5 @@ Note that the page may be at either of these links; you may need to try both to 
 Note also that many swagger endpoints require authentication, which is why we include a link to the
 home page on our swagger header, and we suggest firing up the frontend (where you can authenticate
 with OAuth prior to trying any given swagger endpoint.)
+
 

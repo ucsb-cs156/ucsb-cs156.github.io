@@ -12,33 +12,42 @@ Here is an example of a mutation report showing that a mutation eliminating an H
 
 
 This is showing that the code:
-```
+{% highlight jsx %}
+{% raw %}
         <Button style={{ float: "right" }} as={Link} to="/hotels/create">
-
-``` 
+{% endraw %}
+{% endhighlight %}
 
 Was mutated to the following (removing `float: "right"`), without any tests failing (i.e. "the mutant survived").
-```
+
+{% highlight jsx %}
+{% raw %}
         <Button style={{  }} as={Link} to="/hotels/create">
-``` 
+{% endraw %}
+{% endhighlight %}
 
 To fix this, you can add this to your test, where `thisButton` is a handle to the button in question:
 
-```
+{% highlight javascript %}
+{% raw %}
         expect(thisButton).toHaveAttribute("style", "float: right;");
-```
+{% endraw %}
+{% endhighlight %}
 
 For example, here's what that looks like in context.
 
 With `screen` included in the import from `@testing-library/react`:
+
 ```
 import { fireEvent, render, waitFor, screen } from "@testing-library/react";
 ```
 
 We can write:
 
-```
+{% highlight javascript %}
+{% raw %}
     const createHotelButton = screen.getByText("Create Hotel");
     expect(createHotelButton).toBeInTheDocument();
     expect(createHotelButton).toHaveAttribute("style", "float: right;");
-```
+{% endraw %}
+{% endhighlight %}

@@ -39,9 +39,13 @@ Starting from Fall 2020, we are using GitHub Actions for CI in this course.
 
 GitHub actions is controlled by files that appear in a subdirectory called `.github/workflows`.
 
-We'll document more about it as the course proceeds.
+It's the part that controls the "checks" on a PR, for example:
 
+<img width="1013" alt="image" src="https://github.com/user-attachments/assets/00e9017a-80e0-4d40-baa7-e92b3f262df4">
 
+For more information, see: [/topics/GitHub/github_actions.html](/topics/GitHub/github_actions.html)
+
+For specific information on the jobs associated with many code bases in CMPSC 156, see: 
 
 ## Travis-CI
 

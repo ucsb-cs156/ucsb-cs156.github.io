@@ -93,4 +93,10 @@ In that situation, consider the following strategy:
   - it passes all of the unit tests (`mvn test` for backend, `npm test` for the frontend)
   - 100% on both test coverage (jacoco/coverage) and mutation coverage (pitest/stryker) 
 
+# Flaky Tests
 
+The term *flaky tests* refers to tests that have an unpredictable outcome. Typically, these tests sometimes pass and sonetimes fail, even when neither the test has changed, nor has the code being tested changed.
+
+## Articles about flaky tests
+
+* <https://semaphoreci.com/blog/flaky-react>

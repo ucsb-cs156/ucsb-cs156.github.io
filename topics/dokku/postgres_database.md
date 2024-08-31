@@ -65,49 +65,33 @@ To configure a Spring-Boot application to access Postgres, you'll need to take t
    ```
 
    
-4. Now, you need to determine the IP address of the virtual host where the database server is running.  To do this, type
-   this command (substituting in your database name instead of <tt><b><i>jpa03-cgaucho-db</i></b></tt>):
-   
-   * <tt>dokku postgres:info <b><i>jpa03-cgaucho-db</i></b></tt>
-   
-   You'll get output like this.  The part we care about is the part labelled `Internal ip:`, i.e. in this case the value `172.17.0.18`
-   
-   You need that value in the next step.
-   
+4. Now, you need to determine the hostname and port of your dokku postgres service, along with the database name as it appears in the URL.
+
+   For example, if the value of the `DATABASE_URL` is:
+
    ```
-   pconrad@dokku-00:~$ dokku postgres:info jpa03-cgaucho-db
-   =====> jpa03-cgaucho-db postgres service information
-          Config dir:          /var/lib/dokku/services/postgres/jpa03-cgaucho-db/data
-          Config options:                               
-          Data dir:            /var/lib/dokku/services/postgres/jpa03-cgaucho-db/data
-          Dsn:                 postgres://postgres:71d9cacbd1a4ed9c20884691199a4a9a@dokku-postgres-jpa03-cgaucho-db:5432/jpa03_cgaucho_db
-          Exposed ports:       -                        
-          Id:                  e61728e1c3450d86fdfbab2f836eb5e142607dbabcffb6508d5cba049581359e
-          Internal ip:         172.17.0.18              
-          Initial network:                              
-          Links:               jpa03-cgaucho            
-          Post create network:                          
-          Post start network:                           
-          Service root:        /var/lib/dokku/services/postgres/jpa03-cgaucho-db
-          Status:              running                  
-          Version:             postgres:15.2            
-   pconrad@dokku-00:~$ 
+   DATABASE_URL:  postgres://postgres:93402a78c99a6bcb2e98cb89a98b348@dokku-postgres-starter-team02-db:5432/jpa03_cgaucho_db
    ```
 
+   Then the part we want is basically everything after the `@` sign, i.e. this:
 
-5. Set up a config variable called `JDBC_DATABASE_URL` constructed as follows:
+   ```
+   dokku-postgres-starter-team02-db:5432/jpa03_cgaucho_db
+   ```
+
+   We'll use that value in the next step.
+
+6. Set up a config variable called `JDBC_DATABASE_URL` constructed as follows:
 
    * Starts with `jdbc:postgresql://`
-   * Then list the IP address from the previous step, e.g. `172.17.0.18`
-   * Then we need `:5432/` 
-   * Finally, *your* database name 
-     - Note that it may have underscores (`_`) in place of hyphens (`-`). Use the underscores.
-   * For example: `jdbc:postgresql://172.17.0.18:5432/jpa03_cgaucho_db`
+   * Then has the hostname, port and database name as formatted in the `DATABASE_URL` (i.e. everything after the `@`).
    
-   So the command will be something like:
+   For example:
+   * If we have `DATABASE_URL:  postgres://postgres:93402a78c99a6bcb2e98cb89a98b348@dokku-postgres-starter-team02-db:5432/jpa03_cgaucho_db`
+   * You need to define `JDBC_DATABASE_URL` as: `jdbc:postgresql://dokku-postgres-starter-team02-db:5432/jpa03_cgaucho_db`
    
    ```
-   dokku config:set --no-restart jpa03-cgaucho JDBC_DATABASE_URL=jdbc:postgresql://172.17.0.18:5432/jpa03_cgaucho_db
+   dokku config:set --no-restart jpa03-cgaucho JDBC_DATABASE_URL=jdbc:postgresql://dokku-postgres-starter-team02-db:5432/jpa03_cgaucho_db
    ```
 
 Once these values are all set up, you can start the app by:
@@ -175,11 +159,4 @@ To rebuild the entire database:
 5. Follow all of the procedures to recreate and relink the database, including updating all of the relevant config vars, from the very top of this page.
 6. Restart the app, e.g. `dokku ps:restart app-name`
 
-## Troubleshooting
 
-When dokku apps are being added and removed, and then the server is powercycled  for some reason, docker can assign different ips for the postgres container.
-
-To fix this, use:
-
-* `dokku postgres:info app-name-db` to learn the new IP address for the database
-* `dokku config:set app-name JDBC_DATABASE_URL=jdbc:postgresql://[NEW IP]:5432/app_name_db` (note underscores in URL; not a typo!)
