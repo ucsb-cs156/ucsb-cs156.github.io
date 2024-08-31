@@ -45,6 +45,7 @@ It's the part that controls the "checks" on a PR, for example:
 
 For more information, see: [/topics/GitHub/github_actions.html](/topics/GitHub/github_actions.html)
 
+For specific information on the jobs associated with many code bases in CMPSC 156, see: 
 
 ## Travis-CI
 
