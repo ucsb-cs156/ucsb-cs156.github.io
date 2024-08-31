@@ -39,8 +39,7 @@ Starting from Fall 2020, we are using GitHub Actions for CI in this course.
 
 GitHub actions is controlled by files that appear in a subdirectory called `.github/workflows`.
 
-We'll document more about it as the course proceeds.
-
+For more information, see: [/topics/github/actions.md](/topics/github/actions.md)
 
 
 ## Travis-CI
