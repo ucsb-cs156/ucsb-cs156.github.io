@@ -66,7 +66,7 @@ import io.swagger.annotations.ApiOperation;
 ``` 
 
 
-Under SpringDoc, `@ApiOperation` is replaced with `@Operation` ([javadoc](https://docs.swagger.io/swagger-core/v2.0.9/apidocs/index.html?io/swagger/v3/oas/annotations/tags/Operation.html)), like this:
+Under SpringDoc, `@ApiOperation` is replaced with `@Operation` ([javadoc](https://docs.swagger.io/swagger-core/v2.0.9/apidocs/index.html?io/swagger/v3/oas/annotations/Operation.html)), like this:
 
 ```
 import io.swagger.v3.oas.annotations.tags.Operation;
@@ -79,7 +79,7 @@ So the two search and replaces needed are:
 | Find | Replace |
 |------|---------|
 | `@ApiOperation(value` | `@Operation(summary` |
-| `import io.swagger.annotations.ApiOperation;` | `import io.swagger.v3.oas.annotations.tags.Operation;` |
+| `import io.swagger.annotations.ApiOperation;` | `import io.swagger.v3.oas.annotations.Operation;` |
 
 Be sure afterwards to look for any other instances of
  `@ApiOperation(` that your search/replace may have missed.
@@ -97,7 +97,7 @@ import io.swagger.annotations.ApiParam;
 ``` 
 
 
-Under SpringDoc, `@ApiOperation` is replaced with `@Operation` ([javadoc](https://docs.swagger.io/swagger-core/v2.0.9/apidocs/index.html?io/swagger/v3/oas/annotations/tags/Operation.html)), like this:
+Under SpringDoc, `@ApiParam` is replaced with `@Parameter` ([javadoc](https://docs.swagger.io/swagger-core/v2.0.9/apidocs/index.html?io/swagger/v3/oas/annotations/Parameter.html)), like this:
 
 ```
 import io.swagger.v3.oas.annotations.tags.Operation;
@@ -110,7 +110,7 @@ So the two search and replaces needed are:
 | Find | Replace |
 |------|---------|
 | `@ApiParam(` | `@Parameter(name=` |
-| `import io.swagger.annotations.ApiParam;` | `import io.swagger.v3.oas.annotations.tags.Parameter;` |
+| `import io.swagger.annotations.ApiParam;` | `import io.swagger.v3.oas.annotations.Parameter;` |
 
 Be sure afterwards to look for any other instances of
  `@ApiParam(` that your search/replace may have missed.
@@ -131,7 +131,11 @@ Here are the ones you already did in steps 1-3:
 | `@ApiOperation(value = "foo", notes = "bar")` | `@Operation(summary = "foo", description = "bar")
 | `@ApiParam` | `@Parameter
 
-Here are the others you could run into. The headers to the table take you to the javadoc for each:
+Here are the others you could run into. The headers to the table take you to the javadoc for each.
+
+Rather than searching for each, it may be easier to just skip this step for now, and come back to it
+if you find you have compilation errors at a later stage, since the use of any of these in our codebase
+is rare.  
 
 | [SpringFox](https://docs.swagger.io/swagger-core/v1.5.0/apidocs/) | [SpringDoc](https://docs.swagger.io/swagger-core/v2.0.9/apidocs/index.html) |
 |-----------|-----------|
@@ -220,12 +224,46 @@ class OpenAPIConfig {}
 
 ```
 
-## Step 6: Test it
+## Step 6: Update `application.properties`
+
+In `src/main/resources/application.properties`, locate the application properties associated with swagger and springfox:
+
+```
+springfox.documentation.swagger.v2.path=/api/docs
+```
+
+Remove the lines that start with `springfox` such as the one above.
+
+Add these lines:
+
+```
+management.endpoints.web.exposure.include=mappings
+springdoc.swagger-ui.tryItOutEnabled=true
+springdoc.swagger-ui.csrf.enabled=true
+```
+
+This article explains the last line:
+*  <https://medium.com/@thecodinganalyst/configure-spring-security-csrf-for-testing-on-swagger-e9e6461ee0c1>
+
+## Step 7: Test it
 
 Now, you should be able to fire up the application
 on localhost and test your swagger page.
+
+
+* `mvn spring-boot:run` in first window
+* `cd frontend; npm start` in the second window 
+
+In the second window, as a reminder, you may need to first type <tt>nvm use <i>version-number</i></tt> and <tt>npm install</tt>, depending on how your dev environment is set up.
+
+If you have compilation errors, review the steps above.  If not, then look for the Swagger page.
 
 Note that the page may be at either of these links; you may need to try both to get things to work properly.
 
 * `http://localhost:8080/swagger-ui`
 * `http://localhost:8080/swagger-ui/index.html`
+
+Note also that many swagger endpoints require authentication, which is why we include a link to the
+home page on our swagger header, and we suggest firing up the frontend (where you can authenticate
+with OAuth prior to trying any given swagger endpoint.)
+
