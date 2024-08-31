@@ -58,9 +58,7 @@ Refreshes the main page from the list of PRs.
 
 
 <details markdown="1">
-<summary markdown="1">
-`02-gh-pages-rebuild-part-1.yml`
-</summary>
+<summary markdown="1">`02-gh-pages-rebuild-part-1.yml`</summary>
 Rebuilds all content for both main branch and PRs and caches it. Operates in parallel.  Stores content in cache rather than deploying to reduce contention for `gh-pages` branch.
 
 The purpose of this job is to refresh all of the content on the github pages site in the event that the entire site needs to be rebuilt.  Accordingly, it is made up of many smaller jobs.
