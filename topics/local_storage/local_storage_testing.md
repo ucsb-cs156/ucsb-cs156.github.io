@@ -51,8 +51,8 @@ and then return `null` if the key is not found:
 ```
     getItemSpy.mockImplementation((key) => {
        const values = {
-         "key1" : "value1",
-         "key2" : "value2"
+         "key1" : JSON.stringify("value1"),
+         "key2" : JSON.stringify("value1")
        }
        return ( key in values ? values[key] : null );
     });
