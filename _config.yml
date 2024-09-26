@@ -13,10 +13,10 @@ mermaid:
 
 # Aux links for the upper right navigation
 aux_links:
+  "F24":
+    - "//ucsb-cs156.github.io/s24"
   "S24":
     - "//ucsb-cs156.github.io/s24"
-  "W24":
-    - "//ucsb-cs156.github.io/w24"
   "earlier offerings":
     - "//ucsb-cs156.github.io/offerings"
   "cs156 docs repo":
