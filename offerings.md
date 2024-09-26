@@ -9,6 +9,8 @@ description: "Past offerings of CS156/CS56"
 
 | Term | Instructor |
 |------|------------|
+| [S24](https://ucsb-cs156.github.io/s24/) | P. Conrad |
+| [W24](https://ucsb-cs156.github.io/w24/) | S. Chow |
 | [F23](https://ucsb-cs156.github.io/f23/) | P. Conrad |
 | [M23](https://ucsb-cs156.github.io/m23/) | P. Conrad |
 | [S23](https://ucsb-cs156.github.io/s23/) | P. Conrad |
