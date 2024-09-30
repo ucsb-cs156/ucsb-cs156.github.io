@@ -6,10 +6,13 @@ title: "Windows: WSL"
 description:  "Setting up a development environment under Windows Subsystem for Linux"
 indent: true
 category_prefix: "Windows: "
-maven_version: 3.9.3
-nvm_version: v0.39.3
+maven_version: 3.9.9
+nvm_version: v0.40.1
 git_version: 2.41.0
-nvm_install_command: "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash"
+nvm_install_command: "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash"
+nvm_install_command_wget: wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash"
+nvm_lts_node: v20.17.0
+nvm_lts_npm: v10.8.2
 ---
 
 For advanced users who are looking to have a full Linux command-line interface on their Windows machine (which may be helpful for CMPSC 156 work), we recommend using Windows Subsystem for Linux (WSL). WSL is a tool that basically creates a separate Linux environment alongside your Windows environment, with access to your local filesystem. This will allow you to access package managers (such as `apt-get` for Ubuntu/Debian) and the full suite of UNIX commands.
@@ -101,16 +104,16 @@ Note: While it's not entirely necessary to set up SSH keys, since you can always
 
 ## Install Java on WSL
 
-The projects in this class use **Java 17**, which is the latest LTS release of Java.
+The projects in this class use **Java 21**, which is the latest LTS release of Java.
 
-To install the latest version of Java 17 JDK, run the following commands:
+To install the latest version of Java 21 JDK, run the following commands:
 
 ```
 sudo apt-get update
-sudo apt-get install openjdk-17-jdk
+sudo apt-get install openjdk-21-jdk
 ```
 
-Successfully running the above commands should install Java 17 JDK. To verify that the install was successful, run the following command:
+Successfully running the above commands should install Java 21 JDK. To verify that the install was successful, run the following command:
 
 ```
 java --version
@@ -119,23 +122,23 @@ java --version
 Your output should look something like this:
 
 ```
-openjdk 17.0.2 2022-01-18
-OpenJDK Runtime Environment (build 17.0.2+8-Ubuntu-120.04)
-OpenJDK 64-Bit Server VM (build 17.0.2+8-Ubuntu-120.04, mixed mode, sharing)
+openjdk 21.0.4 ...
+OpenJDK Runtime Environment (build ...)
+OpenJDK 64-Bit Server VM (build ...)
 ```
 
 ## Install Maven on WSL
 
-The projects in this class use Maven 3.9.x, which is necessary for Java 17.
+The projects in this class use Maven 3.9.9, which is necessary for Java 21.
 
-The `apt` package manager does not yet have Maven 3.9.x, so we need to manually download and extract Maven.
+The `apt` package manager does not yet have Maven 3.9.9, so we need to manually download and extract Maven.
 
-(As of this writing, the current version of Maven is 3.9.6; but it is possible that by the time you are reading
+(As of this writing, the current version of Maven is 3.9.9; but it is possible that by the time you are reading
 these instructions, the current version may have been updated, and the links to this version will no longer work.  If the links appear broken, see if there is a newer version available.)
 
-Here are two links that have been reported to work for downloading Maven 3.9.6 (the only difference is `downloads` vs. `dlcdn`)
-* <https://downloads.apache.org/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.tar.gz>
-* <https://dlcdn.apache.org/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.tar.gz>
+Here are two links that have been reported to work for downloading Maven 3.9.9 (the only difference is `downloads` vs. `dlcdn`)
+* <https://downloads.apache.org/maven/maven-3/3.9.9/binaries/apache-maven-3.9.9-bin.tar.gz>
+* <https://dlcdn.apache.org/maven/maven-3/3.9.9/binaries/apache-maven-3.9.9-bin.tar.gz>
 
 If the first one doesn't work, try the second. Note that these links are for use in the commands below, specifically `curl`.
 
@@ -143,7 +146,7 @@ Note: The first `cd` command below is to make sure that you are doing the rest o
 
 ```sh
 cd 
-export MAVEN_VERSION=3.9.6
+export MAVEN_VERSION=3.9.9
 curl -O https://downloads.apache.org/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz
 tar -zxvf apache-maven-${MAVEN_VERSION}-bin.tar.gz
 sudo mv apache-maven-${MAVEN_VERSION} /opt/maven
@@ -157,7 +160,7 @@ Then, add Maven to your PATH by adding the following line to `~/.bashrc`:
 export PATH=$PATH:/opt/maven/bin
 ```
 
-Successfully running the above commands should install Maven 3.9.x. To verify that the install was successful, open a new terminal and run the following command:
+Successfully running the above commands should install Maven 3.9.9. To verify that the install was successful, open a new terminal and run the following command:
 
 ```
 mvn --version
@@ -166,20 +169,20 @@ mvn --version
 Your output should look something like this:
 
 ```
-Apache Maven 3.9.6 (4c87b05d9aesdfce574290d1acc98575as5eb6cd39)
+Apache Maven 3.9.9 
 Maven home: /opt/maven
-Java version: 17.0.9, vendor: Private Build, runtime: /usr/lib/jvm/java-17-openjdk-amd64
+Java version: 21.0.4, vendor: ...
 Default locale: en_US, platform encoding: UTF-8
 OS name: "linux", version: "5.4.0-72-generic", arch: "amd64", family: "unix"
 ```
 
 ## Install nvm and Node on WSL
 
-The projects in this class currently use Node 16.x LTS and npm 8.x.
+The projects in this class currently use Node v20.17.0 (npm v10.8.2)
 
-You can see the various versions of node at this link: <https://nodejs.org/en/download/releases>.  As of S23, the current LTS for node is 18.x.  We may migrate the code bases to Node 18 this quarter if time permits.
+You can see the various versions of node at this link: <https://nodejs.org/en/download/releases>.  As of F24, the current LTS for node is v20.17.0.  
 
-While we could install Node 16.x directly, a better way to install Node on development computers is through Node Version Manager, or `nvm`. This is a program that allows you to easily install and switch between different versions of Node.
+While we could install Node 20.17.0 directly, **a better way to install Node on development computers is through Node Version Manager**, or `nvm`. This is a program that allows you to easily install and switch between different versions of Node.  
 
 To install `nvm`, run the following command. As of the time of writing, the latest version is <tt>{{page.nvm_version}}</tt>
 * To check whether this command is the latest version, visit [this link](https://github.com/nvm-sh/nvm#install--update-script)
@@ -189,8 +192,14 @@ To install `nvm`, run the following command. As of the time of writing, the late
 {{page.nvm_install_command}}
 </tt>
 
+If `curl` is not available on your system, try this command which uses `wget` instead:
 
-The install script should add the following lines to the end of your `~/.bashrc` file. If the following lines are not present, add them:
+
+<tt>
+{{page.nvm_install_command_wget}}
+</tt>
+
+The install script should add the following lines to the end of your `~/.bashrc` file (note that Mac users may need to add these to `~/.zshrc` instead) . If the following lines are not present, add them:
 
 ```sh
 export NVM_DIR="$HOME/.nvm"
@@ -206,19 +215,29 @@ nvm -v
 
 Your output should say <tt>{{page.nvm_version}}</tt>
 
-Now that we have `nvm` installed, we can use `nvm` to install the latest version of Node 16 with the following command. As of the time of writing, the latest version of Node 16 LTS is 16.17.1.
+Now that we have `nvm` installed, we can use `nvm` to install the latest "long term support" version of Node 16 with the following command. 
+
 
 ```
-nvm install 16
+nvm install --lts
 ```
 
-Successfully running the above command should install the latest version of Node 16. To verify that the install was successful, run the following command:
+Successfully running the above command should install the latest version of node. You can then this command **which you should type in every shell where you 
+are working with the frontend code (i.e. Javascript, React):
+
+```
+nvm use --lts
+```
+
+To verify that the install was successful, run the following command:
 
 ```
 node -v
 ```
 
-Your output should say `v16.20.0` or something similar.
+Your output should say <tt>{{page.nvm_lts_node}}</tt> or something similar.
+
+<!-- 
 
 ## Update npm on WSL
 
@@ -239,6 +258,8 @@ npm -v
 Your output should say `9.9.0` or something similar.
 
 **Keep in mind that each version of Node installed through `nvm` has its own installation of `npm`.** This means that, whenever you install a new version of Node, you will need to update `npm` to the correct version. The pre-bundled versions of `npm` tend to be out-of-date.
+
+-->
 
 ## WSL with VS Code
 
