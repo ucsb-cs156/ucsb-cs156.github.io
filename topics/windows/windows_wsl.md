@@ -8,7 +8,7 @@ indent: true
 category_prefix: "Windows: "
 maven_version: 3.9.9
 nvm_version: v0.40.1
-git_version: 2.41.0
+git_version: 2.46.2
 nvm_install_command: "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash"
 nvm_install_command_wget: wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash"
 nvm_lts_node: v20.17.0
@@ -36,12 +36,12 @@ On Windows 11 machines and Windows 10 machines with build 19041 or higher, insta
 2. Run the following command: `wsl --install`
    * This will enable and install WSL with the default configuration:
       * WSL 2
-      * The latest LTS release of Ubuntu (currently 20.04 LTS)
+      * The latest LTS release of Ubuntu (currently 22.04 LTS)
 3. Once installation is complete, launch your distribution from the Windows Start Menu
 
 More information on the above steps can be found [here](https://docs.microsoft.com/en-us/windows/wsl/install).
 
-If your machine doesn't meet the criteria to use the one-line install command, you can follow the manual installation instructions [here](https://docs.microsoft.com/en-us/windows/wsl/install-manual). Unless you know exactly what you're doing, we recommend Ubuntu 20.04 LTS as your distribution. The rest of these instructions assume you installed Ubuntu.
+If your machine doesn't meet the criteria to use the one-line install command, you can follow the manual installation instructions [here](https://docs.microsoft.com/en-us/windows/wsl/install-manual). Unless you know exactly what you're doing, we recommend Ubuntu 22.04 LTS as your distribution. The rest of these instructions assume you installed Ubuntu.
 
 The better / safer solution is to update your Windows 10 machine to a more recent build, so we recommend doing that and using the one-line install command instead.
 
