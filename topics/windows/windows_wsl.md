@@ -263,7 +263,7 @@ Your output should say `9.9.0` or something similar.
 
 ## WSL with VS Code
 
-If you are currently a VS Code user (or are considering becoming one), you can install an extension to be able to access, edit, and track files in the WSL from VS Code. Follow the instructions [here](https://code.visualstudio.com/docs/remote/wsl) to get started.
+If you are currently a VS Code user (or are considering becoming one), you can install an extension to be able to access, edit, and track files in the WSL from VS Code. The extension is located [here](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl). The instructions to use it are located [here](https://code.visualstudio.com/docs/remote/wsl)
 
 # Seeing jacoco and pitest output on WSL
 
