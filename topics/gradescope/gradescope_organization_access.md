@@ -22,6 +22,7 @@ Click Authorized OAuth Apps
 <img width="1013" alt="authorized oauth apps" src="https://github.com/user-attachments/assets/a1477db0-d990-4730-b8e6-52003d6023a7">
 
 Click Gradescope
+
 <img width="735" alt="click gradescope" src="https://github.com/user-attachments/assets/25d165cf-fd6c-46bb-80bd-d0e124893a31">
 
 Click authorize next to the course organization **that is specific for that quarter**
