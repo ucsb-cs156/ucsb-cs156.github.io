@@ -154,11 +154,20 @@ sudo mv apache-maven-${MAVEN_VERSION} /opt/maven
 
 You may need to prefix some of the above commands with `sudo` to grant necessary permissions.
 
-Then, add Maven to your PATH by adding the following line to `~/.bashrc`:
+**Then, add Maven to your PATH by adding the following line to `~/.bashrc`**:
 
+Your bashrc file can be opened in any text editor, but an easy one is
+
+```sh
+nano ~/.bashrc
+```
+
+Then, add this line at the bottom:
 ```sh
 export PATH=$PATH:/opt/maven/bin
 ```
+
+You can close nano by hitting ``Ctrl+O`` followed by enter.
 
 Successfully running the above commands should install Maven 3.9.9. To verify that the install was successful, open a new terminal and run the following command:
 
@@ -175,6 +184,8 @@ Java version: 21.0.4, vendor: ...
 Default locale: en_US, platform encoding: UTF-8
 OS name: "linux", version: "5.4.0-72-generic", arch: "amd64", family: "unix"
 ```
+
+If it doesn't appear, try restarting your terminal.
 
 ## Install nvm and Node on WSL
 
