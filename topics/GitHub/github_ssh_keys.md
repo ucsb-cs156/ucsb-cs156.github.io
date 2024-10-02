@@ -10,7 +10,7 @@ indent: true
 This is a tutorial on how to:
 
 * set up your computer (i.e. your laptop) or your CSIL account with an ssh public/private key pair
-* upload your *public* key to github (either github.com, or github.ucsb.edu, as the case may be)
+* upload your *public* key to github 
 * SO THAT you can use the ssh github clone URLs instead of the https ones.
 
 See also: [github's own tutorial on the same topic](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/)
@@ -29,18 +29,10 @@ It's a two step process.
 
 (1) Set up your public/private key pair.
 
-(2) Upload that key to github (either github.com or github.ucsb.edu)
+(2) Upload that key to github 
 
-If you keep things simple: i.e. you only ever work on CSIL, and you only ever use github.com,
-this is a one-time 5 minute job.
-
-If you *also* do work on other computers (here, I mean working DIRECTLY on, say, your laptop with git, java,
-ant, etc. rather than using your laptop to ssh into a CSIL machine), you'll also have to do this step
-separately for each of those computers.
-
-Initially, I'm going to talk ONLY about doing this for your CSIL account, and for github.com.
-
-Then, we'll discuss how to extend that to other systems.
+Note that you need to do this step separately for each computer you work on (i.e. once for your laptop, another time for your desktop,
+and yet again if/when you work from the CSIL command line).
 
 # What's a public/private key pair?
 
