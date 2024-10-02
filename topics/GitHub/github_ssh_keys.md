@@ -9,8 +9,7 @@ indent: true
 
 This is a tutorial on how to:
 
-* set up your CSIL account (or alternatively, your Mac, Windows or Linux computer)
-  with an ssh public/private key pair
+* set up your computer (i.e. your laptop) or your CSIL account with an ssh public/private key pair
 * upload your *public* key to github (either github.com, or github.ucsb.edu, as the case may be)
 * SO THAT you can use the ssh github clone URLs instead of the https ones.
 
