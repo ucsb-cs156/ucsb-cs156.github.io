@@ -169,7 +169,9 @@ export PATH=$PATH:/opt/maven/bin
 
 You can close nano by hitting ``Ctrl+O`` followed by enter.
 
-Successfully running the above commands should install Maven 3.9.9. To verify that the install was successful, open a new terminal and run the following command:
+**Then, restart your terminal.**
+
+Successfully running the above commands should install Maven 3.9.9. To verify that the install was successful, run the following command:
 
 ```
 mvn --version
@@ -185,7 +187,6 @@ Default locale: en_US, platform encoding: UTF-8
 OS name: "linux", version: "5.4.0-72-generic", arch: "amd64", family: "unix"
 ```
 
-If it doesn't appear, try restarting your terminal.
 
 ## Install nvm and Node on WSL
 
