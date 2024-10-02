@@ -21,6 +21,8 @@ This section describes how to configure your computer for git.
 
 To set up your computer for using command line git, type the following commands, substituting your real name (e.g. Chris Gaucho) in place of "Your Name" and your email address (e.g. cgaucho@umail.ucsb.edu) in place of "you@example.com".
 
+* **DO NOT** just copy and paste all three commands at once.
+* **DO** copy them one at a time, and edit the `"Your Name"` part and/or `youremail` parts as needed.
 ```
 git config --global user.name "Your Name"
 git config --global user.email youremail@ucsb.edu
