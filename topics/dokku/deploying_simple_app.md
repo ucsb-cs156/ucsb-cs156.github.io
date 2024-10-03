@@ -78,7 +78,8 @@ These instructions are for a simple app that:
     ... *** MANY LINES OF OUTPUT OMITTED ***
     
     =====> Application deployed:
-       http://jpa01-cgaucho.dokku-07.cs.ucsb.edu   
+       http://jpa01-cgaucho.dokku-07.cs.ucsb.edu
+
     [pconrad@csilvm-07 jpa01-cgaucho]$ 
    ```
 5. Now you should be able to open the app on the URL shown, e.g. <http://jpa02-cgaucho.dokku-07.cs.ucsb.edu>
