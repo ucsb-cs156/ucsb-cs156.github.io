@@ -4,7 +4,7 @@ grand_parent: Topics
 layout: default
 title: "Deploying an App from a private repo"
 description:  "How to deploy a Hello World Spring Boot app to Dokku from a private repo"
-nav_order: 1
+nav_order: 3
 ---
 
 # {{page.title}} - {{page.description}}
