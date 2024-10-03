@@ -49,7 +49,8 @@ You can see which extensions are installed by removing any text from the extensi
 ## Recommended Extensions for this course
 
 Here is a list of recommended extensions for this course
-* "Extension Pack for Java" by Microsoft 
+* "Extension Pack for Java" by Microsoft
+* "XML" by RedHat (useful for formatting `pom.xml` for example).
 * "Prettier" by Prettier (code formatter for Javascript code)
 * "Github Copilot" by Github
    * Requires configuration: after installing, you'll be prompted in the side panel to login to your Github account.
