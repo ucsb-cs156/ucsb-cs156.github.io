@@ -52,3 +52,5 @@ Here is a list of recommended extensions for this course
 * "Extension Pack for Java" by Microsoft 
 * "Prettier" by Prettier (code formatter for Javascript code)
 * "Github Copilot" by Github
+   * Requires configuration: after installing, you'll be prompted in the side panel to login to your Github account.
+   * You will also need to sign up for the Github Education Pack at <https://github.com/education> to get access to Github Copilot.
