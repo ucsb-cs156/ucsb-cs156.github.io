@@ -28,13 +28,13 @@ This requires *only* an ssh shell on the Dokku machine.  You still need to login
 2. To create your app, use the command:
 
    ```
-   dokku apps:create jpa02-yourGithubId
+   dokku apps:create jpa01-yourGithubId
    ```
 
    For example:
    
    ```
-   dokku apps:create jpa02-cgaucho
+   dokku apps:create jpa01-cgaucho
    ```
 
    If your github id has uppercase letters or other symbols are are not legal in a dokku app name, just modify it slightly so that it
@@ -49,7 +49,7 @@ This requires *only* an ssh shell on the Dokku machine.  You still need to login
 
    For example:
    ```
-   dokku git:sync jpa02-cgaucho https://github.com/ucsb-cs156-m23/jpa02-cgaucho.git main
+   dokku git:sync jpa01-cgaucho https://github.com/ucsb-cs156-m23/jpa02-cgaucho.git main
    ```
 
    OR
@@ -65,7 +65,7 @@ This requires *only* an ssh shell on the Dokku machine.  You still need to login
    
    For example:
    ```
-   dokku ps:rebuild jpa02-cgaucho
+   dokku ps:rebuild jpa01-cgaucho
    ```
    You should see then see the output from the deployment of the branch that looks something like this:
    
@@ -87,11 +87,32 @@ This requires *only* an ssh shell on the Dokku machine.  You still need to login
     ... *** MANY LINES OF OUTPUT OMITTED ***
     
     =====> Application deployed:
-       http://jpa02-cgaucho.dokku-07.cs.ucsb.edu
+       http://jpa01-cgaucho.dokku-07.cs.ucsb.edu
    
     To dokku.engr.ucsb.edu:jpa02-cgaucho
      * [new branch]      main -> main
-    [pconrad@csilvm-07 jpa02-pconrad]$ 
+    [pconrad@csilvm-07 jpa01-pconrad]$ 
    ```
-5. Now you should be able to open the app on the URL shown, e.g. <http://jpa02-cgaucho.dokku-07.cs.ucsb.edu>
+5. Now you should be able to open the app on the URL shown, e.g. <http://jpa01-cgaucho.dokku-07.cs.ucsb.edu>
+
+## Enabling https for your app
+
+In order to use Google OAuth in production mode, we need to enable https for our apps; here's how:
+
+The commands below show <tt><b><i>app-name</i></b></tt> as the name of your app; be sure to
+substitute in <tt><b><i>jpa03-cgaucho</i></b></tt>, for example.
+
+On your assigned dokku machine, at the prompt, type these two commands, substituting in your UCSB email in place of `cgaucho@ucsb.edu`
+
+*  <tt>dokku letsencrypt:set <b><i>app-name</i></b> email <b><i>cgaucho@ucsb.edu</i></b></tt>
+*  <tt>dokku letsencrypt:enable <b><i>app-name</i></b></tt>
+
+Then, in order for the certificate to be used, you must rebuild your app. So, we again use:
+
+```
+dokku ps:rebuild jpa01-cgaucho
+```
+
+You should now be able to open the app at either of the urls shown, e.g. <http://jpa01-cgaucho.dokku-07.cs.ucsb.edu> or <https://jpa01-cgaucho.dokku-07.cs.ucsb.edu>
+
 
