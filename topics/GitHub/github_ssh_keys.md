@@ -68,6 +68,10 @@ Step 1: Create a public/private key pair
 
 The UNIX command to create a public/private key pair is: `ssh-keygen`
 
+Note: MacOS users should use `ssh-keygen -t rsa -b 4096`
+* Apparently, recent versions of MacOS are defaulting to a new key standard, `ed25519`, which Github doesn't yet support as of October 2024.
+* It is possible that by the time you read this, that will have changed.
+
 You can type that at any unix prompt.  Folks usually are in their home directory when they do it, but
 I don't think it really matters.
 
