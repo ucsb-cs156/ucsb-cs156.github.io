@@ -112,6 +112,7 @@ The key's randomart image is:
 If you encounter problems using your SSH keys, try typing one or both of these command into your command shell:
 
 -   `chmod` `700` `~/.ssh/id_rsa`
+-   `cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys`
 
 
 The first command changes the permissions on your private key, ensuring that you personally have all access. The second command adds your new private key to your SSH keyring.
@@ -121,6 +122,15 @@ The first command changes the permissions on your private key, ensuring that you
 The advantage of making a passphrase is more security. If someone gets a copy of your private key, then they can pretend to "be you", and do anything you've authorized your private key to be able to do. However, if your private key is protected with a passphrase, then it can't be used unless the thief knows your passphrase.
 
 The disadvantage of a passphrase on your private key is that you have to type in your passphrase every blessed time you do anything with your public/private key pair—which sort of defeats the whole "convenience" aspect of setting it up in the first place. Ultimately, it's your decision.
+
+If you're on Mac with multiple keys and still having issues, check the file located in `~/.ssh/config` and look for a section like this:
+```
+Host github.com
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/id_rsa
+```
+`UseKeychain` should only be present if you have a passphrase on your key. Ensure that file listed after `IdentityFile` is the private key pair to the public key uploaded to GitHub.
 
 Step 2: Upload your public key to your github account
 -----------------------------------------------------
