@@ -22,6 +22,15 @@ frigga:/local/home/student
 [michaelhinrichs@butthead ~]$ 
 ```
 
+You can also use `quota -vs` which gives a little more readable output:
+
+```
+Disk quotas for user pconrad (uid 22885): 
+     Filesystem   space   quota   limit   grace   files   quota   limit   grace
+tyr.engr.ucsb.edu:/local/home/student
+                     0K   6144M   7680M               0    100k    105k        
+```
+
 There are two parts to being limited on CSIL. You are limited by your blocks (disk space) and by your number of files. First shown here is how to check and clean up disk space.
 
 If you are wondering what a disk quota or file quota is, you can scroll down to the section with the title "Why Quotas?".
