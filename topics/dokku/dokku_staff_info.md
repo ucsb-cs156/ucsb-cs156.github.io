@@ -21,6 +21,11 @@ If a staff member or student is unable to access dokku, check these things:
    touch ~/.ssh/authorized_keys
    cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
    ``` 
+5. Check the file permissions of `~/.ssh` and the contents of `~/.ssh`.  They should be:
+   ```
+   chmod 700 ~/.ssh
+   chmod 600 ~/.ssh/*
+   ```
 
 ## List of Users
 
