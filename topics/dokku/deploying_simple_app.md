@@ -20,7 +20,7 @@ These instructions are for a simple app that:
 
 1. `ssh username@csil.cs.ucsb.edu` then to your dokku machine (e.g. `ssh dokku-01.cs.ucsb.edu`) substituting your dokku number in place of `01`.
 
-2. To create an app with the name `app-name`, use the command `dokku ps:rebuild app-name`.
+2. To create an app with the name `app-name`, use the command `dokku apps:create app-name`.
 
    For example, if your app name is `jpa01-cgaucho`, use the command:
 
