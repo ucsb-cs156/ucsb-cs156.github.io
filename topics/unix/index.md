@@ -24,5 +24,6 @@ You can also get many of these tools by using a bash shell for Windows such as t
 ## Learning Basic Unix Commands
 
 * [This video tutorial by Ryan He](https://mail.google.com/mail/u/0/#inbox/FMfcgzQXJZpvpSRrSndPZwfqqkrBCmXq?projector=1) was developed under the supervision of Prof. Ziad Matni, and is a nice introduction to basic Unix commands if you need a refresher, or if you are joining CS156 as a transfer student from a school where Unix was not used.
+* [This PDF](https://github.com/ucsb-cs156/ucsb-cs156.github.io/blob/main/topics/unix/A-Basic-Linux-Workshop.pdf) goes along with the video.
 
 
