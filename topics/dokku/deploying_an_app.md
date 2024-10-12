@@ -10,109 +10,132 @@ nav_order: 2
 
 # {{page.title}} - {{page.description}}
 
-These instructions assume you have already followed the instructions 
-on the [Getting Started](https://ucsb-cs156.github.io/topics/dokku/getting_started.html) page, and have also:
+## Is your app a simple app?
 
-* Configured your app with any necessary [Environment Variables](/topics/dokku/environment_variables.html) (e.g. `GOOGLE_CLIENT_ID` and/or `GOOGLE_CLIENT_SECRET` for OAuth)
-* Configured your [Postgres Database](/topics/dokku/postgres_database.html) if your app requires one.
+For very simple apps (no frontend, no database, no OAuth logins), use these simplified instructions instead: 
+<https://ucsb-cs156.github.io/topics/dokku/deploying_simple_app.html>
 
-## Deploying an app (public repo)
+This version of the instructions is for apps where any of the following is true:
+* The app has a frontend
+* The app requires a database
+* The app requires OAuth logins
 
-Once you've set up any environment variables and/or databases that you need, here's how you get
-your app deployed.
+## Overview
 
-This requires *only* an ssh shell on the Dokku machine.  You still need to login to csil, then dokku, but you do *not* have to do anything at the command line on csil.
+Here's an overview of the steps involved
 
-1. `ssh username@csil.cs.ucsb.edu` then to your dokku machine (e.g. `ssh dokku-01.cs.ucsb.edu`) substituting your dokku number in place of `01`.
+1. Login to your dokku machine
+2. Create the app
+3. Define Environment Variables
+4. Define Settings
+5. Create and Link Postgres Database
+6. Sync with Github Repo
+7. Build App with http
+8. Enable https
+9. Test OAuth
 
-2. To create your app, use the command:
+We'll now cover each of these one at a time.
 
-   ```
-   dokku apps:create jpa01-yourGithubId
-   ```
+## Step 1: Log in to your dokku machine
 
-   For example:
-   
-   ```
-   dokku apps:create jpa01-cgaucho
-   ```
+See: <https://ucsb-cs156.github.io/topics/dokku/logging_in.html> for details.
 
-   If your github id has uppercase letters or other symbols are are not legal in a dokku app name, just modify it slightly so that it
-   conforms to the rules.
+## Step 2: Create the app (`dokku apps:create ...`)
 
-2. To set the git branch that your dokku app will deploy on its next build, do this, using the https link for your repo. (Note that this only works
-   for public repos; for private repos, there is a slightly different procedure documented below.)
-   
-   ```
-   dokku git:sync your-app-name https://github.com/ucsb-cs156-m23/your-repo-name.git branch-to-deploy
-   ```
+Create the app with this command
 
-   For example:
-   ```
-   dokku git:sync jpa01-cgaucho https://github.com/ucsb-cs156-m23/jpa02-cgaucho.git main
-   ```
+<p><tt>dokku apps:create <i>appname</i></tt></p>
 
-   OR
+where <tt><i>appname</i></tt> is typically something like one of the following:
+* <tt><i>jpa03-cgaucho</i></tt>
+* <tt><i>courses-qa</i></tt>
+* <tt><i>happycows-dev-cgaucho</i></tt>
 
-   ```
-   dokku git:sync team03-qa https://github.com/ucsb-cs156-s23/team03-s23-7pm-4.git KT-add-hotels
-   ```
+We'll use <tt><i>appname</i></tt> throughout the rest of these instructions without further explanation.
 
-   This doesn't deploy the app, but it does set things up so that the command below will deploy from
-   the specified repo and this branch.
+## Step 3: Define Environment Variables (`dokku config:set ...`)
 
-4. Then, to deploy, use `dokku ps:rebuild app-name`
-   
-   For example:
-   ```
-   dokku ps:rebuild jpa01-cgaucho
-   ```
-   You should see then see the output from the deployment of the branch that looks something like this:
-   
-  
-   ```
-    Enumerating objects: 1578, done.
-    Counting objects: 100% (1578/1578), done.
-    Delta compression using up to 8 threads
-    Compressing objects: 100% (465/465), done.
-    Writing objects: 100% (1578/1578), 699.17 KiB | 139.83 MiB/s, done.
-    Total 1578 (delta 995), reused 1578 (delta 995), pack-reused 0
-    remote: Resolving deltas: 100% (995/995), done.
-    -----> Set main to DOKKU_DEPLOY_BRANCH.
-    -----> Cleaning up...
-    -----> Building jpa02-cgaucho from Dockerfile
-    remote: build context to Docker daemon  39.42kB
-    Step 1/26 : FROM bellsoft/liberica-openjdk-alpine:17.0.2
-    
-    ... *** MANY LINES OF OUTPUT OMITTED ***
-    
-    =====> Application deployed:
-       http://jpa01-cgaucho.dokku-07.cs.ucsb.edu
-   
-    To dokku.engr.ucsb.edu:jpa02-cgaucho
-     * [new branch]      main -> main
-    [pconrad@csilvm-07 jpa01-pconrad]$ 
-   ```
-5. Now you should be able to open the app on the URL shown, e.g. <http://jpa01-cgaucho.dokku-07.cs.ucsb.edu>
+Each Spring Boot app that we cover in this course will have specific requirements for environment variables and settings, so you'll need to consult the specific documentation for the app to determine which settings are needed.
 
-## Enabling https for your app
+But you'll typically *always* need to define `PRODUCTION=true` as follows:
 
-In order to use Google OAuth in production mode, we need to enable https for our apps; here's how:
+<p><tt>dokku config:set <i>appname</i> PRODUCTION=true</tt></p>
 
-The commands below show <tt><b><i>app-name</i></b></tt> as the name of your app; be sure to
-substitute in <tt><b><i>jpa03-cgaucho</i></b></tt>, for example.
+This command enables the frontend code to be served from the same server that serves the backend; when running on `localhost`, these are separate, but on dokku these are integrated into a single server.
 
-On your assigned dokku machine, at the prompt, type these two commands, substituting in your UCSB email in place of `cgaucho@ucsb.edu`
+In addition, there will be specific environment variables for such things as the following.  The precise list will depend on your application, but typically include at least the following:
 
-*  <tt>dokku letsencrypt:set <b><i>app-name</i></b> email <b><i>cgaucho@ucsb.edu</i></b></tt>
-*  <tt>dokku letsencrypt:enable <b><i>app-name</i></b></tt>
+* `GOOGLE_CLIENT_ID`
+* `GOOGLE_CLIENT_SECRET`
+* `ADMIN_EMAILS`
 
-Then, in order for the certificate to be used, you must rebuild your app. So, we again use:
+You'll find the values in your `.env` file, where you've typically configured these as part of setting up your application to run on `localhost`, which you typically do *before* setting it up to run on dokku.
 
-```
-dokku ps:rebuild jpa01-cgaucho
-```
+For each of these values, copy the value into the command below:
 
-You should now be able to open the app at either of the urls shown, e.g. <http://jpa01-cgaucho.dokku-07.cs.ucsb.edu> or <https://jpa01-cgaucho.dokku-07.cs.ucsb.edu>
+<p><tt>dokku config:set <i>appname</i> <i>VARIABLE_NAME</i>=<i>value</i></tt></p>
 
+where:
+* <tt><i>VARIABLE_NAME</i></tt> is the variable name from `.env`
+* <tt><i>value</i></tt> is the value from `.env`
 
+## Step 4: Define Settings (`dokku git:set ...`)
+
+Some of the code bases we work with in this course are configured based on an assumption that
+the `.git` directory is retained when `dokku` pulls it in to the Docker container where the app is deployed.
+
+We configure it this way so that we can display the `git branch` information  in the running app.
+
+For these apps, it is necessary to do the following one time setting:
+
+<tt>dokku git:set <i>appname</i> keep-git-dir true</tt>
+
+This setting indicates that the `.git` directory should be retained after the repo is cloned when setting up the app.    
+
+## Step 5: Create and Link Postgres Database (`dokku postgres:create ...`)
+
+Most apps in this course will use a Postgres Database.  
+
+Postgres database configuration requires several steps, so we've factored it out into it's own page.
+
+* [Postgres Database](/topics/dokku/postgres_database.html) 
+
+Follow these steps before proceeding.
+
+## Step 6: Sync with Github Repo (`dokku git:sync...`)
+
+Next, sync with your github repo, like this:
+
+<tt>dokku git:sync <i>appName</i> https://github.com/<i>owner</i>/<i>repo</i>.git main</tt>
+
+Where:
+* <tt>[<i>owner</i>](https://github.com/<i>owner</i>/<i>repo</i>.git</tt> is the `https` link to your repo (which should be public (for private repos see [these instructions](https://ucsb-cs156.github.io/topics/dokku/deploy_app_from_private_repo.html)).
+
+## Step 7: Build App with http (`dokku ps:rebuild ...`)
+
+Next, to build your app the first time with `http`, type:
+
+<tt>dokku ps:rebuild <i>appname</i></tt>
+
+Note that:
+* you *will not be able to login with OAuth* when the app is served only with `http`
+* however, *you cannot configure the app for `https` until it first is running with `http`
+
+So we have to enable it with http first.
+
+## Step 8: Enable https (`dokku letsencrypt...`)
+
+Now enable https with these commands:
+
+<tt>dokku letsencrypt:set <i>appname</i> email <i>yourEmail</i>@ucsb.edu</tt><br />
+<tt>dokku letsencrypt:enable <i>appname</i></tt>
+
+## Step 9: Test OAuth
+
+You should now be able to login to your app using https, so test that you can login with OAuth.
+
+Try logging in at:
+
+<tt>https://<i>appname</i>.dokku-<i>xx</i>.cs.ucsb.edu</tt>
+
+where <tt><i>xx</i></tt> is your dokku number.
