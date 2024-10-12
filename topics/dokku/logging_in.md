@@ -24,55 +24,12 @@ You'll need to know which Dokku server you were given access to.  There will typ
 as the one below.  Staff have access to the `dokku-00.cs.ucsb.edu` instance, and all other servers.  Students typically have access to only one server, namely 
 the one for their team.
 
-Click the triangle to see the mappings. If your courses is not listed, see if your assignment materials have a link to the mapping
-for your course.  If not, ask the instructional staff where to find it.
+From F24 forward, we typically map the dokku servers by team number, e.g.
 
-<details markdown="1">
-<summary>
-Spring 2023 (S23) team to Dokku mapping	
-</summary>
-
-Here is the mapping of teams to Dokku servers from S23:
-
-| Host | Team | 
-|------|------|
-| `dokku-00.cs.ucsb.edu` | Course staff |
-| `dokku-01.cs.ucsb.edu` | s23-5pm-1 |
-| `dokku-02.cs.ucsb.edu` | s23-5pm-2 |
-| `dokku-03.cs.ucsb.edu` | s23-5pm-3 |
-| `dokku-04.cs.ucsb.edu` | s23-5pm-4 |
-| `dokku-05.cs.ucsb.edu` | s23-6pm-1 |
-| `dokku-06.cs.ucsb.edu` | s23-6pm-2 |
-| `dokku-07.cs.ucsb.edu` | s23-6pm-3 |
-| `dokku-08.cs.ucsb.edu` | s23-6pm-4 |
-| `dokku-09.cs.ucsb.edu` | s23-7pm-1 |
-| `dokku-10.cs.ucsb.edu` | s23-7pm-2 |
-| `dokku-11.cs.ucsb.edu` | s23-7pm-3 |
-| `dokku-12.cs.ucsb.edu` | s23-7pm-4 |
-
- 
-</details>
-
-<details markdown="1">
-<summary>
-Summer 2023 (M23) team to Dokku mapping	
-</summary>
-
-Here is the mapping of teams to Dokku servers from M23:
-
-| Host | Team | 
-|------|------|
-| `dokku-00.cs.ucsb.edu` | Course staff |
-| `dokku-01.cs.ucsb.edu` | m23-9am-1 |
-| `dokku-02.cs.ucsb.edu` | m23-9am-2 |
-| `dokku-03.cs.ucsb.edu` | m23-9am-3 |
-| `dokku-04.cs.ucsb.edu` | m23-10am-1 |
-| `dokku-05.cs.ucsb.edu` | m23-10am-2 |
-| `dokku-06.cs.ucsb.edu` | m23-10am-3 |
-| `dokku-07.cs.ucsb.edu` | m23-10am-4 |
-
-</details>
-
+* team `01` is assigned to `dokku-01.cs.ucsb.edu`
+* team `02` is assigned to `dokku-01.cs.ucsb.edu`
+* ...
+* team `16` is assigned to `dokku-16.cs.ucsb.edu`
 
 ## SSH setup 
 
