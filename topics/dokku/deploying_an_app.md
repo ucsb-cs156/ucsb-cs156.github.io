@@ -92,6 +92,8 @@ For these apps, it is necessary to do the following one time setting:
 
 This setting indicates that the `.git` directory should be retained after the repo is cloned when setting up the app.    
 
+This is done, in part, so that the `git-commit-id-maven-plugin` can be used to get information about the current git branch that is deployed.
+
 ## Step 5: Create and Link Postgres Database (`dokku postgres:create ...`)
 
 Most apps in this course will use a Postgres Database.  
