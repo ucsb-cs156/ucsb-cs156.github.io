@@ -14,9 +14,7 @@ Console, you need to **create a new project**.  This page describes how to do th
 # Steps to Create a New Project
 
 1. Navigate to <https://console.cloud.google.com/cloud-resource-manager> and login with your UCSB Google Account.
-   
-   If you haven't already [created a Google Developer Project](/topics/oauth/google_create_google_developer_project.html), you'll need to do that first.
-   
+      
    You'll see something like this, except you might not have anything under the `UnPaid` folder.  (That is where you'll create your projecct).
    
    <img width="698" alt="Google Developer Console Project List" src="https://user-images.githubusercontent.com/1119017/235321567-ada58904-ce9e-41eb-b7f7-6d4ceff71cb8.png">
