@@ -21,11 +21,13 @@ Console, you need to **create a new project**.  This page describes how to do th
 
 2. Click the `Create Project` button (<img width="147" alt="Create Project Button" src="https://user-images.githubusercontent.com/1119017/235321614-e4e663dc-34c7-494f-8e97-ba2b3caaa6be.png">).  
    You should then see a page like this one.  
-   * Fill in the name of the project with something meaningful such as the course and quarter (e.g. `cs156-s23, `cs156-m23`, etc.)  
+   * Fill in the name of the project with something meaningful such as the course and quarter (e.g. `ucsb-cs156`) 
    * The organization should be `ucsb.edu`
-   * Under `Location` click `Browse` and then select `UnPaid` so that it looks like the image below
+   * Under `Location` click `Browse` and then select `UnPaid` as in the animation below:
 
-   <img width="564" alt="Create Project form (filled in)" src="https://user-images.githubusercontent.com/1119017/235321749-ed77039d-101e-418e-a9a8-2bd267f130b2.png">
+   ![google-create-project](https://github.com/user-attachments/assets/134e1d36-e75f-41c0-a372-ec01938c7b7b)
+
+   * Click `Create`
 
 # What's next
 
