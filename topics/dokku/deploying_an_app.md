@@ -73,7 +73,7 @@ You'll find the values in your `.env` file, where you've typically configured th
 
 For each of these values, copy the value into the command below:
 
-<p><tt>dokku config:set <i>appname</i> <i>VARIABLE_NAME</i>=<i>value</i></tt></p>
+<p><tt>dokku config:set <i>appname</i> --no-restart <i>VARIABLE_NAME</i>=<i>value</i></tt></p>
 
 where:
 * <tt><i>VARIABLE_NAME</i></tt> is the variable name from `.env`
@@ -131,6 +131,7 @@ Now enable https with these commands:
 
 <tt>dokku letsencrypt:set <i>appname</i> email <i>yourEmail</i>@ucsb.edu</tt><br />
 <tt>dokku letsencrypt:enable <i>appname</i></tt>
+
 
 ## Step 9: Test OAuth
 
