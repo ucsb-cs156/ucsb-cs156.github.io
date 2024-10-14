@@ -59,11 +59,26 @@ On the next page, you'll see some `npm` and `npx` commands; for repos in this co
 
 <img width="640" alt="image" src="https://github.com/user-attachments/assets/e903bb97-cc72-4e94-aea3-9c7abe95e641">
 
-However, if you look at the second command, you should go ahead and run it to connect the project to Chromatic.
+
+Now, in order to fully connect your project to Chromatic, we need to do a couple things:
+
+in your repository, enter the `frontend` folder:
+```
+cd frontend
+```
+
+Then, run the following command to ensure you have all the files you need for Chromatic to work:
+```
+npm install
+```
+
+Now, back to the Chromatic page: if you look at the second command, you should go ahead and run it to connect the project to Chromatic. **Make sure to use the command Chromatic provides you, and *not the one on this page***
 
 ```
 npx chromatic --project-token=chpt_beef1234567890a  
 ```
+
+When this command completes, npm will ask you if you'd like to add Chromatic to `package.json`. Make sure you **click no**, because we do not want to expose this token on Github.
 
 In addition, you should copy the value after the `=` sign (e.g. `chpt_beef1234567890a`) and use this as the value of `CHROMATIC_PROJECT_TOKEN`; put it in the `.env` file (which does NOT get committed to Github), and define it as a Github Actions Repository Secret.  (Note that the value above is a fake example value.)
 
@@ -78,6 +93,8 @@ Click `New Repository Secret`
 Paste in `CHROMATIC_PROJECT_TOKEN` as the name, and the token value, then click 'Add secret'
 
 <img width="427" alt="image" src="https://github.com/user-attachments/assets/39a8dafd-1aa4-4cc6-a587-cfb5635f1044">
+
+Now, in order to get the green check mark on Github, we need to review our project's changes on Chromatic. Click on your Chromatic project, and click on the latest build. It will present you with a list of visual changes to your repo to approve. Go ahead and look through them, and if they look alright, approve each of them. You should now have a green check mark on Github, but you may need to reload the page.
 
 
 # For more information
