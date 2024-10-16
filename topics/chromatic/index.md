@@ -96,6 +96,18 @@ Paste in `CHROMATIC_PROJECT_TOKEN` as the name, and the token value, then click 
 
 Now, in order to get the green check mark on Github, we need to review our project's changes on Chromatic. Click on your Chromatic project, and click on the latest build. It will present you with a list of visual changes to your repo to approve. Go ahead and look through them, and if they look alright, approve each of them. You should now have a green check mark on Github, but you may need to reload the page.
 
+## Finding the Project Token Later
+
+If you've already created the project on Chromatic and are looking for the project token, here's how to find it.
+
+1. Login to Chromatic.com
+2. Find your project and click on it, e.g. `jpa03-pconrad` as shown below:
+
+   <img width="512" alt="image" src="https://github.com/user-attachments/assets/7e06485e-7b2a-4f76-b503-201e7afc8497">
+3. The project page should look like this.
+   <img width="347" alt="image" src="https://github.com/user-attachments/assets/1ca7c963-61b0-4e76-b362-2d249b1163c5">
+   Find the `Manage` icon at left and click it.
+4. The project token will appear on the page that comes up.
 
 # For more information
 
