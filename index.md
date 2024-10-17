@@ -19,6 +19,6 @@ Thanks to [Chromatic](https://www.chromatic.com/) for providing the visual testi
 
 ## CS156 tech stack
 
-<img width="790" alt="image" src="https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/1137b26c-fe32-4e6a-88c4-032da084a1f1">
+<img width="704" alt="image" src="https://github.com/user-attachments/assets/85b51c71-eafd-40f8-a745-e71d7fe95316">
 
-Image credit: Andrew Peng, 2024
+Image credit: Andrew Peng, 2024, Edited P. Conrad, 2024 to add Istanbul, Swagger, Storybook, Chromatic.
