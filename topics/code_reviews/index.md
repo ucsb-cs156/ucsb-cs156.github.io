@@ -6,11 +6,15 @@ description:  "An important part of professional software dev practice"
 has_children: true
 ---
 
-See also: 
-* <https://code-review.tidyverse.org/>
-* <https://google.github.io/eng-practices/review/reviewer/>
+# {{page.title}} - {{page.description}}
 
-# Tips for Performing Code Reviews
+This page has general advice on doing code reviews.
+
+For what steps to actually take in the Github web site to perform a code review, please see: 
+<https://ucsb-cs156.github.io/topics/code_reviews/code_reviews_github.html>
+
+
+## Tips for Performing Code Reviews
 
 Always try to be helpful, not harsh.  Be diplomatic and kind.
 
@@ -28,7 +32,7 @@ Examples:
 | This isn't how you are supposed to write JavaScript | I wonder if you are familiar with the reasons that `const` and `let` are preferred to  `var`? |
 | Delete this  commented out code | Consider removing this commented out code  |
 
-# Tips for Responding to Code Reviews
+## Tips for Responding to Code Reviews
 
 Try to **respond from a position of gratitude**.  
 
@@ -38,11 +42,11 @@ Try to **respond from a position of gratitude**.
 - **If you disagree, don't just dismiss the comment**.  
 - At the very least say: "Hmm, I see it differently; let's discuss".  Or "I'm not sure I understand your perspective; can you explain further?" Or "I see where you are coming from, but i/we think it should be like this..."
   
-# What to look for in a Code Review (non-exhaustive)
+## What to look for in a Code Review (non-exhaustive)
 
 Non-exhaustive means that this list is incomplete; it's just a collection of examples, not the complete list of everything you should be looking for.
 
-## In the PR itself
+### In the PR itself
 
 * Is the purpose of the PR well explained, not just the what, but also the why?
   - It is super important to explain the *why*, since the *what* can, if necessary, be determined by looking at the diff.
@@ -54,18 +58,21 @@ Non-exhaustive means that this list is incomplete; it's just a collection of exa
 * Have you moved the PR to the correct column on the Kanban board?
 * Do both the PR and the Issue(s) have developers assigned?
 
-## Testing / QA / Acceptance
+### Testing / QA / Acceptance
 * Does the PR pass all of the CI/CD tests?
 * Have you deployed the code on either localhost and/or Heroku (preferably both) and tested the impacted functionality?
 * If the issue(s) this PR addresses have acceptance criteria, are all of those met?  And if so, are they checked off?
 
-## In the code
+### In the code
 
 * Commented out code; typically this should be removed before merging into the default branch.
 
-## In the PR file list
+### In the PR file list
 
 * Unnecessary files such as `.DS_Store` files from Mac users, `*~` files from emacs users.
 * `package.json` and `package-lock.json` at the top level of the repo (they should only be in the `frontend` directory
   - This is typically the result of accidentally running `npm install` in the top level directory instead of the `frontend` directory
 
+## More resources on code reviews
+* <https://code-review.tidyverse.org/>
+* <https://google.github.io/eng-practices/review/reviewer/>
