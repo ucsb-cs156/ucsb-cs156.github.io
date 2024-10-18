@@ -6,7 +6,23 @@ title: "OAuth: Troubleshooting"
 description:  "What to do when things go wrong?"
 ---
 
-## Troubleshooting
+# {{page.title}} - {{page.description}}
+
+If you are having issues with logging into OAuth, here's a checklist of things to look at:
+
+1. Unless you are on `localhost:8080`, be sure you are using the `https` link and not the `http` link.  OAuth only works with `http` on `localhost`, not on other platforms such as dokku.
+2. If you are using `https` and you are working with a dokku server (e.g. `https://myapp.dokku-17.cs.ucsb.edu`), check the Google Developer to make sure your callback urls have the correct address.
+   * The callback url should start with `https`
+   * It should then have your app name, followed by the dokku hostname. Be sure you got the correct dokku number, and not `dokku-xx` or something like that.
+   * It should end in `/login/oauth2/code/google` for [Google OAuth](https://ucsb-cs156.github.io/topics/oauth/oauth_google_setup.html) (which is the common cases for `jpa` and `team` type assignments, and most of the `proj` series assignments.
+   * For `proj-organic` only, where [Github OAuth](https://ucsb-cs156.github.io/topics/oauth/oauth_github_setup.html) is used, it should end in `/login/oauth2/code/github` instead.
+3. Check that your have the `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` set correctly
+   * For `localhost`, check settings in `.env`
+   * For dokku, check settings using <tt>dokku config show <i>appname</i></tt>
+
+There is more detail below on a specific example of troubleshooting.
+
+## Troubleshooting Example
 
 If you see this:
 
