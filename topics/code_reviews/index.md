@@ -74,5 +74,8 @@ Non-exhaustive means that this list is incomplete; it's just a collection of exa
   - This is typically the result of accidentally running `npm install` in the top level directory instead of the `frontend` directory
 
 ## More resources on code reviews
-* <https://code-review.tidyverse.org/>
-* <https://google.github.io/eng-practices/review/reviewer/>
+* Google's guide to Code Reviews: <https://google.github.io/eng-practices/review/reviewer/>
+  - Note that Google uses an internal version control system rather than Github
+  - In their system a *Change List (CL)* is the equivalent of a *Pull Request*
+  - See also, the [Chapter on Code Review](https://abseil.io/resources/swe-book/html/ch09.html) from the book [Software Engineering at Google](https://abseil.io/resources/swe-book) edited by Titus Winters et al.
+* Tidyverse guide to Code Reviews: <https://code-review.tidyverse.org/>
