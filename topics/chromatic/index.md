@@ -16,6 +16,16 @@ According to their [website](https://chromatic.com):
 
 [Storybook](/topics/storybook) version 8 (which we are migrating to during Summer 2024) integrates with the Chromatic webapp.
 
+## How do I get rid of this?
+
+If you are experiencing the "never ending yellow circle" like this:
+
+<img width="309" alt="image" src="https://github.com/user-attachments/assets/0a0615b5-f473-444f-9e29-84d1f8a4238c">
+
+<img width="185" alt="image" src="https://github.com/user-attachments/assets/bc3efebc-3c9b-414c-b43f-bdc988ba85f0">
+
+Here's how to fix it: <https://ucsb-cs156.github.io/topics/chromatic/chromatic_yellow_circle.html>
+
 ## Creating an account
 
 You'll need to create an account on Chromatic.com; we suggest using your Github id so that you'll be able to integrate Chromatic with the Github based projects
