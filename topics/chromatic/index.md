@@ -16,15 +16,6 @@ According to their [website](https://chromatic.com):
 
 [Storybook](/topics/storybook) version 8 (which we are migrating to during Summer 2024) integrates with the Chromatic webapp.
 
-## How do I get rid of this?
-
-If you are experiencing the "never ending yellow circle" like this:
-
-<img width="309" alt="image" src="https://github.com/user-attachments/assets/0a0615b5-f473-444f-9e29-84d1f8a4238c">
-
-<img width="185" alt="image" src="https://github.com/user-attachments/assets/bc3efebc-3c9b-414c-b43f-bdc988ba85f0">
-
-Here's how to fix it: <https://ucsb-cs156.github.io/topics/chromatic/chromatic_yellow_circle.html>
 
 ## Creating an account
 
@@ -119,6 +110,24 @@ If you've already created the project on Chromatic and are looking for the proje
    Find the `Manage` icon at left and click it.
 4. The project token will appear on the page that comes up.
 
-# For more information
+## For more information
 
 See: <https://www.chromatic.com/docs/cli/#chromatic-options>
+
+## Troubleshooting
+
+### The Never Ending Yellow Circle
+
+If you are experiencing the "never ending yellow circle" like this:
+
+<img width="309" alt="image" src="https://github.com/user-attachments/assets/0a0615b5-f473-444f-9e29-84d1f8a4238c">
+
+<img width="185" alt="image" src="https://github.com/user-attachments/assets/bc3efebc-3c9b-414c-b43f-bdc988ba85f0">
+
+Here's how to fix it: <https://ucsb-cs156.github.io/topics/chromatic/chromatic_yellow_circle.html>
+
+## The page that hides your builds
+
+If you are seeing this page, there's a link at the bottom that says `Go to your project` that makes it go away.  Until you click that, you can't see your builds, because it's trying to walk you through a complete tutorial about Chromatic.   
+
+<img width="879" alt="chromatic-go-to-your-project" src="https://github.com/user-attachments/assets/41af0164-b6da-4af2-9bfe-f083020800b9">
