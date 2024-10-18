@@ -3,6 +3,7 @@ parent: Topics
 layout: default
 title: "Code Reviews"
 description:  "An important part of professional software dev practice"
+has_children: true
 ---
 
 # {{page.title}} - {{page.description}}
