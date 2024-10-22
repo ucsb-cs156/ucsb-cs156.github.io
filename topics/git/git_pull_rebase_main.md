@@ -8,6 +8,7 @@ indent: true
 category_prefix: "git: "
 ---
 
+# {{page.title}} - {{page.description}}
 
 You start a feature branch with a fresh copy of `main`.  
 
