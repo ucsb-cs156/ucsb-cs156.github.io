@@ -12,7 +12,7 @@ has_children: true
 
 Note that our code based is constantly being updated.  If the documentation and code disagree, beleive the code and update the documentation.
 
-| Workflow Name | | 
+| Workflow Name | Description | 
 |---------------|-|
 |`01-gh-pages-pr-table.yml`|  |
 |`02-gh-pages-rebuild-part-1.yml`|  |
