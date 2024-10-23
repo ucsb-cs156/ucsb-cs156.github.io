@@ -146,6 +146,15 @@ To drop a single table:
 5. Use `\q` to quit the postgres command line
 6. Restart the application with: `dokku ps:restart app-name`
 
+## Dropping the Database
+To drop the database without having to reconfigure postgres:
+1. Connect using <code>dokku postgres:connect <i>appname-db</i></code>
+2. Use `\c postgres` to connect to the default dbase instead of `appname_db` (**note that inside postgres, the database name uses underscores, not hyphens**).
+3. Use the SQL command `DROP DATABASE appname_db;` to drop the database
+4. Use the SQL command `CREATE DATABASE appname_db;` to create a new fresh database
+5. Use `\c appname_db` to connect back to the original database name
+6. Use `\dt to double check that there are no tables (relations) in the database.
+
 ## Resetting the entire database
 
 This is the heavyweight approach.  It best to use this only as a last resort, since it's time consuming.
