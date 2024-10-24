@@ -10,6 +10,8 @@ indent: true
 
 GitHub Actions is a feature of GitHub that allows a developer to set up  CI/CD testing completely within GitHub.
 
-* Documentation: <https://docs.github.com/en/actions>
-* Example Scripts: <https://github.com/ucsb-cs156-w22/demo-spring-react-example-v2/tree/main/.github/workflows>
+More information on the Github Actions workflows typically used in CMPSC 156 is available here:
+* <https://ucsb-cs156.github.io/topics/github_actions/>
+
+Github's Documentation is available here: <https://docs.github.com/en/actions>
 
