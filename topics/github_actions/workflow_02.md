@@ -10,9 +10,13 @@ description:  "Rebuild content of gh-pages branch (part 1)"
 
 Workflow `02-gh-pages-rebuild-part-1.yml` consists of three parts:
 
-* Preliminaries
+* An introductory job called `Build Basic Site`
 * Six jobs that rebuild the gh-pages site for the main branch, and run in parallel
 * A matrix of six jobs that rebuild the gh-pages site for each PR, and also run in parallel
+
+Here's what that looks like when running with exactly one active PR.  If there were multiple active PRs, the second set of six jobs would be repeated as many times as there are PRs:
+
+<img width="349" alt="image" src="https://github.com/user-attachments/assets/2d85bdec-02ef-43b2-86c8-6d98f35f05b3">
 
 ## Uploading Artifacts
 
