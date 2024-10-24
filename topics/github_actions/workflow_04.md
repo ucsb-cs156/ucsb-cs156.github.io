@@ -5,8 +5,8 @@ layout: default
 title: "Github Actions: Workflow 04"
 description:  "Rebuild content of gh-pages branch (part 2)"
 wf02: "[`02-gh-pages-rebuild-part-1.yml`](https://ucsb-cs156.github.io/topics/github_actions/workflow_02.html)"
-download_artifact: [`dawidd6/action-download-artifact@v6`](https://github.com/dawidd6/action-download-artifact)
-gh_deploy: [`JamesIves/github-pages-deploy-action@v4`](https://github.com/JamesIves/github-pages-deploy-action)
+download_artifact: "[`dawidd6/action-download-artifact@v6`](https://github.com/dawidd6/action-download-artifact)"
+gh_deploy: "[`JamesIves/github-pages-deploy-action@v4`](https://github.com/JamesIves/github-pages-deploy-action)"
 ---
 
 # {{page.title}} - {{page.description}}
