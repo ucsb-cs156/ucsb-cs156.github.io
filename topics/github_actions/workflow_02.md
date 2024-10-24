@@ -39,11 +39,18 @@ The names currently used in the script are:
 
 |                job    | Artifact Name                    | Explanation                                                              |
 |-----------------------|----------------------------------|--------------------------------------------------------------------------|
-| `a - Javadoc (main)`  |  `javadoc`                       | Javadoc for main, HTML documentation                                     |
-| `b - Chromatic (main)`| `chromatic`                      | Storybook and Chromatic Build for main, HTML redirect to Chromatic.com   |
+| `a - Javadoc (main)`  |  `javadoc`                       | Javadoc, HTML documentation                                     |
+| `b - Chromatic (main)`| `chromatic`                      | Storybook and Chromatic Build, HTML redirect to Chromatic.com   |
 | `c - Jacoco (main)`   | `jacoco`                         | Test Coverage (java, backend), HTML report                               |
 | `d - Pitest (main)`   | `pitest`                         | Mutation testing (java, backend), HTML report                            |
 | `e - Coverage (main)` | `coverage`                       | Test Coverage (javascript, frontend), HTML report                        |
 | `f - Stryker (main)`  | ` stryker-incremental-main.json` | Mutation Test Coverage (javascript, frontend); data for incremental runs |
 | `f - Stryker (main)`  | ` stryker`                       | Mutation Test Coverage (javascript, frontend); HTML report               |
+| `a - Javadoc (PR, branch)`  |  <tt>prs-<i>num</i>-javadoc</tt>                       | Javadoc, HTML documentation                                     |
+| `b - Chromatic (PR, branch)`| <tt>prs-<i>num</i>-chromatic</tt>                      | Storybook and Chromatic Build, HTML redirect to Chromatic.com   |
+| `c - Jacoco (PR, branch)`   | <tt>prs-<i>num</i>-jacoco</tt>                         | Test Coverage (java, backend), HTML report                               |
+| `d - Pitest (PR, branch)`   | <tt>prs-<i>num</i>-pitest</tt>                         | Mutation testing (java, backend), HTML report                            |
+| `e - Coverage (PR, branch)` | <tt>prs-<i>num</i>-coverage</tt>                       | Test Coverage (javascript, frontend), HTML report                        |
+| `f - Stryker (PR, branch)`  | <tt>prs-<i>num</i>-stryker-incremental-main.json</tt>  | Mutation Test Coverage (javascript, frontend); data for incremental runs |
+| `f - Stryker (PR, branch)`  | <tt>prs-<i>num</i>-stryker</tt>                        | Mutation Test Coverage (javascript, frontend); HTML report               |
 
