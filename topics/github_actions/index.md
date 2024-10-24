@@ -1,7 +1,7 @@
 ---
 parent: Topics
 layout: default
-title: "GitHub Actions"
+title: "Github Actions"
 description:  "CI/CD pipeline hosted on Github, aka workflows or checks"
 has_children: true
 ---
