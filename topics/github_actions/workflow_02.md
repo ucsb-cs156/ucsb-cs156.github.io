@@ -21,5 +21,29 @@ gh-pages branch in the workflow `04-gh-pages-rebuild-part-2.yml`.
 
 Here's an example:
 
+```yml
+    - name: Upload to artifacts
+      uses: actions/upload-artifact@v4
+      with:
+          name: javadoc
+          path: ${{ env.destination }}
+          overwrite: true
+```
 
+Here:
+* `name` is a key used for the key/value store used by Github Actions for artifacts
+* `path` is the location that the artifact should be retrieved from.  When it is described by a variable `${{ env.destination }}` it is because a *previous* step used that as the destination to store something (e.g. the generated javadoc, coverage report, etc.).
+* `overwrite: true` is needed because the `actions/upload-artifact`, by default, will not overwrite a previously uploaded artifact.
+
+The names currently used in the script are:
+
+|                job    | Artifact Name                    | Explanation                                                              |
+|-----------------------|----------------------------------|--------------------------------------------------------------------------|
+| `a - Javadoc (main)`  |  `javadoc`                       | Javadoc for main, HTML documentation                                     |
+| `b - Chromatic (main)`| `chromatic`                      | Storybook and Chromatic Build for main, HTML redirect to Chromatic.com   |
+| `c - Jacoco (main)`   | `jacoco`                         | Test Coverage (java, backend), HTML report                               |
+| `d - Pitest (main)`   | `pitest`                         | Mutation testing (java, backend), HTML report                            |
+| `e - Coverage (main)` | `coverage`                       | Test Coverage (javascript, frontend), HTML report                        |
+| `f - Stryker (main)`  | ` stryker-incremental-main.json` | Mutation Test Coverage (javascript, frontend); data for incremental runs |
+| `f - Stryker (main)`  | ` stryker`                       | Mutation Test Coverage (javascript, frontend); HTML report               |
 
