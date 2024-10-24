@@ -15,6 +15,8 @@ mermaid:
 aux_links:
   "F24":
     - "//ucsb-cs156.github.io/f24"
+  "github":
+    - "//github.com/ucsb-cs156-f24"
   "S24":
     - "//ucsb-cs156.github.io/s24"
   "earlier offerings":
