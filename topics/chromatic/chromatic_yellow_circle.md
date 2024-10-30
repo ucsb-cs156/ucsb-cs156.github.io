@@ -71,7 +71,14 @@ This page tells you to:
 
 **These instructions are correct, so please follow them**. When you do this, it should create a build where you can then approve any changes to the UI, and then the yellow circle should resolve to green.
 
-**However**, when this is running in the terminal, the terminal may then *also* prompt you, asking if you want to install the `chromatic` command in your `package.json`.  **SAY NO TO THIS**.  
+The generic version of these instructions is as follows: assuming your branch is <tt><i>my-branch</i></tt>, and your project token (which you can look up on the chromatic.com website) is <tt><i>chpt-1234567890</i></tt>
+
+<pre>
+git checkout <i>my-branch</i>
+npx chromatic --project-token=<i>chpt-1234567890</i> --patch-build=<i>my-branch</i>...main
+</pre>
+
+**Be careful, however!** When this is running in the terminal, the terminal may then *also* prompt you, asking if you want to install the `chromatic` command in your `package.json`.  **SAY NO TO THIS**.  
 
 Adding the `chromatic` project token to your repo  embeds the Chromatic project token value in your `package.json`, which means it will then get committed to Github and be available to the public.  **This is a bad idea**, and you should not do it. 
 
