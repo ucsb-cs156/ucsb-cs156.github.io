@@ -69,7 +69,20 @@ This page tells you to:
 * checkout the branch for your PR
 * run a command, which you can just copy/paste into your terminal
 
-If you do this, it should create a build where you can then approve any changes to the UI, and then the yellow circle should resolve to green.
+**These instructions are correct, so please follow them**. When you do this, it should create a build where you can then approve any changes to the UI, and then the yellow circle should resolve to green.
 
-However, it may also prompt you, asking if you want to install the `chromatic` command in your `package.json`.  **DO NOT DO THIS**.  Doing this embeds the Chromatic project token value in your `package.json`, which means it will then get committed to Github and be available to the public.  **This is a bad idea**. If you end up doing that by mistake, you'll need to reset the Chromatic project token value and then update it in the Github Actions secrets for your repo.
+**However**, when this is running in the terminal, the terminal may then *also* prompt you, asking if you want to install the `chromatic` command in your `package.json`.  **SAY NO TO THIS**.  
 
+Adding the `chromatic` project token to your repo  embeds the Chromatic project token value in your `package.json`, which means it will then get committed to Github and be available to the public.  **This is a bad idea**, and you should not do it. 
+
+### What if accidentally say "yes" to adding the `chromatic` command?
+
+If you end up doing that by mistake, as along as you haven't added `package.json` to a commit yet, you can undo this by simply typing:
+
+```
+git checkout package.json
+```
+
+That restores the contents of `package.json` to what they were during the last commit on your branch.
+
+But if you **do** end up committing this to github, you'll need to reset the Chromatic project token value and then update it in the Github Actions secrets for your repo.   Once it's committed and pushed, it's in the github history, so the best option is to make the compromised token invalid, and create a new one.  (Of course, you should do a new commit to remove the command from the `package.json`.)
