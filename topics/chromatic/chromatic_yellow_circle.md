@@ -8,7 +8,13 @@ description:  "When you have UI Tests pending preventing you from getting the gr
 
 # {{page.title}} - {{page.description}}
 
-If you are experiencing the "never ending yellow circle" like this:
+There are a few circumstances where you can end up with a "never ending yellow circle" for one of the Github actions related to Chromatic.  When this happens, it means you need to take some action, typically at the Chromatic.com website, to allow the action to complete.
+
+The action you take depends on which circumstance you are in, so match what you are seeing to the advice below.
+
+
+
+## UI Tests pending
 
 <img width="309" alt="image" src="https://github.com/user-attachments/assets/0a0615b5-f473-444f-9e29-84d1f8a4238c">
 
@@ -51,4 +57,19 @@ That's good!  That means that Chromatic is working as it should.  The message `1
 6. Then when you return to Github, the dreaded yellow circle should now be a green check, like this:
    <img width="634" alt="image" src="https://github.com/user-attachments/assets/18419b5b-32bc-4b50-8819-aa71b4714a5f">
 
+## Another situation we've seen
+
+Some of the early reports from folks working on team02 are that they can end up with this page on Chromatic.com.
+
+It's *important to read these directions carefully*
+
+<img width="354" alt="image" src="https://github.com/user-attachments/assets/66b07e18-c5a2-43d3-9c91-868b0da69910">
+
+This page tells you to:
+* checkout the branch for your PR
+* run a command, which you can just copy/paste into your terminal
+
+If you do this, it should create a build where you can then approve any changes to the UI, and then the yellow circle should resolve to green.
+
+However, it may also prompt you, asking if you want to install the `chromatic` command in your `package.json`.  **DO NOT DO THIS**.  Doing this embeds the Chromatic project token value in your `package.json`, which means it will then get committed to Github and be available to the public.  **This is a bad idea**. If you end up doing that by mistake, you'll need to reset the Chromatic project token value and then update it in the Github Actions secrets for your repo.
 
