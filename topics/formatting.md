@@ -21,7 +21,7 @@ For Google Java Format:
 
 For Prettier:
 
-- Run `npm run format` or `npx prettier --write src/` in the frontend directory to format js files.
+- Run `npm run format` in the frontend directory to format js files.
 
 ## Auto-formatting plugins for IDEs
 
