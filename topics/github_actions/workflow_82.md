@@ -42,6 +42,8 @@ Under organizations, it should have read-only permission on projects.
 
 ### Step 5: Create a Slack bot user 
 
+To create a slack bot user, start here: <https://api.slack.com/apps/>
+
 ### Step 6: Add the OAuth access token in the organization secrets with the name SLACK_BOT_USER_OAUTH_ACCESS_TOKEN.
 
 ### Step 7: Update the TEAM_TO_CHANNEL environment variable with the mapping of team names to Slack channel IDs.
