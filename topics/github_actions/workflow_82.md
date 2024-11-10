@@ -25,9 +25,11 @@ Copy the workflow file into your repo, in the `.github/workflows` directory.
 
 ### Step 2: Configure Org to allow fine-grained personal access tokens
 
-Go to the settings for the organization, and navigate to `Personal Access Tokens / Settings`:
 
-<img width="318" alt="image" src="https://github.com/user-attachments/assets/00a40d78-b76e-4999-8340-11858d22c3ba">
+
+ Go to the settings for the organization, and navigate to `Personal Access Tokens / Settings` 
+ 
+ <img width="318" alt="image" src="https://github.com/user-attachments/assets/00a40d78-b76e-4999-8340-11858d22c3ba"> |
 
 You can also use this link (editing the organization as needed):
 * <https://github.com/organizations/ucsb-cs156-f24/settings/personal-access-tokens-onboarding>
@@ -44,18 +46,12 @@ Under organizations, it should have read-only permission on projects.
 
 To create a slack bot user, start here: <https://api.slack.com/apps/>
 
-You'll see this screen:
 
-<img width="862" alt="image" src="https://github.com/user-attachments/assets/99349b5a-e923-4420-b8a4-5747165a310d">
-
-Click <img width="119" alt="Create New App" src="https://github.com/user-attachments/assets/502347ac-0eb9-457f-a1ee-94ad35918446">.  You'll see this modal:
-
-<img width="420" alt="image" src="https://github.com/user-attachments/assets/ee4cb932-ecc6-4908-96f4-55e450af8080">
-
-Choose "From Scratch", which takes you here.  For `App Name`, choose something like `Kanban Board Update`, and then select your Slack workspace, and click <img width="93" alt="Create App" src="https://github.com/user-attachments/assets/a6ce6138-1030-45ac-8a05-d68bc8f51f05">
-
-
-<img width="405" alt="image" src="https://github.com/user-attachments/assets/37d80fbc-b295-47f5-97e9-796fb53e28ff">
+| Instructions | Screenshot |
+|--------------|------------|
+| You'll see this screen.  Click <img width="119" alt="Create New App" src="https://github.com/user-attachments/assets/502347ac-0eb9-457f-a1ee-94ad35918446">. | <img width="862" alt="image" src="https://github.com/user-attachments/assets/99349b5a-e923-4420-b8a4-5747165a310d"> |
+| You'll see this modal. Choose "From Scratch" | <img width="420" alt="image" src="https://github.com/user-attachments/assets/ee4cb932-ecc6-4908-96f4-55e450af8080"> |
+| For `App Name`, choose something like `Kanban Board Update`, and then select your Slack workspace, and click <img width="93" alt="Create App" src="https://github.com/user-attachments/assets/a6ce6138-1030-45ac-8a05-d68bc8f51f05"> | <img width="405" alt="image" src="https://github.com/user-attachments/assets/37d80fbc-b295-47f5-97e9-796fb53e28ff"> |
 
 
 
