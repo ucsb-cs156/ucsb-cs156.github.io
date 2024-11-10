@@ -91,16 +91,46 @@ Click <img width="211" alt="New Organization Secret" src="https://github.com/use
 
 Choose either `All Repositories` or select the repositorires to which this should be applied.
 
-### Step 7: Update the TEAM_TO_CHANNEL environment variable with the mapping of team names to Slack channel IDs.
+### Step 7: Update the TEAM_TO_CHANNEL environment variable
 
-### Step 8: Update the ORG_NAME environment variable with your GitHub organization name.
+Now, you need to collect the Slack Channel Ids of each team channel. For example, if your teams are named `f24-00`, `f24-01`, f24-02`, you need to construct a JSON object that looks like this:
 
-### Step 9: Update the END_DATE environment variable with the end date for the workflow to stop running the workflow forever.
+```json
+{ "f24-00" : "C08018C6ZUY", "f24-01" : "C07PYJKCWEL", "f24-02" : "C07P9QKLCSW" }
+```
 
-### Step 10: Update the COLUMNS environment variable with the column names in your project board.
+To obtain the channel numbers, you can right click on each team channel in Slack, and select `View Channel Details`:
 
-### Step 11: Update the branch name in the on section to match the branch you want to trigger the workflow on.
+<img width="306" alt="image" src="https://github.com/user-attachments/assets/1622d2d3-129f-40d5-858b-c0c417e2fd7b">
 
-### Step 12: Commit the changes to the main branch to trigger the workflow.
+The window that comes up has the channel id as the very bottom, with a widget you can click to copy it.
 
-### Step 13. The workflow will run and post the Kanban board status to the Slack channel associated with the team name.
+<img width="565" alt="image" src="https://github.com/user-attachments/assets/a55cbc69-6872-4e1c-bdff-0462fdcc6d5c">
+
+Assemble this JSON object; you'll need it for the next step.
+
+### Step 8: Update the TEAM_TO_CHANNEL environment variable
+
+Under the organization settings, find `Secrets and Variables / Actions`
+
+<img width="298" alt="image" src="https://github.com/user-attachments/assets/1626a75b-a627-46d2-a855-f8522e945a5e">
+
+On the page that comes up, choose the second tab, `Variables`:
+
+Or, use this direct link (changing the organization name as needed):
+
+* <https://github.com/organizations/ucsb-cs156-f24/settings/variables/actions>
+
+Create a new variable called `TEAM_TO_CHANNEL` with the settings from the JSON object you created in the previous step.
+
+### Step 9: Update the ORG_NAME environment variable with your GitHub organization name.
+
+### Step 10: Update the END_DATE environment variable with the end date for the workflow to stop running the workflow forever.
+
+### Step 11: Update the COLUMNS environment variable with the column names in your project board.
+
+### Step 12: Update the branch name in the on section to match the branch you want to trigger the workflow on.
+
+### Step 13: Commit the changes to the main branch to trigger the workflow.
+
+### Step 14. The workflow will run and post the Kanban board status to the Slack channel associated with the team name.
