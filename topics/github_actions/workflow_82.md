@@ -55,18 +55,25 @@ To create a slack bot user, start here: <https://api.slack.com/apps/>
 | That will take you to this screen. You'll then need to scroll down to the heading `App Level Tokens` | <img width="772" alt="image" src="https://github.com/user-attachments/assets/0b4945f3-c765-4dba-883e-0a834894d211"> } |
 | This is the section you want. Click <img width="178" alt="Generate Token and Scopes" src="https://github.com/user-attachments/assets/3c7af6b2-f6b6-40d4-a1f6-1569d81e21f5">
  | <img width="554" alt="image" src="https://github.com/user-attachments/assets/0866ac98-47a4-46a8-89f2-a10aa92cbbe3"> |
- | Fill in the name `github-token` and then click <img width="87" alt="Add Scope" src="https://github.com/user-attachments/assets/31ed23da-8bbf-46b7-b92e-75347486469d">
-| <img width="414" alt="image" src="https://github.com/user-attachments/assets/e173f868-ad62-4230-8a9b-b4872cb75cdc"> |
+ | Fill in the name `github-token` and then click <img width="87" alt="Add Scope" src="https://github.com/user-attachments/assets/31ed23da-8bbf-46b7-b92e-75347486469d"> | <img width="414" alt="image" src="https://github.com/user-attachments/assets/e173f868-ad62-4230-8a9b-b4872cb75cdc"> |
+| There will be a pop-up with suggestions for scopes.  The ones you want are these: <br />`connections:write, app_configurations:write`, so fill those in; you'll need to click the `Add Scope` button twice. | <img width="407" alt="image" src="https://github.com/user-attachments/assets/6157e8f1-a1e0-4b5a-8e97-4aa593cdc99b"> |
+| When finished it should look like this. At that point, click <img width="83" alt="Generate" src="https://github.com/user-attachments/assets/2e0d4545-ce08-4b78-8616-29d28b81fa8a">
+ | <img width="412" alt="image" src="https://github.com/user-attachments/assets/09f85903-256d-4f29-96e1-3105469f39e2"> |
+| You'll then see a box like this the one shown here (I've redacted the token value). Keep this window open so that you can copy the token value; you'll need it at the next step. | <img width="417" alt="image" src="https://github.com/user-attachments/assets/eda107b7-f559-440b-a682-a26379a52f13"> |
 
+### Step 6: Copy OAuth token to org secrets as `SLACK_BOT_USER_OAUTH_ACCESS_TOKEN`
 
+In a different web browser, navigate to your Organization Secrets, found here:
 
+<img width="321" alt="image" src="https://github.com/user-attachments/assets/2aadc91e-aca6-4233-94e9-59cf6e0001d0">
 
+Or, use this link (editing to replace the organization): 
+* <https://github.com/organizations/ucsb-cs156-f24/settings/secrets/actions>
 
+Click <img width="211" alt="New Organization Secret" src="https://github.com/user-attachments/assets/812f9f43-3782-4a5a-8a58-d8769b86959b">, and add the secret with the name 
+`SLACK_BOT_USER_OAUTH_ACCESS_TOKEN`, and the value of the OAuth token from Slack from the previous step.
 
-
-
-
-### Step 6: Add the OAuth access token in the organization secrets with the name SLACK_BOT_USER_OAUTH_ACCESS_TOKEN.
+Choose either `All Repositories` or select the repositorires to which this should be applied.
 
 ### Step 7: Update the TEAM_TO_CHANNEL environment variable with the mapping of team names to Slack channel IDs.
 
