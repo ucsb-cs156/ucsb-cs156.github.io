@@ -52,6 +52,9 @@ To create a slack bot user, start here: <https://api.slack.com/apps/>
 | You'll see this screen.  Click <img width="119" alt="Create New App" src="https://github.com/user-attachments/assets/502347ac-0eb9-457f-a1ee-94ad35918446">. | <img width="862" alt="image" src="https://github.com/user-attachments/assets/99349b5a-e923-4420-b8a4-5747165a310d"> |
 | You'll see this modal. Choose "From Scratch" | <img width="420" alt="image" src="https://github.com/user-attachments/assets/ee4cb932-ecc6-4908-96f4-55e450af8080"> |
 | For `App Name`, choose something like `Kanban Board Update`, and then select your Slack workspace, and click <img width="93" alt="Create App" src="https://github.com/user-attachments/assets/a6ce6138-1030-45ac-8a05-d68bc8f51f05"> | <img width="405" alt="image" src="https://github.com/user-attachments/assets/37d80fbc-b295-47f5-97e9-796fb53e28ff"> |
+| That will take you to this screen. You'll then need to scroll down to the heading `App Level Tokens` | <img width="772" alt="image" src="https://github.com/user-attachments/assets/0b4945f3-c765-4dba-883e-0a834894d211"> } |
+| This is the section you want. Click <img width="178" alt="Generate Token and Scopes" src="https://github.com/user-attachments/assets/3c7af6b2-f6b6-40d4-a1f6-1569d81e21f5">
+ | <img width="554" alt="image" src="https://github.com/user-attachments/assets/0866ac98-47a4-46a8-89f2-a10aa92cbbe3"> |
 
 
 
