@@ -40,18 +40,20 @@ Under organizations, it should have read-only permission on projects.
 
 ### Step 4: Add Secret `PAT` to Organization Secrets
 
-###  Step 5: Create a Slack bot user and add the OAuth access token in the organization secrets with the name SLACK_BOT_USER_OAUTH_ACCESS_TOKEN.
+### Step 5: Create a Slack bot user 
 
-### Step 6: Update the TEAM_TO_CHANNEL environment variable with the mapping of team names to Slack channel IDs.
+### Step 6: Add the OAuth access token in the organization secrets with the name SLACK_BOT_USER_OAUTH_ACCESS_TOKEN.
 
-### Step 5: Update the ORG_NAME environment variable with your GitHub organization name.
+### Step 7: Update the TEAM_TO_CHANNEL environment variable with the mapping of team names to Slack channel IDs.
 
-### Step 6: Update the END_DATE environment variable with the end date for the workflow to stop running the workflow forever.
+### Step 8: Update the ORG_NAME environment variable with your GitHub organization name.
 
-### Step 7: Update the COLUMNS environment variable with the column names in your project board.
+### Step 9: Update the END_DATE environment variable with the end date for the workflow to stop running the workflow forever.
 
-### Step 8: Update the branch name in the on section to match the branch you want to trigger the workflow on.
+### Step 10: Update the COLUMNS environment variable with the column names in your project board.
 
-### Step 9: Commit the changes to the main branch to trigger the workflow.
+### Step 11: Update the branch name in the on section to match the branch you want to trigger the workflow on.
 
-### Step 10. The workflow will run and post the Kanban board status to the Slack channel associated with the team name.
+### Step 12: Commit the changes to the main branch to trigger the workflow.
+
+### Step 13. The workflow will run and post the Kanban board status to the Slack channel associated with the team name.
