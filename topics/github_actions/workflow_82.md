@@ -2,7 +2,7 @@
 parent: "Github Actions"
 grand_parent: Topics
 layout: default
-title: "Github Actions: Workflow 81"
+title: "Github Actions: Workflow 82"
 description:  "Post Kanban board summary to team slack channel"
 wf82: "[`82-kanban-slack-update.yml`](https://github.com/ucsb-cs156-f24/team02-f24-00/blob/main/.github/workflows/82-kanban-slack-update.yml)"
 ---
