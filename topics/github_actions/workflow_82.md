@@ -40,7 +40,23 @@ Create a fine grained personal access token for the organization.
 
 Under organizations, it should have read-only permission on projects.
 
+Once you have the secret, keep the browser window open, since you'll need this value in the next step,
+and once you navigate away from the window, the value is no longer available.
+
 ### Step 4: Add Secret `PAT` to Organization Secrets
+
+In a different web browser, navigate to your Organization Secrets, found here:
+
+<img width="321" alt="image" src="https://github.com/user-attachments/assets/2aadc91e-aca6-4233-94e9-59cf6e0001d0">
+
+Or, use this link (editing to replace the organization): 
+* <https://github.com/organizations/ucsb-cs156-f24/settings/secrets/actions>
+
+Click <img width="211" alt="New Organization Secret" src="https://github.com/user-attachments/assets/812f9f43-3782-4a5a-8a58-d8769b86959b">, and add the secret with the name 
+`PAT`, and the value of the fine grained personal access token from the previous step.
+
+Choose either `All Repositories` or select the repositorires to which this should be applied.
+
 
 ### Step 5: Create a Slack bot user 
 
