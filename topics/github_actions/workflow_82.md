@@ -55,6 +55,9 @@ To create a slack bot user, start here: <https://api.slack.com/apps/>
 | That will take you to this screen. You'll then need to scroll down to the heading `App Level Tokens` | <img width="772" alt="image" src="https://github.com/user-attachments/assets/0b4945f3-c765-4dba-883e-0a834894d211"> } |
 | This is the section you want. Click <img width="178" alt="Generate Token and Scopes" src="https://github.com/user-attachments/assets/3c7af6b2-f6b6-40d4-a1f6-1569d81e21f5">
  | <img width="554" alt="image" src="https://github.com/user-attachments/assets/0866ac98-47a4-46a8-89f2-a10aa92cbbe3"> |
+ | Fill in the name `github-token` and then click <img width="87" alt="Add Scope" src="https://github.com/user-attachments/assets/31ed23da-8bbf-46b7-b92e-75347486469d">
+| <img width="414" alt="image" src="https://github.com/user-attachments/assets/e173f868-ad62-4230-8a9b-b4872cb75cdc"> |
+
 
 
 
