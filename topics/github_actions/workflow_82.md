@@ -68,14 +68,14 @@ To create a slack bot user, start here: <https://api.slack.com/apps/>
 | You'll see this screen.  Click <img width="119" alt="Create New App" src="https://github.com/user-attachments/assets/502347ac-0eb9-457f-a1ee-94ad35918446">. | <img width="862" alt="image" src="https://github.com/user-attachments/assets/99349b5a-e923-4420-b8a4-5747165a310d"> |
 | You'll see this modal. Choose "From Scratch" | <img width="420" alt="image" src="https://github.com/user-attachments/assets/ee4cb932-ecc6-4908-96f4-55e450af8080"> |
 | For `App Name`, choose something like `Kanban Board Update`, and then select your Slack workspace, and click <img width="93" alt="Create App" src="https://github.com/user-attachments/assets/a6ce6138-1030-45ac-8a05-d68bc8f51f05"> | <img width="405" alt="image" src="https://github.com/user-attachments/assets/37d80fbc-b295-47f5-97e9-796fb53e28ff"> |
-| That will take you to this screen. You'll then need to scroll down to the heading `App Level Tokens` | <img width="772" alt="image" src="https://github.com/user-attachments/assets/0b4945f3-c765-4dba-883e-0a834894d211"> } |
-| This is the section you want. Click <img width="178" alt="Generate Token and Scopes" src="https://github.com/user-attachments/assets/3c7af6b2-f6b6-40d4-a1f6-1569d81e21f5">
- | <img width="554" alt="image" src="https://github.com/user-attachments/assets/0866ac98-47a4-46a8-89f2-a10aa92cbbe3"> |
- | Fill in the name `github-token` and then click <img width="87" alt="Add Scope" src="https://github.com/user-attachments/assets/31ed23da-8bbf-46b7-b92e-75347486469d"> | <img width="414" alt="image" src="https://github.com/user-attachments/assets/e173f868-ad62-4230-8a9b-b4872cb75cdc"> |
-| There will be a pop-up with suggestions for scopes.  The ones you want are these: <br />`connections:write, app_configurations:write`, so fill those in; you'll need to click the `Add Scope` button twice. | <img width="407" alt="image" src="https://github.com/user-attachments/assets/6157e8f1-a1e0-4b5a-8e97-4aa593cdc99b"> |
-| When finished it should look like this. At that point, click <img width="83" alt="Generate" src="https://github.com/user-attachments/assets/2e0d4545-ce08-4b78-8616-29d28b81fa8a">
- | <img width="412" alt="image" src="https://github.com/user-attachments/assets/09f85903-256d-4f29-96e1-3105469f39e2"> |
-| You'll then see a box like this the one shown here (I've redacted the token value). Keep this window open so that you can copy the token value; you'll need it at the next step. | <img width="417" alt="image" src="https://github.com/user-attachments/assets/eda107b7-f559-440b-a682-a26379a52f13"> |
+| That will take you to this screen. Now you need to look for `OAuth and Permission` in the left navigation| <img width="772" alt="image" src="https://github.com/user-attachments/assets/0b4945f3-c765-4dba-883e-0a834894d211"> } |
+| Click on this | <img width="228" alt="image" src="https://github.com/user-attachments/assets/3c945f66-1706-4248-932b-c8009f0cfa3e"> |
+| Scroll down to here | <img width="666" alt="image" src="https://github.com/user-attachments/assets/f4f42255-937e-4879-ba10-031de4bfa82d"> |
+| Add these scopes: |  <img width="679" alt="image" src="https://github.com/user-attachments/assets/cadb028e-e8a1-4d97-8552-fcaf854f4ee3"> |
+| Then scroll back up to `OAuth Tokens` and click the <img width="220" alt="Install" src="https://github.com/user-attachments/assets/584412f5-06fb-46a6-8925-8291114661ab"> button | <img width="650" alt="image" src="https://github.com/user-attachments/assets/4259ebcd-d9e2-438d-9df5-456fc5312d4e"> |
+| You'll see a screen like this. Click `Allow` | <img width="593" alt="image" src="https://github.com/user-attachments/assets/08b313ee-c41e-4c8b-b995-dd567f59223e"> |
+| You'll then be shown the OAuth Token value (redacted here).  Leave this window open so that you can copy this value in the next step. | <img width="553" alt="image" src="https://github.com/user-attachments/assets/980de542-7e4b-4a38-ab2a-58f22ea0dcde"> |
+
 
 ### Step 6: Copy OAuth token to org secrets as `SLACK_BOT_USER_OAUTH_ACCESS_TOKEN`
 
