@@ -158,6 +158,8 @@ Somewhere in one or more of these files, you may find some code that is adding a
 export PATH="/opt/homebrew/opt/openjdk@21/bin:$PATH"
 ```
 
+To find this, you might find it helpful to type this: `grep openjdk .*` or `grep 21 .*`
+
 Youll need to find this and replace it with this:
 
 ```
