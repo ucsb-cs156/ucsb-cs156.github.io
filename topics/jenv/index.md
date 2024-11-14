@@ -6,7 +6,9 @@ description:  "A tool for managing switching between Java versions"
 has_children: true
 ---
 
-# {{page.title}} - {{page.description}}
+# {{page.title}} 
+
+## {{page.description}}
 
 Migrating a large code base from one Java version to another can be a significant undertaking.  In Fall 2024, we manage to move one of our existing legacy code projects from Java 17 to Java 21,
 but the remaining projects could not be migrated in time.
