@@ -19,3 +19,6 @@ Fortunately, there is a tool that helps with this called `jenv`.
 
 * Main jenv documentation page: <https://www.jenv.be/>
 
+## Installation
+
+* On MacOS: <https://ucsb-cs156.github.io/topics/jenv/jenv_macos.html>
