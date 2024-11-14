@@ -4,7 +4,7 @@ grand_parent: Topics
 layout: default
 title: "jenv: MacOS"
 description:  "Managing multiple Java versions on MacOS"
---
+---
 
 # {{page.title}} - {{page.description}}
 
@@ -205,34 +205,36 @@ pconrad@Phillips-MacBook-Air-2 proj-happycows %
 Just one problem!  When using `mvn`, the Java versions isn't switching!  That because we now have to undo one more bit of setup that we previously did to 
 get Java 21 integrated with Maven.
 
-## Step 8: Locate your mvn script
+## Step 8: Uninstall and reinstall maven
 
-First, you need to locate the script that runs the `mvn` command.  To do that, type `which mvn`.
-
-Here's what that looks like:
+We first need to set maven back to its clean original settings.  Easiest way is with:
 
 ```
-pconrad@Phillips-MacBook-Air-2 ~ % which mvn
-/opt/homebrew/bin/mvn
-pconrad@Phillips-MacBook-Air-2 ~ %
+brew uninstall maven
+brew install maven
 ```
+## Step 9: Install two plugins for `jenv`
 
-As you can see, on my system, `/opt/homebrew/bin/mvn` is the location of mvn.  I can now use an editor (VSCode, vim, whatever) to open up this file:
-
-```
-code /opt/homebrew/bin/mvn
-```
-
-This is what I find inside:
+Now do this to install two jenv plugins:
 
 ```
-#!/bin/bash
-#JAVA_HOME="${JAVA_HOME:-/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home}" exec "/opt/homebrew/Cellar/maven/3.9.9/libexec/bin/mvn"  "$@"
-JAVA_HOME="${JAVA_HOME:-$(/usr/libexec/java_home 21)}" exec "/opt/homebrew/Cellar/maven/3.9.9/libexec/bin/mvn" "$@"
+jenv enable-plugin export
+jenv enable-plugin maven
 ```
 
-As you can see, we edited this file to always link up mvn to Java 21.  Instead, we want to edit this so that `mvn` picks up the Java version that was
-selected by `jenv`.  We'll do that in the next step.
+Finally, do `jenv doctor` and then close your terminal and reopen it.
+
+If all goes well, you will now be able to switch between Java projects and when you do `mvn --version`, you'll see the correct Java version.
+
+To test this, try this:
+
+1. `cd` into the directory for the repo where you worked on a Java 21 project (e.g. your `team02` directory).
+2. Type `mvn --version`.  You should see Java 21
+3. `cd` into the directory where you cloned a Java 17 project (e.g. `proj-happycows`)
+4. Type `mvn --version`.  You should see Java 17
+
+If it still doesn't work, ask for help from the staff.
+
 
 
 
