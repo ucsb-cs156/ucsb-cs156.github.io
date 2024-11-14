@@ -1,5 +1,5 @@
 ---
-parent: jenv
+parent: Jenv
 grand_parent: Topics
 layout: default
 title: "jenv: MacOS"
