@@ -236,7 +236,10 @@ To test this, try this:
 If it still doesn't work, ask for help from the staff.
 
 
+## Resources
 
+* <https://medium.com/javarevisited/manage-java-versions-with-jenv-6b8228552661>
+* <https://stackoverflow.com/questions/28615671/set-java-home-to-reflect-jenv-java-version>
 
 
 
