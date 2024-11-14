@@ -1,7 +1,7 @@
 ---
 parent: Topics
 layout: default
-title: jenv
+title: JEnv
 description:  "A tool for managing switching between Java versions"
 has_children: true
 ---
