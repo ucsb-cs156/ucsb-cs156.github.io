@@ -25,17 +25,33 @@ After this completes, you'll be able to type `jenv versions` to see the versions
 ```
 pconrad@Phillips-MacBook-Air-2 ~ % jenv versions
 * system (set by /Users/pconrad/.jenv/version)
-pconrad@Phillips-MacBook-Air-2 ~ % 
+pconrad@Phillips-MacBook-Air-2 ~ %
 ```
 
-## Step 2: Install java versions
+## Step 2: Run `jenv doctor`
+
+The command `jenv doctor` will check to see if your installation is correct.  It may tell you that you need to do this command:
+
+```
+echo 'eval "$(jenv init -)"' >> /Users/pconrad/.zshrc
+```
+
+If so, do it.   At this stage, don't worry about these messages, which may also appear:
+
+```
+[OK]	No JAVA_HOME set
+[ERROR]	Java binary in path is not in the jenv shims.
+[ERROR]	Please check your path, or try using /path/to/java/home is not a valid path to java installation.
+```
+
+## Step 3: Install java versions
 
 The next step is to install the java versions that you need, which is also done with `brew`.
 
 * To install Java 17: `brew install openjdk@17`
 * To install Java 21: `brew install openjdk@21`
 
-## Step 3: Find your java versions
+## Step 4: Find your java versions
 
 The exact directory where the java versions are stored may depend on your specific system configuration (OS version, machine architecture, etc.).  But somewhere on your system, there will be a directory where the various java versions live.
 
@@ -60,9 +76,8 @@ pconrad@Phillips-MacBook-Air-2 proj-courses %
 
 This shows me that I have Java 11, 17, 21, and 23 all available on my system.
 
-The next step is to add each of these into jenv.
 
-## Step 4: Add Java Versions into jenv
+## Step 5: Add Java Versions into jenv
 
 For each Java version that you need to work with, add it in to jenv like this:
 
@@ -105,41 +120,9 @@ pconrad@Phillips-MacBook-Air-2 ~ % jenv versions
 pconrad@Phillips-MacBook-Air-2 ~ %
 ```
 
+Unfortunately, you may have hardcoded Java 21 in your startup files earlier in the course. So we'll need to undo that before `jenv` can do it's job.
 
-
-## Step 6: cd into any of the ucsb-cs156 repos
-
-Now, if all goes properly, anytime you cd into a directory that has a `.java-version` file in it (which all of the CS156 projects do), the java versions will be
-set automatically.
-
-For example, at the time I wrote this, `proj-courses` had a `.java-version` file containing `21` while `proj-happycows` had a `.java-version` file containing `17`.
-
-What what happens when I switch between them (here I'm using `java version` to show the currently selected version):
-
-```
-pconrad@Phillips-MacBook-Air-2 ~ % cd ~/github/ucsb-cs156/proj-courses
-pconrad@Phillips-MacBook-Air-2 proj-courses % jenv version
-21 (set by /Users/pconrad/github/ucsb-cs156/proj-courses/.java-version)
-pconrad@Phillips-MacBook-Air-2 proj-courses % java --version
-openjdk 21.0.5 2024-10-15
-OpenJDK Runtime Environment Homebrew (build 21.0.5)
-OpenJDK 64-Bit Server VM Homebrew (build 21.0.5, mixed mode, sharing)
-pconrad@Phillips-MacBook-Air-2 proj-courses % cd ~/github/ucsb-cs156/proj-happycows 
-pconrad@Phillips-MacBook-Air-2 proj-happycows % jenv version
-17 (set by /Users/pconrad/github/ucsb-cs156/proj-happycows/.java-version)
-pconrad@Phillips-MacBook-Air-2 proj-happycows % java --version
-openjdk 21.0.5 2024-10-15
-OpenJDK Runtime Environment Homebrew (build 21.0.5)
-OpenJDK 64-Bit Server VM Homebrew (build 21.0.5, mixed mode, sharing)
-pconrad@Phillips-MacBook-Air-2 proj-happycows % 
-```
-
-But, as you can see, there's still a problem.  While `jenv` detects the change in version, the path to `javac` is still set to Java 21 in both cases.
-
-To fix this, we may have to undo some steps we took earlier in the course to get Java 21 set up as our default version.
-
-
-## Step 7: Fix the path in your startup files
+## Step 6: Fix the path in your startup files
 
 `cd` into your home directory by just typing `cd` by itself.
 
@@ -205,7 +188,7 @@ pconrad@Phillips-MacBook-Air-2 proj-happycows %
 Just one problem!  When using `mvn`, the Java versions isn't switching!  That because we now have to undo one more bit of setup that we previously did to 
 get Java 21 integrated with Maven.
 
-## Step 8: Uninstall and reinstall maven
+## Step 7: Uninstall and reinstall maven
 
 We first need to set maven back to its clean original settings.  Easiest way is with:
 
@@ -213,7 +196,7 @@ We first need to set maven back to its clean original settings.  Easiest way is 
 brew uninstall maven
 brew install maven
 ```
-## Step 9: Install two plugins for `jenv`
+## Step 8: Install two plugins for `jenv`
 
 Now do this to install two jenv plugins:
 
