@@ -33,6 +33,8 @@ jenv enable-plugin export
 source ~/.bashrc
 ```
 
+Note: the `source ~/.bashrc` step is very important!  Don't skip that!
+
 ## Step 2: Install Java Versions
 You'll want to install the java versions you need to manage. You can do so with the following commands:
 ```
