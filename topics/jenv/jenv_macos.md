@@ -55,7 +55,7 @@ The next step is to install the java versions that you need, which is also done 
 
 The exact directory where the java versions are stored may depend on your specific system configuration (OS version, machine architecture, etc.).  But somewhere on your system, there will be a directory where the various java versions live.
 
-One to find this is to type `which java`.  On my system, that results in this:
+One way to find this is to type `which java`.  On my system, that results in this:
 
 ```
 pconrad@Phillips-MacBook-Air-2 proj-courses % which java
