@@ -36,7 +36,9 @@ The command `jenv doctor` will check to see if your installation is correct.  It
 echo 'eval "$(jenv init -)"' >> /Users/pconrad/.zshrc
 ```
 
-If so, do it.   At this stage, don't worry about these messages, which may also appear:
+If so, do it, and *then close and reopen your terminal window*.  That step is very important.
+
+At this stage, don't worry about these messages, which may also appear:
 
 ```
 [OK]	No JAVA_HOME set
