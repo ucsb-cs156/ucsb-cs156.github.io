@@ -64,7 +64,14 @@ pconrad@Phillips-MacBook-Air-2 proj-courses % which java
 /opt/homebrew/opt/openjdk@21/bin/java
 ```
 
-That gives me a clue that the java versions live in `/opt/homebrew/opt/` and sure enough if I list that directory with `openjdk*` I see this:
+NOTE: If `which java` gives you a path like `/usr/bin/java` without `openjdk@21` or `openjdk@17`, run the following two commands to modify your `.zshrc` files:
+```
+pconrad@Phillips-MacBook-Air-2 proj-courses % echo 'export PATH="/usr/local/opt/openjdk@17/bin:$PATH"' >> ~/.zshrc
+pconrad@Phillips-MacBook-Air-2 proj-courses % echo 'export PATH="/usr/local/opt/openjdk@17/bin:$PATH"' >> ~/.zshrc
+```
+Then, try running `which java` again to get the proper path.
+
+This path gives me a clue that the java versions live in `/opt/homebrew/opt/` and sure enough if I list that directory with `openjdk*` I see this:
 
 ```
 pconrad@Phillips-MacBook-Air-2 proj-courses % ls -ld /opt/homebrew/opt/openjdk*
