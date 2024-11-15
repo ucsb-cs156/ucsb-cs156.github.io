@@ -66,9 +66,9 @@ pconrad@Phillips-MacBook-Air-2 proj-courses % which java
 
 NOTE: If `which java` gives you a path like `/usr/bin/java` without `openjdk@21` or `openjdk@17`, run the following two commands to modify your `.zshrc` files:
 ```
-pconrad@Phillips-MacBook-Air-2 proj-courses % echo 'export PATH="/usr/local/opt/openjdk@17/bin:$PATH"' >> ~/.zshrc
-pconrad@Phillips-MacBook-Air-2 proj-courses % echo 'export PATH="/usr/local/opt/openjdk@17/bin:$PATH"' >> ~/.zshrc
-pconrad@Phillips-MacBook-Air-2 proj-courses % source ~/.zshrc
+echo 'export PATH="/usr/local/opt/openjdk@17/bin:$PATH"' >> ~/.zshrc
+echo 'export PATH="/usr/local/opt/openjdk@17/bin:$PATH"' >> ~/.zshrc
+source ~/.zshrc
 ```
 Then, try running `which java` again to get the proper path.
 
