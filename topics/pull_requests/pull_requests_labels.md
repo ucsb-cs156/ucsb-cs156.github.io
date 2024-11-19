@@ -33,15 +33,25 @@ There is also a 0 points value label (<img width="52" alt="0" src="https://githu
 
 ## FIXME labels
 
-These are used to indicate that the staff are blocked from proceeding with this PR for one of several reasons.  The actions that the team needs to take
-are explained in the table below:
+These are used to indicate that the staff are blocked from proceeding with this PR for one of several reasons.  The actions that the team needs to take are explained in the table below.
+
+Once the team member has addressed the concern, they should *remove the label* to signal to the staff to take a new look.
+
+These labels use the color bright red, `#D93F0B`, <img width="27" alt="bright red" src="https://github.com/user-attachments/assets/7f98c821-101c-4e56-b2a5-6d3631e3a622">
+
 
 | Label | Label Text | Description | Interpretation |
 |-------|------------|-------------|----------------|
 |       | FIXME-PR Title | Please improve the PR Title | See [guidelines for PRs titles](https://ucsb-cs156.github.io/topics/pull_requests/#pr-titles) |
 |       | FIXME-PR Description | Please improve the PR Description | See [guidelines for PRs descriptions](https://ucsb-cs156.github.io/topics/pull_requests/#pr-descriptions) |
 |       | FIXME-Team CR | Please get a code review from a member of the team | Every PR needs an up-to-date [code review](https://ucsb-cs156.github.io/topics/code_reviews/) from a member of the team before staff will review it.  |
-|       | FIXME-Team CR | Please get a code review from a member of the team | Every PR needs an up-to-date code review from a member of the team before staff will review it  |
 |       | FIXME-Commented-Out-Code | PRs into main should not contain commented out code | See: [Commented Out Code](https://ucsb-cs156.github.io/topics/code_reviews/commented_out_code.html) |
+|       | FIXME-deploy | Please deploy to dokku and put link in PR description  | For PRs with complex logic changes, staff may want to test the code on a dokku deployment before merging |
+|       | FIXME-storybook | Please link to a storybook deployment | For PRs that impact frontend changes, please link to a storybook entry (or entries) that is available fromthe gh-pages website and hosted on chromatic.com (not localhost). Link(s) should go straight to the storybook page(s) for the components/pages changed | 
+|       | FIXME-screenshots | Please add a screenshot to the PR description | For PRs that change the user interface, please include screenshots in the PR description | 
+|       | FIXME-testplan | Please add a `## Test Plan` section to PR description | For PRs with complex logic changes, code reviewers will need the developer to specify how to test the changes on a localhost or dokku deployment, step-by-step | 
+|       | FIXME-link-to-issue | Please link to one or more issues | Use the `Closes #xx` keyword in the PR description | 
+|       | FIXME-assign-PR | Please assign the PR to one or more team members | Use the right side-bar on the PR page to assign to one or more team members. | 
+|       | FIXME-assign-issue | Please assign the linked issue(s) to one or more team members | Use the right side-bar on the PR page to assign the linked issue(s) to one or more team members. | 
 
 
