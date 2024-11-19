@@ -40,4 +40,8 @@ are explained in the table below:
 |-------|------------|-------------|----------------|
 |       | FIXME-PR Title | Please improve the PR Title | See [guidelines for PRs titles](https://ucsb-cs156.github.io/topics/pull_requests/#pr-titles) |
 |       | FIXME-PR Description | Please improve the PR Description | See [guidelines for PRs descriptions](https://ucsb-cs156.github.io/topics/pull_requests/#pr-descriptions) |
+|       | FIXME-Team CR | Please get a code review from a member of the team | Every PR needs an up-to-date [code review](https://ucsb-cs156.github.io/topics/code_reviews/) from a member of the team before staff will review it.  |
+|       | FIXME-Team CR | Please get a code review from a member of the team | Every PR needs an up-to-date code review from a member of the team before staff will review it  |
+|       | FIXME-Commented-Out-Code | PRs into main should not contain commented out code | See: [Commented Out Code](https://ucsb-cs156.github.io/topics/code_reviews/commented_out_code.html) |
+
 
