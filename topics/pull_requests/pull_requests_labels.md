@@ -51,7 +51,7 @@ These labels use the color bright red, `#D93F0B`, <img width="27" alt="bright re
 | <img width="144" alt="FIXME-screenshots" src="https://github.com/user-attachments/assets/4945c1b4-6caf-4e5b-a544-24001d35efda">   | FIXME-screenshots | Please add a screenshot to the PR description | For PRs that change the user interface, please include screenshots in the PR description | 
 | <img width="122" alt="FIXME-testplan" src="https://github.com/user-attachments/assets/54f8f85f-4f90-4be8-9985-59fce31bc496">   | FIXME-testplan | Please add a `## Test Plan` section to PR description | For PRs with complex logic changes, code reviewers will need the developer to specify how to test the changes on a localhost or dokku deployment, step-by-step | 
 | <img width="162" alt="image" src="https://github.com/user-attachments/assets/ffc6fd5d-669f-489c-a561-87faf9ec53f0">   | FIXME-link-to-issue | Please link to one or more issues | Use the `Closes #xx` keyword in the PR description | 
-|       | FIXME-assign-PR | Please assign the PR to one or more team members | Use the right side-bar on the PR page to assign to one or more team members. | 
-|       | FIXME-assign-issue | Please assign the linked issue(s) to one or more team members | Use the right side-bar on the PR page to assign the linked issue(s) to one or more team members. | 
+| <img width="147" alt=" FIXME-assign-PR" src="https://github.com/user-attachments/assets/4ef0ed78-1586-4772-84ae-398eb1884c7c">     | FIXME-assign-PR | Please assign the PR to one or more team members | Use the right side-bar on the PR page to assign to one or more team members. | 
+| <img width="154" alt="FIXME-assign-issue " src="https://github.com/user-attachments/assets/733a71d8-2f12-45f9-90aa-c627b4c61dba">   | FIXME-assign-issue | Please assign the linked issue(s) to one or more team members | Use the right side-bar on the PR page to assign the linked issue(s) to one or more team members. | 
 
 
