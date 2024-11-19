@@ -53,7 +53,7 @@ These labels use the color bright red, `#D93F0B`, <img width="27" alt="bright re
 | <img width="162" alt="image" src="https://github.com/user-attachments/assets/ffc6fd5d-669f-489c-a561-87faf9ec53f0">   | FIXME-link-to-issue | Please link to one or more issues | Use the `Closes #xx` keyword in the PR description | 
 | <img width="147" alt=" FIXME-assign-PR" src="https://github.com/user-attachments/assets/4ef0ed78-1586-4772-84ae-398eb1884c7c">     | FIXME-assign-PR | Please assign the PR to one or more team members | Use the right side-bar on the PR page to assign to one or more team members. | 
 | <img width="154" alt="FIXME-assign-issue " src="https://github.com/user-attachments/assets/733a71d8-2f12-45f9-90aa-c627b4c61dba">   | FIXME-assign-issue | Please assign the linked issue(s) to one or more team members | Use the right side-bar on the PR page to assign the linked issue(s) to one or more team members. | 
-|  | FIXME-Merge Conflicts| Please address the merge conflicts | There are merge conflicts that need to be addressed before this PR is mergeable |
+|  | FIXME-Merge Conflicts| Please resolve the merge conflicts | There are merge conflicts that need to be addressed before this PR is mergeable |
 |  | FIXME-Rebase on Main | Please rebase this PR on main | The PR may include changes that were already merged, making it difficult to code review; please rebase on main so that only the relevant changes appear |
 |  | FIXME-Address-CR | Please address the concerns raised in the Code Review | There are concerns raised by one or more code reviewers that need to be addressed before this can be reviewed again by staff. |
 
