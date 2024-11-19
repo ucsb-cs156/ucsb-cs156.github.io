@@ -53,5 +53,17 @@ These labels use the color bright red, `#D93F0B`, <img width="27" alt="bright re
 | <img width="162" alt="image" src="https://github.com/user-attachments/assets/ffc6fd5d-669f-489c-a561-87faf9ec53f0">   | FIXME-link-to-issue | Please link to one or more issues | Use the `Closes #xx` keyword in the PR description | 
 | <img width="147" alt=" FIXME-assign-PR" src="https://github.com/user-attachments/assets/4ef0ed78-1586-4772-84ae-398eb1884c7c">     | FIXME-assign-PR | Please assign the PR to one or more team members | Use the right side-bar on the PR page to assign to one or more team members. | 
 | <img width="154" alt="FIXME-assign-issue " src="https://github.com/user-attachments/assets/733a71d8-2f12-45f9-90aa-c627b4c61dba">   | FIXME-assign-issue | Please assign the linked issue(s) to one or more team members | Use the right side-bar on the PR page to assign the linked issue(s) to one or more team members. | 
+|  | FIXME-Merge Conflicts| Please address the merge conflicts | There are merge conflicts that need to be addressed before this PR is mergeable |
+|  | FIXME-Rebase on Main | Please rebase this PR on main | The PR may include changes that were already merged, making it difficult to code review; please rebase on main so that only the relevant changes appear |
+|  | FIXME-Address-CR | Please address the concerns raised in the Code Review | There are concerns raised by one or more code reviewers that need to be addressed before this can be reviewed again by staff. |
 
+## Progress Labels
 
+Labels in bright green (`#0E8A16`,<img width="29" alt="bright green" src="https://github.com/user-attachments/assets/c6846f89-faec-466d-a93b-8f82283b8f39">) indicate some kind of progress is taking place on the PR.   
+
+| Label | Label Text | Description | Interpretation |
+|-------|------------|-------------|----------------|
+|       | Ready-for-staff | This is ready for the staff to review | Members of the team can use this when they beleive they have the PR ready for staff review (i.e. all criteria on [this checklist](https://ucsb-cs156.github.io/topics/pull_requests/#pr-checklist) have been met.  Staff may also use this when doing a "first pass" to see which PRs are ready, before coming back to do a more detailed review. |
+|       | Merge Candidate-CI | Staff beleives this is mergeable if/when CI/CD passes | This is placed by *staff only* on PRs that have met all of the criteria to be mergeable (including an approved code review by staff), but, perhaps due to rebasing or other reasons, needed to be run through CI another time after the code review.  If the CI/CD pipeline fails, this may be removed. |
+|       | Merge Candidate-Dokku | Staff has reviewed code but still needs to test a deployment | A code review was done and the code looks good to the staff, but the changes was sufficiently complex that they want to test on dokku before finally merging.  This should only be added by staff; after the testing, the PR will either be merged, or if a bug is found, the approving code review will be superseded by one describing the bug, and FIXME-Address-CR will be added. |
+|       | Merge Candidate-HOLD | PR is mergeable but depends on another PR to be merged first | The PR description will typically spell out if a later PR depends on an earlier one.  If the code in this PR is good, but a previous PR is being held up for some reason, this label may be applied by staff |
