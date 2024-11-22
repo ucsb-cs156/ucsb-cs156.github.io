@@ -52,6 +52,8 @@ Here are a few tips when working on PRs. We won't review PRs until all these ite
      - Then ask for help on the Slack help channel associated with the project, e.g. `#proj-ucsb-courses-search`, `#proj-ucsb-cs-las`, `#proj-mapache-search` on the slack.
      - Then ask for help during staff office hours or during lecture/discussion work time.
 
+If it meets **all twelve** of these criteria **and** has an approving code review from a team member, then (and only then) you mark mark it as `Ready-For-Staff`.  
+
 For advice from industry folks, see also: 
 * <https://code-review.tidyverse.org/>
 * <https://google.github.io/eng-practices/review/developer/> but note that everywhere you see `CL` think `PR` instead (`CL` is Google's internal terminology and stands for "Change List", i.e. a list of the changes in the Pull Request.)
