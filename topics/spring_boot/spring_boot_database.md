@@ -225,17 +225,37 @@ would have a field for `course_id`, which would be the `id` of a row in the `cou
   
 # Timestamps on Database Rows
 
-It is possible for Spring Data's JPA to automatically put created at and last modified time stamps on database rows.
+It is possible for Spring Data's JPA to automatically put created at and last modified time stamps on database rows as explained in [this article](https://www.baeldung.com/hibernate-creationtimestamp-updatetimestamp).
 
 Here's how you do it.
 
 1. On your main class (the one that has `SpringApplication.run` in it, and has `@SpringBootApplication` on it), add this annotation:
 
-   ```
-   @EnableJpaAuditing
+   [See code in context](https://github.com/ucsb-cs156/proj-happycows/blob/7a5456e61fffafa73a3464eb16360c4aa06cd50f/src/main/java/edu/ucsb/cs156/happiercows/HappierCowsApplication.java#L23)
+   ```java
+   @EnableJpaAuditing(dateTimeProviderRef = "utcDateTimeProvider")
    ```
    
-2. On your entity class, also add this annotation: `@EntityListeners(AuditingEntityListener.class)`
+   Along with a `utcDateTimeProvider` method, as shown in this example from `proj-happycows`: 
+
+   [See code in context](https://github.com/ucsb-cs156/proj-happycows/blob/7a5456e61fffafa73a3464eb16360c4aa06cd50f/src/main/java/edu/ucsb/cs156/happiercows/HappierCowsApplication.java#L60)
+   ```java
+   @Bean
+   public DateTimeProvider utcDateTimeProvider() {
+      return () -> {
+        ZonedDateTime now = ZonedDateTime.now();
+        return Optional.of(now);
+      };
+   }
+   ```
+   
+2. On your entity class, also add this annotation:
+
+   [See code in context](https://github.com/ucsb-cs156/proj-happycows/blob/7a5456e61fffafa73a3464eb16360c4aa06cd50f/src/main/java/edu/ucsb/cs156/happiercows/entities/jobs/Job.java#L20)
+   ```java
+   @EntityListeners(AuditingEntityListener.class)
+   ```
+   
 
 3. On your entity class, add data members like these (the names `createdAt` and `updatedAt` are up to you,
    but the annotations must be as shown here:
@@ -246,3 +266,4 @@ Here's how you do it.
    @LastModifiedDate
    private LocalDateTime updatedAt;
    ```
+
