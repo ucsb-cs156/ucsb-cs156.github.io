@@ -222,6 +222,10 @@ would have a field for `course_id`, which would be the `id` of a row in the `cou
   @JoinColumn(name = "course_id")
   private Course course;
 ```
+
+For more information:
+* <https://www.baeldung.com/hibernate-one-to-many>
+* <https://www.baeldung.com/jpa-hibernate-associations>
   
 # Timestamps on Database Rows
 
