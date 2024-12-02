@@ -28,13 +28,20 @@ For example:
 
 The following values shoudl be set in `.env`, or via `dokku config:set`, or both:
 
-| Key                | .env | dokku | Explanation |
-|--------------------|------|-------|-------------|
-| `PRODUCTION`       |      |    X  | Should be set to `true` so that the frontend is built into app and served directly from Spring Boot server, rather than via a separate server on port 3000 |
-| `SOURCE_REPO`      |  X   |    X  | Should be set to the address of the repo if different from `https://github.com/ucsb-cs156/proj-courses` (e.g. `https://github.com/ucsb-cs156-s25/proj-courses-s25-02`) |
-| `START_QTR`        |  X   |    X  | Should be set to first quarter that appears in dropdown menus, using `YYYYQ` format, e.g. `20204` for Fall 2020 |
-| `END_QTR`          |  X   |    X  | Should be set to last quarter that appears in dropdown menus, using `YYYYQ` format, e.g. `20252` for Spring 2025 |
- 
+| Key                      | .env | dokku | Explanation |
+|--------------------------|------|-------|-------------|
+| `PRODUCTION`             |      |    X  | Should be set to `true` so that the frontend is built into app and served directly from Spring Boot server, rather than via a separate server on port 3000 |
+| `SOURCE_REPO`            |  X   |    X  | Should be set to the address of the repo if different from `https://github.com/ucsb-cs156/proj-courses` (e.g. `https://github.com/ucsb-cs156-s25/proj-courses-s25-02`) |
+| `START_QTR`              |  X   |    X  | Should be set to first quarter that appears in dropdown menus, using `YYYYQ` format, e.g. `20204` for Fall 2020 |
+| `END_QTR`                |  X   |    X  | Should be set to last quarter that appears in dropdown menus, using `YYYYQ` format, e.g. `20252` for Spring 2025 |
+| `ADMIN_EMAILS`           |  X   |    X  | Comma separated list of emails of admins (no spaces). For the course, it's typically all members of your team, plus all course staff (instructor, TAs, LAs) | 
+| `GOOGLE_CLIENT_ID`       |  X   |    X  | Google [OAuth credential](https://ucsb-cs156.github.io/topics/oauth/oauth_google_setup.html) |
+| `GOOGLE_CLIENT_SECRET`   |  X   |    X  | Google [OAuth credential](https://ucsb-cs156.github.io/topics/oauth/oauth_google_setup.html) |
+| `JDBC_DATABASE_URL`      |      |    X  | Password for [dokku postgres database](https://ucsb-cs156.github.io/topics/dokku/postgres_database.html) |
+| `JDBC_DATABASE_USERNAME` |      |    X  | Password for [dokku postgres database](https://ucsb-cs156.github.io/topics/dokku/postgres_database.html) |
+| `JDBC_DATABASE_PASSWORD` |      |    X  | Password for [dokku postgres database](https://ucsb-cs156.github.io/topics/dokku/postgres_database.html) |
+| `MONGODB_URI`            |  X   |    X  | URI for [MongoDB](https://ucsb-cs156.github.io/topics/mongodb/) |
+| `UCSB_API_KEY`           |  X   |    X  | API Key for [UCSB Developer API](https://developer.ucsb.edu/), see [below](#UCSB_API_KEY_values) |
 
 
 ## UCSB_API_KEY values
