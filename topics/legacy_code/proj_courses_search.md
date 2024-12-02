@@ -40,7 +40,7 @@ The following values shoudl be set in `.env`, or via `dokku config:set`, or both
 | `JDBC_DATABASE_URL`      |      |    X  | Password for [dokku postgres database](https://ucsb-cs156.github.io/topics/dokku/postgres_database.html) |
 | `JDBC_DATABASE_USERNAME` |      |    X  | Password for [dokku postgres database](https://ucsb-cs156.github.io/topics/dokku/postgres_database.html) |
 | `JDBC_DATABASE_PASSWORD` |      |    X  | Password for [dokku postgres database](https://ucsb-cs156.github.io/topics/dokku/postgres_database.html) |
-| `MONGODB_URI`            |  X   |    X  | URI for [MongoDB](https://ucsb-cs156.github.io/topics/mongodb/) |
+| `MONGODB_URI`            |  X   |    X  | URI for [MongoDB](https://ucsb-cs156.github.io/topics/mongodb/), see [below](#getting-the-value-for-mongodb_uri) |
 | `UCSB_API_KEY`           |  X   |    X  | API Key for [UCSB Developer API](https://developer.ucsb.edu/), see [below](#ucsb_api_key-values) |
 
 
