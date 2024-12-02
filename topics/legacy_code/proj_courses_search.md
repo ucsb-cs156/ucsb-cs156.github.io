@@ -24,6 +24,19 @@ For example:
 | Production Deployment | <https://courses.dokku-00.cs.ucsb.edu> |
 | QA Deployment (for CMPSC156 course staff) | <https://courses-qa.dokku-00.cs.ucsb.edu> |
 
+## Environment Variables
+
+The following values shoudl be set in `.env`, or via `dokku config:set`, or both:
+
+| Key                | .env | dokku | Explanation |
+|--------------------|------|-------|-------------|
+| `PRODUCTION`       |      |    X  | Should be set to `true` so that the frontend is built into app and served directly from Spring Boot server, rather than via a separate server on port 3000 |
+| `SOURCE_REPO`      |  X   |    X  | Should be set to the address of the repo if different from `https://github.com/ucsb-cs156/proj-courses` (e.g. `https://github.com/ucsb-cs156-s25/proj-courses-s25-02`) |
+| `START_QTR`        |  X   |    X  | Should be set to first quarter that appears in dropdown menus, using `YYYYQ` format, e.g. `20204` for Fall 2020 |
+| `END_QTR`          |  X   |    X  | Should be set to last quarter that appears in dropdown menus, using `YYYYQ` format, e.g. `20252` for Spring 2025 |
+ 
+
+
 ## UCSB_API_KEY values
 
 To deploy proj-courses, in addition to the usual GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET needed for other OAuth apps
