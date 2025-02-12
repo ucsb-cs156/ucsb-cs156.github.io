@@ -23,3 +23,10 @@ There are also additional considerations that you may need to take into account 
 
 TODO: Describe this, referencing the example from proj-dining
 
+##  `@ToString.Exclude`
+
+TODO: Explain this
+
+##  `@Fetch(FetchMode.JOIN)`
+
+TODO: Explain this
