@@ -83,9 +83,9 @@ Click on that, and you'll be taken to this screen, where you can upload a new pu
 </div>
 
 Select "Signing Key"
-<div style='border:1px solid black;' markdown="1">
 ![image](https://github.com/user-attachments/assets/0dad096a-d717-41fb-ad7b-54b4ef31eaa8)
-</div>
+
+Paste the key you copied into the key field.
 
 Once the key is uploaded, you're all set to be able to sign your commits!
 
