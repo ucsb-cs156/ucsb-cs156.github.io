@@ -122,12 +122,12 @@ To learn more, consult these links:
 * <https://www.linode.com/docs/security/authentication/gpg-key-for-ssh-authentication/>
 
 # Enabling Signed Commits on a Repo
-To enable signed commits on a repo, select "Settings" on the repository. Then, select "Rulesets".
+To enable signed commits on a repo, select "Settings" on the repository. Then, select "Rulesets"
 ![image](https://github.com/user-attachments/assets/0680ac60-f7b8-4cb3-b7e5-d7bdd90e9745)
-Select "New Ruleset". 
+Select "New Ruleset"
 ![image](https://github.com/user-attachments/assets/be3eac7d-7a9f-49e6-95da-8b4b9c6bedab)
 
-For branches, select include all branches. 
+For branches, select include all branches
 ![image](https://github.com/user-attachments/assets/b87a8278-351a-45b7-becb-bbb41379a313)
 
 Then, scroll down and select "Require Signed Commits"
