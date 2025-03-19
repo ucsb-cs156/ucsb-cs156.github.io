@@ -7,6 +7,8 @@ description:  "adding extra security to your commit messages"
 indent: true
 ---
 
+# {{page.title}} - {{page.description}}
+
 When you set your git configuration to use an email address with a command like this, github puts that email address on your
 commmits:
 ```
@@ -28,7 +30,7 @@ with a special badge indicating that the commit is verified as having come from 
 
 Shout out to our friends at AppFolio: this is one of the tips Phill Conrad picked up while interning there.
 
-# Enabling Verified Commits
+## Enabling Verified Commits
 First, you'll need an ssh key. If you haven't made one, start [here](/topics/GitHub/github_ssh_keys.html).
 
 Once you've made an ssh key, you have to tell github it exists. For most students, the commands will be below. If you set a custom location for your public/private key pair, replace `~/.ssh/id_rsa.pub` with your public key location. Run the following commmands:
@@ -89,7 +91,7 @@ Paste the key you copied into the key field.
 
 Once the key is uploaded, you're all set to be able to sign your commits!
 
-# Signing already made commits
+## Signing already made commits
 If you forgot to sign commits you already made, there's a couple things you can do:
 
 ## Signing the last commit
@@ -104,7 +106,7 @@ If you need to sign an entire branch, you can rebase and sign every commit. You 
 git rebase --signoff -S main
 ```
 
-# Rejected Commits
+## Rejected Commits
 If your commits are still being rejected for signing violations, make sure your username and email are properly set. Your git email must be an email associated with your Github account, or it will reject your commits as unverified.
 
 To set your name and email for your whole git installation, run the following commands:
@@ -113,7 +115,7 @@ git config --global user.name <name>
 git config --global user.email <email> 
 ```
 
-# Learn More
+## Learn More
 To learn more, consult these links:
 
 * <https://help.github.com/en/articles/generating-a-new-gpg-key>
@@ -121,7 +123,7 @@ To learn more, consult these links:
 * <https://help.github.com/en/articles/telling-git-about-your-signing-key>
 * <https://www.linode.com/docs/security/authentication/gpg-key-for-ssh-authentication/>
 
-# Enabling Signed Commits on a Repo
+## Enabling Signed Commits on a Repo
 To enable signed commits on a repo, select "Settings" on the repository. Then, select "Rulesets"
 ![image](https://github.com/user-attachments/assets/0680ac60-f7b8-4cb3-b7e5-d7bdd90e9745)
 Select "New Ruleset"
@@ -132,4 +134,13 @@ For branches, select include all branches
 
 Then, scroll down and select "Require Signed Commits"
 
+### Excluding the `gh-pages` branch
+
 ![image](https://github.com/user-attachments/assets/72d96ddb-ec1e-4ed1-b4d0-4cf6b9216f07)
+
+If your repo uses Github Actions to build the gh-pages branch (as most repos in CMPSC 156 do), then you'll need to exclude
+the gh-pages branch from the rule as shown below. This is because while signing commits in a Github Actions script is *possible*, it's not at all straightforward or easy to configure as of March 2025.  (There are proposals to make it easier, and if/when we find a workable solution, we might implement that instead of making the `gh-pages` branch an exception:
+
+<img width="806" alt="image" src="https://github.com/user-attachments/assets/5d2df232-2036-41c1-b38c-1b3ba703c2cb" />
+
+
