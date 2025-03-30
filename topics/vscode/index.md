@@ -31,6 +31,10 @@ You'll likely need to add some "extensions" for the programming languages that y
   * On Linux Ctrl + Shift + I
 
   Alternatively, you can find the shortcut, as well as other shortcuts, through the 'Command Palette' provided in the editor with Ctrl +Shift+ P (or   Command + Shift + P on Mac), and then searching for format document.
+
+* Remove Unused Imports (per <https://medium.com/@mdkayesh777/how-to-remove-unused-imports-organize-in-vs-code-ed67f50e194f>)
+  * On Windows and Linux: Shift + Alt + O (the letter O, not zero)
+  * On Mac: Shift + Option + O (the letter O, not zero).
    
 # Settings for Java Formatting
 
