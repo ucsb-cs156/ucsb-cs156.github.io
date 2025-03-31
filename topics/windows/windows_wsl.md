@@ -106,11 +106,25 @@ Note: While it's not entirely necessary to set up SSH keys, since you can always
 
 The projects in this class use **Java 21**, which is the latest LTS release of Java.
 
-To install the latest version of Java 21 JDK, run the following commands:
+To install the latest version of Java 21 JDK, first install SDKMAN:
 
 ```
-sudo apt-get update
-sudo apt-get install openjdk-21-jdk
+curl -s "https://get.sdkman.io" | bash
+```
+
+Then install the version of Java recommended for your class.  For example:
+
+```
+sdk install java 21.0.6-librca
+```
+
+Finally, to indicate that you want to use this version of java in a particular shell, type this each time you work:
+
+```
+sdk use java 21.0.6-librca
+```
+
+You may be able to just press the tab key after typing `sdk use java ` and have it autocomplete the version if there is only one installed.
 ```
 
 Successfully running the above commands should install Java 21 JDK. To verify that the install was successful, run the following command:
@@ -122,19 +136,20 @@ java --version
 Your output should look something like this:
 
 ```
-openjdk 21.0.4 ...
-OpenJDK Runtime Environment (build ...)
-OpenJDK 64-Bit Server VM (build ...)
+openjdk 21.0.6 2025-01-21 LTS
+OpenJDK Runtime Environment (build 21.0.6+10-LTS)
+OpenJDK 64-Bit Server VM (build 21.0.6+10-LTS, mixed mode, sharing)
 ```
 
 ## Install Maven on WSL
 
-The projects in this class use Maven 3.9.9, which is necessary for Java 21.
+The projects in this class use Maven 3.9.9, which is necessary for Java 21.  
 
 The `apt` package manager does not yet have Maven 3.9.9, so we need to manually download and extract Maven.
 
-(As of this writing, the current version of Maven is 3.9.9; but it is possible that by the time you are reading
-these instructions, the current version may have been updated, and the links to this version will no longer work.  If the links appear broken, see if there is a newer version available.)
+(As of this writing, the current version of Maven is 3.9.9; . It is possible that by the time you are reading
+these instructions, the current version may have been updated; you can check that [at this link](https://maven.apache.org/download.cgi).
+If the links below broken, see if there is a newer version available.)
 
 Here are two links that have been reported to work for downloading Maven 3.9.9 (the only difference is `downloads` vs. `dlcdn`)
 * <https://downloads.apache.org/maven/maven-3/3.9.9/binaries/apache-maven-3.9.9-bin.tar.gz>
@@ -182,19 +197,22 @@ Your output should look something like this:
 ```
 Apache Maven 3.9.9 
 Maven home: /opt/maven
-Java version: 21.0.4, vendor: ...
+Java version: 21.0.6, vendor: ...
 Default locale: en_US, platform encoding: UTF-8
 OS name: "linux", version: "5.4.0-72-generic", arch: "amd64", family: "unix"
 ```
 
+Make sure that the version of Java matches the one that you specified with `sdk use java ...`
 
 ## Install nvm and Node on WSL
 
-The projects in this class currently use Node v20.17.0 (npm v10.8.2)
+Node versions are updated frequenty, and it's often a challenge to ensure that the legacy code projects in this course track the latest version.
 
-You can see the various versions of node at this link: <https://nodejs.org/en/download/releases>.  As of F24, the current LTS for node is v20.17.0.  
+* As of the start of S25, the "long-term support" version of node is `node v22.14.0 (npm v10.9.2)`
+* At the start of F24, it was `node v20.17.0 (npm v10.8.2)`
 
-While we could install Node 20.17.0 directly, **a better way to install Node on development computers is through Node Version Manager**, or `nvm`. This is a program that allows you to easily install and switch between different versions of Node.  
+The projects you'll be working on may require specific versions of node and npm, so rather than installing a specific verison, it is better
+to  use **Node Version Manager**, or `nvm`. This is a program that allows you to easily install and switch between different versions of Node.  
 
 To install `nvm`, run the following command. As of the time of writing, the latest version is <tt>{{page.nvm_version}}</tt>
 * To check whether this command is the latest version, visit [this link](https://github.com/nvm-sh/nvm#install--update-script)
