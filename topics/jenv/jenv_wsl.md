@@ -1,10 +1,14 @@
 ---
-parent: jenv
+parent: Jenv
 grand_parent: Topics
 layout: default
 title: "jenv: Windows Subsystem for Linux/WSL"
 description:  "Managing multiple Java versions on WSL"
 ---
+
+<div style="background: yellow; font-weight: bold;">
+NOTE: The tool described on this page is no longer used in CMPSC 156 because it's maintenance status is in doubt.  We've switched to SDKMAN instead; please consult the page for SDKMAN on this site for more information.
+</div>
 
 # {{page.title}} - {{page.description}}
 
