@@ -17,7 +17,7 @@ Therefore, for some period of time, it was necessary for the staff and some of t
 
 Fortunately, there is a tool that helps with this called `jenv`.
 
-* Main jenv documentation page: <https://www.jenv.be/>
+* Main jenv documentation page: <https://github.com/jenv/jenv>
 
 ## Installation
 
