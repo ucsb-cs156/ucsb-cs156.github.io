@@ -6,6 +6,10 @@ description:  "A tool for managing switching between Java versions"
 has_children: true
 ---
 
+<div style="background: yellow; font-weight: bold;">
+NOTE: The tool described on this page is no longer used in CMPSC 156 because it's maintenance status is in doubt.  We've switched to SDKMAN instead; please consult the page for SDKMAN on this site for more information.
+</div>
+
 # {{page.title}} 
 
 ## {{page.description}}
