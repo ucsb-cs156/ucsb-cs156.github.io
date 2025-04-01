@@ -106,6 +106,12 @@ Note: While it's not entirely necessary to set up SSH keys, since you can always
 
 The projects in this class use **Java 21**, which is the latest LTS release of Java.
 
+Before installing SDKMan, you need to install a way to unzip and rezip packages. Do so with the following commands:
+```bash
+sudo apt install zip
+sudo apt install unzip
+```
+
 To install the latest version of Java 21 JDK, first install SDKMAN:
 
 ```
@@ -125,7 +131,7 @@ sdk use java 21.0.6-librca
 ```
 
 You may be able to just press the tab key after typing `sdk use java ` and have it autocomplete the version if there is only one installed.
-```
+
 
 Successfully running the above commands should install Java 21 JDK. To verify that the install was successful, run the following command:
 
@@ -290,6 +296,9 @@ Your output should say `9.9.0` or something similar.
 **Keep in mind that each version of Node installed through `nvm` has its own installation of `npm`.** This means that, whenever you install a new version of Node, you will need to update `npm` to the correct version. The pre-bundled versions of `npm` tend to be out-of-date.
 
 -->
+
+## Notes on Using WSL
+When using WSL for CS156, it is recommended that you place your projects on your virtual WSL system rather than your main Windows filesystem. If you place projects on your main windows filesystem, you will experience long loading times and slow I/O. You can tell that a project is on your Windows system if when using WSL, the location starts with `/mnt/c/`. If so, you should move them onto your WSL system, like into your home directory.
 
 ## WSL with VS Code
 
