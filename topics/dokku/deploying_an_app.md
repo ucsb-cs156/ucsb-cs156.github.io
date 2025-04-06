@@ -142,3 +142,56 @@ Try logging in at:
 <tt>https://<i>appname</i>.dokku-<i>xx</i>.cs.ucsb.edu</tt>
 
 where <tt><i>xx</i></tt> is your dokku number.
+
+
+
+## A short cut
+
+There is a shortcut for the `dokku config:set` rather than setting the values one at a time.
+  
+The idea of this step is to copy/paste the values
+from from your `.env` file into a file in your Dokku account
+and then load the values all at once.
+
+You could use file transfer, but because of various firewall settings, it may be easier to just copy/paste like this:
+
+1. On the system where you are doing development, 
+   use `cat .env` to list out the contents, e.g.
+
+   ```
+   pconrad@Phillips-MacBook-Air STARTER-jpa03 % cat .env
+   GOOGLE_CLIENT_ID=26622685272-ofq4729s9nt8loednuuv5c0opja1vaeb.apps.googleusercontent.com
+   GOOGLE_CLIENT_SECRET=GOCSPX-fakeCredentials99_fakefake-_fake
+   ADMIN_EMAILS=phtcon@ucsb.edu
+   pconrad@Phillips-MacBook-Air STARTER-jpa03 % 
+   ```
+
+2. At the shell prompt on your dokku server (e.g. dokku-07.cs.ucsb.edu), type this, where `jpa03-cgaucho` is the name of your
+app:
+
+   ```
+   cat > jpa03-gaucho.env
+   ```
+
+   Then, copy paste the contents of the `.env` file into the window, followed by hitting enter, and then Control-D.
+
+   If you then do an `ls` you should see that you have
+   a file called `jpa03-gaucho.env` containing the values
+   you want to set.
+
+3. Now type the following (assuming that `jpa03-cgaucho` is
+   your Dokku app name).
+
+   ```
+   dokku config:set --no-restart jpa03-cgaucho `cat jpa03-gaucho.env`
+   ```
+
+   In this command, the part in backticks (<tt>\`cat jpa03-gaucho.env\`</tt>) specfies that the output of that command should be placed on the command line.
+
+   Accordingly, this sets all of the environment variables at once.
+
+   Note that on Dokku, you also typically need to set this
+   value (this typically does *not* go in your .env)
+
+   <tt>dokku config:set --no-restart <b></i>app-name</i></b> PRODUCTION=true</tt>
+   
