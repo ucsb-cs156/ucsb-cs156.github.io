@@ -59,7 +59,7 @@ Each Spring Boot app that we cover in this course will have specific requirement
 
 But you'll typically *always* need to define `PRODUCTION=true` as follows:
 
-<p><tt>dokku config:set <i>appname</i> PRODUCTION=true</tt></p>
+<p><tt>dokku config:set --no-restart <i>appname</i> PRODUCTION=true</tt></p>
 
 This command enables the frontend code to be served from the same server that serves the backend; when running on `localhost`, these are separate, but on dokku these are integrated into a single server.
 
