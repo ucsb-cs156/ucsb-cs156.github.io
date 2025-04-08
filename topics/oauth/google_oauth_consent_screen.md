@@ -41,32 +41,29 @@ For this reason, you need to configure what will be shown to the user when this 
 You will only need to fill this in once for the project; you may be able to get away with filling this in just once for the entire course (unless
 you run into some limit on the number of apps you can create in your project.)
 
-On this screen, click External, then Create:
+Fill in these values on the screen that appears.  Use the name of the course and the quarter, and fill in your UCSB email:
 
-<img width="729" alt="image" src="https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/242c53aa-0121-41b0-81a2-c6d098024a8a">
+<img width="735" alt="image" src="https://github.com/user-attachments/assets/193204d1-82dc-4058-96f9-933123e0c24b">
 
-Then, fill in these values on the screen that appears.  Use the name of the course and the quarter, and fill in your UCSB email instead of phtcon@ucsb.edu:
 
-<img width="735" alt="image" src="https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/d7b61640-d28c-45c5-bac5-66a8c083fbe5">
+On this screen, click External, then Next:
+<img width="729" alt="image" src="https://github.com/user-attachments/assets/effc5f7e-9f4b-4fa7-993c-cf379ff4667e">
 
-Then, scroll down.  You can leave all of these blank:
-* App Logo
-* App Domain
-* Authorized Domains
+ Fill in your UCSB email where it says:  `Contact information`
 
-Scroll down and fill in your UCSB email where it says: `Developer contact information`
+<img width="652" alt="image" src="https://github.com/user-attachments/assets/2fd0feec-785d-405d-820e-1e6ebe9bba0f">
 
-<img width="652" alt="image" src="https://github.com/ucsb-cs156/ucsb-cs156.github.io/assets/1119017/165008c0-c361-4e91-b418-b16920719577">
+Then click "Next", and agree to the Google API services policy before clicking "continue" and "create".
 
-Then click "Save and Continue"
-
-After you click Save and Continue, you'll be asked about Scopes.
+After you click Create, you can set up Scopes.
 
 # What are Scopes?
 
 Scopes are various kinds of permission that you give to the app to work with your Google data.  The minimum is typically the ability to see your Google email address, and some basic information about you as a user.  Other examples (which we will not show at the moment) might include the ability to work with you Google Calendar, Google Docs, GMail, etc.
 
-<img width="400" alt="image" src="https://user-images.githubusercontent.com/1119017/159813614-051f1182-c517-49a8-9a9b-b1e461ddd8ca.png">
+To access the scopes, select the `Data Access` tab on the left side of the screen.
+
+<img width="400" alt="image" src="https://github.com/user-attachments/assets/05cf753a-9b9c-455f-92fa-1f140f6cabe7">
 
 To add a basic scope, click "Add or Remove Scopes" which brings up this page:
 
@@ -77,19 +74,10 @@ You can click to select the first two basic scopes; that should be sufficient. T
 
 <img width="400" alt="image" src="https://user-images.githubusercontent.com/1119017/159813741-754b1f6b-4f92-4647-a369-823d316e9a8d.png">
 
-It should then look like this; click "Save and Continue":
+It should then look like this after updating:
 
-<img width="400" alt="image" src="https://user-images.githubusercontent.com/1119017/159813845-72f300d4-093d-4d89-be7e-db29bd1a6421.png">
+<img width="400" alt="image" src="https://github.com/user-attachments/assets/e69a384f-77e8-4db4-aa97-8e883247b5a2">
 
-## Test Users
-
-In this course, we typically don't need to use "test users"; instead we just use normal users to test.
-
-So you can skip past that page by clicking next.
-
-The page after that will have a button at the bottom to return to the main page or something like that.
-
-Just continue; that should get you back to the page where it asks you if you want to publish the app.  The explanation of what to do on the page appears below.
 
 ## Test Mode vs. Production Mode
 
@@ -102,16 +90,15 @@ There are two possible modes for a Google OAuth Application
 
 For this course, we typically prefer Production Mode.
 
-You change from Test Mode to Production Mode by clicking the `Publish App` button, followed by `Confirm`
+You change from Test Mode to Production Mode by navigating to the `Audience` tab on the left side of the screen, clicking the `Publish App` button, followed by `Confirm`
 
-<img width="400" alt="image" src="https://user-images.githubusercontent.com/1119017/159960185-05c176d5-0cee-4800-bce3-b80c619f8f38.png">
+<img width="400" alt="image" src="https://github.com/user-attachments/assets/329ee006-c2b6-4560-937f-7e7f9443889d">
 
 <img width="400" alt="image" src="https://user-images.githubusercontent.com/1119017/159960531-7911ba19-ccbe-465b-a37c-c46f98614c13.png">
  
 That should change the screen to look like this.
- 
 
-<img width="400" alt="image" src="https://user-images.githubusercontent.com/1119017/159960643-dc95bec9-bfd7-4a1d-87c6-4d0da32d6ab7.png">
+<img width="400" alt="image" src="https://github.com/user-attachments/assets/7f970ea0-f1c5-4e16-9fe8-da6752e5856a">
 
 # What's next
 
