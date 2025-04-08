@@ -43,7 +43,7 @@ If you've already done these, then you are ready to set up a Google OAuth app so
      - Note that this *must* be `http` not `https`
    * For Dokku, enter: <tt>https://<b><i>myappname</i></b>.dokku-<b><i>xx</i></b>.cs.ucsb.edu/login/oauth2/code/google</tt>
      - Note that you should substitute your app name in place of <b><i>myappname</i></b>
-     - Be sure to also change <b><i>xx</i></b> to your actual dokku server number (`00` through `12`)
+     - Be sure to also change <b><i>xx</i></b> to your actual dokku server number (`01` through `16`)
      - Note that this *must* be `https` not `http`.
    * If you also have a `qa` deployment or additional personal dev deployments, you can add them; they may share the same Google OAuth client id and secret.
 
