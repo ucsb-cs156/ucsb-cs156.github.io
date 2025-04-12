@@ -70,7 +70,7 @@ cd frontend
 
 Then, run the following command to ensure you have all the files you need for Chromatic to work:
 ```
-npm install
+npm ci
 ```
 
 Now, back to the Chromatic page: if you look at the second command, you should go ahead and run it to connect the project to Chromatic. **Make sure to use the command Chromatic provides you, and *not the one on this page***
