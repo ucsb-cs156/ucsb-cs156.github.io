@@ -70,8 +70,13 @@ instead of using `dokku git:sync app-name ...` and `dokku ps:rebuild app-name`, 
    ```
    git pull origin branch-name
    ```
-
-5. Push the branch to dokku, (substitute your branch name in place of `branch-name`, but `main` should literally be `main`):
+   
+6. Checkout the branch, (substitute your branch name in place of `branch-name`):
+   ```
+   git checkout -b branch-name
+   ```
+   
+7. Push the branch to dokku, (substitute your branch name in place of `branch-name`, but `main` should literally be `main`):
    ```
    git push dokku branch-name:main
    ```
