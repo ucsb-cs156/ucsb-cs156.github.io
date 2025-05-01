@@ -31,7 +31,14 @@ with a special badge indicating that the commit is verified as having come from 
 Shout out to our friends at AppFolio: this is one of the tips Phill Conrad picked up while interning there.
 
 ## Enabling Verified Commits
-First, you'll need an ssh key. If you haven't made one, start [here](/topics/GitHub/github_ssh_keys.html).
+
+To set your name and email for your whole git installation, run the following commands. The email will need to be one associated with your GitHub Account.
+```bash
+git config --global user.name <name>
+git config --global user.email <email> 
+```
+
+Next, you'll need an ssh key. If you haven't made one, start [here](/topics/GitHub/github_ssh_keys.html).
 
 Once you've made an ssh key, you have to tell github it exists. For most students, the commands will be below. If you set a custom location for your public/private key pair, replace `~/.ssh/id_rsa.pub` with your public key location. Run the following commmands:
 
@@ -104,15 +111,6 @@ git commit --amend -S
 If you need to sign an entire branch, you can rebase and sign every commit. You can specify any branch, tag, or hash to start with. In this case, we use `main`, as that it where most branches originate from.
 ```bash
 git rebase --signoff -S main
-```
-
-## Rejected Commits
-If your commits are still being rejected for signing violations, make sure your username and email are properly set. Your git email must be an email associated with your Github account, or it will reject your commits as unverified.
-
-To set your name and email for your whole git installation, run the following commands:
-```bash
-git config --global user.name <name>
-git config --global user.email <email> 
 ```
 
 ## Learn More
