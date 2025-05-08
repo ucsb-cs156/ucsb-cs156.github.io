@@ -113,6 +113,82 @@ If you need to sign an entire branch, you can rebase and sign every commit. You 
 git rebase --signoff -S main
 ```
 
+If this doesn't work, here's a slightly more involved process:
+
+## A more involved process to sign every commit
+
+CAUTION: The following process rewrites your entire git history, so use it very sparingly.
+
+Also, this assumes that you've configured your account with the steps shown in this lab:
+
+* <https://ucsb-cs156.github.io/s25/lab/jpa05.html>
+
+Also, be sure you are comfortable with `vim` or whatever editor is the one that comes up when git
+throws you into the editor, because you are going to need to do a search/replace in a moment.
+
+Run this command
+
+```
+git rebase -i --root
+```
+
+Now do a global search replace on "pick" to "edit".  Here's what that looks like in vim:
+
+* Press escape
+* Press colon (`:`)
+* Enter `%s/^pick/edit/g`
+  * This changes every occurence of `pick` that occurs at the start of a line to `edit` 
+* To save and exit vim: `:wq`
+
+Now, use this command to sign every commit:
+
+```
+while true; do
+  git commit --amend -S --no-edit || break
+  git rebase --continue || break
+done
+```
+
+This goes in a loop trying to sign commits until finally an error condition is reached.  If it worked, you should see output of many successful signed commits, followed
+by an error at the bottom.  Here's an example of correct output (shortened considerably).
+
+```
+Stopped at 8ef8b97...  Initial commit
+You can amend the commit now, with
+  git commit --amend '-S'
+Once you are satisfied with your changes, run
+  git rebase --continue
+[detached HEAD 003e595] Update README.md
+ Author: Daniel Jensen <djensen2@outlook.com>
+ Date: Tue Apr 1 16:58:30 2025 -0700
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+Successfully rebased and updated refs/heads/main.
+[main 003e595] Update README.md
+ Author: Daniel Jensen <djensen2@outlook.com>
+ Date: Tue Apr 1 16:58:30 2025 -0700
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+fatal: No rebase in progress?
+(venv) pconrad@Phillips-MacBook-Air-2 STARTER-jpa05 %
+```
+
+At this point, to test whether it worked, run this command:
+
+```
+git log --show-signature
+```
+
+You should see output like this:
+
+<img width="1069" alt="image" src="https://github.com/user-attachments/assets/850e4996-3b5e-4576-ab04-7be3a09dc8e8" />
+
+You can now force push the main branch:
+
+```
+git push origin main -f
+```
+
+If the repo doesn't allow force pushes of the main branch, you may need to override those rules temporarily and then restore them.
+
 ## Learn More
 To learn more, consult these links:
 
