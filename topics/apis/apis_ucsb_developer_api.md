@@ -93,10 +93,89 @@ To set up an API key you create an "app".
 
    <img width="158" alt="image" src="https://github.com/user-attachments/assets/7ce774e6-6252-4976-9a8f-72f9a864a57c" />
 
+6. You'll be returned to the `Apps` page with a message like this one:
 
-   
+   <img width="158" alt="image" src="https://github.com/user-attachments/assets/24658da1-291b-4ee1-a451-22e5efee251a" />
 
+   You should then find your app in the list of apps, like this:
 
+   <img width="899" alt="your-new-app" src="https://github.com/user-attachments/assets/5b948145-2016-44af-a3ac-42b60d5c6962" />
 
+7. To access your API key, click on the app name as shown in the image above.  That will take you to page like this one:
 
-## Setting up an account at 
+   <img width="877" alt="consumer-key" src="https://github.com/user-attachments/assets/dab3ec39-c0e2-40e6-add3-f7aad2913f9e" />
+
+   On this page, the only information you need is the Consumer Key, which is circled.  Click where it says `Show key` and the key will
+   be revealed (a long sequence of letters and numbers).
+
+   You can access this at any time; it isn't a "one time reveal" like some of the
+   secret values provided by Google and Github APIs.  But for now, copy it so that you can paste it in the next step that we try.
+
+## Trying out an API
+
+To try out an API navigate to any one of the eight API endpoints that are Auto Approved.  You can use the navigation on the website,
+or one of the convenient links here.  I suggest [Student Record Code Lookups](https://developer.ucsb.edu/content/student-record-code-lookups) because it's the easiest to understand.
+
+   | API Category | Resource |
+   |--------------|----------|
+   | [Academics](https://developer.ucsb.edu/apis/academics) | [Academic Curriculums](https://developer.ucsb.edu/content/academic-curriculums) |
+   | [Academics](https://developer.ucsb.edu/apis/academics) | [Academic Graduate Programs](https://developer.ucsb.edu/content/academic-graduate-programs) |
+   | [Academics](https://developer.ucsb.edu/apis/academics) | [Academic Quarter Calendar](https://developer.ucsb.edu/content/academic-quarter-calendar) |
+   | [Academics](https://developer.ucsb.edu/apis/academics) | [Events](https://developer.ucsb.edu/content/events) |
+   | [Dining](https://developer.ucsb.edu/apis/dining) | [Dining Commons](https://developer.ucsb.edu/apis/dining/dining-commons) |
+   | [Dining](https://developer.ucsb.edu/apis/dining) | [Dining Menu](https://developer.ucsb.edu/apis/dining/dining-menu) |
+   | [Dining](https://developer.ucsb.edu/apis/dining) | [Meal Plan Rates](https://developer.ucsb.edu/apis/dining/meal-plan-rates) |
+   | [Students](https://developer.ucsb.edu/apis/students) | [Student Record Code Lookups](https://developer.ucsb.edu/content/student-record-code-lookups) |
+
+Once you land on the API page, it will look familiar if you've used Swagger in your CMPSC 156 Spring Boot apps.  Here's an example page:
+
+<img width="979" alt="authorize button" src="https://github.com/user-attachments/assets/7f61e9c5-d0d5-44d3-bf56-eccfe70a73f1" />
+
+What's different is how you unlock the API so that you can "try it out".  You need to click the Authorize button indicated in the image above.
+
+When you click this, you see the following modal pop up.  Paste the "Consumer Key" value that you copied into this form, and click `Authorize`:
+
+<img width="515" alt="image" src="https://github.com/user-attachments/assets/a44811cd-5904-436f-aa27-b8649215bc65" />
+
+When you do, the modal will change to look like this. Click `Close`:
+
+<img width="516" alt="image" src="https://github.com/user-attachments/assets/4fa3ef9f-1da0-4013-a9d8-8ae2eaf7ecfc" />
+
+You should now be able to click the `GET` buttons on any of the API endpoints, and open up the Swagger interface:
+
+<img width="516" alt="image" src="https://github.com/user-attachments/assets/8737247c-6243-4ac9-bed9-f3ab50f6fbc1" />
+
+You can then click the `Try it out` button, which should give you the `Execute` button:
+
+<img width="516" alt="image" src="https://github.com/user-attachments/assets/d5a2f1a3-6d8b-4910-9a3d-7e31c4e3d954" />
+
+After you do this, you can see the Response Json on the page:
+
+<img width="516" alt="image" src="https://github.com/user-attachments/assets/a3e4e88d-9a71-45fa-8e28-6032b4cdb683" />
+
+You are invited to try out a few of the APIs from this list so that you get comfortable with using them.
+
+   | API Category | Resource |
+   |--------------|----------|
+   | [Academics](https://developer.ucsb.edu/apis/academics) | [Academic Curriculums](https://developer.ucsb.edu/content/academic-curriculums) |
+   | [Academics](https://developer.ucsb.edu/apis/academics) | [Academic Graduate Programs](https://developer.ucsb.edu/content/academic-graduate-programs) |
+   | [Academics](https://developer.ucsb.edu/apis/academics) | [Academic Quarter Calendar](https://developer.ucsb.edu/content/academic-quarter-calendar) |
+   | [Academics](https://developer.ucsb.edu/apis/academics) | [Events](https://developer.ucsb.edu/content/events) |
+   | [Dining](https://developer.ucsb.edu/apis/dining) | [Dining Commons](https://developer.ucsb.edu/apis/dining/dining-commons) |
+   | [Dining](https://developer.ucsb.edu/apis/dining) | [Dining Menu](https://developer.ucsb.edu/apis/dining/dining-menu) |
+   | [Dining](https://developer.ucsb.edu/apis/dining) | [Meal Plan Rates](https://developer.ucsb.edu/apis/dining/meal-plan-rates) |
+   | [Students](https://developer.ucsb.edu/apis/students) | [Student Record Code Lookups](https://developer.ucsb.edu/content/student-record-code-lookups) |
+
+## Configuring `proj-courses` and `proj-dining` with values of the `UCSB_API_KEY`
+
+If you've configured your app for Google OAuth, then you are familiar with how to:
+* Set values in the `.env` file for localhost
+* Set values using `dokku config:set ...` on dokku
+
+The value of UCSB_API_KEY is set in exactly the same way; use the `Consumer Key` value explained above.
+
+## Sample Code
+
+Here are links to some sample code for using the UCSB API in our Spring Boot apps:
+
+* 
