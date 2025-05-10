@@ -8,6 +8,14 @@ category_prefix	: "MongoDB: "
 indent: true
 ---
 
+<div style="width:90%; margin-left: auto; margin-right: auto; border: solid red 5px;" markdown="1">
+
+**NOTE**: As of Spring 2025, we recommend using the MongoDB that is provisioned directly by Dokku instead
+of using MongoDB.com; we are retaining this page on the website only in case the need arises to use
+MongoDB.com hosting again in the future.
+
+</div>
+
 This article assumes that you have worked through the steps in [MongoDB: New Database](https://ucsb-cs156.github.io/topics/mongodb_new_database/) to 
 set up a MongoDB deployment on the site <https://cloud.mongodb.com>, with:
 
