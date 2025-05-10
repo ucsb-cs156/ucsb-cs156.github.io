@@ -34,6 +34,10 @@ jobs:
           rubygems: 3.5.21
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
           cache-version: 0 # Increment this number if you need to re-download cached gems
+      - name : Install dependencies
+        run: |
+          gem install bundler
+          bundle install
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v2
