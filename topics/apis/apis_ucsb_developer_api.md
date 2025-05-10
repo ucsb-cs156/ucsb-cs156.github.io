@@ -178,4 +178,12 @@ The value of UCSB_API_KEY is set in exactly the same way; use the `Consumer Key`
 
 Here are links to some sample code for using the UCSB API in our Spring Boot apps:
 
-* 
+proj-courses:
+* [UCSBCurriculumService.java](https://github.com/ucsb-cs156/proj-courses/blob/main/src/main/java/edu/ucsb/cs156/courses/services/UCSBCurriculumService.java)
+* [UCSBAPIQuarterService.java](https://github.com/ucsb-cs156/proj-courses/blob/main/src/main/java/edu/ucsb/cs156/courses/services/UCSBAPIQuarterService.java)
+* [UCSBSubjectsService.java](https://github.com/ucsb-cs156/proj-courses/blob/main/src/main/java/edu/ucsb/cs156/courses/services/UCSBSubjectsService.java)
+
+proj-dining:
+* [DiningCommonsService.java](https://github.com/ucsb-cs156/proj-dining/blob/main/src/main/java/edu/ucsb/cs156/dining/services/DiningCommonsService.java)
+* [UCSBDiningMenuService.java](https://github.com/ucsb-cs156/proj-dining/blob/main/src/main/java/edu/ucsb/cs156/dining/services/UCSBDiningMenuService.java)
+* [UCSBDiningMenuService.java](https://github.com/ucsb-cs156/proj-dining/blob/main/src/main/java/edu/ucsb/cs156/dining/services/UCSBDiningMenuService.java)
