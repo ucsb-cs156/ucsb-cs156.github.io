@@ -1,5 +1,5 @@
 ---
-parent: apis
+parent: APIs
 grand_parent: Topics
 layout: default
 title: "APIs: UCSB Developer API"

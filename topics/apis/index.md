@@ -2,14 +2,13 @@
 parent: Topics
 layout: default
 title: APIs
-description:  "Application Programming Interfaces"
-category_prefix: "APIs: "
+description: Application Programming Interfaces
 has_children: true
 ---
 
 # {{page.title}}
 
-The term *Application Programming Interface* or *API* is used in various ways.  Here are vn meanings of API that arise in this course:
+The term *Application Programming Interface* or *API* is used in various ways.  Here are some meanings of API that arise in this course:
 
 1. A collection of public methods and properties of some specific collection of classes/objects 
    - e.g. the standard library that comes with Java is an API, as documented here:  
@@ -36,13 +35,13 @@ backend only web-application that involves *all three definitions of APIs*:
 
 ## Lists of APIs (definition 2)
 
-
 These websites advertise lists of free/open APIs (no authentication/payment needed).  These may be good bases for future assignments and/or project ideas:
 
 * <https://apipheny.io/free-api/>
 * <https://mixedanalytics.com/blog/list-actually-free-open-no-auth-needed-apis/>
 
 Here are some other list of APIs that may be of interest (note that these are not necessarily free, and/or may require authentication)
+
 * List of APIs for academic citations: 
   * [List from UC Berkeley Library](https://guides.lib.berkeley.edu/information-studies/apis)  
   * [List from MIT Library](https://libguides.mit.edu/comptools) 
