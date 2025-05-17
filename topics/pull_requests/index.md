@@ -45,12 +45,23 @@ Here are a few tips when working on PRs. We won't review PRs until all these ite
     - In that case, use the manual feature for linking to an issue (see below)
     - If you link to an issue with words like "Closes" or "Fixes", be sure that your PR *entirely* addresses the issue, becuase it will be automatically "closed" (marked as done) when the PR is merged.  If it doesn't close the issue completely use languages like "Partially addresses #5" and then explain in the PR description what is and is NOT addressed.
 10.  Linked Issue is in the "In Review" column on team's Kanban board.
-11.  PR is tagged with the Team's tag, like this one:
-     ![image](https://user-images.githubusercontent.com/1119017/202531598-e935a3eb-98dd-4816-8b0c-434e512e9207.png)
+11.  PR is assigned to a team member (right hand column of PR main page) like this:
+
+     <img width="303" alt="image" src="https://github.com/user-attachments/assets/cdfd81a0-54c2-4fdc-96b1-e98092c875b5" />
+
+     Not like this:
+
+     <img width="306" alt="image" src="https://github.com/user-attachments/assets/1080f5ec-0675-465a-a54e-058e005752d9" />
+
 12.  Test cases all pass.
      - If you have difficulty with this one, ask for help from a team member first.
      - Then ask for help on the Slack help channel associated with the project, e.g. `#proj-ucsb-courses-search`, `#proj-ucsb-cs-las`, `#proj-mapache-search` on the slack.
      - Then ask for help during staff office hours or during lecture/discussion work time.
+
+<!-- 12.  PR is tagged with the Team's tag, like this one:
+     ![image](https://user-images.githubusercontent.com/1119017/202531598-e935a3eb-98dd-4816-8b0c-434e512e9207.png) -->
+
+
 
 If it meets **all twelve** of these criteria **and** has an approving code review from a team member, then (and only then) you mark mark it as `Ready-For-Staff`.  
 
