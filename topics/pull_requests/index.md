@@ -45,7 +45,7 @@ Here are a few tips when working on PRs. We won't review PRs until all these ite
     - In that case, use the manual feature for linking to an issue (see below)
     - If you link to an issue with words like "Closes" or "Fixes", be sure that your PR *entirely* addresses the issue, becuase it will be automatically "closed" (marked as done) when the PR is merged.  If it doesn't close the issue completely use languages like "Partially addresses #5" and then explain in the PR description what is and is NOT addressed.
 10.  Linked Issue is in the "In Review" column on team's Kanban board.
-11.  PR is assigned to a team member (right hand column of PR main page) like this:
+11.  PR is assigned to a team member (or members, if more than one person worked on it) (right hand column of PR main page) like this:
 
      <img width="303" alt="image" src="https://github.com/user-attachments/assets/cdfd81a0-54c2-4fdc-96b1-e98092c875b5" />
 
