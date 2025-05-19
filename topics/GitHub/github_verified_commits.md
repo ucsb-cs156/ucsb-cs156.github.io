@@ -113,9 +113,35 @@ If you need to sign an entire branch, you can rebase and sign every commit. You 
 git rebase --signoff -S main
 ```
 
-If this doesn't work, here's a slightly more involved process:
+If this doesn't work, here are two ways to resolve this that are each slightly more complicated.
 
-## A more involved process to sign every commit
+## Getting signed commits by redoing the commits
+
+One way to fix this is to simply (1) make sure that you are set up for signed commits, and then (2) simply "redo all the commits".  
+
+This is not as bad as it may sound, since you don't have to literally redo *all* of the commits: 
+
+* In the limit, this could mean rolling *all* of the changes into the branch into a *single commit*, but this is only advisable if the changes are in a very small number of files.
+* Another approach is to group the files into a series of related commits that still might be far fewer than the original brach.
+
+Here's a video illustrating the process: <https://youtu.be/sZSzsQQkxxg>
+
+And here's an overview of the steps in the video:
+
+1. Use `git fetch origin` to update your local branch pointers.
+2. Use `git checkout branch-name` to checkout the branch you want to work on.
+3. Use `git pull origin branch-name` to ensure your branch is up to date
+4. Use `git status` to ensure that everything is clean and that you have a clean updated copy of the branch
+5. Use `git reset origin/main` followed by `git status`.  What this does is make the branch pointer you are on equal to the commit hash of the `main` branch on Github, but it *does not change the contents of the files*. That means you should now see all of your changes to the files listed in red as uncommitted changes.
+6. Now, do either a single commit or a series of commits.
+   * A single commit means `git add .` followed by `git status` followed by a `git commit -m "message goes here"`
+   * A series of commits means `git add file1 ` followed by  `git status` followed by `git commit -m "message for file1 goes here"`, multiple times, until all changes are committed.
+7. When all changes are committed, you can either:
+   * Do `git push origin branch-name -f` to update the original branch.  If there's already a PR for this branch and you don't want to have to make a new one, this is the best choice.
+   * Do `git checkout -b new-branch-name` followed by `git push origin new-branch-name`.  That's the better choice if you want to "play it safe", at the cost of having to make a new PR.
+  
+
+## Signing every commit while preserving each commit
 
 CAUTION: The following process rewrites your entire git history, so use it very sparingly.
 
