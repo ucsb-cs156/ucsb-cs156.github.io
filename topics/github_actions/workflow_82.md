@@ -134,3 +134,49 @@ Create a new variable called `TEAM_TO_CHANNEL` with the settings from the JSON o
 ### Step 13: Commit the changes to the main branch to trigger the workflow.
 
 ### Step 14. The workflow will run and post the Kanban board status to the Slack channel associated with the team name.
+
+
+## Why does this only run on team repos and not legacy repos?
+
+There is a bit of code in this workflow that's worth explaining:
+
+```yml
+ if [[ "$OWNER" == "ucsb-cs156" ]]; then
+            echo "This workflow should not run on repos in the ucsb-cs156 organization"
+            echo "continue=false" >> "$GITHUB_OUTPUT"
+ fi
+```
+
+To understand this code, some background is needed:
+
+Long term, we maintain each of the legacy code projects in what we call "legacy code repos"
+* These are "the main repo for each project" or "the master repo for each project"—but we avoid those terms because they get confused with "main branch" or "master branch".
+* So: we call them the legacy repos.
+
+Those are maintained in the ucsb-cs156 organization.  Examples include:
+
+* https://github.com/ucsb-cs156/proj-courses
+* https://github.com/ucsb-cs156/proj-dining
+* https://github.com/ucsb-cs156/proj-frontiers
+* https://github.com/ucsb-cs156/proj-rec
+
+
+We use those as the starter code for the team repos, which have URLs such as these (examples are from S25):
+
+* https://github.com/ucsb-cs156-s25/proj-courses-s25-01
+* https://github.com/ucsb-cs156-s25/proj-courses-s25-02
+* ...
+* https://github.com/ucsb-cs156-s25/proj-rec-s25-16
+
+For workflows such as 82, the code starts out in the starter repo.  For example, you can see workflow 82 in the legacy repo for dining here:
+* https://github.com/ucsb-cs156/proj-dining/blob/main/.github/workflows/82-kanban-slack-update.yml
+
+And then it gets copied into team repos such as this one:
+* https://github.com/ucsb-cs156-s25/proj-dining-s25-08/blob/main/.github/workflows/82-kanban-slack-update.yml
+Same code!  But different context.
+
+In the context of the legacy repo, the code that checks the current organization kicks in, and if the organization is `ucsb-cs156` the rest of the workflow is skipped.
+
+But in the context of your team's repo, that code does NOT kick in, so it runs.
+
+This, along with the date restrictions, are how we keep the code when it would just be a waste of computer cycles.
