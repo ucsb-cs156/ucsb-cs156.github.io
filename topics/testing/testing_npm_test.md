@@ -96,3 +96,45 @@ Now we get only the single test run:
 <img width="1171" alt="output from npm test -- src/tests/components/Commons/CommonsTable.test.js -t 'Has the expected column headers'" src="https://user-images.githubusercontent.com/1119017/201546327-4322820c-5a13-4464-a10f-27cf88ca28a2.png">
 
 
+## More test output
+
+When working with `npm test` (which uses `jest` under the hood), sometimes you get a test failure such as this:
+
+```
+ TestingLibraryElementError: Unable to find an element by: [data-testid="SectionsTable-cell-row-1-col-action-add-button"]
+```
+
+This is often followed by a listing of the HTML such as this:
+
+```
+ <body>
+      <div>
+        <table
+          class="table-hover table table-bordered table-hover"
+          data-testid="SectionsTable"
+        >
+          <thead>
+            <tr>
+              <th
+                colspan="1"
+              >
+...
+```
+
+And it goes on and on, but is eventually truncated, sometimes *before* it gets to the part you really need to see in order to
+debug the test failure.
+
+But there's a way to see more of the output!
+
+When running `npm test`, prefix it with a setting of the environment variable `DEBUG_PRINT_LIMIT`, like this:
+
+```
+DEBUG_PRINT_LIMIT=50000 npm test
+```
+
+You can also set it for an entire bash session by doing this:
+
+```
+export DEBUG_PRINT_LIMIT=50000
+```
+
