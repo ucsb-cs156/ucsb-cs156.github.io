@@ -7,7 +7,7 @@ description:  "Using llms to generate migrations"
 indent: true
 ---
 
-# {{page.title} - {{page.description}}
+# {{page.title}} - {{page.description}}
 
 There are many possible uses for LLMs to assist with software engineering. 
 
