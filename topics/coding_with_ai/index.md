@@ -70,5 +70,5 @@ The result I got back from this started like this:
 > 
 > To fix this, simply change the module name in your vi.mock call from 'react-router-dom' to 'react-router'.
 
-The answer continued with the full test, refactored with this additional information.
+The answer continued with the full test, refactored with this additional information, and on the second try, the AI got it right.
 
