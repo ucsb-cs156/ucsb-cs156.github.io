@@ -50,5 +50,25 @@ to:
 * Focus on using the agent as a way to learn more about writing good tests, and how testing works, 
   as opposed to using it to *avoid* learning those things.
 
+## Example Followup
 
+Here's an example of a followup prompt:
+
+```
+Unfortunately, the test you gave me doesn't pass. Here's the result:
+
+ FAIL  src/tests/utils/useLogout.test.jsx > useLogout tests > should log out the user, reset queries, and navigate to home
+AssertionError: expected "spy" to be called with arguments: [ '/' ]
+Number of calls: 0 
+```
+
+The result I got back from this started like this:
+
+> Thanks for the feedback. You're right, the test failed because of a subtle but critical mismatch in the mocking setup.
+> 
+> The hook you're testing imports useNavigate from "react-router", but the test file was mocking "react-router-dom". Because of this, the vi.mock was not applied to the correct module, and the real useNavigate was used instead of your MapsSpy, which is why the spy was never called.
+> 
+> To fix this, simply change the module name in your vi.mock call from 'react-router-dom' to 'react-router'.
+
+The answer continued with the full test, refactored with this additional information.
 
