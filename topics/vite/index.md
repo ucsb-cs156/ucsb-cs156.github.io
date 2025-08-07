@@ -6,9 +6,9 @@ description:  "A Javascript framework; a successor to create-react-app"
 has_children: true
 ---
 
-# {{page.topic}} - {{page.description}}
+# {{page.title}} - {{page.description}}
 
-This page describes vite, a Javascript framework for building web applications.
+This page describes `vite`, a Javascript framework for building web applications.
 
 * <https://vite.dev/> is the official home page for the project.
 * [Vite (Software)](https://en.wikipedia.org/wiki/Vite_(software)) (Wikipedia page)
@@ -56,6 +56,7 @@ This is not a complete list, but it's a good high level overview:
 * Eslint: Eslint needs to be reconfigured for vite and vitest.
 * Storybook: Storybook needs to be reconfigured for vite and vitest.
 * Stryker: Stryker needs to be reconfigured for vite and vitest.
+* Backend/Frontend Interface (`Dockerfile`, `pom.xml`, etc.): By default, CRA created its build in a directory called `build`.  The default for `vite` is `dist`.  So either, you have to override the `vite` default to change it from `dist` to `build`, or you have to change all of the places that our code expects `build` to expect `dist`.
 * Generally, as we are updating these various dependencies, it's also an opportunity to move to newer versions of most of our tools, including the latest versions of node, React, etc.
 
 The details each of these is deserving of it's own page; we'll add those pages as we gain more experience with the migration path, 
