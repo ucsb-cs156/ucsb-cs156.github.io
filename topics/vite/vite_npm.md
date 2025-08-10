@@ -1,5 +1,5 @@
 ---
-parent: Agile
+parent: Vite
 grand_parent: Topics
 layout: default
 title: "Vite: npm for multiple platforms"
