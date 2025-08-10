@@ -4,9 +4,10 @@ grand_parent: Topics
 layout: default
 title: "Maven: Plugins"
 description:  "Plugins extend Maven functionality"
-indent: true
-category_prefix: "Maven: "
 ---
+
+# {{page.title}} - {{page.description}}
+
 
 In a Maven `pom.xml` file, there is a `<plugins>` section, which, unsurprisingly, contains one or more `<plugin>` elements:
 
