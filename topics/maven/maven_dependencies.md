@@ -2,11 +2,11 @@
 parent: Maven
 grand_parent: Topics
 layout: default
-title: "Maven: Plugins"
-description:  "Plugins extend Maven functionality"
-indent: true
-category_prefix: "Maven: "
+title: "Maven: Dependencies"
+description:  "Dependencies provide Java libraries you can use in your code"
 ---
+
+# {{page.title}} - {{page.description}}
 
 In a Maven `pom.xml` file, there is a `<dependencies>` section, which, unsurprisingly, contains one or more `<dependency>` elements:
 
