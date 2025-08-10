@@ -50,15 +50,17 @@ you are using the latest version instead of what is listed below:
 Every Spring Boot application has exactly one `main` class, the one that
 contains a `public static void main(String[] args)` method.
 
-Find that class, and include this method:
+Find that class, and include these imports:
 
 ```java
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.io.ClassPathResource;
 ```
-...
+
+
+And this method:
 ```java
-/** 
+  /** 
    *  See: https://www.baeldung.com/spring-git-information
    *  @return a propertySourcePlaceholderConfigurer for git.properties
    */
