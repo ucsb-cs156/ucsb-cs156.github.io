@@ -22,8 +22,6 @@ and node_modules directory.
 
 ## A conversation with Gemini 
 
-Here's a conversation with Gemini that explains the fix:
-
 > I'm builiding a vite project on mac os, but then trying to deploy it on CI/CD systems and docker containers that use linux.
 >
 > I'm getting this:
@@ -32,40 +30,30 @@ Here's a conversation with Gemini that explains the fix:
 >
 > I suspect that it may be because I need to do something special when I build my package-lock.json to ensure that versions of dependencies for linux-x64-gnu are included along with version for MacOS. Am I on the right track? Can you help me figure out what needs to go in package.json or my workflow to fix this?
 
-That's a frustrating error! You're on the right track. The issue is that **`npm` or `yarn` by default will only install platform-specific optional dependencies for the operating system they are run on**. When you build your project on macOS, your `package-lock.json` file is created with the macOS dependencies, but it doesn't include the dependencies required for Linux. The build then fails on the CI/CD system or Docker container because it can't find the necessary Linux packages.
+You're on the right track. The error occurs because **`npm` on macOS only installs optional dependencies for the Mac operating system.** When you then try to build the project on a Linux-based CI/CD system or Docker container, it can't find the necessary Linux packages, causing the build to fail.
 
-### The Fix:
+### The Fix
 
-The solution is to tell `npm` to install all optional dependencies, regardless of the platform. You can do this by using the `npm i --include=optional` command, but a more direct approach is to **set the `npm_config_platform` and `npm_config_arch` environment variables** to a value that will install all optional dependencies.
+The solution is to tell `npm` to install **all optional dependencies**, regardless of the platform. You do this by setting the `npm_config_platform` environment variable before running `npm install`.
 
-Here’s what you need to do:
+Here's a step-by-step guide:
 
 1.  **Remove existing lock files and `node_modules`:**
     ```bash
-    rm -rf package-lock.json node_modules yarn.lock
+    rm -rf package-lock.json node_modules
     ```
-2.  **Install dependencies with all optional dependencies:**
-    You need to set the environment variables to tell `npm` to install dependencies for **all platforms**, not just the current one. The recommended way to do this is to set `npm_config_platform` to a value that doesn't match a real platform, which forces `npm` to download all optional dependencies. A common practice is to use a placeholder like `npm_config_platform=all`.
 
-    For example, with `npm`:
+2.  **Install dependencies for all platforms:**
+    The best way to do this with `npm` is to set `npm_config_platform` to a value that doesn't match a real platform (like `all`). This forces `npm` to download all optional dependencies.
     ```bash
     npm_config_platform=all npm install
     ```
 
-    Or, with `yarn`:
-    ```bash
-    yarn install --ignore-optional
-    ```
-    And then install them separately:
-    ```bash
-    yarn install --ignore-scripts --frozen-lockfile
-    ```
-
 ---
 
-### Workflow Integration:
+### Workflow Integration
 
-You should add this command to your CI/CD workflow before the build step. For example, if you're using a `.yml` file for your workflow, it might look something like this:
+You should add this command to your CI/CD workflow **before** the build step. For a typical `.yml` workflow, it might look something like this:
 
 ```yaml
 jobs:
