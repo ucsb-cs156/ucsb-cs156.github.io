@@ -70,3 +70,135 @@ jobs:
       - name: Build project
         run: npm run build
 ```
+
+## Some more information from Copilot
+
+### Cleaning and Installing Node Modules with frontend-maven-plugin
+
+If you are using the [frontend-maven-plugin](https://github.com/eirslett/frontend-maven-plugin) (e.g., `com.github.eirslett:frontend-maven-plugin`), you don’t have direct shell access to run commands like `rm -rf node_modules package-lock.json` in your CI workflow. Instead, you can leverage npm scripts and the plugin’s configuration to ensure a clean install.
+
+### Why Is This Needed?
+
+Sometimes, npm (especially with packages like `rollup` and its native bindings) can run into issues with optional dependencies or incorrect package-lock states. To work around this, it can help to remove both `node_modules` and `package-lock.json` before installing dependencies.
+
+### Step-by-Step Instructions
+
+#### 1. Add a Clean Script in `package.json`
+
+Add a script in your `frontend/package.json` to remove `node_modules` and `package-lock.json`:
+
+```json
+"scripts": {
+  "clean-lock": "rm -rf node_modules package-lock.json"
+}
+```
+**Note:**  
+- On Windows runners, use [rimraf](https://www.npmjs.com/package/rimraf) for cross-platform compatibility:
+  ```json
+  "clean-lock": "rimraf node_modules package-lock.json"
+  ```
+  and add rimraf as a dev dependency:  
+  `npm install --save-dev rimraf`
+
+#### 2. Update `pom.xml` to Call the Clean Script
+
+Add an execution phase to your `frontend-maven-plugin` block to run the clean script before install:
+
+```xml
+<execution>
+  <id>npm clean-lock</id>
+  <goals>
+    <goal>npm</goal>
+  </goals>
+  <configuration>
+    <arguments>run clean-lock</arguments>
+  </configuration>
+</execution>
+```
+
+#### 3. Use `npm install` with the Correct Environment Variable
+
+Update your install step to use `install` (instead of `ci`), and set the `npm_config_platform` variable:
+
+```xml
+<execution>
+  <id>npm install</id>
+  <goals>
+    <goal>npm</goal>
+  </goals>
+  <configuration>
+    <arguments>install</arguments>
+    <environmentVariables>
+      <npm_config_platform>all</npm_config_platform>
+    </environmentVariables>
+  </configuration>
+</execution>
+```
+
+#### 4. Full Example Plugin Block
+
+Here is how your full `frontend-maven-plugin` configuration might look:
+
+```xml
+<plugin>
+  <groupId>com.github.eirslett</groupId>
+  <artifactId>frontend-maven-plugin</artifactId>
+  <version>1.12.1</version>
+  <configuration>
+    <workingDirectory>frontend</workingDirectory>
+    <installDirectory>${project.build.directory}</installDirectory>
+    <skip>${frontend.skip}</skip>
+  </configuration>
+  <executions>
+    <execution>
+      <id>install node and npm</id>
+      <goals>
+        <goal>install-node-and-npm</goal>
+      </goals>
+      <configuration>
+        <nodeVersion>v22.18.0</nodeVersion>
+      </configuration>
+    </execution>
+    <execution>
+      <id>npm clean-lock</id>
+      <goals>
+        <goal>npm</goal>
+      </goals>
+      <configuration>
+        <arguments>run clean-lock</arguments>
+      </configuration>
+    </execution>
+    <execution>
+      <id>npm install</id>
+      <goals>
+        <goal>npm</goal>
+      </goals>
+      <configuration>
+        <arguments>install</arguments>
+        <environmentVariables>
+          <npm_config_platform>all</npm_config_platform>
+        </environmentVariables>
+      </configuration>
+    </execution>
+    <execution>
+      <id>npm run build</id>
+      <goals>
+        <goal>npm</goal>
+      </goals>
+      <configuration>
+        <arguments>run build</arguments>
+      </configuration>
+    </execution>
+  </executions>
+</plugin>
+```
+
+### Additional Notes
+
+- Always verify that your clean script runs successfully in your CI logs.
+- Make sure your CI pipeline is not caching old `node_modules` or `package-lock.json` between runs.
+- If you are on Windows, scripts using `rm -rf` will fail. Use a cross-platform solution like `rimraf`.
+
+### Summary
+
+To reliably resolve optional dependency and lockfile issues with npm in Maven-based projects, use an npm clean script plus a fresh install via the `frontend-maven-plugin`. This approach ensures that your dependencies are always re-installed from scratch, minimizing platform-specific issues.
