@@ -52,7 +52,12 @@ contains a `public static void main(String[] args)` method.
 
 Find that class, and include this method:
 
+```java
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.core.io.ClassPathResource;
 ```
+...
+```java
 /** 
    *  See: https://www.baeldung.com/spring-git-information
    *  @return a propertySourcePlaceholderConfigurer for git.properties
