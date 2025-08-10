@@ -13,6 +13,7 @@ We use the []() to inject information about the latest commit into the backend.
 ## Documentation
 
 * Repo: <https://github.com/git-commit-id/git-commit-id-maven-plugin>
+* Baeldung Article: <https://www.baeldung.com/spring-git-information>
 
 ## What you need in your code to get this to work on localhost
 
@@ -42,6 +43,77 @@ you are using the latest version instead of what is listed below:
           <commitIdGenerationMode>full</commitIdGenerationMode>
         </configuration>
       </plugin>
+```
+
+### Step 2: Add this to the file with your `main`
+
+Every Spring Boot application has exactly one `main` class, the one that
+contains a `public static void main(String[] args)` method.
+
+Find that class, and include this method:
+
+```
+/** 
+   *  See: https://www.baeldung.com/spring-git-information
+   *  @return a propertySourcePlaceholderConfigurer for git.properties
+   */
+  @Bean
+  public static PropertySourcesPlaceholderConfigurer placeholderConfigurer() {
+    PropertySourcesPlaceholderConfigurer propsConfig = new PropertySourcesPlaceholderConfigurer();
+    propsConfig.setLocation(new ClassPathResource("git.properties"));
+    propsConfig.setIgnoreResourceNotFound(true);
+    propsConfig.setIgnoreUnresolvablePlaceholders(true);
+    return propsConfig;
+  }
+}
+```
+
+### Step 3: Pull the properties in your `SystemInfoService.java`:
+
+In SystemInfoService.java, use this:
+
+```
+  @Value("${app.sourceRepo:https://github.com/ucsb-cs156/proj-courses}")
+  private String sourceRepo;
+
+  @Value("${git.commit.message.short:unknown}")
+  private String commitMessage;
+
+  @Value("${git.commit.id.abbrev:unknown}")
+  private String commitId;
+
+  public static String githubUrl(String repo, String commit) {
+    return commit != null && repo != null ? repo + "/commit/" + commit : null;
+  }
+```
+
+and then later, initialize the fields in the `SystemInfo` object:
+
+```java
+SystemInfo si = SystemInfo.builder()
+        .springH2ConsoleEnabled(this.springH2ConsoleEnabled)
+        .showSwaggerUILink(this.showSwaggerUILink)
+        .oauthLogin(this.oauthLogin)
+        .sourceRepo(this.sourceRepo)
+        .commitMessage(this.commitMessage)
+        .commitId(this.commitId)
+        .githubUrl(githubUrl(this.sourceRepo, this.commitId))
+        .build();
+```
+
+
+### Step 4: Be sure that the environment variable SOURCE_REPO is defined
+
+Define a default for the source repo in `application.properties`, e.g.
+
+```
+app.sourceRepo=${SOURCE_REPO:${env.SOURCE_REPO:https://github.com/ucsb-cs156/proj-frontiers}}
+```
+
+Then, if needed, you can override it in your `.env` for a more specific source repo:
+
+```
+SOURCE_REPO=https://github.com/ucsb-cs156-f25/proj-frontiers-f25-17
 ```
 
 ## Additional steps so it works on dokku as well:
