@@ -62,6 +62,10 @@ This is not a complete list, but it's a good high level overview:
 The details each of these is deserving of it's own page; we'll add those pages as we gain more experience with the migration path, 
 and have the time to flesh things out.
 
+## Vite Examples
 
+| Repo | Description |
+| [ucsb-cs156/frontend-101-vite-plain](https://github.com/ucsb-cs156/frontend-101-vite-plain) | As plain vanilla a vite site as you can get, with the exception that the directory it's in is called `frontend` instead of `vite-project`. This is mainly intended as a baseline for comparison when understanding how the pieces fit together, and a starting point for building more complex projects. |
+| [ucsb-cs156/frontend-105-vite-with-vitest](https://github.com/ucsb-cs156/frontend-101-vite-with-vitest) | We set up vitest as well as a CI/CD job to check the tests.  We also make some changes to content. |
 
 
