@@ -8,4 +8,4 @@ permalink: /strategies
 
 # {{page.title}}
 
-This page lists strategies for success in CMPSC 156 (and in Software Engineering in general).
+This page lists strategies for success in CMPSC 156, and in Software Engineering in general.
