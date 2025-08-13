@@ -37,3 +37,12 @@ You can further control which tests run by changing code as follows:
 
 You can also apply `.only` and `.skip` to entire `describe` blocks, and to tests marked with `it` instead of `test`.
 
+## Maybe the test is right and the code is wrong
+
+If you are trying to figure out why a test is not passing, and you are stuck, ask yourself this question:
+
+* Is it possible that the test is *right* and the *code* is wrong?
+
+Things to try:
+* If this is a frontend test: do you have a storybook entry for the component? If so, try walking through all of the steps of the test in the storybook component. (If you don't have a storybook entry yet, make one; that process may help you discover what you've missed).
+* Try actually running the code *for real* with the full backend and frontend, either on `localhost` or a `dokku` deployment.  Does the code actually *do* what it's supposed to do? 
