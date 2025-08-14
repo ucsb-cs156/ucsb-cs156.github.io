@@ -51,7 +51,7 @@ beforeEach(() => {
 If you're interested in why these are best practices, click here.
 </summary>
 In Jest and Vitest (as it's drop-in replacement), mocks are something called "hoisted". Essentially, when you create a mock of something, the declaration of that mock is placed at the top of the file 
-(credit to https://dev.to/jobber/serious-jest-making-sense-of-hoisting-253i for the explanation of hoisting).
+(credit to [https://dev.to/jobber/serious-jest-making-sense-of-hoisting-253i](https://dev.to/jobber/serious-jest-making-sense-of-hoisting-253i) for the explanation of hoisting).
 
 As a result, if your mock is not properly restored (had the mock removed) at the end of whatever context it is operating in, it can interfere with other mocks of the same file. There will be two 
 mocks both attempting to do the same thing, and it's a tossup for which one will come out on top, resulting in flaky testing.
