@@ -19,7 +19,13 @@ Instead, try to focus on one test at a time.  Here are specific strategies for d
 mvn test -Dtest=FooControllerTests
 ```
 
-You can further limit the tests by commenting out all tests, and uncommenting them one at a time.  Each time a test fails, focus on fixing that one until they all pass.
+You can further limit the run to a single test by using:
+
+```
+mvn test -Dtest=FooControllerTests\#method_name_of_test
+```
+
+You can also limit the tests by commenting out all tests, and uncommenting them one at a time.  Each time a test fails, focus on fixing that one until they all pass.
 
 **Frontend**: You can use this command to focus on tests for one file at a time. In this case, the expression after the `--` is treated as a regular expression, so you only need as many characters as are needed to match what you are testing:
 
