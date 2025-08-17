@@ -2,7 +2,7 @@
 parent: Stryker
 grand_parent: Topics
 layout: default
-title: "Stryker: useBackend and useBackendMutation query keys"
+title: "Stryker: useBackend stryker exceptions (also useBackendMutation)"
 description:  "Getting rid of `// Stryker disable next-line all` on `useBackend` and `useBackendMutation` calls"
 ---
 
