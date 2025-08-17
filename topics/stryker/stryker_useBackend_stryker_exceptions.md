@@ -96,7 +96,61 @@ The mutation that we want to kill is typically changing the "query key to invali
 To do this, we need to spy on the `QueryClient` object, and ensure the `["/api/personalschedules/all"]` parameter is passed through to it with an call to the method that
 invalidates the query key.
 
-TODO: Continue this!
+First, we will need this import.   
 
+```
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"; // or just `react-query` in older code bases
+```
 
+Then, we need two variables to set up our query client mock: `queryClient` and `invalidateQueriesSpy`:
 
+```
+describe("Tests for (insert component name here), () => {
+  let queryClient;
+  let invalidateQueriesSpy;
+```
+
+We need a `beforeEach` and `afterEach` block like this.  Note that you may already have
+beforeEach and afterEach blocks, in which case you should combine this new code with what's
+already there:
+
+```js
+ beforeEach(() => {
+    queryClient = new QueryClient({
+      defaultOptions: {
+        queries: {
+          retry: false,
+          refetchOnWindowFocus: false,
+        },
+      },
+    });
+    invalidateQueriesSpy = jest.spyOn(queryClient, "invalidateQueries");
+    // ... anything else you need in your beforeEach, e.g. stuff for AxiosMock
+  });
+
+  // After each test, restore the original axios implementation and clean up.
+  afterEach(() => {
+    invalidateQueriesSpy.mockRestore(); // Restore original implementation of the spy
+    queryClient.clear(); // Clear the React Query cache
+    // ... anything else you might need in your afterEach
+  });
+```
+
+When you render the component, be sure it is wrapped in a `<QueryClientProvider>`, like this:
+
+```
+      <QueryClientProvider client={queryClient}>
+        <YourComponentGoesHere />
+      </QueryClientProvider>,
+```
+
+Depending on the context, there may be other wrappers, e.g. `<MemoryRouter>` or `<BrowserRouter>`.  The `<QueryClientProvider>` goes on the outside of the other wrappers.
+
+Now you can make tests such as these, replacing `["/api/personalschedules/all"]` with whatever query key you are testing for.
+
+```
+    expect(invalidateQueriesSpy).toHaveBeenCalledTimes(1);
+    expect(invalidateQueriesSpy).toHaveBeenCalledWith({
+      queryKey: ["/api/personalschedules/all"]
+    });
+```
