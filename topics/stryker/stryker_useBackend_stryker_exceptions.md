@@ -30,7 +30,7 @@ This article describes how to set up tests for these that will survive mutation 
 
 ## Some background
 
-Before we discuss how to get rid of the Stryker exception, we need to understand what the query key parameters to `useBackend` and `useBackendMutation` are all about.
+Before we discuss how to get rid of the Stryker exception, it's helpful to understand what the query key parameters to `useBackend` and `useBackendMutation` are all about.
 
 Let's take this example from: [PersonalSchedulesTable.js from proj-courses](https://github.com/ucsb-cs156/proj-courses/blob/1cbfb990c1d156256f1694397ed4e62189b2715b/frontend/src/main/components/PersonalSchedules/PersonalSchedulesTable.js#L1)
 
@@ -93,64 +93,25 @@ the correct query key is invalidated when we do the useBackendMutation call.
 The mutation that we want to kill is typically changing the "query key to invalidate" parameter to `useBackendMutation` from a value such as `["/api/personalschedules/all"]` to some other value, which might be any of these:
 * `null`, `[]`, `[""]`, `["Stryker was here"]`
 
-To do this, we need to spy on the `QueryClient` object, and ensure the `["/api/personalschedules/all"]` parameter is passed through to it with an call to the method that
-invalidates the query key.
+To do this, we can simply spy on the calls to `useBackend` and `useBackendMutation` and check that they are called with the correct parameters.
 
-First, we will need this import.   
 
-```
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query"; // or just `react-query` in older code bases
-```
 
-Then, we need two variables to set up our query client mock: `queryClient` and `invalidateQueriesSpy`:
+First, we need a variables to set up our spies:
 
 ```
-describe("Tests for (insert component name here), () => {
-  let queryClient;
-  let invalidateQueriesSpy;
+// use vi.spyOn instead of jest.spyOn if using vitest 
+const useBackendSpy = jest.spyOn(require("main/utils/useBackend"), "useBackend"); 
+const useBackendMutationSpy = jest.spyOn(require("main/utils/useBackend"), "useBackendMutation"); 
 ```
 
-We need a `beforeEach` and `afterEach` block like this.  Note that you may already have
-beforeEach and afterEach blocks, in which case you should combine this new code with what's
-already there:
-
-```js
- beforeEach(() => {
-    queryClient = new QueryClient({
-      defaultOptions: {
-        queries: {
-          retry: false,
-          refetchOnWindowFocus: false,
-        },
-      },
-    });
-    invalidateQueriesSpy = jest.spyOn(queryClient, "invalidateQueries");
-    // ... anything else you need in your beforeEach, e.g. stuff for AxiosMock
-  });
-
-  // After each test, restore the original axios implementation and clean up.
-  afterEach(() => {
-    invalidateQueriesSpy.mockRestore(); // Restore original implementation of the spy
-    queryClient.clear(); // Clear the React Query cache
-    // ... anything else you might need in your afterEach
-  });
-```
-
-When you render the component, be sure it is wrapped in a `<QueryClientProvider>`, like this:
-
-```
-      <QueryClientProvider client={queryClient}>
-        <YourComponentGoesHere />
-      </QueryClientProvider>,
-```
-
-Depending on the context, there may be other wrappers, e.g. `<MemoryRouter>` or `<BrowserRouter>`.  The `<QueryClientProvider>` goes on the outside of the other wrappers.
 
 Now you can make tests such as these, replacing `["/api/personalschedules/all"]` with whatever query key you are testing for.
 
-```
-    expect(invalidateQueriesSpy).toHaveBeenCalledTimes(1);
-    expect(invalidateQueriesSpy).toHaveBeenCalledWith({
-      queryKey: ["/api/personalschedules/all"]
-    });
+```js
+     expect(useBackendSpy).toHaveBeenCalledWith(
+        ["/api/UCSBSubjects/all"],
+        {"method": "GET", "url": "/api/UCSBSubjects/all"},
+        []
+      );
 ```
