@@ -52,3 +52,39 @@ If you are trying to figure out why a test is not passing, and you are stuck, as
 Things to try:
 * If this is a frontend test: do you have a storybook entry for the component? If so, try walking through all of the steps of the test in the storybook component. (If you don't have a storybook entry yet, make one; that process may help you discover what you've missed).
 * Try actually running the code *for real* with the full backend and frontend, either on `localhost` or a `dokku` deployment.  Does the code actually *do* what it's supposed to do? 
+
+## `Stryker was here` mutations
+
+If you are having difficulty killing a `Stryker was here` mutation, here's a strategy:
+
+1. Make the mutation your self in the code.  For example, actually change:
+   ```js
+     const [courseNumber, setCourseNumber] = useState(");
+   ```
+
+   to
+   ```js
+      const [courseNumber, setCourseNumber] = useState("Stryker was here);
+   ```
+
+2. Then, load the component on Storybook and see if there is a circumstance where you can actually *see* the impact of the mutation on the component.
+
+3. Then, try to write a test that fails because of the impact of the mutation.
+
+Note that this is actually a strategy for *any* kind of mutation, but the `Stryker was here` is often the easiest to see in the component.
+
+For example, when I made the change above, I got this:
+
+<img width="903" height="168" alt="image" src="https://github.com/user-attachments/assets/0af9abf3-d973-4457-a698-bf7a28cc7bfd" />
+
+The problem with my test is that I was checking for the contents of this field like this:
+
+```js
+expect(screen.getByTestId("CourseOverTimeSearchForm.SearchString")).toHaveTextContent("ANTH");
+```
+
+when I needed to use a regular expression to be sure that I wasn't just finding a substring. The `^` means "start of string", and the `$` means end of string.
+
+```js
+expect(screen.getByTestId("CourseOverTimeSearchForm.SearchString")).toHaveTextContent(/^ANTH$/);
+```
