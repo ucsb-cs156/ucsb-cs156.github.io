@@ -9,7 +9,7 @@ description:  "General design principles"
 
 This covers some high level design principles that don't seem to fit anywhere else.
 
-# Sorting/Filtering in the backend is better than Sorting/Filtering in the Frontend
+# When possible, Sort/Filter in the Backend rather than the Frontend
 
 If you have a page where you are presenting information that always needs to be presented to the user initially
 in a certain order, you have two choices:
@@ -59,15 +59,16 @@ Consider this example from proj-courses:
 
 Before:
 ```java
-
+    Iterable<Job> jobs = jobsRepository.findAll();
 ```
 
 After: 
 
 ```java
-
+    Iterable<Job> jobs = jobsRepository.findAllByOrderByIdDesc();
 ```
 
+Now there's no need to apply an additional sort in the frontend.
 
 
 ### Choice 2: Do it with JJava collection utilities]
