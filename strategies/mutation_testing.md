@@ -63,6 +63,13 @@ A few other examples:
     (in which case you can write a test to ensure that the space between words is there.)
   * But *often*, you can just eliminate these spaces (which are inserted by `prettier` when you do `npm run format`) and
     there is no impact on the displayed text.
+* Sorting/Filtering in the frontend (if it can be moved to the backend)
+
+  Here's some code that sorts data in a table:
+  <img width="737" height="143" alt="image" src="https://github.com/user-attachments/assets/037d3901-6abd-4704-97c7-f6c0ab2051a9" />
+
+  By moving the sort to the backend [as explained here](https://ucsb-cs156.github.io/strategies/design.html#when-possible-sortfilter-in-the-backend-rather-than-the-frontend), we were able to eliminate this code, and there the need to write a frontend test for it.
+
 
 ## `Stryker was here` mutations
 
