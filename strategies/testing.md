@@ -1,8 +1,8 @@
 ---
 parent: Strategies
 layout: default
-title: Testing
-description:  "Hints for successful testing"
+title: Testing 
+description:  "Hints for writing good tests and getting them to pass"
 ---
 
 # Testing Strategies
