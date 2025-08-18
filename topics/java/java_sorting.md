@@ -162,9 +162,9 @@ The problem is that Dog doesn't implement `java.lang.Comparable<Dog>`.   Here's 
 Note that:
 * We declare on line 1 that `Dog implements Comparable<Dog>`.   
 * We can leave off the `java.lang.` on `java.lang.Comparable`; you can always leave off `java.lang.`  
-* Implementing `Comparable<Dog>` involves writing the `compareTo` method that appears on lines 15-29
+* Implementing `Comparable<Dog>` involves writing the `compareTo` method that appears in the code below:
 
-{% highlight java linenos %}
+```java
 public class Dog implements Comparable<Dog>  {
 
         private String name;
@@ -179,7 +179,7 @@ public class Dog implements Comparable<Dog>  {
                 return "[" + name + "," + weight + "]";
         }
                                                   
-        public int      compareTo(Dog otherDog) {
+        public int compareTo(Dog otherDog) {
                 // return negative number if this < otherDog, according to my "order"
                 // return 0 if this == otherDog, according to my "order"
                 // return positive if this > otherDog, according to my "order"
@@ -195,7 +195,7 @@ public class Dog implements Comparable<Dog>  {
                 }                       
         }
 }
-{% endhighlight  %}
+```
 
 Now our code compiles, and sorting works:
 
@@ -309,8 +309,6 @@ Lambda expressions give us a way to create a Comparator with much less bother.
 * But they are are more efficient for the human programmer.
 
 They are a shorthand syntax.   The best way to understand what they are is to consider four options for creating a comparator, each one moving us close to lambda expresions in stages.
-
-
 
 <div class="nice-table" markdown="1">
 
