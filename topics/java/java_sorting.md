@@ -384,9 +384,9 @@ can declare it like this:
 
 ```
 
-Here's that code in context.  Note that we are importing `java.util.Comparator` on line 2 so that we don't have to specify the full package name each time we refer to a `Comparator`.  Also note how we use the `sortByWeight` object of type `Comparator<Dog>` on line xx as the parameter to `kennel.sort(sortByWeight)`
+Here's that code in context.  Note that we are importing `java.util.Comparator` so that we don't have to specify the full package name each time we refer to a `Comparator`.  Also note how we use the `sortByWeight` object of type `Comparator<Dog>` on line xx as the parameter to `kennel.sort(sortByWeight)`
 
-{% highlight java linenos %}
+```java
 import java.util.ArrayList;
 import java.util.Comparator;
 public class SortDogs4 {
@@ -414,7 +414,7 @@ public class SortDogs4 {
         System.out.println("Sorted by weight " + kennel);       
     }   
 }
-{% endhighlight %}
+```
 
 It still sorts:
 
@@ -482,7 +482,7 @@ Comparator<T> myComparator  = (o1, o2) -> {
 
 To review everything, consider this program, which uses all of the techniques we've discussed:
 
-{% highlight java linenos %}
+```
 import java.util.ArrayList;
 import java.util.Comparator;
 
@@ -530,7 +530,7 @@ public class SortStudents01 {
     }
     
 }
-{% endhighlight %}
+```
 
 # Advanced Comparators
 
