@@ -67,22 +67,45 @@ After:
 ```java
     Iterable<Job> jobs = jobsRepository.findAllByOrderByIdDesc();
 ```
-
 Now there's no need to apply an additional sort in the frontend.
 
 
-### Choice 2: Do it with JJava collection utilities]
-
+### Choice 2: Do it with Java collection utilities
 
 Sorting of Java Collections is described in [this article on the CS156 website](https://ucsb-cs156.github.io/topics/java/java_sorting.html#how-to-sort-an-arrayliststring).
 
-Here's an example from proj-courses:
+In this case, we had to define a new collection by wrapping the result before sorting (since the result returned by `convertedSectionCollection.findByQuarterRangeAndBuildingCode` was an immutable collection):
+
+Before:
 ```java
-    courseResults.sort(new ConvertedSection.ConvertedSectionSortDescendingByQuarterComparator());
+List<ConvertedSection> courseResults = 
+                convertedSectionCollection.findByQuarterRangeAndBuildingCode(
+                        startQtr, endQtr, buildingCode);
 ```
 
-A few things to watch out for:
-* Is this backend endpoint used by *only one page* in the app (which means you can sort any way you please for that page), or *multiple pages in the app*
+After:
+```java
+List<ConvertedSection> courseResults = new java.util.ArrayList<>(
+                convertedSectionCollection.findByQuarterRangeAndBuildingCode(
+                        startQtr, endQtr, buildingCode));
+
+courseResults.sort(new ConvertedSection.ConvertedSectionSortDescendingByQuarterComparator());
+```
+
+The comparator is defined here as an inner class of `ConvertedSection`:
+
+```java
+   public static class ConvertedSectionSortDescendingByQuarterComparator implements java.util.Comparator<ConvertedSection> {
+        @Override
+        public int compare(ConvertedSection o1, ConvertedSection o2) {
+            return o2.getCourseInfo().getQuarter().compareTo(o1.getCourseInfo().getQuarter());
+        }
+    }
+```
+
+### Considerations
+
+Consider whether the backend endpoint used by *only one page* in the app (which means you can sort any way you please for that page), or *multiple pages in the app*?  If it's used by multiple pages, consider defining a new endpoint, or adding a new optional parameter to endpoint to specify the sort or filtering criteria.
 
 ### If you must do it in the frontend, use React-Table
 
