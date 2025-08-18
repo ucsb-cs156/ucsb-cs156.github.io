@@ -64,3 +64,39 @@ A few other examples:
   * But *often*, you can just eliminate these spaces (which are inserted by `prettier` when you do `npm run format`) and
     there is no impact on the displayed text.
 
+## `Stryker was here` mutations
+
+If you are having difficulty killing a `Stryker was here` mutation, here's a strategy:
+
+1. Make the mutation your self in the code.  For example, actually change:
+   ```js
+     const [courseNumber, setCourseNumber] = useState(");
+   ```
+
+   to
+   ```js
+      const [courseNumber, setCourseNumber] = useState("Stryker was here);
+   ```
+
+2. Then, load the component on Storybook and see if there is a circumstance where you can actually *see* the impact of the mutation on the component.
+
+3. Then, try to write a test that fails because of the impact of the mutation.
+
+Note that this is actually a strategy for *any* kind of mutation, but the `Stryker was here` is often the easiest to see in the component.
+
+For example, when I made the change above, I got this:
+
+<img width="903" height="168" alt="image" src="https://github.com/user-attachments/assets/0af9abf3-d973-4457-a698-bf7a28cc7bfd" />
+
+The problem with my test is that I was checking for the contents of this field like this:
+
+```js
+expect(screen.getByTestId("CourseOverTimeSearchForm.SearchString")).toHaveTextContent("ANTH");
+```
+
+when I needed to use a regular expression to be sure that I wasn't just finding a substring. The `^` means "start of string", and the `$` means end of string.
+
+```js
+expect(screen.getByTestId("CourseOverTimeSearchForm.SearchString")).toHaveTextContent(/^ANTH$/);
+```
+
