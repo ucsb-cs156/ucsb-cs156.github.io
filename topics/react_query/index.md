@@ -13,7 +13,7 @@ Our CS156 code bases contain two custom hooks: `useBackend` and `useBackendMutat
 * `useBackend` is a wrapper around `useQuery`
 * `useBackendMutation` is a wrapper around `useMutation`
 
-## Stryker Exceptions for `useBackend` and `useBackendMutation` calls.
+## Mocking React Query
 
 Note: There is another article that shows what may be an easier way to deal with Stryker Mutations on these calls here:
 * <https://ucsb-cs156.github.io/topics/stryker/stryker_useBackend_stryker_exceptions.html>
