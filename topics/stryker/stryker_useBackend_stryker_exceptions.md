@@ -115,3 +115,14 @@ Now you can make tests such as these, replacing `["/api/personalschedules/all"]`
         []
       );
 ```
+
+For `useBackendMutation`, we can use something like this.  This will not test for the exact values of the functions, but it will test for 
+arrays and strings:
+
+```
+    expect(useBackendMutationSpy).toHaveBeenCalledWith(
+      expect.any(Function),
+      { onSuccess: expect.any(Function) },
+      [],
+    );
+```
