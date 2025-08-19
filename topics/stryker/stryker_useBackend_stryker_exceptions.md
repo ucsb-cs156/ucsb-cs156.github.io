@@ -126,3 +126,21 @@ arrays and strings:
       [],
     );
 ```
+
+### Important: restore after spying on useBackend or useBackendMutation
+
+It is important that after you set up a `spyOn` for `useBackend` and/or `useBackendMutation` that you restore things to normal, either:
+*  at the end of your test
+*  in an `afterEach()` block
+
+The code you need is this:
+
+```
+    useBackendSpy.mockRestore();
+```
+
+or:
+
+```
+    useBackendMutationSpy.mockRestore();
+```
