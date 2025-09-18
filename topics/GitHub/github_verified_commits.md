@@ -182,11 +182,11 @@ Now do a global search replace on "pick" to "edit".  Here's what that looks like
   * This changes every occurence of `pick` that occurs at the start of a line to `edit` 
 * To save and exit vim: `:wq`
 
-Now, use this command to sign every commit:
+Now, use this command to sign every commit.  The `--no-verify` skips any pre-commit hooks such as running formatters or linters; in this case, we are assuming that each of these commits has already gone through those at an earlier stage in the development process.
 
 ```
 while true; do
-  git commit --amend -S --no-edit || break
+  git commit --amend -S --no-edit --no-verify || break
   git rebase --continue || break
 done
 ```
