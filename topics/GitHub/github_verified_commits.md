@@ -113,6 +113,22 @@ If you need to sign an entire branch, you can rebase and sign every commit. You 
 git rebase --signoff -S main
 ```
 
+Note that the command above is *also* a rebase on `main`, which may produce merge conflicts.  Another way of doing it that avoids that issue is to:
+* count how many commits are in the branch (for example, suppose it's 2)
+* use this syntax, which says rebase on the commit that's 2 before the current commit:
+
+```
+git rebase --signoff -S HEAD~2
+```
+
+Then, you should be able to avoid any merge conflicts.  
+
+In *both* cases, you'll then need to do a force push on the branch:
+
+```
+git push origin branch-name -f
+```
+
 If this doesn't work, here are two ways to resolve this that are each slightly more complicated.
 
 ## Getting signed commits by redoing the commits
