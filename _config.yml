@@ -14,12 +14,10 @@ jdk_distribution: "21.0.6-librca"
 
 # Aux links for the upper right navigation
 aux_links:
-  "S25":
-    - "//ucsb-cs156.github.io/s25"
+  "F25":
+    - "//ucsb-cs156.github.io/f25"
   "github":
-    - "//github.com/ucsb-cs156-s25"
-  "F24":
-    - "//ucsb-cs156.github.io/f24"
+    - "//github.com/ucsb-cs156-f25"
   "earlier offerings":
     - "//ucsb-cs156.github.io/offerings"
   "cs156 docs repo":
