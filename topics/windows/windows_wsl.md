@@ -6,7 +6,7 @@ title: "Windows: WSL"
 description:  "Setting up a development environment under Windows Subsystem for Linux"
 indent: true
 category_prefix: "Windows: "
-maven_version: 3.9.9
+maven_version: 3.9.11
 nvm_version: v0.40.1
 git_version: 2.46.2
 nvm_install_command: "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash"
@@ -149,17 +149,17 @@ OpenJDK 64-Bit Server VM (build 21.0.6+10-LTS, mixed mode, sharing)
 
 ## Install Maven on WSL
 
-The projects in this class use Maven 3.9.9, which is necessary for Java 21.  
+The projects in this class use Maven 3.9.11, which is necessary for Java 21.  
 
-The `apt` package manager does not yet have Maven 3.9.9, so we need to manually download and extract Maven.
+The `apt` package manager does not yet have Maven 3.9.11, so we need to manually download and extract Maven.
 
-(As of this writing, the current version of Maven is 3.9.9; . It is possible that by the time you are reading
+(As of this writing, the current version of Maven is 3.9.11; . It is possible that by the time you are reading
 these instructions, the current version may have been updated; you can check that [at this link](https://maven.apache.org/download.cgi).
 If the links below broken, see if there is a newer version available.)
 
-Here are two links that have been reported to work for downloading Maven 3.9.9 (the only difference is `downloads` vs. `dlcdn`)
-* <https://downloads.apache.org/maven/maven-3/3.9.9/binaries/apache-maven-3.9.9-bin.tar.gz>
-* <https://dlcdn.apache.org/maven/maven-3/3.9.9/binaries/apache-maven-3.9.9-bin.tar.gz>
+Here are two links that have been reported to work for downloading Maven 3.9.11 (the only difference is `downloads` vs. `dlcdn`)
+* <https://downloads.apache.org/maven/maven-3/3.9.11/binaries/apache-maven-3.9.11-bin.tar.gz>
+* <https://dlcdn.apache.org/maven/maven-3/3.9.11/binaries/apache-maven-3.9.11-bin.tar.gz>
 
 If the first one doesn't work, try the second. Note that these links are for use in the commands below, specifically `curl`.
 
@@ -167,7 +167,7 @@ Note: The first `cd` command below is to make sure that you are doing the rest o
 
 ```sh
 cd 
-export MAVEN_VERSION=3.9.9
+export MAVEN_VERSION=3.9.11
 curl -O https://downloads.apache.org/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz
 tar -zxvf apache-maven-${MAVEN_VERSION}-bin.tar.gz
 sudo mv apache-maven-${MAVEN_VERSION} /opt/maven
@@ -192,7 +192,7 @@ You can close nano by hitting ``Ctrl+O`` followed by enter.
 
 **Then, restart your terminal.**
 
-Successfully running the above commands should install Maven 3.9.9. To verify that the install was successful, run the following command:
+Successfully running the above commands should install Maven 3.9.11. To verify that the install was successful, run the following command:
 
 ```
 mvn --version
@@ -201,7 +201,7 @@ mvn --version
 Your output should look something like this:
 
 ```
-Apache Maven 3.9.9 
+Apache Maven 3.9.11 
 Maven home: /opt/maven
 Java version: 21.0.6, vendor: ...
 Default locale: en_US, platform encoding: UTF-8
