@@ -9,7 +9,7 @@ indent: true
 
 # A very simple pom.xml
 
-The following pom.xml shows the minimal code we can come up with to compile a simple project using Java 17:
+The following pom.xml shows the minimal code we can come up with to compile a simple project using Java 21:
 
 
 ```xml
@@ -23,10 +23,15 @@ The following pom.xml shows the minimal code we can come up with to compile a si
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
                 <configuration>
-                    <release>17</release>
+		    <archive>
+		        <manifest>
+			    <!-- full package name of class with the main you want to run -->
+                            <mainClass>${mainClass}</mainClass>
+			</manifest>
+                    </archive>
                 </configuration>
             </plugin>
         </plugins>
@@ -85,15 +90,20 @@ The outer-most element, `build` specifies that this is the section of the `pom.x
 ```
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
                 <configuration>
-                    <release>17</release>
+		    <archive>
+		        <manifest>
+			    <!-- full package name of class with the main you want to run -->
+                            <mainClass>${mainClass}</mainClass>
+			</manifest>
+                    </archive>
                 </configuration>
             </plugin>
 ```
 
-Inside the `plugin` element, we see the `groupId/artifact/version` of the plugin (i.e. the plugin's *coordinates*); these are used to go and retrieve the specific version of the Maven Compiler Plugin (at run time) from the internet.  Finally, the `configuration` element contains a `release` element where we specify the Java release (in this case Java 17) that we want to use for compiling the project.
+Inside the `plugin` element, we see the `groupId/artifact/version` of the plugin (i.e. the plugin's *coordinates*); these are used to go and retrieve the specific version of the Maven Compiler Plugin (at run time) from the internet.  Finally, the `configuration` element contains a `release` element where we specify the Java release (in this case Java 21) that we want to use for compiling the project.
 
 # Basic commands
 

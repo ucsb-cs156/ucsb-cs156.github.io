@@ -19,7 +19,7 @@ NB: JAVA_HOME should point to a JDK not a JRE
 Then here's the fix:
 
 ```
-export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+export JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 
 ```
 
@@ -28,7 +28,7 @@ Type that once before you use mvn commands
 To avoid having to type that every time you work on CSIL, you can add that line to your Shell startup files.   That file might be, for example, `.bash_profile` by running the following:
 
 ```bash
-echo 'JAVA_HOME=/usr/lib/jvm/java-17-openjdk' >> ~/.bash_profile
+echo 'JAVA_HOME=/usr/lib/jvm/java-21-openjdk' >> ~/.bash_profile
 ```
 
 You can verify that this worked properly by doing the following:
@@ -38,13 +38,13 @@ source ~/.bash_profile
 $JAVA_HOME/bin/javac -version
 ```
 
-You should see `javac 17.0.1` as the output. 
+You should see `javac 21.0.6` as the output. 
 
 Disconnect and reconnect to double check that it still works; if it still does, then you've solved the problem.
 
 # `Error: A JNI error has occurred, please check your installation and try again`
 
-This error usually indicates a mismatch between the Java versions being used. For example, you may have compiled with Java 17 but are using an older version of the JRE. First make sure your `JAVA_HOME` variable is set to JAVA 17 (following the instructions in the first part of this post if necessary), then make sure your `PATH` environment variable is updated to make sure the JRE for Java 17 is being used: 
+This error usually indicates a mismatch between the Java versions being used. For example, you may have compiled with Java 21 but are using an older version of the JRE. First make sure your `JAVA_HOME` variable is set to JAVA 21 (following the instructions in the first part of this post if necessary), then make sure your `PATH` environment variable is updated to make sure the JRE for Java 21 is being used: 
 
 ```
 export PATH=$JAVA_HOME/bin:$PATH
