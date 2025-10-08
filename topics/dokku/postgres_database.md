@@ -22,7 +22,15 @@ dokku postgres:link my-new-app-db my-new-app
 * The command `dokku postgres:create my-new-app-db` creates the database. While it is not required that the name be the app name with `-db` appended, we encourage following  this naming convention (or a similar one) to reduce confusion.
 * The command  `dokku postgres:link my-new-app-db my-new-app` links the app to the database
 
-Once you do this, if you do `dokku config:show my-new-app` you should see a config variable called `JDBC_DATABASE_URL` that has the credentials (username/password) for the database embedded in it.  Starting with Spring 2025, the Spring Boot apps we use in CMPSC 156 include a script that picks up the necessary values from this URL.   (Apps written prior to that quarter may require extra configuration).
+It is normal to get a message `App image (dokku/my-new-app:latest) not found` if you have not yet deployed the app, which is typical at this stage.
+
+After you do this, try the command:
+
+```
+dokku config:show my-new-app
+```
+
+You should see a config variable called `JDBC_DATABASE_URL` that has the credentials (username/password) for the database embedded in it.  Starting with Spring 2025, the Spring Boot apps we use in CMPSC 156 include a script that picks up the necessary values from this URL.   (Apps written prior to that quarter may require extra configuration).
 
 Note that we **do not put the `JDBC_DATABASE_*` values in `.env`** since that file is used for `localhost`, and we do not typically use postgres when running on localhost (we use H2, an database embedded in the Spring Boot server instead).
 
