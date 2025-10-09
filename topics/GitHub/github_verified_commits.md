@@ -30,6 +30,24 @@ with a special badge indicating that the commit is verified as having come from 
 
 Shout out to our friends at AppFolio: this is one of the tips Phill Conrad picked up while interning there.
 
+## Comparing signed and unsigned commits
+
+Here is a commit history that illustrates the difference between signed (verified) and unsigned (unverified) commits.
+
+This is an excerpt of the commit history for the [starter code for jpa00](https://github.com/ucsb-cs156-f25/STARTER-jpa00/commits/main/):
+
+<img width="1209" height="580" alt="image" src="https://github.com/user-attachments/assets/4522665b-cdfc-4c5f-8b24-3dc4bf49dd9e" />
+
+You can see that some commits have a green badge that says `verified`, while others have a yellow badge that says `unverified`, while
+other still have no badge at all.
+
+What we want is a commit history like the one you see in the [starter code for lab04 for F25](https://github.com/ucsb-cs156-f25/STARTER-jpa04/commits/main/): every commit has the green badge indcating that
+it is signed:
+
+<img width="738" height="445" alt="image" src="https://github.com/user-attachments/assets/faf28fc7-80a9-41b8-a66d-8173fdb68777" />
+
+
+
 ## Enabling Verified Commits
 
 To set your name and email for your whole git installation, run the following commands. The email will need to be one associated with your GitHub Account.
