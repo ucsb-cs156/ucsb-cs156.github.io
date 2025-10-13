@@ -279,4 +279,43 @@ the gh-pages branch from the rule as shown below. This is because while signing 
 
 <img width="806" alt="image" src="https://github.com/user-attachments/assets/5d2df232-2036-41c1-b38c-1b3ba703c2cb" />
 
+## Signing commits on PRs completed by Copilot
 
+It's a little surprising, but when you assign Copilot to complete a PR as an Agent, Copilot doesn't sign its commits.
+
+As a result, you might encounter this if/when you assign Copilot to complete a PR on a repo that requires signed commits:
+
+<img width="438" height="77" alt="image" src="https://github.com/user-attachments/assets/07f47e20-a371-4d1b-911b-0fedcf4665d1" />
+
+There are various ways to fix this, some of which have already been covered above.
+
+Here's another.  Suppose that the branch you are working on is `copilot/fix-406`:
+
+Start by getting an up-to-date copy of the branch, and use `git status` to make sure that the branch is clean and up-to-date:
+
+```
+git fetch origin
+git checkout copilot/fix-406
+git pull origin copilot/fix-406
+git status
+```
+
+Then, use this command to sign the entire branch at once:
+
+```
+git rebase --exec 'git commit --allow-empty --amend --no-edit -S' origin/main
+```
+
+If the rebase ends cleanly, e.g. with no merge conflicts or other issues, you'll see this at the end of the output:
+
+```
+Successfully rebased and updated refs/heads/copilot/fix-406.
+```
+
+You can then complete the rebase with this command:
+
+```
+git push origin copilot/fix-406 -f
+```
+
+If it doesn't rebase cleanly, abort the rebase with `git rebase --abort` and try another approach.
