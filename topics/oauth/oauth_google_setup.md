@@ -53,15 +53,15 @@ If you've already done these, then you are ready to set up a Google OAuth app so
    
    You will now see the values that we need for `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET`
    
-   Keep this window open, since you'll need these values to configure your application.  If you do close the window,
-   you can always return later and get the values.
+   You will **NOT** be able to view this secret after you close this window.
+   Since you'll need these values to configure your application, make sure to store them in a safe location.
 
-4. For localhost, these values typically go in the `.env` file, replacing the placeholder values you see there. 
+5. For localhost, these values typically go in the `.env` file, replacing the placeholder values you see there. 
    * The `.env` file is created by *copying* (not renaming!) the file `.env.SAMPLE` to `.env`
    * Do not make the rookie mistake of deleting the `.env.SAMPLE` file from the repo!
    * Also, do not commit the `.env` file to GitHub; it contains the `GOOGLE_CLIENT_SECRET` which, as the name suggests, needs to be kept secret!
 
-5. For Dokku, the values are set using the `dokku config:set ... ` command; 
+6. For Dokku, the values are set using the `dokku config:set ... ` command; 
    see <https://ucsb-cs156.github.io/topics/dokku/environment_variables.html> for more information.
    
 Once you have configured your app with these values, restart the application (the backend, specifically) and you should be able to login using your Google OAuth account. 
