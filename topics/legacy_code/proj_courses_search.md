@@ -84,7 +84,17 @@ In addition, it provides an opportunity to learn about how to work with a MongoD
 
 ## Getting the value for `MONGODB_URI`
 
-In the `.env` file for `proj-courses`, you'll need a value for `MONGODB_URI`.  That URI contains the hostname, username, password, and other information needed to connect to a MongoDB database provided by MongoDB.com.  
+In the `.env` file for `proj-courses`, you'll need a value for `MONGODB_URI`.  That URI contains the hostname, username, password, and other information needed to connect to a MongoDB database.
+
+
+<details>
+<summary>
+
+## The old way of setting up MongoDB
+
+This section hidden here (and accessible if you click the triangle) contains the OLD way of setting up MongoDb using MongoDB.com.  **We no longer use this approach**.  Instead, we set up MongoDB databaseson our dokku servers.      
+</summary>
+
 
 To start, in order to keep things simple, we will use the same database credentials for localhost, dev, qa and prod.  We acknowledge that this is not in keeping with "best practices" which would keep these separate (as they are for the SQL databases).  You have the option of learning how to create your own databases on MongoDB.com and then getting separate credentials for these if this becomes an issue that you need to tackle.
 
@@ -275,12 +285,13 @@ in quarter `20231` where the `courseInfo.courseId` field starts with `MATH`:
 ```
 { 'courseInfo.quarter' : '20231', 'courseInfo.courseId': { $regex: /MATH/ }}
 ```
+</details>
 
 # Staff Setup for proj-courses 
 
 <details markdown="1">
 <summary markdown="1">
-This section is for the staff and instructor.  Students and others are welcome to look at it, but it typically doesn't pertain unless you are on the staff of the course (instructor/TA/LA).  Click the triangle to reveal the details.
+This section is the OLD section for the staff and instructor, but it is OBSOLETE. (It pertains to the old way of setting up MongoDB that is no longer in use.   Click the triangle to reveal the details.
 </summary>
 
 
