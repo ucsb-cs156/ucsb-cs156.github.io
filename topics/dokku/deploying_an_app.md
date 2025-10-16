@@ -136,9 +136,9 @@ Next, to build your app the first time with `http`, type:
 
 Note that:
 * you *will not be able to login with OAuth* when the app is served only with `http`
-* however, *you cannot configure the app for `https` until it first is running with `http`
+* however, you *cannot* configure the app for `https` until it first is running with `http`
 
-So we have to enable it with http first.
+So we have to get it running with http first, and *then* enable `https`.
 
 ## Step 8: Enable https (`dokku letsencrypt...`)
 
