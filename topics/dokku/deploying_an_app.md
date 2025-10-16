@@ -124,9 +124,9 @@ Next, sync with your github repo, like this:
 <tt>dokku git:sync <i>appName</i> https://github.com/<i>owner</i>/<i>repo</i>.git main</tt>
 
 Where:
-* <tt>https://github.com/<i>owner</i>/<i>repo</i>.git</tt> is the `https` link to your repo, which should be public.(
+* <tt>https://github.com/<i>owner</i>/<i>repo</i>.git</tt> is the `https` link to your repo, which should be public.
 
-Note: For private repos see [these instructions](https://ucsb-cs156.github.io/topics/dokku/deploy_app_from_private_repo.html)).
+Note: For private repos see [these instructions](https://ucsb-cs156.github.io/topics/dokku/deploy_app_from_private_repo.html).
 
 ## Step 7: Build App with http (`dokku ps:rebuild ...`)
 
