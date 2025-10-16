@@ -104,6 +104,16 @@ Postgres database configuration requires several steps, so we've factored it out
 
 Follow these steps before proceeding.
 
+## Step 5a: (`proj-courses` only!) Create and Link MongoDB (`dokku mongo:create ...`)
+
+Only one of the apps we use in this course requires a MongoDB database in addition to the postgres database, namely `proj-courses`.
+
+If you are not working with `proj-courses`, just move on to the next step.
+
+Otherwise, follow the steps here to configure your app for MongoDB:
+
+* <https://github.com/ucsb-cs156/proj-courses/blob/main/docs/mongodb.md>
+
 ## Step 6: Sync with Github Repo (`dokku git:sync...`)
 
 Next, sync with your github repo, like this:
