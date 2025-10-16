@@ -69,6 +69,8 @@ In addition, there will be specific environment variables for such things as the
 * `GOOGLE_CLIENT_SECRET`
 * `ADMIN_EMAILS`
 
+For `proj-courses` and `proj-dining`, you'll also need a value for `UCSB_API_KEY`.
+
 You'll find the values in your `.env` file, where you've typically configured these as part of setting up your application to run on `localhost`, which you typically do *before* setting it up to run on dokku.
 
 For each of these values, copy the value into the command below:
