@@ -54,7 +54,8 @@ If you've already done these, then you are ready to set up a Google OAuth app so
    You will now see the values that we need for `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET`
    
    You will **NOT** be able to view this secret after you close this window.
-   Since you'll need these values to configure your application, make sure to store them in a safe location.
+   Since you'll need these values to configure your application, make sure to store them in a safe location, such
+   as the `.env` file (in the next step) before you close the window.
 
 5. For localhost, these values typically go in the `.env` file, replacing the placeholder values you see there. 
    * The `.env` file is created by *copying* (not renaming!) the file `.env.SAMPLE` to `.env`
