@@ -38,6 +38,9 @@ The rest of this page explains:
  
 ## How to set up an account
 
+### NOTE:
+PLEASE DO NOT try applying to create a "Functional Account". Those are only provided to staff and administrators as explained [here](https://developer.ucsb.edu/docs/accounts/developer-portal), and there's a whole bureaucratic process--if you sign up for this you will no longer be able to sign up with your UCSB NetID. 
+
 To set up an account:
 
 1. Navigate to <https://developer.ucsb.edu/> in your web browser
@@ -46,9 +49,6 @@ To set up an account:
 
    <img width="431" alt="image" src="https://github.com/user-attachments/assets/c39b98bc-07b2-4e20-97dd-00b1808d1de6" />
 
-   Please *don't* try applying to create a "Functional Account".
-   Those are only provided to staff and administrators as explained [here](https://developer.ucsb.edu/docs/accounts/developer-portal), and there's a
-   whole bureaucratic process.
 4. An account is created for you automatically.
 
 # How to set up an API key
