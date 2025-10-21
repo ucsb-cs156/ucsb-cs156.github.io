@@ -319,3 +319,78 @@ git push origin copilot/fix-406 -f
 ```
 
 If it doesn't rebase cleanly, abort the rebase with `git rebase --abort` and try another approach.
+
+## Last Resort: Make a main-archive and a main branch
+
+
+User Prompt:
+
+> I have a git repository with a complex commit history. The commits are mix of signed and unsigned commits.  
+>  
+> I would like to do two things.  
+> (1) Create a branch called main-archive that preserves the entire commit history up to this point (signed or not)  
+> (2) Create a single squashed commit of the entire commit history and sign it, and make that the new main branch.  
+>  
+> Can you give me a sequence of commands to accomplish this, along with instructions and explanations?
+> 
+
+### 🛠️ Overview
+
+This guide walks through:
+
+1. ✅ Creating a `main-archive` branch to preserve the full commit history  
+2. ✍️ Replacing the `main` branch with a single signed squashed commit
+
+### 📂 Step 1: Create a Backup Branch (`main-archive`)
+
+Preserve the full commit history before rewriting anything.
+
+```bash
+# Make sure you're on the main branch
+git checkout main
+
+# Create a new branch to archive the full history
+git branch main-archive
+
+# Push the archive branch to the remote
+git push origin main-archive
+```
+
+✅ `main-archive` now contains the complete, unaltered history of your repository.
+
+### 🧹 Step 2: Squash All Commits into One
+
+Create a new branch with a single signed commit.
+
+```
+# Create a temporary branch with no history
+git checkout --orphan temp-squash
+
+# Add all files to the new branch
+git add -A
+
+# Commit all files as a single signed commit
+git commit -S -m "Initial signed commit: squashed full history"
+```
+
+🔐 The -S flag signs the commit using your GPG key. Make sure GPG signing is configured.
+
+### 🔁 Step 3: Replace the main Branch
+
+# Delete the old main branch locally
+git branch -D main
+
+# Rename the temp branch to main
+git branch -m main
+
+# Force push the new main branch to the remote
+git push --force origin main
+```
+
+⚠️ Warning: This force-push will overwrite the remote `main` branch. Make sure your team is aware.
+
+### ✅ Final Result
+
+* `main-archive`: Full original commit history (signed and unsigned)
+* `main`: A clean, single signed commit representing the current state
+
