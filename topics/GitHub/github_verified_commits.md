@@ -377,6 +377,7 @@ git commit -S -m "Initial signed commit: squashed full history"
 
 ### 🔁 Step 3: Replace the main Branch
 
+```
 # Delete the old main branch locally
 git branch -D main
 
