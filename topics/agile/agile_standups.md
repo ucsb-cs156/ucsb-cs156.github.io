@@ -14,7 +14,7 @@ Timeboxed meeting (5-15 minutes), where everyone stands (to keep the meeting sho
 
 # The three questions
 
-* What tasks did you work on **yesterday** (or *since last standup*
+* What tasks did you work on **yesterday** (or *since last standup*)
 * What tasks will you commit to **today** (or *between now and next standup*) 
 * Do you have any impediments/barriers/dependencies (anything that's preventing you from progressing)
 
