@@ -1,11 +1,10 @@
 
-```
 
 This is the dialog that recreates the correct line to put in the `known_hosts` file.
 
 # A few more little security details
 
-Should we have just said `yes` to that dialog?  Well, it depends.
+Should we have just said no to that dialog?  Well, it depends.
 
 There are a few circumstances when you might have said `no` or `fingerprint`:
 
