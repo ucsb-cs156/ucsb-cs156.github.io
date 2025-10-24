@@ -30,9 +30,9 @@ After you do this, try the command:
 dokku config:show my-new-app
 ```
 
-You should see a config variable called `JDBC_DATABASE_URL` that has the credentials (username/password) for the database embedded in it.  Starting with Spring 2025, the Spring Boot apps we use in CMPSC 156 include a script that picks up the necessary values from this URL.   (Apps written prior to that quarter may require extra configuration).
+You should see a config variable called `DATABASE_URL` that has the credentials (username/password) for the database embedded in it.  Starting with Spring 2025, the Spring Boot apps we use in CMPSC 156 include a script that picks up the necessary values from this URL.   (Apps written prior to that quarter may require extra configuration).
 
-Note that we **do not put the `JDBC_DATABASE_*` values in `.env`** since that file is used for `localhost`, and we do not typically use postgres when running on localhost (we use H2, an database embedded in the Spring Boot server instead).
+Note that we **do not put the `DATABASE_*` values in `.env`** since that file is used for `localhost`, and we do not typically use postgres when running on localhost (we use H2, an database embedded in the Spring Boot server instead).
 
 # Postgres command line
 
