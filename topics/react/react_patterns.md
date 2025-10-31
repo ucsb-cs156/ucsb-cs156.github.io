@@ -92,6 +92,10 @@ What this does *not* have in common with the usual accepted definition of patter
 
 * TODO: Point to react-hook-form examples in STARTER-team02
 
+## Implement a Boolean in Data Entry Form
+
+TODO: Divy paste in that code here.
+
 # Implementing a data table
 
 * TODO: Point to react-bootstrap-table-next examples in STARTER-team02
