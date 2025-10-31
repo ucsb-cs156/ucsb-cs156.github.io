@@ -94,7 +94,8 @@ What this does *not* have in common with the usual accepted definition of patter
 
 ## Implement a Boolean in Data Entry Form
 
-TODO: Divy paste in that code here.
+<img width="579" height="278" alt="Screenshot 2025-10-30 at 6 03 28 PM" src="https://github.com/user-attachments/assets/3979464e-a09d-4b3c-83ef-164ff23b1b32" />
+
 
 # Implementing a data table
 
