@@ -3,6 +3,7 @@ parent: Topics
 layout: default
 title: Independent Study
 description:  "CMPSC 192/196 projects related to CMPSC 156"
+has_children: True
 ---
 
 If you took CMPSC 156 and left feeling "I want more!", you may want consider asking your instructors about
