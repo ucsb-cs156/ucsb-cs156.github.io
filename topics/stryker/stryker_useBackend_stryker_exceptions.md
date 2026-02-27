@@ -144,3 +144,5 @@ or:
 ```
     useBackendMutationSpy.mockRestore();
 ```
+
+**For multiple examples of removing Stryker disable comments using the method from this article, please refer to [this](https://github.com/ucsb-cs156/proj-frontiers/pull/589) pull request.**
