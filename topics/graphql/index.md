@@ -1,7 +1,7 @@
 ---
 parent: Topics
 layout: default
-title: "graphql"
+title: "Graphql"
 description:  "An alternative to RESTful APIs"
 has_children: true
 ---
