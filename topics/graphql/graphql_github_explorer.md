@@ -1,10 +1,9 @@
 ---
-parent: GitHub
+parent: graphql
 grand_parent: Topics
 layout: default
 title: "Graphql: GitHub Explorer"
 description:  "An interactive web based interface for exploring the GitHub Graphql API"
-indent: true
 ---
 
 
