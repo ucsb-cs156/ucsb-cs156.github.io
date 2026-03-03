@@ -1,5 +1,5 @@
 ---
-parent: graphql
+parent: Graphql
 grand_parent: Topics
 layout: default
 title: "Graphql: GitHub Explorer"
