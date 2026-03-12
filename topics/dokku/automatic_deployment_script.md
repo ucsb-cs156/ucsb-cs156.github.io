@@ -27,3 +27,11 @@ properly.  If the workflow stops working at some point, it may be that the crede
 
 TODO: Explain what has to be configured.
 
+## Spreadsheet of Deployments
+
+The proj-frontiers team also maintains a spreadsheet of dokku instances where PRs can be deployed, here (note that there isn't necessarily
+public access to this spreadsheet):
+
+* <https://docs.google.com/spreadsheets/d/1-IQJ0kTyenqZFeS1qeUZvD6oKls2WnlYwSts9IwwtHQ/edit?gid=0#gid=0>
+
+TODO: Add instructions for using this spreadsheet.
