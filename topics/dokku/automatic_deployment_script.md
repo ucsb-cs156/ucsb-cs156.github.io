@@ -26,7 +26,7 @@ The workflow described above depends on certain secrets and scripts and credenti
 properly.  If the workflow stops working at some point, it may be that the credentials need to be updated.
 
 * `GOOGLE_SERVICE_ACCOUNT`: A Google Service Account as part of a Google Cloud project is required for the spreadsheet to be automatically updated. The steps for creating one are here: <https://docs.cloud.google.com/iam/docs/service-accounts-create#creating>
-The JSON file containing the secrets should then be added to the [ucsb-cs156/workflows](https://github.com/ucsb-cs156/workflows) repository as `GOOGLE_SERVICE_ACCOUNT`. You should be able to simply copy and paste the entire file into the secret. 
+The JSON file containing the secrets should then be added to the [ucsb-cs156/workflows](https://github.com/ucsb-cs156/workflows) repository as `GOOGLE_SERVICE_ACCOUNT`. You should be able to simply copy and paste the entire file into the secret. Additionally, the spreadsheet must be shared with the email of the service account.
 
 ## Spreadsheet of Deployments
 
