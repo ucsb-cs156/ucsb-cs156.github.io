@@ -9,6 +9,7 @@ description: "Past offerings of CS156/CS56"
 
 | Term | Instructor |
 |------|------------|
+| [S26](https://ucsb-cs156.github.io/s26/) | P. Conrad |
 | [F25](https://ucsb-cs156.github.io/f25/) | P. Conrad |
 | [S25](https://ucsb-cs156.github.io/s25/) | P. Conrad |
 | [F24](https://ucsb-cs156.github.io/f24/) | P. Conrad |
