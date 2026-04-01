@@ -6,13 +6,13 @@ title: "Windows: WSL"
 description:  "Setting up a development environment under Windows Subsystem for Linux"
 indent: true
 category_prefix: "Windows: "
-maven_version: 3.9.11
-nvm_version: v0.40.1
+maven_version: 3.9.14
+nvm_version: v0.40.4
 git_version: 2.46.2
-nvm_install_command: "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash"
-nvm_install_command_wget: wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash"
-nvm_lts_node: v20.17.0
-nvm_lts_npm: v10.8.2
+nvm_install_command: "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash"
+nvm_install_command_wget: "wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash"
+nvm_lts_node: v22.22.2
+nvm_lts_npm: v10.9.7
 ---
 
 For advanced users who are looking to have a full Linux command-line interface on their Windows machine (which may be helpful for CMPSC 156 work), we recommend using Windows Subsystem for Linux (WSL). WSL is a tool that basically creates a separate Linux environment alongside your Windows environment, with access to your local filesystem. This will allow you to access package managers (such as `apt-get` for Ubuntu/Debian) and the full suite of UNIX commands.
@@ -36,12 +36,12 @@ On Windows 11 machines and Windows 10 machines with build 19041 or higher, insta
 2. Run the following command: `wsl --install`
    * This will enable and install WSL with the default configuration:
       * WSL 2
-      * The latest LTS release of Ubuntu (currently 22.04 LTS)
+      * The latest LTS release of Ubuntu (currently 24.04 LTS)
 3. Once installation is complete, launch your distribution from the Windows Start Menu
 
 More information on the above steps can be found [here](https://docs.microsoft.com/en-us/windows/wsl/install).
 
-If your machine doesn't meet the criteria to use the one-line install command, you can follow the manual installation instructions [here](https://docs.microsoft.com/en-us/windows/wsl/install-manual). Unless you know exactly what you're doing, we recommend Ubuntu 22.04 LTS as your distribution. The rest of these instructions assume you installed Ubuntu.
+If your machine doesn't meet the criteria to use the one-line install command, you can follow the manual installation instructions [here](https://docs.microsoft.com/en-us/windows/wsl/install-manual). Unless you know exactly what you're doing, we recommend Ubuntu 24.04 LTS as your distribution. The rest of these instructions assume you installed Ubuntu.
 
 The better / safer solution is to update your Windows 10 machine to a more recent build, so we recommend doing that and using the one-line install command instead.
 
@@ -130,7 +130,7 @@ Finally, to indicate that you want to use this version of java in a particular s
 sdk use java 21.0.6-librca
 ```
 
-You may be able to just press the tab key after typing `sdk use java ` and have it autocomplete the version if there is only one installed.
+You may be able to just press the tab key after typing `sdk use java` and have it autocomplete the version if there is only one installed.
 
 
 Successfully running the above commands should install Java 21 JDK. To verify that the install was successful, run the following command:
@@ -149,17 +149,17 @@ OpenJDK 64-Bit Server VM (build 21.0.6+10-LTS, mixed mode, sharing)
 
 ## Install Maven on WSL
 
-The projects in this class use Maven 3.9.11, which is necessary for Java 21.  
+The projects in this class use Maven 3.9.14, which is necessary for Java 21.  
 
-The `apt` package manager does not yet have Maven 3.9.11, so we need to manually download and extract Maven.
+The `apt` package manager does not yet have Maven 3.9.14, so we need to manually download and extract Maven.
 
-(As of this writing, the current version of Maven is 3.9.11; . It is possible that by the time you are reading
+(As of this writing, the current version of Maven is 3.9.14; . It is possible that by the time you are reading
 these instructions, the current version may have been updated; you can check that [at this link](https://maven.apache.org/download.cgi).
 If the links below broken, see if there is a newer version available.)
 
-Here are two links that have been reported to work for downloading Maven 3.9.11 (the only difference is `downloads` vs. `dlcdn`)
-* <https://downloads.apache.org/maven/maven-3/3.9.11/binaries/apache-maven-3.9.11-bin.tar.gz>
-* <https://dlcdn.apache.org/maven/maven-3/3.9.11/binaries/apache-maven-3.9.11-bin.tar.gz>
+Here are two links that have been reported to work for downloading Maven 3.9.14 (the only difference is `downloads` vs. `dlcdn`)
+* <https://downloads.apache.org/maven/maven-3/3.9.14/binaries/apache-maven-3.9.14-bin.tar.gz>
+* <https://dlcdn.apache.org/maven/maven-3/3.9.14/binaries/apache-maven-3.9.14-bin.tar.gz>
 
 If the first one doesn't work, try the second. Note that these links are for use in the commands below, specifically `curl`.
 
@@ -167,7 +167,7 @@ Note: The first `cd` command below is to make sure that you are doing the rest o
 
 ```sh
 cd 
-export MAVEN_VERSION=3.9.11
+export MAVEN_VERSION=3.9.14
 curl -O https://downloads.apache.org/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz
 tar -zxvf apache-maven-${MAVEN_VERSION}-bin.tar.gz
 sudo mv apache-maven-${MAVEN_VERSION} /opt/maven
@@ -192,7 +192,7 @@ You can close nano by hitting ``Ctrl+O`` followed by enter.
 
 **Then, restart your terminal.**
 
-Successfully running the above commands should install Maven 3.9.11. To verify that the install was successful, run the following command:
+Successfully running the above commands should install Maven 3.9.14. To verify that the install was successful, run the following command:
 
 ```
 mvn --version
@@ -201,7 +201,7 @@ mvn --version
 Your output should look something like this:
 
 ```
-Apache Maven 3.9.11 
+Apache Maven 3.9.14 
 Maven home: /opt/maven
 Java version: 21.0.6, vendor: ...
 Default locale: en_US, platform encoding: UTF-8
@@ -255,14 +255,14 @@ Now that we have `nvm` installed, we can use `nvm` to install the latest "long t
 
 
 ```
-nvm install --lts
+nvm install v22.22.2
 ```
 
 Successfully running the above command should install the latest version of node. You can then this command **which you should type in every shell where you 
 are working with the frontend code (i.e. Javascript, React):
 
 ```
-nvm use --lts
+nvm use v22.22.2
 ```
 
 To verify that the install was successful, run the following command:
