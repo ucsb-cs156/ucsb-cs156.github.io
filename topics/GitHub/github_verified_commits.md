@@ -78,8 +78,12 @@ Once you've made an ssh key, you have to tell github it exists. For most student
 
 ```bash
 git config --global gpg.format ssh
-git config --global user.signingkey ~/.ssh/id_rsa.pub
 ```
+
+Next, do one of these, depending on which kind of key you have:
+
+* `git config --global user.signingkey ~/.ssh/id_rsa.pub`
+* `git config --global user.signingkey ~/.ssh/id_ed25519.pub`
 
 So that you don't have to remember to sign each commit as you make it, you can run the following command:
 ```bash
