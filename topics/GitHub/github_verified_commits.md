@@ -58,6 +58,22 @@ git config --global user.email <email>
 
 Next, you'll need an ssh key. If you haven't made one, start [here](/topics/GitHub/github_ssh_keys.html).
 
+**Important***: Check the format of your signing key. If you made it a long time ago, it's probably in `rsa` format,like these:
+
+```
+$ ls ~/.ssh
+id_rsa  id_rsa.pub  known_hosts
+```
+
+If you made them recently, they probably have `ed25519` format like these:
+
+```
+% ls ~/.ssh
+id_ed25519		id_ed25519.pub		 known_hosts
+```
+You'll need to know which you have as you go through the next steps:
+
+
 Once you've made an ssh key, you have to tell github it exists. For most students, the commands will be below. If you set a custom location for your public/private key pair, replace `~/.ssh/id_rsa.pub` with your public key location. Run the following commmands:
 
 ```bash
