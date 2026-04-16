@@ -35,3 +35,8 @@ Some questions are:
 * What intention (plan or aim) are we out to fulﬁll (goals for the time this team will be together). What would make this team's work successful?
 * What can we count on from each other?
 
+
+## More Resources on Team Agreements:
+
+* [Working Agreements: 10 Examples, Samples & Templates](https://echometerapp.com/en/working-agreement-agile-example-sample)
+* [The essential guide to agile team working agreements](https://www.swarmia.com/blog/agile-team-working-agreements)
