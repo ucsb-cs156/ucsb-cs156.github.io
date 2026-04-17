@@ -16,7 +16,7 @@ Google OAuth requires that applications (other than those running on localhost) 
 Note that *before* you can enable https, you must *first* deploy your app at least once using `http`
 * If your app requires a database, you'll have to configure *at least that* first, or the app won't come up.
 * You will *not* be able to login to the app using OAuth.
-* To bring the app up, use the `dokku git sync ...` and `dokku ps:rebuild ...` steps first.
+* To bring the app up, use the `dokku git sync appName https://github.com/owner/repo.git main` and `dokku ps:rebuild appname` steps first.
 
 ## Enabling HTTPS (after HTTP is working)
 
