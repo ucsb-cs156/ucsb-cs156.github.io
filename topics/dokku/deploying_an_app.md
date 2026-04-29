@@ -97,6 +97,12 @@ This setting indicates that the `.git` directory should be retained after the re
 
 This is done, in part, so that the `git-commit-id-maven-plugin` can be used to get information about the current git branch that is deployed.
 
+If you get this error message, it may be because you missed this step:
+
+```
+Failed to execute goal com.cosium.code:git-code-format-maven-plugin:5.3:install-hooks (install-formatter-hook) on project ...: One of setGitDir or setWorkTree must be called. -> [Help 1]
+```
+
 ## Step 5: Create and Link Postgres Database (`dokku postgres:create ...`)
 
 Most apps in this course will use a Postgres Database.  
