@@ -24,6 +24,9 @@ To ensure that these numbers are accurate, go into your PRs and assign them.  Th
 * Click where it says `Assign yourself` to assign yourself.
 * Click on the Gear icon to assign someone else (e.g. if you are code reviewing or merging, but someone else did the coding).
 
+Here's what it should look like after you assign someone to the PR:
+
+<img width="303" alt="image" src="https://github.com/user-attachments/assets/cdfd81a0-54c2-4fdc-96b1-e98092c875b5" />
 
 Assign the devs that actually did the work on the PR.   If you are the code reviewer or the merger, Github tracks that separately.
 
