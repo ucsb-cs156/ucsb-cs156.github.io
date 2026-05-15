@@ -58,9 +58,13 @@ Here are a few tips when working on PRs. We won't review PRs until all these ite
      - Then ask for help on the Slack help channel associated with the project, e.g. `#proj-ucsb-courses-search`, `#proj-ucsb-cs-las`, `#proj-mapache-search` on the slack.
      - Then ask for help during staff office hours or during lecture/discussion work time.
 
-<!-- 12.  PR is tagged with the Team's tag, like this one:
-     ![image](https://user-images.githubusercontent.com/1119017/202531598-e935a3eb-98dd-4816-8b0c-434e512e9207.png) -->
+### Additional PR Issues that come up occasionally
 
+The following issues don't come up often enough to put them in the checklist, but they do come up, and are reflective of real world practice.
+
+1. **Keep formatting and code changes separate.**  Imagine that you are given a PR to review that makes changes to one or two Java files, but the file count shows that 72 files were updated.  70 of those are just "white space changes" because someone ran a formatter on the code.  Two of those involve real changes. You have to look through 72 files to figure out which ones were *really* changed.  Yeah, no. In a professional setting, you'll be told: do this PR over again, as a clean PR with *only* the changes that are "real" changes.  If you want to update the formatting, do that in a separate PR that *only* updates formatting.
+2. **Don't Update dependencies unnecessarily**.  If you are updating the version of a pom.xml or package.json dependency, it should only be in a PR if it is *absolutely necessary* for that PR to work or pass the testing suite.  If it is "just because there's a new version", put that it it's own separate PR.   The reason for this is that version upgrades can have unintended consequences, and need to be able to be "reversed" separately from adding features or fixing bugs that are unrelated.  This is especially true if the changes to the package.json are in a PR that only impacts backend code.
+3. **Don't commit the `node_modules` directory (or similar working directories)**.  The `node_modules` directory is a place that the executable files for Javascript dependencies gets cached.  It is not intended to be commmited as part of the repo; instead it should be rebuilt with `npm ci` on each deployment platform.   Including it in a PR causes the PR and the repo to become hugely bloated.  The `node_modules` directory should be in your `.gitignore`, but occasionally something goes awry and folks end up adding this into a commit, typically because they use `git add .` without checking `git status` before doing `git commit ...`. Always use `git status` after `git add .` so that you *know* what you are committing.
 
 
 If it meets **all twelve** of these criteria **and** has an approving code review from a team member, then (and only then) you mark mark it as `Ready-For-Staff`.  
