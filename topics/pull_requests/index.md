@@ -29,7 +29,7 @@ Here are a few tips when working on PRs. We won't review PRs until all these ite
 5.  Fix merge conflicts.
     - Merge conflicts with `package-lock.json` are a special case covered here: <https://ucsb-cs156.github.io/topics/spring_react_package_lock_json_merge_conflicts/>
     - If you have other merge conflicts that you don't know how to resolve, ask for help.
-6.  Deploy it and link to your deployment:
+6.  Deploy it and [link to your deployment](https://ucsb-cs156.github.io/topics/pull_requests/pull_requests_deployments.html):
     * For any change that's even moderately complex, deploy it to a dokku dev instance, and include a link to that in the PR description.
     * Once you link to a dokku deployment in a PR description:
       * Don't use that particular dokku deployment for any other branch; code reviewers will be expecting that deployment to correspond to the code in the PR.
