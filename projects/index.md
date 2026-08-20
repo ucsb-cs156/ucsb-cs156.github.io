@@ -16,6 +16,7 @@ These are the main active legacy code projects maintained by the staff and stude
 | [`proj-courses`](proj-courses) | [<tt>ucsb-cs156/proj-courses</tt>](https://github.com/ucsb-cs156/proj-courses) | UCSB Courses Search tool |
 | [`proj-dining`](proj-dining) | [<tt>ucsb-cs156/proj-dining</tt>](https://github.com/ucsb-cs156/proj-dining) | UCSB Dining Commons Reviews |
 | [`proj-frontiers`](proj-frontiers) | [<tt>ucsb-cs156/proj-frontiers</tt>](https://github.com/ucsb-cs156/proj-frontiers) | Tool to manage Github Organizations Associated with Courses (similar to the former "Github Classroom" but with some differences ) |
+| [`proj-happycows`](proj-happycows) | [<tt>ucsb-cs156/proj-happycows</tt>](https://github.com/ucsb-cs156/proj-happycows) | Simulation game used in CHEM123 at UCSB, designed by Prof. Mattanjah de Vries |
 | [`proj-scaffold`](proj-scaffold) | [<tt>ucsb-cs156/proj-scaffold</tt>](https://github.com/ucsb-cs156/proj-scaffold) | Tool to help students learn concepts in a course; based on a concept prerequisite graph and interface with PrairieLearn.  Based on Kate Larricks' MS project.  |
 
 
