@@ -9,12 +9,12 @@ prod_url: "https://citelines.dokku-00.cs.ucsb.edu"
 
 # {{page.title}} - {{page.description}}
 
-[<tt>{{page.title}}</tt>] is a citation manager.  
+<tt>{{page.title}}</tt> is a citation manager.  
 
 | Link | Url |
 |-|-|
-| Github Repo | <{{page.github_url}}> }|
-| Production Deployment | <{{page.prod_url}}> }|
+| Github Repo | <{{page.github_url}}> |
+| Production Deployment | <{{page.prod_url}}>|
 
 ## Primary Users
 
