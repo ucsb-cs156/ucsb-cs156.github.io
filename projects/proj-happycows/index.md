@@ -1,5 +1,5 @@
 ---
-parent: Project
+parent: Projects
 layout: default
 title: "proj-happycows"
 description:  "A simulation game used in CHEM123, devised by Mattanjah de Vries"

@@ -1,5 +1,5 @@
 ---
-parent: Project
+parent: Projects
 layout: default
 title: "proj-frontiers"
 description:  "Manage Github Organizations associated with courses"

@@ -1,5 +1,5 @@
 ---
-parent: Project
+parent: Projects
 layout: default
 title: "proj-scaffold"
 description:  "Learning tool based on course concept prerequisite graphs and PrairieLearn"
