@@ -9,12 +9,12 @@ prod_url: "https://frontiers.dokku-00.cs.ucsb.edu"
 
 # {{page.title}} - {{page.description}}
 
-[<tt>{{page.title}}</tt>] is tool to manage github organizations associated with courses.
+<tt>{{page.title}}</tt> is tool to manage github organizations associated with courses.
 
 <details markdown="1">
 <summary markdown="1">Click the triangle for more details about Frontiers capabilties</summary>
 
-### [<tt>{{page.title}}</tt>] allows instructors to:
+### <tt>{{page.title}}</tt> allows instructors to:
 
 * Associate a github organization with a course
 * Upload a roster of enrolled students
