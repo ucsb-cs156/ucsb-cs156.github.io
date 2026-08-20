@@ -9,7 +9,7 @@ prod_url: "https://courses.dokku-00.cs.ucsb.edu"
 
 # {{page.title}} - {{page.description}}
 
-[<tt>{{page.title}}</tt>] is a web app that allows users to search UCSB course offerings: past, present, and where available, the near future.
+<tt>{{page.title}}</tt> is a web app that allows users to search UCSB course offerings: past, present, and where available, the near future.
 
 | Link | Url |
 |-|-|
