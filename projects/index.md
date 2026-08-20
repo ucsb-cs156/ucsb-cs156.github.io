@@ -24,9 +24,9 @@ The following libraries and tools have been maintained by the course staff, and 
 
 | Project | Github | Brief Explanation |
 |-|-|-|
-| [`lib-jobs`](lib-jobs) | [<tt>ucsb-cs156/lib-jobs</tt>](https://github.com/ucsb-cs156/lib-jobs) | Java dependency, Spring Boot library for managing asynchronous background jobs in a web application.  Used by all legacy code projects listed above. |
-| [`proj-dining-caching-proxy`](proj-dining-caching-proxy) | [<tt>ucsb-cs156/proj-dining-caching-proxy</tt>](https://github.com/ucsb-cs156/proj-dining-caching-proxy) | A caching proxy for the UCSB Dining App that helps reduce the impact of traffic on the https://api.ucsb.edu server. |
-| [`dokku-config`](dokku-config) | [<tt>ucsb-cs156/dokku-config</tt>](https://github.com/ucsb-cs156/dokku-config) | A tool to assist in configuring dokku deployments for CS156 project.  This is a frontend only app deployed on Github Pages, using local storage as the backing mechanism. |
+| `lib-jobs`| [<tt>ucsb-cs156/lib-jobs</tt>](https://github.com/ucsb-cs156/lib-jobs) | Java dependency, Spring Boot library for managing asynchronous background jobs in a web application.  Used by all legacy code projects listed above. |
+| `proj-dining-caching-proxy` | [<tt>ucsb-cs156/proj-dining-caching-proxy</tt>](https://github.com/ucsb-cs156/proj-dining-caching-proxy) | A caching proxy for the UCSB Dining App that helps reduce the impact of traffic on the https://api.ucsb.edu server. |
+| `dokku-config` | [<tt>ucsb-cs156/dokku-config</tt>](https://github.com/ucsb-cs156/dokku-config) | A tool to assist in configuring dokku deployments for CS156 project.  This is a frontend only app deployed on Github Pages, using local storage as the backing mechanism. |
 
 
 In addition, there are a few projects that were maintained by the staff and students of CS 156 in the past, but are no longer active.
