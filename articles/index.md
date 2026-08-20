@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Articles"
-nav_order: 9
+nav_order: 8
 has_children: true
 ---
 
