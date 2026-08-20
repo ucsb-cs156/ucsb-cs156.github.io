@@ -9,7 +9,7 @@ prod_url: "https://dining.dokku-00.cs.ucsb.edu"
 
 # {{page.title}} - {{page.description}}
 
-[<tt>{{page.title}}</tt>] is a app that allows users to post reviews of UCSB Dining Commons menu items.
+<tt>{{page.title}}</tt> is a app that allows users to post reviews of UCSB Dining Commons menu items.
 
 | Link | Url |
 |-|-|
