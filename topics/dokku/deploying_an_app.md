@@ -134,6 +134,17 @@ Where:
 
 Note: For private repos see [these instructions](https://ucsb-cs156.github.io/topics/dokku/deploy_app_from_private_repo.html).
 
+### Alternative form that uses less disk space
+
+If you are unable to use the `dokku git:sync ...` command because of disk space, the following version may work:
+
+<tt>dokku git:from-archive <i>appName</i> https://github.com/<i>owner</i>/<i>repo</i>/archive/refs/heads/main.tar.gz</tt>
+
+For branches other than main:
+
+<tt>dokku git:from-archive <i>appName</i> https://github.com/<i>owner</i>/<i>repo</i>/archive/refs/heads/<i>branch-name</i>.tar.gz</tt>
+
+
 ## Step 7: Build App with http (`dokku ps:rebuild ...`)
 
 Next, to build your app the first time with `http`, type:
