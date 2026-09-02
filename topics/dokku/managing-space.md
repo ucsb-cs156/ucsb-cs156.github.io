@@ -52,6 +52,37 @@ Here are a few things to try
   (Be sure to communicate with your *entire team* before assuming that an app is not needed though!)
 * Run `dokku repo:purge-cache appname` on all of your apps. (There's a script below to do this)
 
+## Getting around low disk space
+
+One way in which low disk space shows itself is when `dokku git:sync ...` commands start to hang and then fail without output like this:
+
+```
+dokku git:sync frontiers https://github.com/ucsb-cs156/proj-frontiers.git main --build
+       Fetching remote code for frontiers from https://github.com/ucsb-cs156/proj-frontiers.git#main
+Cloning into bare repository '.git'...
+/var/lib/dokku/plugins/available/git/internal-functions: line 430: pushd: /tmp/dokku-3867487-git_build_app_repo.dvm2be: No such file or directory
+fatal: --local can only be used inside a git repository
+/var/lib/dokku/plugins/available/git/internal-functions: line 430: pushd: /tmp/dokku-3911805-git_build_app_repo.E5jA4m: No such file or directory
+fatal: --local can only be used inside a git repository
+/var/lib/dokku/plugins/available/git/internal-functions: line 430: pushd: /tmp/dokku-3911805-git_build_app_repo.E5jA4m: No such file or directory
+[etc...]
+```
+
+If this happens, it may be that the repo you are trying to sync with is so large that there isn't enough disk space for the full repo history.
+
+In that case, when this isn't working:
+
+<tt>dokku git:sync <i>appName</i> https://github.com/<i>owner</i>/<i>repo</i>.git main</tt>
+
+Try this instead:
+
+<tt>dokku git:from-archive <i>appName</i> https://github.com/<i>owner</i>/<i>repo</i>/archive/refs/heads/main.tar.gz</tt>
+
+Where: <tt>dokku git:from-archive <i>appName</i> https://github.com/<i>owner</i>/<i>repo</i>/archive/refs/heads/main.tar.gz</tt>
+
+You can replace `main` with any branch name.
+
+Instead of pulling the entire git history, this just pulls a tarball of the latest branch.
 
 ## Script to run `dokku repo:purge-cache appname` on all apps
 
