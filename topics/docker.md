@@ -40,3 +40,9 @@ To use the docker support in our projects on the Windows Subsystem for Linux env
   - WSL2 setup is here: <https://docs.microsoft.com/en-us/windows/wsl/install-win10>
 * Follow the instructions here for WSL2 Docker setup: <https://docs.docker.com/docker-for-windows/wsl/>
 * Make sure you have `/mnt/c/"Program Files"/Docker/Docker/resources/bin` in your `PATH` variable in their WSL2 `.bashrc`
+
+# Github's Docker Container Registry
+
+Github has it's own Docker Container Registry under the url `ghcr.io`.
+
+TODO: Daniel, fill in more details here.
