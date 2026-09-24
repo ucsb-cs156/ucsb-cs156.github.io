@@ -19,18 +19,28 @@ java --version
 mvn --version
 ```
 
-You want them both to be the same version of Java (e.g. Java 17)
+You want them both to be the same version of Java: Java {{site.java_version}}, the version used in this course.
 
 
-What you do NOT want is for `java --version` to say one version of Java (e.g. Java 17)
-but then `mvn --version` says a different version, (e.g. Java 19)
+What you do NOT want is for `java --version` to say Java {{site.java_version}}
+but then `mvn --version` says a different version, (e.g. Java 23 from Homebrew)
 
 
 
-If that is what you see, here's an approach to fixing it. 
+If that is what you see, here's an approach to fixing it.
 
+First, in the terminal window where you are working, select the course version of Java with SDKMAN, and check again:
 
-First, make sure you know which version of MacOS you are on, and what it's default shell is.
+```
+sdk use java {{site.jdk_distribution}}
+java --version
+mvn --version
+```
+
+If both commands now report Java {{site.java_version}}, you are done.  Try a `mvn clean` before you do anything else though.
+
+If `mvn --version` still reports a different Java, then most likely an old `JAVA_HOME` definition (or a Java installed by `brew`) is taking precedence.
+To fix that, first make sure you know which version of MacOS you are on, and what it's default shell is.
 
 
 For example
@@ -42,25 +52,21 @@ Whatever your default shell, you want to identify the startup file for that shel
 For example
 * for `zsh` you'd edit `.zshrc`
 
+Look for any line in that file that sets `JAVA_HOME` to something other than SDKMAN's Java (for example, one that uses `/usr/libexec/java_home -v 17`, or a path to a Homebrew `openjdk`), and remove it or comment it out.
+Also make sure that the lines that SDKMAN added to load itself (`sdkman-init.sh`) are the *last* lines in the file.  SDKMAN sets `JAVA_HOME` for the version you select with `sdk use`.
 
-And what you want to put in there is a good definition for `JAVA_HOME`.  Substitute in for `17` the correct LTS version of Java for the course:
-
-
-```
-export JAVA_HOME="${JAVA_HOME:-$(/usr/libexec/java_home -v 17)}"
-```
-
-If you load this in your startup file, then you need to open a brand new terminal, and check
+Then open a brand new terminal, and check
 
 ```
+sdk use java {{site.jdk_distribution}}
 echo $JAVA_HOME
 java --version
 mvn --version
 ```
 
 
-If you now see that `$JAVA_HOME` is defined as the directory where Java 17 lives, 
-and that both java and mvn are giving us Java 17, try doing what was failing in a brand new terminal window.
+If you now see that `$JAVA_HOME` is defined as the directory where Java {{site.java_version}} lives (under `~/.sdkman/candidates/java/`),
+and that both java and mvn are giving us Java {{site.java_version}}, try doing what was failing in a brand new terminal window.
 
 
 Try a `mvn clean` before you do anything else though.

@@ -21,8 +21,8 @@ General Tools:
 * git and GitHub
 
 Backend Tools:
-* Java 17 (the `javac` and `java` commands, plus others that come with the OpenJDK 17 Java Deveopment Kit)
-* Maven (the `mvn` command)
+* Java {{site.java_version}} (the `javac` and `java` commands, plus others that come with the OpenJDK {{site.java_version}} Java Development Kit)
+* Maven 3.9.14 or newer (the `mvn` command)
 * Git (the `git` command)
 * Testing tools: JUnit, Jacoco, Pitest
 * Swagger: documentation/testing/prototyping for backend RESTful APIs

@@ -10,7 +10,8 @@ mermaid:
   # Pick an available version from https://cdn.jsdelivr.net/npm/mermaid/
   version: "9.1.3"
 
-jdk_distribution: "21.0.6-librca" 
+jdk_distribution: "25.0.4-tem"
+java_version: "25.0.4"
 
 # Aux links for the upper right navigation
 aux_links:

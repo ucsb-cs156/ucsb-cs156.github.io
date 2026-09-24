@@ -21,73 +21,53 @@ Installing [MacOS: Homebrew](/topics/macos_homebrew/) is your first step.  `brew
 
 # Install the JDK
 
-To see whether you already have the JDK installed, do this in a terminal window:
-
-```
-169-231-88-206:~ pconrad$ javac -version
-javac 1.8.0_31
-169-231-88-206:~ pconrad$ 
-```
-
-
-If you see some version of Java 17.something... then you are good to go.
-
-If not, download and install Java 17 using either the
-* Official Oracle distribution (see below)
-* The OpenJDK 11 distribution (see below)
+The projects in this class use **Java {{site.java_version}}**, and the recommended distribution is `{{site.jdk_distribution}}` (Eclipse Temurin), installed with SDKMAN.
+Use exactly this version of Java; do not use a later or earlier version, even another LTS version.
 
 There are three Slack channels that can help:
 * Use the `#help-macos` channel to ask questions if you run into problems.
 * Use the `#articles-macos` channel to offer tips, tricks, or links to resources that may help other students.
 * Use the `#typos` channel if there are things in these instructions that are incorrect and should be updated.
 
-# Installing Java 17 from Oracle on Mac
+First, install SDKMAN, a tool for installing Java and switching between Java versions (see <https://sdkman.io/>):
 
-Oracle has a link for installing Java JDK 11 on Mac on this page: <https://www.oracle.com/java/technologies/javase-jdk11-downloads.html>
+```
+curl -s "https://get.sdkman.io" | bash
+source "$HOME/.sdkman/bin/sdkman-init.sh"
+```
 
-# Installing OpenJDK 17 on Mac
+Then install Java {{site.java_version}} and select it for the current terminal:
 
-This worked for me.  Note that it requires [brew](https://ucsb-cs56.github.io/topics/macos_homewbrew/), a package manager for MacOS.
-* <https://installvirtual.com/install-openjdk-11-mac-using-brew/>
+```
+sdk install java {{site.jdk_distribution}}
+sdk use java {{site.jdk_distribution}}
+```
 
-To install Java with homebrew, use:
-   
-   ```
-   brew update
-   brew install openjdk@17
-   ```
-   
-   Then you must do this step, which is documneted in the output that shows up when you run the `brew install openjdk@17` command:
-   
-   ```
-   sudo ln -sfn /usr/local/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
-   ```
+Type the `sdk use java {{site.jdk_distribution}}` command in each new terminal window where you work, or make it the default when `sdk install` offers to do so.
 
-   To check if you now have Java 17, open a new Terminal window and do:
+To check which version of Java you now have, do:
 
-   ```
-   java -version
-   ```
+```
+java --version
+```
 
-   If it worked, you should see something like this:
+The first line of the output should say `openjdk {{site.java_version}}` followed by a date, and the runtime should be Temurin, e.g.:
 
-   ```
-   # java -version
-   openjdk 17.0.1 2021-10-19
-   OpenJDK Runtime Environment Homebrew (build 17.0.1+1)
-   OpenJDK 64-Bit Server VM Homebrew (build 17.0.1+1, mixed mode, sharing)
-   ```
-
+```
+openjdk {{site.java_version}} 2026-??
+OpenJDK Runtime Environment Temurin-{{site.java_version}}+...
+OpenJDK 64-Bit Server VM Temurin-{{site.java_version}}+...
+```
 
 # Install Maven
 
-After installing Java 11, do this to install maven:
+The projects in this class need Maven 3.9.14 or newer; Java {{site.java_version}} requires it.  Install Maven with `brew`:
 
 ```
 brew install maven
 ```
 
-Or if you already have Maven installed:
+Or if you already have Maven installed, upgrade it:
 
 ```
 brew upgrade maven
@@ -99,15 +79,15 @@ And then do:
 mvn --version
 ```
 
-To make sure that Maven is using Java 17 and not still using Java 8 or earlier.
+Check that the Maven version is 3.9.14 or newer, and that the `Java version:` line reports Java {{site.java_version}}
+(the one you selected with `sdk use java {{site.jdk_distribution}}`), not some other version of Java.
 
 # What if Maven reports it is using the wrong version of Java?
 
 Sometimes, when installing a newer version of Maven with brew, it may bring along
-a later version of Java as a dependency.
+a later version of Java as a dependency, and `mvn --version` may report that other Java instead of the one you selected with SDKMAN.
 
-However, my hope is that if we configure our `pom.xml` files to use Java 17, perhaps this won't be an issue.
-
+If that happens, see [MacOS: Common Errors](/topics/macos/macos_common_errors.html).
 
 # Install Heroku CLI
 
