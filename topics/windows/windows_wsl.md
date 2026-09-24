@@ -104,36 +104,35 @@ Note: While it's not entirely necessary to set up SSH keys, since you can always
 
 ## Install Java on WSL
 
-The projects in this class use **Java 21**, which is the latest LTS release of Java.
+The projects in this class use **Java 25.0.4**, using the recommended `25.0.4-tem` distribution from SDKMAN.
 
-Before installing SDKMan, you need to install a way to unzip and rezip packages. Do so with the following commands:
+Before installing SDKMAN, you need to install a way to unzip and rezip packages. Do so with the following commands:
 ```bash
 sudo apt install zip
 sudo apt install unzip
 ```
 
-To install the latest version of Java 21 JDK, first install SDKMAN:
+To install the required Java version, first install SDKMAN:
 
 ```
 curl -s "https://get.sdkman.io" | bash
 ```
 
-Then install the version of Java recommended for your class.  For example:
+Then install the Java distribution recommended for the class:
 
 ```
-sdk install java 21.0.6-librca
+sdk install java 25.0.4-tem
 ```
 
-Finally, to indicate that you want to use this version of java in a particular shell, type this each time you work:
+Finally, to indicate that you want to use this version of Java in a particular shell, type this each time you work:
 
 ```
-sdk use java 21.0.6-librca
+sdk use java 25.0.4-tem
 ```
 
 You may be able to just press the tab key after typing `sdk use java` and have it autocomplete the version if there is only one installed.
 
-
-Successfully running the above commands should install Java 21 JDK. To verify that the install was successful, run the following command:
+Successfully running the above commands should install the required Java distribution. To verify that the install was successful, run the following command:
 
 ```
 java --version
@@ -142,14 +141,14 @@ java --version
 Your output should look something like this:
 
 ```
-openjdk 21.0.6 2025-01-21 LTS
-OpenJDK Runtime Environment (build 21.0.6+10-LTS)
-OpenJDK 64-Bit Server VM (build 21.0.6+10-LTS, mixed mode, sharing)
+openjdk 25.0.4 2026-??
+OpenJDK Runtime Environment Temurin-25.0.4+...
+OpenJDK 64-Bit Server VM Temurin-25.0.4+...
 ```
 
 ## Install Maven on WSL
 
-The projects in this class use Maven 3.9.14, which is necessary for Java 21.  
+The projects in this class use Maven 3.9.14, which is necessary for Java 25.0.4.
 
 The `apt` package manager does not yet have Maven 3.9.14, so we need to manually download and extract Maven.
 
@@ -212,13 +211,11 @@ Make sure that the version of Java matches the one that you specified with `sdk 
 
 ## Install nvm and Node on WSL
 
-Node versions are updated frequenty, and it's often a challenge to ensure that the legacy code projects in this course track the latest version.
+Node versions are updated frequently, and it's often a challenge to ensure that the legacy code projects in this course track the latest version.
 
-* As of the start of S25, the "long-term support" version of node is `node v22.14.0 (npm v10.9.2)`
-* At the start of F24, it was `node v20.17.0 (npm v10.8.2)`
+* As of the start of F26, the recommended LTS version is `node v22.22.2 (npm v10.9.7)`
 
-The projects you'll be working on may require specific versions of node and npm, so rather than installing a specific verison, it is better
-to  use **Node Version Manager**, or `nvm`. This is a program that allows you to easily install and switch between different versions of Node.  
+The projects you'll be working on may require specific versions of node and npm, so rather than installing a specific version, it is better to use **Node Version Manager**, or `nvm`. This is a program that allows you to easily install and switch between different versions of Node.
 
 To install `nvm`, run the following command. As of the time of writing, the latest version is <tt>{{page.nvm_version}}</tt>
 * To check whether this command is the latest version, visit [this link](https://github.com/nvm-sh/nvm#install--update-script)
@@ -251,8 +248,7 @@ nvm -v
 
 Your output should say <tt>{{page.nvm_version}}</tt>
 
-Now that we have `nvm` installed, we can use `nvm` to install the latest "long term support" version of Node 16 with the following command. 
-
+Now that we have `nvm` installed, we can use `nvm` to install the current LTS version of Node with the following command:
 
 ```
 nvm install v22.22.2
