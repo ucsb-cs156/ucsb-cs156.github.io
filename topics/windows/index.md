@@ -24,15 +24,17 @@ Note that the reference platform for the course remains "CSIL"; we cannot commit
 
 (Note: I recommend git for windows, not "github for windows".  "git for windows" provides the "Git Bash Shell" as well as the command line git tools that we use in CMPSC 156.)
 
-# Install the JDK for Java 17
+# Install the JDK for Java {{site.java_version}}
 
-We strongly encourage you not to install a later version than Java 17.  Java 17 is a "long-term support" version of Java, while versions such as 18, 19, etc. are considered more experimental.
+The projects in this class use Java {{site.java_version}} (a "long-term support" version of Java), and we strongly encourage you not to install a later or earlier version.
 
-There are two options for Java 11 for Windows:
-* The Open Source Version from <http://jdk.java.net/17/>
-* The official Oracle version from <https://www.oracle.com/java/technologies/downloads/#jdk17-windows>
+For native Windows, the recommended distribution is Eclipse Temurin ({{site.jdk_distribution}}), which you can download from <https://adoptium.net/temurin/releases/?version=25&os=windows>.
+
+(On Windows, we recommend using [WSL](/topics/windows/windows_wsl.html) instead, where you can install Java with SDKMAN using `sdk install java {{site.jdk_distribution}}`.)
 
 # Install Apache Maven
+
+The projects in this class need Maven 3.9.14 or newer.
 
 1. Download from here: <https://maven.apache.org/download.cgi>
 2. Follow installation instructions here: <https://maven.apache.org/install.html>
@@ -42,6 +44,8 @@ To test whether it worked, open a command line and type:
 ```
 mvn --version
 ```
+
+Check that the Maven version is 3.9.14 or newer, and that the `Java version:` line reports Java {{site.java_version}}.
 
 # Install Heroku CLI
 

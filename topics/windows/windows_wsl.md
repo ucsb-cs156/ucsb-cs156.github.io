@@ -104,7 +104,7 @@ Note: While it's not entirely necessary to set up SSH keys, since you can always
 
 ## Install Java on WSL
 
-The projects in this class use **Java 25.0.4**, using the recommended `25.0.4-tem` distribution from SDKMAN.
+The projects in this class use **Java {{site.java_version}}**, using the recommended `{{site.jdk_distribution}}` distribution from SDKMAN.
 
 Before installing SDKMAN, you need to install a way to unzip and rezip packages. Do so with the following commands:
 ```bash
@@ -121,13 +121,13 @@ curl -s "https://get.sdkman.io" | bash
 Then install the Java distribution recommended for the class:
 
 ```
-sdk install java 25.0.4-tem
+sdk install java {{site.jdk_distribution}}
 ```
 
 Finally, to indicate that you want to use this version of Java in a particular shell, type this each time you work:
 
 ```
-sdk use java 25.0.4-tem
+sdk use java {{site.jdk_distribution}}
 ```
 
 You may be able to just press the tab key after typing `sdk use java` and have it autocomplete the version if there is only one installed.
@@ -152,7 +152,7 @@ The projects in this class use Maven 3.9.14, which is necessary for Java 25.0.4.
 
 The `apt` package manager does not yet have Maven 3.9.14, so we need to manually download and extract Maven.
 
-(As of this writing, the current version of Maven is 3.9.14; . It is possible that by the time you are reading
+(As of this writing, the current version of Maven is 3.9.14. It is possible that by the time you are reading
 these instructions, the current version may have been updated; you can check that [at this link](https://maven.apache.org/download.cgi).
 If the links below broken, see if there is a newer version available.)
 
@@ -202,12 +202,12 @@ Your output should look something like this:
 ```
 Apache Maven 3.9.14 
 Maven home: /opt/maven
-Java version: 21.0.6, vendor: ...
+Java version: {{site.java_version}}, vendor: Eclipse Adoptium, runtime: ...
 Default locale: en_US, platform encoding: UTF-8
 OS name: "linux", version: "5.4.0-72-generic", arch: "amd64", family: "unix"
 ```
 
-Make sure that the version of Java matches the one that you specified with `sdk use java ...`
+Make sure that the version of Java matches the one that you specified with `sdk use java {{site.jdk_distribution}}` (that is, Java {{site.java_version}}), and not an older Java from another installation.
 
 ## Install nvm and Node on WSL
 

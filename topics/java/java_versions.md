@@ -3,11 +3,13 @@ parent: Java
 grand_parent: Topics
 layout: default
 title: "Java: Versions"
-description:  "Long Term Support vs. Non Long-Term Support, and why Java 17"
+description:  "Long Term Support vs. Non Long-Term Support, and why we stick to one Java version"
 indent: true
 ---
 
-# As of now, CMPSC 156 uses Java 17.  Only Java 17.
+# As of now, CMPSC 156 uses Java {{site.java_version}}.  Only Java {{site.java_version}}.
+
+*Update (Fall 2026): the course now uses Java {{site.java_version}} (`{{site.jdk_distribution}}` from SDKMAN) and Maven 3.9.14 or newer.  The rest of this page was written when the course used Java 17 (and then Java 21), and is kept for its explanation of why we stick to a single LTS version; where it says "Java 17", read "Java {{site.java_version}}".*
 
 We have to be very selective about which version of Java we use. Specifically, we need to stick to the subset of Java versions
 that are designated as *Long Term Support (LTS)* versions.  
