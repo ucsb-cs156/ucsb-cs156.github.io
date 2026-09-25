@@ -157,8 +157,8 @@ these instructions, the current version may have been updated; you can check tha
 If the links below broken, see if there is a newer version available.)
 
 Here are two links that have been reported to work for downloading Maven 3.9.16 (the only difference is `downloads` vs. `dlcdn`)
-* <https://downloads.apache.org/maven/maven-3/3.9.14/binaries/apache-maven-3.9.16-bin.tar.gz>
-* <https://dlcdn.apache.org/maven/maven-3/3.9.14/binaries/apache-maven-3.9.16-bin.tar.gz>
+* <https://downloads.apache.org/maven/maven-3/3.9.16/binaries/apache-maven-3.9.16-bin.tar.gz>
+* <https://dlcdn.apache.org/maven/maven-3/3.9.16/binaries/apache-maven-3.9.16-bin.tar.gz>
 
 If the first one doesn't work, try the second. Note that these links are for use in the commands below, specifically `curl`.
 
