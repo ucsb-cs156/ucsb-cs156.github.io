@@ -40,3 +40,13 @@ As with the main repo, course staff may makes changes in one of two ways:
 * Fork and make a PR (anyone can do this, actually, since it's a public repo)
 * Request to be added with write access to make updates directly.
 
+## Setting up Channels
+
+There is a Github Action, "60a - compute-slack-channels-as-yaml" in the `membership-scripts` repo that will compute yaml suitable for appending to the `_config.yml` of the course instance repo (e.g. <https://github.com/ucsb-cs156/f26>).
+
+This allows referring to channels by doing things like this syntax:
+
+```
+[`#help-lecture-discussion`]({{site.channels.help-lecture-discussion.url}})
+```
+
