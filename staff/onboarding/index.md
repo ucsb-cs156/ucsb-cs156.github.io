@@ -57,7 +57,10 @@ Here are the places that needs to be updated:
 | lib-jobs | <https://github.com/ucsb-cs156/lib-jobs/blob/main/.github/CODEOWNERS>|
 | scaffold | <https://github.com/ucsb-cs156/proj-scaffold/blob/main/.github/CODEOWNERS>|
 
+### Office Hours Calendar
 
+Visit the [Calendar Settings for the cs156 ofc hrs Google Calendar](https://calendar.google.com/calendar/u/0/r/settings/calendar/dWNzYi5lZHVfczJyY3RrcDM5b2Rxc29ob21vdnBhdTJxZnNAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ) to add and delete TAs, ULAs, and new instructors
+so that they have access to add their office hours.
 
 
 ## Roles of TAs and ULAs
