@@ -47,7 +47,7 @@ To see if you already have an ssh public/private key pair set up on a certain ma
 -   cd to your home directory
 -   type: `ls` `-al` `.ssh`
 
-If you see files called id\_rsa.pub and id\_rsa, then you have a public/private key pair, like this:
+If you see files called id\_ed25519.pub and id\_ed25519, then you have a public/private key pair, like this:
 
     -bash-4.2$ cd
     -bash-4.2$ ls -al .ssh
@@ -55,22 +55,18 @@ If you see files called id\_rsa.pub and id\_rsa, then you have a public/private 
     drwx------   2 pconrad faculty  4096 Apr 26  2012 .
     drwx--x--x 127 pconrad faculty 16384 Mar 14 04:41 ..
     -rw-r--r--   1 pconrad faculty  1051 Oct 17  2011 authorized_keys
-    -rw-------   1 pconrad faculty  1675 Sep 15  2008 id_rsa
-    -rw-r--r--   1 pconrad faculty   394 Mar  7  2010 id_rsa.pub
+    -rw-------   1 pconrad faculty  1675 Sep 15  2008 id_ed25519
+    -rw-r--r--   1 pconrad faculty   394 Mar  7  2010 id_ed25519.pub
     -rw-r--r--   1 pconrad faculty  9654 Mar 12 14:09 known_hosts
     -bash-4.2$ 
 
-If you don't even have a .ssh directory, or if you have one, but don't see the id\_rsa and id\_rsa.pub files,
+If you don't even have a .ssh directory, or if you have one, but don't see the id\_ed25519 and id\_ed25519.pub files,
 then you'll need to set up one up, as explained below.
 
 Step 1: Create a public/private key pair
 =========================================
 
 The UNIX command to create a public/private key pair is: `ssh-keygen`
-
-Note: MacOS users should use `ssh-keygen -t rsa -b 4096`
-* Apparently, recent versions of MacOS are defaulting to a new key standard, `ed25519`, which Github doesn't yet support as of October 2024.
-* It is possible that by the time you read this, that will have changed.
 
 You can type that at any unix prompt.  Folks usually are in their home directory when they do it, but
 I don't think it really matters.
@@ -84,16 +80,16 @@ Here's an example of creating a public private key pair. (Note: this is not my r
 
 ```
 -bash-4.3$ ssh-keygen
-Generating public/private rsa key pair.
-Enter file in which to save the key (/cs/faculty/pconrad/.ssh/id_rsa):
+Generating public/private ed25519 key pair.
+Enter file in which to save the key (/cs/faculty/pconrad/.ssh/id_ed25519):
 Enter passphrase (empty for no passphrase):
 Enter same passphrase again:
-Your identification has been saved in /cs/faculty/pconrad/.ssh/id_rsa.
-Your public key has been saved in /cs/faculty/pconrad/.ssh/id_rsa.pub.
+Your identification has been saved in /cs/faculty/pconrad/.ssh/id_ed25519.
+Your public key has been saved in /cs/faculty/pconrad/.ssh/id_ed25519.pub.
 The key fingerprint is:
 SHA256:OVYQo4jDVsedeLLVZjTQUBHLlcFTU/BAedq0dwCaR10 pconrad@butthead.cs.ucsb.edu
 The key's randomart image is:
-+---[RSA 2048]----+
++---[ed25519 2048]----+
 |    ...o*X*+=B*=E|
 | . o o+.=+=B+ ++o|
 |  = . .= o* .. *o|
@@ -111,8 +107,8 @@ The key's randomart image is:
 
 If you encounter problems using your SSH keys, try typing one or both of these command into your command shell:
 
--   `chmod` `700` `~/.ssh/id_rsa`
--   `cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys`
+-   `chmod` `700` `~/.ssh/id_ed25519`
+-   `cat ~/.ssh/id_ed25519.pub >> ~/.ssh/authorized_keys`
 
 
 The first command changes the permissions on your private key, ensuring that you personally have all access. The second command adds your new private key to your SSH keyring.
@@ -128,22 +124,22 @@ If you're on Mac with multiple keys and still having issues, check the file loca
 Host github.com
   AddKeysToAgent yes
   UseKeychain yes
-  IdentityFile ~/.ssh/id_rsa
+  IdentityFile ~/.ssh/id_ed25519
 ```
 `UseKeychain` should only be present if you have a passphrase on your key. Ensure that file listed after `IdentityFile` is the private key pair to the public key uploaded to GitHub.
 
 Step 2: Upload your public key to your github account
 -----------------------------------------------------
 
-VERY IMPORTANT: you want to upload your `id_rsa.pub` file to `github.com`
+VERY IMPORTANT: you want to upload your `id_ed25519.pub` file to `github.com`
 
-You do NOT upload your `id_rsa` file to github.com. That file is your private key, and needs to stay private and protected.
+You do NOT upload your `id_ed25519` file to github.com. That file is your private key, and needs to stay private and protected.
 
-You don't actually "upload" your `id_rsa.pub` to github.com.   You actually just copy and paste the value. `cd` into the `~/.ssh` directory and use the command `cat id_rsa.pub` to have the file be printed in the terminal like this
+You don't actually "upload" your `id_ed25519.pub` to github.com.   You actually just copy and paste the value. `cd` into the `~/.ssh` directory and use the command `cat id_ed25519.pub` to have the file be printed in the terminal like this
 
 ```
-    (~/.ssh)$ cat ~/.ssh/id_rsa.pub
-    ssh-rsa 
+    (~/.ssh)$ cat ~/.ssh/id_ed25519.pub
+    ssh-ed25519 
     AAAAB3NzaC1yc2EAAAADAQABAAABAQDYySoh7b1uGpI7saLozpgXz184YYgC9k22zLH8TqKiSLAcNCO5hEzgC0kZoytCMtw/hUx3kto8
     apPS4ORL6HebWXuGfzQ3nQslPpBNmto0hdo446wBu/Hl5a7pC3SZUzti4YbUjRDOBgM5zQMaopTXhtqNY/tRB8/lSSYaEtIxLN5twk29
     IQUoA2wdPTmU/fRPc3PUdD9/KHJfBIL/ROsOb73tGOxqZoMnzV0ElmLhjq6WEqNWypaFrI0YU8OmIvxmlDXn0gkr3oYHqrbz5qznSust
@@ -151,7 +147,7 @@ You don't actually "upload" your `id_rsa.pub` to github.com.   You actually just
     (~/.ssh)$
 ```
 
-Then you want to copy the text contents of the file, starting with 'ssh-rsa AAAAA...' and ending with '...@csil.cs.ucsb.edu'.
+Then you want to copy the text contents of the file, starting with 'ssh-ed25519 AAAAA...' and ending with '...@csil.cs.ucsb.edu'.
 
 * Keep in mind that uploading a public SSH key gives access to your github account to whoever has access to the matching private SSH key on his/her computer.
 * So make sure that you are using YOUR OWN public ssh key—and not the key shown in the example above.
