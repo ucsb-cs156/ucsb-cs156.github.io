@@ -4,8 +4,6 @@ grand_parent: Topics
 layout: default
 title: "Node: npm"
 description:  "Node Package Manager"
-indent: true
-category_prefix: "Node: "
 ---
 
 # {{page.title}} - {{page.description}}
