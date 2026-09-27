@@ -62,7 +62,7 @@ If you see files called id\_ed25519.pub and id\_ed25519, then you have a public/
 
 (If you created them a long time ago, they may be called `id_rsa` and `id_rsa.pub`.  Those also work, but they are in an older format that is not as secure.)
 
-If you don't even have a .ssh directory, or if you have one, but don't see the id\_ed25519 and id\_ed25519.pub files,
+If you don't even have a `.ssh` directory, or if you have one, but don't see the `id\_ed25519` and `id\_ed25519.pub` files,
 then you'll need to set up one up, as explained below.
 
 Step 1: Create a public/private key pair
