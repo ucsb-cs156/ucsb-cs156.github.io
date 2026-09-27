@@ -6,6 +6,7 @@ title: "git: configuration"
 description:  "Initial configuration of git"
 ---
 
+# {{page.title}} - {{page.description}}
 
 This page has three sections:
 
