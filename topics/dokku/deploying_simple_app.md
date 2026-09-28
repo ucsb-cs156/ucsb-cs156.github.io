@@ -49,7 +49,7 @@ These instructions are for a simple app that:
    This doesn't deploy the app, but it does set things up so that the command below will deploy from
    the specified repo and this branch.
 
-   If you get the following error, check that the repo is public and not private.  (It is possible to deploy private repos to dokku, but you have to use a [different process](https://ucsb-cs156.github.io/topics/dokku/deploy_app_from_private_repo.html)
+   If you get the following error, check that the repo is public and not private.  (It is possible to deploy private repos to dokku, but you have to use a [different process](https://ucsb-cs156.github.io/topics/dokku/deploy_app_from_private_repo.html))
    ```
    Fatal: could not read Username for 'https://github.com': terminal prompts disabled
    ```
