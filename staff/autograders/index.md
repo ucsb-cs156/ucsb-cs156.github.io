@@ -57,6 +57,123 @@ it records the repositories and files to inspect, configuration lessons,
 validation steps, and the additional technology surfaces to consider as later
 assignments add Spring Boot, Dokku, or frontend tooling.
 
+### JPA02 and JPA03 examples
+
+The same process was then applied to JPA02 (Spring Boot, JaCoCo and PIT
+thresholds) and JPA03 (Spring Boot with a database, OAuth, Dokku Dockerfile
+and actuator-based autograder checks). Each wave has its own handoff file in
+`f26/course-maintenance/`, which records the versions chosen, the surprises
+(for example, JaCoCo 0.8.12 silently mis-measuring Java 25 class files, PIT
+1.23+ dropping built-in history, and JDK 23+ no longer running Lombok without
+`-proc:full`), the validation performed, and the PR links:
+
+- JPA02: [`course-maintenance/jpa02-java25-migration.md`](https://github.com/ucsb-cs156/f26/blob/main/course-maintenance/jpa02-java25-migration.md);
+  PRs: [f26](https://github.com/ucsb-cs156/f26/pull/8),
+  [starter](https://github.com/ucsb-cs156-f26/STARTER-jpa02/pull/3),
+  [autograder](https://github.com/ucsb-cs156/jpa02-autograder/pull/5),
+  [shared docs](https://github.com/ucsb-cs156/ucsb-cs156.github.io/pull/14)
+- JPA03: [`course-maintenance/jpa03-java25-migration.md`](https://github.com/ucsb-cs156/f26/blob/main/course-maintenance/jpa03-java25-migration.md);
+  PRs: [f26](https://github.com/ucsb-cs156/f26/pull/10),
+  [starter](https://github.com/ucsb-cs156-f26/STARTER-jpa03/pull/2) (its description is the master list for the wave),
+  [autograder](https://github.com/ucsb-cs156/jpa03-autograder/pull/9),
+  [shared docs](https://github.com/ucsb-cs156/ucsb-cs156.github.io/pull/16)
+
+### Lombok stops compiling on Java 23 and later
+
+This one is worth calling out because the symptom does not mention Lombok
+at all. After moving a Spring Boot starter that uses Lombok (JPA03, team01,
+team02 and every legacy project) to Java 25, `mvn test` fails at compile
+time with dozens of errors like:
+
+```
+[ERROR] .../ExampleApplication.java:[30,7] cannot find symbol
+  symbol:   variable log
+  location: class edu.ucsb.cs156.example.ExampleApplication
+[ERROR] .../SystemInfoServiceImpl.java:[39,31] cannot find symbol
+  symbol:   method builder()
+  location: class edu.ucsb.cs156.example.models.SystemInfo
+```
+
+Every missing symbol is something Lombok generates (`log` from `@Slf4j`,
+`builder()` from `@Builder`, getters from `@Data`, and so on). The cause is
+that starting with JDK 23, `javac` no longer runs annotation processors that
+it merely finds on the classpath; they must be enabled explicitly, and Lombok
+is an annotation processor. The fix is a `maven-compiler-plugin`
+configuration in the `pom.xml`:
+
+```xml
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-compiler-plugin</artifactId>
+    <configuration>
+        <!-- JDK 23+ no longer runs annotation processors (e.g. Lombok) found on the
+             classpath by default; -proc:full restores that behavior. -->
+        <compilerArgument>-proc:full</compilerArgument>
+    </configuration>
+</plugin>
+```
+
+No version is needed because the Spring Boot parent manages the plugin
+version. JPA00, JPA01 and JPA02 do not use Lombok, so they compiled on
+Java 25 without this; expect it on every assignment from JPA03 onward, and
+check for it first whenever a Java upgrade produces a wall of
+`cannot find symbol` errors. `proj-courses` and `STARTER-jpa03` both carry
+this configuration and can be used as a reference.
+
+### Files that carry staff and student information
+
+A toolchain update is also the moment to refresh the per-quarter data the
+autograders and instructions depend on. These files are not derivable from
+the code, so Claude will leave them alone or flag them; a staff member has to
+supply the values. Check each of these every quarter, for every assignment:
+
+**In each autograder repo (`ucsb-cs156/jpaXX-autograder`, `team0X-autograder`):**
+
+- `autograder/tools/roster.csv`: the student roster in the 13-column
+  Frontiers export format
+  (`COURSEID,EMAIL,FIRSTNAME,GITHUBID,GITHUBLOGIN,ID,LASTNAME,ORGSTATUS,ROSTERSTATUS,SECTION,STUDENTID,TEAMS,USERID`).
+  `repo_matcher.py` uses `EMAIL` and `GITHUBLOGIN` to map the Gradescope
+  submitter to their `jpaXX-githubid` repo; `verify_admin_emails.py` uses
+  `TEAMS` to compute which teammates must appear in `ADMIN_EMAILS`. Add
+  `*-staff` rows by hand if staff want to submit to Gradescope and pass the
+  team-member check (the Frontiers export does not include staff).
+- `autograder/tools/verify_admin_emails.py` (jpa03, team01, team02): the
+  `staff_emails` list at the top of the file. Every email here must be in the
+  student's `ADMIN_EMAILS`, so it must match the list students are told to
+  use. Paste the list from the `#staff-resources` Slack channel.
+- `autograder/run_autograder`: `GITHUB_ORG` (for example `ucsb-cs156-f26`),
+  used to look up the student's repo, GitHub Pages site and workflow status.
+- `.github/README.md`: the "Quarterly Updates" notes that describe the above.
+
+**In the term repo (`ucsb-cs156/f26`):**
+
+- `_config.yml`: `quarter`, `QXX`/`qxx`, `sample_team`, `ta_list_full`,
+  `la_list_full`, `discussion_section_day` / `discussion_section_times`,
+  the `aux_links` Canvas URL, and the Slack channel data used by
+  `_includes/slack.html`.
+- `lab/jpa03.md`, `lab/jpa04.md`, `lab/team01.md`: the `staff_emails` front
+  matter, plus `course_org`, `course_org_name`, `starter_repo` and
+  `example_running_app`. Keep `staff_emails` identical to the list in
+  `verify_admin_emails.py`; the lab pages tell students to find the staff
+  emails on the assignment's Slack help channel, so post the same list there.
+- `_staffers/` and `office-hours.md`: the staff roster and office hours the
+  lab pages link to.
+
+**In the starter repos (`ucsb-cs156-f26/STARTER-*`):**
+
+- `.env.SAMPLE` and the `app.admin.emails` default in
+  `src/main/resources/application.properties`: the instructor's email is the
+  fallback admin; students add their own and the staff list on top of it.
+- `README.md` and `docs/*.md`: links to the course org, the example running
+  app (`jpa03-staff.dokku-00.cs.ucsb.edu`) and `dokku git:sync` URLs that
+  embed the org name.
+
+In the JPA03 wave the roster and `GITHUB_ORG` were updated, but the
+`staff_emails` list in `verify_admin_emails.py` and the `staff_emails` front
+matter in `lab/jpa03.md` were left at the previous quarter's values because
+the F26 staff list was not yet final; those two are recorded as follow-ups in
+the JPA03 handoff.
+
 Before starting the next assignment, read that handoff and adapt its checklist
 to the assignment's technology. Keep the work assignment-focused: complete
 and double-check JPA00 before beginning JPA01, then repeat the same four-way
