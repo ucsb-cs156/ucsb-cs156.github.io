@@ -107,6 +107,15 @@ rest of the assignment out of step. Things that were different from JPA03:
 - PIT `1.30.0` together with `org.pitest:pitest-history-plugin:0.0.1` works
   with the incremental pitest workflow, which is the alternative to pinning
   PIT `1.22.1` as JPA03 did.
+- Bumping Spring Boot can silently break a jgrade2-based autograder.
+  `jgrade2` 2.0.0-a3 is a fat jar that bundles JUnit Platform 1.10 classes;
+  Spring Boot 3.5 brings JUnit 5.12, whose engine calls a Platform 1.12
+  method, so when jgrade2 lands after the student's dependencies the
+  autograder discovers zero graded tests (`NoSuchMethodError ...
+  getOutputDirectoryProvider`). The team01 autograder now injects the
+  Boot-managed `junit-platform-launcher` before jgrade2. After any Boot bump,
+  run the autograder once against the starter and look for the
+  `Found test class` lines in the log.
 
 ### Lombok stops compiling on Java 23 and later
 
