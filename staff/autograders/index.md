@@ -57,6 +57,27 @@ it records the repositories and files to inspect, configuration lessons,
 validation steps, and the additional technology surfaces to consider as later
 assignments add Spring Boot, Dokku, or frontend tooling.
 
+### JPA02 and JPA03 examples
+
+The same process was then applied to JPA02 (Spring Boot, JaCoCo and PIT
+thresholds) and JPA03 (Spring Boot with a database, OAuth, Dokku Dockerfile
+and actuator-based autograder checks). Each wave has its own handoff file in
+`f26/course-maintenance/`, which records the versions chosen, the surprises
+(for example, JaCoCo 0.8.12 silently mis-measuring Java 25 class files, PIT
+1.23+ dropping built-in history, and JDK 23+ no longer running Lombok without
+`-proc:full`), the validation performed, and the PR links:
+
+- JPA02: [`course-maintenance/jpa02-java25-migration.md`](https://github.com/ucsb-cs156/f26/blob/main/course-maintenance/jpa02-java25-migration.md);
+  PRs: [f26](https://github.com/ucsb-cs156/f26/pull/8),
+  [starter](https://github.com/ucsb-cs156-f26/STARTER-jpa02/pull/3),
+  [autograder](https://github.com/ucsb-cs156/jpa02-autograder/pull/5),
+  [shared docs](https://github.com/ucsb-cs156/ucsb-cs156.github.io/pull/14)
+- JPA03: [`course-maintenance/jpa03-java25-migration.md`](https://github.com/ucsb-cs156/f26/blob/main/course-maintenance/jpa03-java25-migration.md);
+  PRs: [f26](F26_PR_URL),
+  [starter](STARTER_PR_URL) (its description is the master list for the wave),
+  [autograder](AUTOGRADER_PR_URL),
+  [shared docs](DOCS_PR_URL)
+
 Before starting the next assignment, read that handoff and adapt its checklist
 to the assignment's technology. Keep the work assignment-focused: complete
 and double-check JPA00 before beginning JPA01, then repeat the same four-way
