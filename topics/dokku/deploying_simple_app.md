@@ -18,9 +18,12 @@ These instructions are for a simple app that:
 ## Deploying an app (public repo)
 
 
-1. `ssh username@csil.cs.ucsb.edu` then to your dokku machine (e.g. `ssh dokku-01.cs.ucsb.edu`) substituting your dokku number in place of `01`.
+1. First, `ssh username@csil.cs.ucsb.edu` then ssh to your dokku machine (e.g. `ssh dokku-01.cs.ucsb.edu`) substituting your dokku number in place of `01`.
 
-2. To create an app with the name `app-name`, use the command `dokku apps:create app-name`.
+   (Note: You can do this in one step with the command: `ssh -J username@csil.cs.ucsb.edu username@dokku-xx.cs.ucsb.edu`).  The `-J` stands for "jump", because
+   you are using `csil` to "jump" to the dokku host.)
+
+3. To create an app with the name `app-name`, use the command `dokku apps:create app-name`.
 
    For example, if your app name is `jpa01-cgaucho`, use the command:
 
