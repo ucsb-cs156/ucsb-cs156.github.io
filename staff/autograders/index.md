@@ -73,10 +73,10 @@ and actuator-based autograder checks). Each wave has its own handoff file in
   [autograder](https://github.com/ucsb-cs156/jpa02-autograder/pull/5),
   [shared docs](https://github.com/ucsb-cs156/ucsb-cs156.github.io/pull/14)
 - JPA03: [`course-maintenance/jpa03-java25-migration.md`](https://github.com/ucsb-cs156/f26/blob/main/course-maintenance/jpa03-java25-migration.md);
-  PRs: [f26](F26_PR_URL),
-  [starter](STARTER_PR_URL) (its description is the master list for the wave),
-  [autograder](AUTOGRADER_PR_URL),
-  [shared docs](DOCS_PR_URL)
+  PRs: [f26](https://github.com/ucsb-cs156/f26/pull/10),
+  [starter](https://github.com/ucsb-cs156-f26/STARTER-jpa03/pull/2) (its description is the master list for the wave),
+  [autograder](https://github.com/ucsb-cs156/jpa03-autograder/pull/9),
+  [shared docs](https://github.com/ucsb-cs156/ucsb-cs156.github.io/pull/16)
 
 Before starting the next assignment, read that handoff and adapt its checklist
 to the assignment's technology. Keep the work assignment-focused: complete
