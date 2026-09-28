@@ -43,7 +43,7 @@ These instructions are for a simple app that:
 
    For example:
    ```
-   dokku git:sync jpa01-cgaucho https://github.com/ucsb-cs156-f25/jpa02-cgaucho.git main
+   dokku git:sync jpa01-cgaucho https://github.com/ucsb-cs156-f25/jpa01-cgaucho.git main
    ```
 
    This doesn't deploy the app, but it does set things up so that the command below will deploy from
@@ -59,7 +59,7 @@ These instructions are for a simple app that:
    
    For example:
    ```
-   dokku ps:rebuild jpa02-cgaucho
+   dokku ps:rebuild jpa01-cgaucho
    ```
    You should see then see the output from the deployment of the branch that looks something like this:
    
@@ -85,7 +85,7 @@ These instructions are for a simple app that:
 
     [pconrad@csilvm-07 jpa01-cgaucho]$ 
    ```
-5. Now you should be able to open the app on the URL shown, e.g. <http://jpa02-cgaucho.dokku-07.cs.ucsb.edu>
+5. Now you should be able to open the app on the URL shown, e.g. <http://jpa01-cgaucho.dokku-07.cs.ucsb.edu>
 
    Note that at this point, the app is running over `http` only.
 
