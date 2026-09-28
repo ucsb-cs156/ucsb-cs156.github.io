@@ -78,6 +78,48 @@ and actuator-based autograder checks). Each wave has its own handoff file in
   [autograder](https://github.com/ucsb-cs156/jpa03-autograder/pull/9),
   [shared docs](https://github.com/ucsb-cs156/ucsb-cs156.github.io/pull/16)
 
+### Lombok stops compiling on Java 23 and later
+
+This one is worth calling out because the symptom does not mention Lombok
+at all. After moving a Spring Boot starter that uses Lombok (JPA03, team01,
+team02 and every legacy project) to Java 25, `mvn test` fails at compile
+time with dozens of errors like:
+
+```
+[ERROR] .../ExampleApplication.java:[30,7] cannot find symbol
+  symbol:   variable log
+  location: class edu.ucsb.cs156.example.ExampleApplication
+[ERROR] .../SystemInfoServiceImpl.java:[39,31] cannot find symbol
+  symbol:   method builder()
+  location: class edu.ucsb.cs156.example.models.SystemInfo
+```
+
+Every missing symbol is something Lombok generates (`log` from `@Slf4j`,
+`builder()` from `@Builder`, getters from `@Data`, and so on). The cause is
+that starting with JDK 23, `javac` no longer runs annotation processors that
+it merely finds on the classpath; they must be enabled explicitly, and Lombok
+is an annotation processor. The fix is a `maven-compiler-plugin`
+configuration in the `pom.xml`:
+
+```xml
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-compiler-plugin</artifactId>
+    <configuration>
+        <!-- JDK 23+ no longer runs annotation processors (e.g. Lombok) found on the
+             classpath by default; -proc:full restores that behavior. -->
+        <compilerArgument>-proc:full</compilerArgument>
+    </configuration>
+</plugin>
+```
+
+No version is needed because the Spring Boot parent manages the plugin
+version. JPA00, JPA01 and JPA02 do not use Lombok, so they compiled on
+Java 25 without this; expect it on every assignment from JPA03 onward, and
+check for it first whenever a Java upgrade produces a wall of
+`cannot find symbol` errors. `proj-courses` and `STARTER-jpa03` both carry
+this configuration and can be used as a reference.
+
 Before starting the next assignment, read that handoff and adapt its checklist
 to the assignment's technology. Keep the work assignment-focused: complete
 and double-check JPA00 before beginning JPA01, then repeat the same four-way
