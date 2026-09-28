@@ -38,12 +38,12 @@ These instructions are for a simple app that:
    for public repos; for private repos, there is a slightly different procedure documented below.)
    
    ```
-   dokku git:sync your-app-name https://github.com/ucsb-cs156-f25/your-repo-name.git branch-to-deploy
+   dokku git:sync your-app-name https://github.com/ucsb-cs156-f26/your-repo-name.git branch-to-deploy
    ```
 
    For example:
    ```
-   dokku git:sync jpa01-cgaucho https://github.com/ucsb-cs156-f25/jpa01-cgaucho.git main
+   dokku git:sync jpa01-cgaucho https://github.com/ucsb-cs156-f26/jpa01-cgaucho.git main
    ```
 
    This doesn't deploy the app, but it does set things up so that the command below will deploy from
@@ -76,7 +76,7 @@ These instructions are for a simple app that:
     -----> Cleaning up...
     -----> Building jpa01-cgaucho from Dockerfile
     remote: build context to Docker daemon  39.42kB
-    Step 1/26 : FROM bellsoft/liberica-openjdk-alpine:21
+    Step 1/26 : FROM bellsoft/liberica-openjdk-alpine:25
     
     ... *** MANY LINES OF OUTPUT OMITTED ***
     
