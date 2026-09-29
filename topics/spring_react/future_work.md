@@ -53,7 +53,7 @@ are likely many other places in our code bases where this could be done as well.
 
 # Autograders for team01, team02, team03
 
-There is an autograder for team01, but it needs some updating.
+There is an autograder for team01 ([ucsb-cs156/team01-autograder](https://github.com/ucsb-cs156/team01-autograder), private; Java 25 / F26 as of September 2026). Note that the team01 lab page still says that team01 is graded manually, so decide each quarter whether the Gradescope assignment is used and keep the lab page consistent with that.
 
 It would be great to have autograders for team02 and team03 as well.  This may require some updates to the assignments, but that's ok.
 

@@ -57,7 +57,7 @@ it records the repositories and files to inspect, configuration lessons,
 validation steps, and the additional technology surfaces to consider as later
 assignments add Spring Boot, Dokku, or frontend tooling.
 
-### JPA02 and JPA03 examples
+### JPA02, JPA03 and team01 examples
 
 The same process was then applied to JPA02 (Spring Boot, JaCoCo and PIT
 thresholds) and JPA03 (Spring Boot with a database, OAuth, Dokku Dockerfile
@@ -77,6 +77,45 @@ and actuator-based autograder checks). Each wave has its own handoff file in
   [starter](https://github.com/ucsb-cs156-f26/STARTER-jpa03/pull/2) (its description is the master list for the wave),
   [autograder](https://github.com/ucsb-cs156/jpa03-autograder/pull/9),
   [shared docs](https://github.com/ucsb-cs156/ucsb-cs156.github.io/pull/16)
+- team01: [`course-maintenance/team01-java25-migration.md`](https://github.com/ucsb-cs156/f26/blob/main/course-maintenance/team01-java25-migration.md);
+  PRs: [f26](https://github.com/ucsb-cs156/f26/pull/12),
+  [starter](https://github.com/ucsb-cs156-f26/STARTER-team01/pull/4) (its description is the master list for the wave),
+  [autograder](https://github.com/ucsb-cs156/team01-autograder/pull/11),
+  [shared docs](https://github.com/ucsb-cs156/ucsb-cs156.github.io/pull/18)
+
+team01 is a good example of a starter that had *already* been bumped to Java 25
+in its `pom.xml` before the four-surface audit ran; the audit still found the
+rest of the assignment out of step. Things that were different from JPA03:
+
+- The team01 starter uses the shared reusable workflows in
+  [`ucsb-cs156/workflows`](https://github.com/ucsb-cs156/workflows) (JaCoCo,
+  Pitest, schema validation), which select Java with
+  `actions/setup-java` and `java-version-file: ./.java-version`. `setup-java`
+  cannot parse the SDKMAN form `25.0.4-tem`, so for these starters
+  `.java-version` must stay `25`, and `.sdkmanrc` is the file that carries
+  the full SDKMAN identifier. The starter's own workflows were also on
+  `distribution: semeru` while the reusable ones default to `temurin`.
+- The Dokku `Dockerfile` (`ubuntu:22.04` + apt `openjdk-25-jdk`) did build on
+  amd64, but with apt's Maven 3.6 and a hard-coded
+  `JAVA_HOME=/usr/lib/jvm/java-25-openjdk-amd64`, so `docker build` fails on
+  Apple Silicon. The two-stage Temurin image from STARTER-jpa03 replaces it.
+- The autograder compiles and runs Spring Boot tests against the student's
+  code (it injects `jgrade2` and `reflections` into the student's `pom.xml`
+  with pom-cli), so a JDK older than the starter's breaks every submission;
+  it was still installing Java 21. Its roster and staff list are data files
+  that staff must refresh by hand each quarter.
+- PIT `1.30.0` together with `org.pitest:pitest-history-plugin:0.0.1` works
+  with the incremental pitest workflow, which is the alternative to pinning
+  PIT `1.22.1` as JPA03 did.
+- Bumping Spring Boot can silently break a jgrade2-based autograder.
+  `jgrade2` 2.0.0-a3 is a fat jar that bundles JUnit Platform 1.10 classes;
+  Spring Boot 3.5 brings JUnit 5.12, whose engine calls a Platform 1.12
+  method, so when jgrade2 lands after the student's dependencies the
+  autograder discovers zero graded tests (`NoSuchMethodError ...
+  getOutputDirectoryProvider`). The team01 autograder now injects the
+  Boot-managed `junit-platform-launcher` before jgrade2. After any Boot bump,
+  run the autograder once against the starter and look for the
+  `Found test class` lines in the log.
 
 ### Lombok stops compiling on Java 23 and later
 
