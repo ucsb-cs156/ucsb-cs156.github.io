@@ -60,7 +60,34 @@ There are three steps you need to do to get your account set up for access to Do
 
    If it still doesn't work, ask for help
 
+## Troubleshooting Dokku Issues
 
+1. Are you remembering to login to CSIL first?
+
+   The correct procedure to login to dokku is to *first* login to CSIL, e.g.
+   ```
+   ssh csilusername@csil.cs.ucsb.edu
+   ```
+
+   And only then login to dokku:
+   ```
+   ssh csilusername@dokku-xx.cs.ucsb.edu
+   ```
+
+   Alternatively, you can use the "jump" option to combine these into one command:
+
+   ```
+   ssh -J csilusername@csil.cs.ucsb.edu csilusername@dokku-xx.cs.ucsb.edu
+   ```
+
+2. Double check that you are using the correct dokku number, and not copy/pasting a command with `dokku-xx` in it.
+
+3. Make sure you are using your CSIL username, and not your Github username.
+
+4. Go through all of the steps to set up your ssh key again (see top of this page).  It's possible you made a typo
+   at some step, so repeating these steps often fixes things.
+
+5. Ask the professor to make sure that you are listed in the `/home/eci/dokku_users_list` file correctly.
 
 
 
