@@ -15,17 +15,17 @@ Console, you need to **create a new project**.  This page describes how to do th
 
 1. Navigate to <https://console.cloud.google.com/cloud-resource-manager> and login with your UCSB Google Account.
       
-   You'll see something like this, except you might not have anything under the `UnPaid` folder.  (That is where you'll create your projecct).
+   You'll see something like this, except you might not have anything under the `Sandbox Unfunded` folder.  (That is where you'll create your projecct).
    
-   <img width="698" alt="Google Developer Console Project List" src="https://user-images.githubusercontent.com/1119017/235321567-ada58904-ce9e-41eb-b7f7-6d4ceff71cb8.png">
+      <img width="907" height="537" alt="Google Developer Console Project List" src="https://github.com/user-attachments/assets/59bbd2be-c76d-4d87-88c0-c9e27e18ee21" />
 
 2. Click the `Create Project` button (<img width="147" alt="Create Project Button" src="https://user-images.githubusercontent.com/1119017/235321614-e4e663dc-34c7-494f-8e97-ba2b3caaa6be.png">).  
    You should then see a page like this one.  
    * Fill in the name of the project with something meaningful such as the course and quarter (e.g. `ucsb-cs156`) 
    * The organization should be `ucsb.edu`
-   * Under `Location` click `Browse` and then select `UnPaid` as in the animation below:
+   * Under `Location` click `Browse` and then select `Sandbox Unfunded` as in the animation below:
 
-   ![google-create-project](https://github.com/user-attachments/assets/134e1d36-e75f-41c0-a372-ec01938c7b7b)
+   <img width="1000" height="461" alt="google-create-project-demo" src="https://github.com/user-attachments/assets/e8eca0a1-625b-4a64-90ea-4c960670462e" />
 
    * Click `Create`
 
