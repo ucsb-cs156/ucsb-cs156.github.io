@@ -74,3 +74,40 @@ But no `.gitignore` can cover 100% of the ways things can go sideways.
 
 For example, you can end up with a node_modules directory in your root directory (where the .gitignore isn't expecting it) instead of the `frontend` directory, if you were to type something like  
 `npm install package-name --save`  in the root directory instead of the `frontend` directory.
+
+
+## A hack for MacOS users for `.DS_Store`
+
+There is a global `.gitignore` file that applies to every repository on your machine.   For MacOS users, putting `.DS_Store` in there 
+is a good idea.
+
+**Option 1: use Git's default location (no config needed)**
+
+When `core.excludesFile` isn't set, Git automatically reads `~/.config/git/ignore`:
+
+```bash
+mkdir -p ~/.config/git && echo ".DS_Store" >> ~/.config/git/ignore
+```
+
+**Option 2: use a file you name yourself**
+
+```bash
+echo ".DS_Store" >> ~/.gitignore_global
+```
+
+```bash
+git config --global core.excludesFile ~/.gitignore_global
+```
+
+Check which file Git is using with:
+
+```bash
+git config --global core.excludesFile
+```
+
+If that prints nothing, Git is using `~/.config/git/ignore`.
+
+**Things to know:**
+- **Files Git already tracks aren't affected.** If a repo already has a `.DS_Store` committed, remove it from Git (your local copy stays) with `git rm --cached .DS_Store`, or for every one in the repo: `find . -name .DS_Store -print0 | xargs -0 git rm --cached --ignore-unmatch`. Then commit.
+- **It only applies on your machine.** Collaborators who don't have the same setup can still commit `.DS_Store`. For shared repos, it's worth adding `.DS_Store` to the project's `.gitignore` as well.
+- Other Mac clutter you might add to the same file: `._*`, `.AppleDouble`, `.Spotlight-V100`, `.Trashes`.
