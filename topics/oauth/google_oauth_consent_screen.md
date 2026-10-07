@@ -87,9 +87,13 @@ Where:
 * <tt><i>yourGithubId</i></tt> is your Github Id
 * <tt><i>xx</i></tt> is your two-digit team/dokku number
 
-Next, add the link `https://ucsb-cs156.github.io/f26/info/privacy.html` to the "Application Privacy Policy Link". 
+Next, add the link `https://ucsb-cs156.github.io/f26/info/privacy.html` to the "Application Privacy Policy Link".
 
 <img width="2837" height="1433" alt="image" src="https://github.com/user-attachments/assets/de4147ad-7211-4e04-9759-b4604946cbe8" />
+
+Then, add `ucsb.edu` and `ucsb-cs156.github.io` to the "Authorized Domains" list.
+
+<img width="558" height="239" alt="Screenshot 2026-10-06 at 17 58 18" src="https://github.com/user-attachments/assets/4e8223f3-d880-4f00-8794-46c5977fd6d7" />
 
 
 There are two possible modes for a Google OAuth Application
