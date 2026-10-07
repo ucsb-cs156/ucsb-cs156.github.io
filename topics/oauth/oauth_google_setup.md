@@ -13,7 +13,7 @@ indent: true
 Before you set up your first Google OAuth application you need to do these one-time steps:
 
 * First: [Create a Google Developer Project](/topics/oauth/google_create_developer_project.html)
-* Second: [Configure the OAuth Consent Screen](topics/oauth/google_oauth_consent_screen.html),
+* Second: [Configure the OAuth Consent Screen](/topics/oauth/google_oauth_consent_screen.html),
 
 If you've already done these, then you are ready to set up a Google OAuth app so that you can get a `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` as described below:
    
