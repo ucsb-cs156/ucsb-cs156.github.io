@@ -81,7 +81,11 @@ It should then look like this after updating:
 
 ## Test Mode vs. Production Mode
 
-Before continuing with this step, first go to the branding tab on the sidebar, and under the App Domain section of the page, add a link to your dokku deployment in the Application Home Page field. Even if it has not been deployed yet, add the name of the link that you will use when deploying. It should be in the format `https://jpa03-yourGithubId.dokku-xx.cs.ucsb.edu` where _yourGithubId_ is your Github Id and _xx_ is your two-digit team/dokku number. 
+Before continuing with this step, first go to the branding tab on the sidebar, and under the App Domain section of the page, add a link to your dokku deployment in the "Application Home Page" field. Even if it has not been deployed yet, add the name of the link that you will use when deploying. It should be in the format `https://jpa03-yourGithubId.dokku-xx.cs.ucsb.edu` 
+
+Where:
+* <tt><i>yourGithubId</i></tt> is your Github Id
+* <tt><i>xx</i></tt> is your two-digit team/dokku number
 
 Next, add the link `https://ucsb-cs156.github.io/f26/info/privacy.html` to the "Application Privacy Policy Link". 
 
