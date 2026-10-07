@@ -117,6 +117,24 @@ rest of the assignment out of step. Things that were different from JPA03:
   run the autograder once against the starter and look for the
   `Found test class` lines in the log.
 
+### Frontiers lookup replaces the bundled roster (October 2026)
+
+The jpa02, jpa03 and team01 autograders no longer ship `roster.csv` or a
+hard-coded staff list. Each submission now asks Frontiers, with a
+course-scoped API key, who submitted, their GitHub login, team and teammates,
+and who the course staff are. The per-quarter data they need is described
+under [Files that carry staff and student
+information](#files-that-carry-staff-and-student-information) below. PRs:
+[jpa02](https://github.com/ucsb-cs156/jpa02-autograder/pull/9),
+[jpa03](https://github.com/ucsb-cs156/jpa03-autograder/pull/11),
+[team01](https://github.com/ucsb-cs156/team01-autograder/pull/14); the
+Frontiers side is documented in
+[proj-frontiers/docs/api-keys.md](https://github.com/ucsb-cs156/proj-frontiers/blob/main/docs/api-keys.md).
+team01 differs from the other two in how it treats a staff submitter: jpa02
+and jpa03 skip the repo checks for staff, while team01 grades the staff as a
+team (`STAFF_TEAM` in `run_autograder`, `f26-00`, so the repo checked is
+`team01-f26-00` and `ADMIN_EMAILS` must contain the staff emails only).
+
 ### Lombok stops compiling on Java 23 and later
 
 This one is worth calling out because the symptom does not mention Lombok
@@ -168,17 +186,38 @@ supply the values. Check each of these every quarter, for every assignment:
 
 **In each autograder repo (`ucsb-cs156/jpaXX-autograder`, `team0X-autograder`):**
 
-- `autograder/tools/roster.csv`: the student roster in the 13-column
-  Frontiers export format
+- **Frontiers API key (jpa02, jpa03, team01).** These autograders read the
+  roster and the staff list from Frontiers at grading time, so there is no
+  roster file or staff list to refresh. Once per quarter, as the course's
+  instructor on Frontiers: turn on **Enable Api Keys** on the course's
+  **Settings** tab, create a key on the **API Keys** tab (expiry after the
+  quarter's grade deadline and before the next quarter starts; 90 days created
+  in week 1 usually fits), and store it as the organization secret
+  `FRONTIERS_API_KEY` together with the organization variable
+  `FRONTIERS_COURSE_ID` (the number in the course's Frontiers URL) in the
+  `ucsb-cs156` organization, shared with the autograder repos. The release
+  workflow writes both into the zip, so rebuild the zip after changing them.
+  One key serves every converted autograder. The Frontiers **Staff** tab is now
+  the source of truth for the staff emails that every deployment's
+  `ADMIN_EMAILS` must contain, so keep it, the pinned Slack posts and the lab
+  pages' `staff_emails` in step. Staff can submit to Gradescope without roster
+  rows: anyone on the Staff tab is recognized. For team01, also set
+  `STAFF_TEAM` in `autograder/run_autograder` (`f26-00`) next to
+  `GITHUB_ORG`, because a staff submission is graded against the staff team's
+  repo `team01-<STAFF_TEAM>`. Each autograder's `.github/README.md` has the
+  full procedure under "Frontiers API key".
+- `autograder/tools/roster.csv` (autograders not yet converted, such as
+  jpa04 and team02): the student roster in the 13-column Frontiers export
+  format
   (`COURSEID,EMAIL,FIRSTNAME,GITHUBID,GITHUBLOGIN,ID,LASTNAME,ORGSTATUS,ROSTERSTATUS,SECTION,STUDENTID,TEAMS,USERID`).
   `repo_matcher.py` uses `EMAIL` and `GITHUBLOGIN` to map the Gradescope
   submitter to their `jpaXX-githubid` repo; `verify_admin_emails.py` uses
   `TEAMS` to compute which teammates must appear in `ADMIN_EMAILS`. Add
   `*-staff` rows by hand if staff want to submit to Gradescope and pass the
   team-member check (the Frontiers export does not include staff).
-- `autograder/tools/verify_admin_emails.py` (jpa03, team01, team02): the
-  `staff_emails` list at the top of the file. Every email here must be in the
-  student's `ADMIN_EMAILS`, so it must match the list students are told to
+- `autograder/tools/verify_admin_emails.py` (not yet converted autograders):
+  the `staff_emails` list at the top of the file. Every email here must be in
+  the student's `ADMIN_EMAILS`, so it must match the list students are told to
   use. Paste the list from the `#staff-resources` Slack channel.
 - `autograder/run_autograder`: `GITHUB_ORG` (for example `ucsb-cs156-f26`),
   used to look up the student's repo, GitHub Pages site and workflow status.
@@ -192,9 +231,11 @@ supply the values. Check each of these every quarter, for every assignment:
   `_includes/slack.html`.
 - `lab/jpa03.md`, `lab/jpa04.md`, `lab/team01.md`: the `staff_emails` front
   matter, plus `course_org`, `course_org_name`, `starter_repo` and
-  `example_running_app`. Keep `staff_emails` identical to the list in
-  `verify_admin_emails.py`; the lab pages tell students to find the staff
-  emails on the assignment's Slack help channel, so post the same list there.
+  `example_running_app`. Keep `staff_emails` identical to the Frontiers
+  **Staff** tab (which the converted autograders check against) and, for the
+  others, to the list in `verify_admin_emails.py`; the lab pages and the
+  starters' generated issues tell students to find the staff emails in a pinned
+  post on their Slack channel, so post the same list there.
 - `_staffers/` and `office-hours.md`: the staff roster and office hours the
   lab pages link to.
 
