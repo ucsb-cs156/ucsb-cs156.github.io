@@ -117,6 +117,42 @@ rest of the assignment out of step. Things that were different from JPA03:
   run the autograder once against the starter and look for the
   `Found test class` lines in the log.
 
+### team02 Node.js example
+
+The same four-surface audit also works for a narrow bump. In October 2026
+the team02 starter was moved from Node.js `22.18.0` to `24.21.0`, the value
+of `node_lts` in `f26/_config.yml`, because the course installation pages
+(`info/software_macos.md`, `info/software_wsl.md`) already told students to
+install `v24.21.0` while the lab page and the starter still said `22.18.0`.
+The handoff file is
+[`course-maintenance/team02-node24-migration.md`](https://github.com/ucsb-cs156/f26/blob/main/course-maintenance/team02-node24-migration.md).
+Things worth knowing from that wave:
+
+- In a React starter the Node version lives in more places than
+  `docs/versions.md` listed: `README.md`, `frontend/package.json` `engines`
+  (which `actions/setup-node` reads via `node-version-file`, in the starter's
+  workflows and in the reusable `ucsb-cs156/workflows` frontend workflows),
+  the mirrored `engines` entry in `package-lock.json`, two `<nodeVersion>`
+  entries in `pom.xml` for `frontend-maven-plugin` (which is also what the
+  Dokku `Dockerfile` uses, since its Java 25 rewrite runs
+  `mvn -Pproduction`), the `NVM_USE` text in the issue-generating
+  workflows (91, 92, 99), `.github/copilot-instructions.md`, and the
+  "open a second terminal" message in `FrontendProxyController.java`. Search
+  for the old literal *and* for `nvm use --lts`, which had crept into the
+  Java message.
+- Jekyll does not process Liquid in front matter, so a lab page cannot put
+  `{{site.node_lts}}` in a front-matter variable. `lab/team02.md` now uses
+  `{% raw %}{% capture nvm_use %}<tt>nvm use {{site.node_lts}}</tt>{% endcapture %}{% endraw %}`
+  in the body and `{% raw %}{{nvm_use}}{% endraw %}` where it is needed.
+- The team02 autograder has no Node dependency at all (shell checks against
+  GitHub and the deployment only), so it needed no change for this bump. It
+  does still need the Java 25 / F26 wave that team01 received: as of this
+  wave it installs Java 21 and has `GITHUB_ORG="ucsb-cs156-s26"`, and the
+  starter's `README.md` and `copilot-instructions.md` still say Java 21
+  even though its `pom.xml` moved to Java 25 the same day.
+
+PRs: [f26 course instructions](https://github.com/ucsb-cs156/f26/pull/17), [team02 starter code](https://github.com/ucsb-cs156-f26/STARTER-team02/pull/4) (its description is the master list for the wave), no autograder PR, and this page.
+
 ### Lombok stops compiling on Java 23 and later
 
 This one is worth calling out because the symptom does not mention Lombok
