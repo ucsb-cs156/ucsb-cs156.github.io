@@ -3,9 +3,9 @@ parent: "Github Actions"
 grand_parent: Topics
 layout: default
 title: "Github Actions: Workflow 82"
-description:  "Post Kanban board summary to team slack channel"
-reusable_wf82: "[`ucsb-cs156/workflows/.github/workflows/82-kanban-slack-update.yml`](https://github.com/ucsb-cs156/workflows/blob/main/.github/workflows/82-kanban-slack-update.yml)"
-wrapper_wf82: "[`STARTER-team02/.github/workflows/82-kanban-slack-update.yml`](https://github.com/ucsb-cs156-f26/STARTER-team02/blob/main/.github/workflows/82-kanban-slack-update.yml)"
+description:  "Post Kanban board summary to team slack channels"
+central_wf82: "[`membership-scripts/.github/workflows/82-kanban-slack-update.yml`](https://github.com/ucsb-cs156-f26/membership-scripts/blob/main/.github/workflows/82-kanban-slack-update.yml)"
+central_py: "[`membership-scripts/kanban_slack_update.py`](https://github.com/ucsb-cs156-f26/membership-scripts/blob/main/kanban_slack_update.py)"
 ---
 
 # {{page.title}} - {{page.description}}
@@ -15,67 +15,52 @@ Workflow 82 was originally written by Ahsun Tariq as part of his research into t
 The purpose of the workflow is to give each team a periodic summary of the state of its Kanban board: a table showing, for each team member, how many issues they have in each column of the board, plus an `UNASSIGNED` row and a `TOTAL` row. The table is posted to the team's Slack channel.
 
 ```
-| login            | Todo | In P | In R | Done |
-|------------------|------|------|------|------|
-| cgaucho          |    3 |    1 |    0 |    2 |
-| ldelplaya        |    4 |    1 |    1 |    0 |
-| UNASSIGNED       |   20 |    0 |    0 |    0 |
-|==================|======|======|======|======|
-| TOTAL            |   27 |    2 |    1 |    2 |
+📋 *Kanban Board Status* ✔️ (team02-f26-01)
+| login            | Back | Read | In p | In r | Done |
+|------------------|------|------|------|------|------|
+| cgaucho          |    8 |    0 |    1 |    0 |    0 |
+| ldelplaya        |    9 |    0 |    0 |    0 |    0 |
+| UNASSIGNED       |    0 |    6 |    0 |    0 |    0 |
+|==================|======|======|======|======|======|
+| TOTAL            |   17 |    6 |    1 |    0 |    0 |
 ```
 
-**Note on numbering:** the staff repo `ucsb-cs156-f26/membership-scripts` also has a workflow numbered 82 (`82-standup-stats-bot.yml`, which posts standup *participation* statistics). That is a different workflow; this page is about the Kanban board summary that runs in each team repo.
+## Where the code lives (changed October 2026)
 
-## Where the code lives (changed in F26)
+From Fall 2024 to Fall 2026 this workflow lived **in every team repo**: first as a 300-line self-contained copy, then (October 2026) as a thin wrapper calling a reusable workflow in `ucsb-cs156/workflows`. Both versions had the same problem: every change meant one pull request per team repo, the copies drifted between assignments (team01 and team02 ended up with different schedules and different secret names), each scheduled firing started seven jobs in each of fifteen or sixteen repos, and the legacy code project, whose teams start from several different repos, would have needed the file kept in sync across all of them.
 
-Until Fall 2026 the whole workflow (about 300 lines of shell and Python) was copied into every starter repo and from there into every team repo, so every fix meant one PR per repo. As of October 2026 it is split in two:
+Since October 2026 the summary runs **once, centrally**, from the term's staff repo:
 
-1. **The reusable workflow** {{page.reusable_wf82}} in the `ucsb-cs156/workflows` repository. This holds all of the logic (date check, finding the project, counting issues, building the table, finding the Slack channel, posting). Fixes to the logic are made here, once, and every caller picks them up because they reference it at `@main`.
-2. **A thin wrapper** in each starter repo and each team repo, e.g. {{page.wrapper_wf82}}. The wrapper only holds the schedule, a time-of-day check, and the `uses:` line that calls the reusable workflow with the start/end dates and the two secrets. It is about 80 lines, most of which are comments.
+* {{page.central_wf82}}: the schedule, the daylight-saving-time check, and a single step that runs the script.
+* {{page.central_py}}: all of the logic. One run handles every team of every assignment whose date window is open.
 
-The wrapper is copied from the starter into the team repos when they are created. When the wrapper itself changes (for example the schedule), the easiest way to update the team repos is one small PR per repo that replaces just that file; because the file is identical everywhere, those PRs do not conflict with student work.
+Team repos no longer contain a workflow 82 at all. If you still see `.github/workflows/82-kanban-slack-update.yml` in a starter or team repo, it is a leftover and can be deleted (the reusable workflow it calls is marked superseded and will be removed after one quarter).
+
+The number 82 is kept for the Kanban summary because every starter since F24 has used it. The standup *participation* statistics bot in `membership-scripts`, which briefly also used 82, is now workflow 83.
 
 ## How a run works
 
-Each scheduled run of the wrapper does the following (job names are from the two workflow files):
-
-| Job | Where | What it does |
-|---|---|---|
-| `time-check` | wrapper | Checks the current Pacific time and day of week, and skips the run if this cron firing is not one of the intended local times (see [Schedule and daylight saving time](#schedule-and-daylight-saving-time)). Manual runs skip this check. |
-| `check_date` | reusable | Stops if today is outside `START_DATE`..`END_DATE`, if the repo is in the `ucsb-cs156` organization, or if the repo name starts with `STARTER`. |
-| `get_team_name` | reusable | The team name is the **last 6 characters of the repository name** (`f26-01` for `team02-f26-01`); the Slack channel is `SLACK_CHANNEL_PREFIX` + team name, by default `team-f26-01`. |
-| `get_project_id` | reusable | Finds the GitHub Project (v2) in the organization whose **title equals the repository name** (so the Kanban board for `team02-f26-01` must be titled exactly `team02-f26-01`), discovers the board's columns from the options of its `Status` single-select field, and counts issues per column and assignee. |
-| `generate_ascii_table` | reusable | Formats the counts as the table shown above. Column headers are abbreviated to four characters unless that would make two headers identical. |
-| `find_slack_channel` | reusable | Looks up the channel id for `team-f26-01` by name through the Slack API (public and private channels; the bot must be a member of private channels). |
-| `send-to-slack` | reusable | Posts the table to that channel. |
-
-Consequences of this design that are easy to trip over:
-
-* The project title must match the repo name exactly, and the Slack channel must be named `team-` followed by the last six characters of the repo name. There is no longer a `TEAM_TO_CHANNEL` JSON variable mapping teams to channel ids; the earlier version of this page described one, and it is obsolete.
-* Columns are read from the board, so renaming or adding a column needs no code change. Pass the `COLUMNS` input (comma separated) from the wrapper only if you want to report on a subset.
+1. **Time check.** GitHub cron only speaks UTC, so each intended Pacific time is scheduled twice (see [Schedule and daylight saving time](#schedule-and-daylight-saving-time)); a first step converts "now" to `America/Los_Angeles` and skips the run that is not at an intended local time. Manual runs skip this step.
+2. **Which assignments are active.** For each assignment in `KANBAN_ASSIGNMENTS` (default `team01,team02,legacy`) the script reads the organization variables `<ASSIGNMENT>_START_DATE` and `<ASSIGNMENT>_END_DATE` (`TEAM02_START_DATE`, `LEGACY_END_DATE`, ...). An assignment is processed only if today (Pacific) is inside its window; missing variables are reported and the assignment skipped.
+3. **Which repos.** Team repos are found by name in the quarter organization: `team01-f26-NN`, `team02-f26-NN`, or `proj-<anything>-f26-NN` for `legacy`. The quarter code (`f26`) comes from the organization name. The **team code is the last six characters** of the repo name (`f26-01`).
+4. **Which board.** The team's Kanban board is the organization project **titled exactly like the repo** (`team02-f26-01`). If no project has that title, the script falls back to the project number recorded for the team in the public term website config, `https://github.com/ucsb-cs156/f26/blob/main/_config.yml`, under `teams:` (`team01_project`, `team02_project`, `legacy_kanban`), so a board with a different title still works as long as its number is filled in there.
+5. **Columns and counts.** The columns are the options of the board's `Status` single-select field, in board order, so renaming or adding a column needs no change here. Every item on the board is counted once per assignee (or once as `UNASSIGNED`) under its current column.
+6. **Which channel.** The Slack channel is `team-` + team code (`team-f26-01`). The channel list is fetched once per run (public and private channels; private ones need the bot to have `groups:read` and to be a member).
+7. **Post, and report.** Each team is processed independently, so one team's problem does not stop the others. The run writes a table of per-team results to the job summary (visible on the run's page in the Actions tab) and ends with a failure if any team failed, so a red X means "look at the summary", not "nothing was posted".
 
 ## Setup for a new quarter
 
-### Step 1: Create the two organization secrets
+Everything is configured in the quarter organization (for example `ucsb-cs156-f26`) and in its `membership-scripts` repo; nothing is edited in team repos.
 
-Both secrets live in the **quarter organization** (e.g. `ucsb-cs156-f26`) under *Settings / Secrets and variables / Actions*, so that every team repo can use them:
+### Step 1: Two secrets, visible to `membership-scripts`
 
-* <https://github.com/organizations/ucsb-cs156-f26/settings/secrets/actions> (edit the organization name as needed)
+Set these as organization secrets (*Settings / Secrets and variables / Actions* in the organization, <https://github.com/organizations/ucsb-cs156-f26/settings/secrets/actions> with the organization name changed as needed) with a repository access policy that includes `membership-scripts`, or as repository secrets of `membership-scripts`. Both are already needed by the other `membership-scripts` workflows, so they usually exist.
 
 <img width="321" alt="Organization secrets" src="https://github.com/user-attachments/assets/2aadc91e-aca6-4233-94e9-59cf6e0001d0">
 
-Choose either `All Repositories` or select the repositories to which each secret should be applied.
+**(a) `CLASSIC_PAT`**: a *classic* GitHub personal access token with the `read:project` scope, owned by someone who can see the organization's repositories and projects. (The script lists repos and reads projects through the GraphQL API; `read:project` is the scope that grants Projects v2 read access.) The token value is shown only once, so paste it into the secret before leaving the page.
 
-**(a) A GitHub personal access token with read access to the organization's Projects.** The reusable workflow documents this as a *classic* personal access token (scope `read:project`; the token owner must be able to see the team projects). Store it under the name that the wrapper passes as the `PAT` secret:
-
-| Starter | Secret name the wrapper passes |
-|---|---|
-| `STARTER-team01` (F26) | `PAT` |
-| `STARTER-team02` (F26) | `CLASSIC_PAT` |
-
-(These should be made consistent; until then, make sure the name used by the wrapper you are installing actually exists as an org secret. Also note that the generated token value is only shown once, so keep that browser tab open until the secret is saved.)
-
-**(b) The Slack bot token**, stored as `SLACK_BOT_USER_OAUTH_ACCESS_TOKEN`. The bot needs the OAuth scopes `channels:read` and `chat:write`; add `groups:read` if any team channels are private. The bot must be added to every team channel it posts to (the `membership-scripts` repo has workflows 61 to 63 for creating channels and adding the bot and users).
+**(b) `SLACK_BOT_USER_OAUTH_ACCESS_TOKEN`**: the Slack bot token. The bot needs the scopes `channels:read` and `chat:write`, plus `groups:read` if any team channel is private, and **it must be a member of every `team-*` channel**. The `membership-scripts` workflows 61 to 63 create the channels and add the bot and the students.
 
 If you need to create the Slack app from scratch:
 
@@ -87,51 +72,48 @@ If you need to create the Slack app from scratch:
 | Look for `OAuth and Permissions` in the left navigation and click it | <img width="228" alt="image" src="https://github.com/user-attachments/assets/3c945f66-1706-4248-932b-c8009f0cfa3e"> |
 | Scroll down to `Scopes` and add the bot token scopes listed above | <img width="679" alt="image" src="https://github.com/user-attachments/assets/cadb028e-e8a1-4d97-8552-fcaf854f4ee3"> |
 | Scroll back up to `OAuth Tokens` and click the <img width="220" alt="Install" src="https://github.com/user-attachments/assets/584412f5-06fb-46a6-8925-8291114661ab"> button, then `Allow` | <img width="650" alt="image" src="https://github.com/user-attachments/assets/4259ebcd-d9e2-438d-9df5-456fc5312d4e"> |
-| Copy the Bot User OAuth Token (redacted here) into the org secret `SLACK_BOT_USER_OAUTH_ACCESS_TOKEN`. | <img width="553" alt="image" src="https://github.com/user-attachments/assets/980de542-7e4b-4a38-ab2a-58f22ea0dcde"> |
+| Copy the Bot User OAuth Token (redacted here) into the secret `SLACK_BOT_USER_OAUTH_ACCESS_TOKEN`. | <img width="553" alt="image" src="https://github.com/user-attachments/assets/980de542-7e4b-4a38-ab2a-58f22ea0dcde"> |
 
-The same bot token is also used by the Slack workflows in `membership-scripts`; one app per workspace is enough.
+### Step 2: Date windows as organization variables
 
-### Step 2: Set the start and end dates as organization variables
-
-The wrapper passes the dates from **organization variables**, not from constants in the file, so the dates are set once per assignment and never edited in team repos:
+Under *Settings / Secrets and variables / Actions / Variables* in the organization (<https://github.com/organizations/ucsb-cs156-f26/settings/variables/actions>), create, in `YYYY-MM-DD` form:
 
 | Assignment | Variables |
 |---|---|
 | team01 | `TEAM01_START_DATE`, `TEAM01_END_DATE` |
 | team02 | `TEAM02_START_DATE`, `TEAM02_END_DATE` |
-| (later assignments) | same pattern, e.g. `TEAM03_START_DATE`, `TEAM03_END_DATE` |
-
-Format is `YYYY-MM-DD`. Set them under *Settings / Secrets and variables / Actions / Variables* in the quarter organization:
-
-* <https://github.com/organizations/ucsb-cs156-f26/settings/variables/actions>
+| legacy code project | `LEGACY_START_DATE`, `LEGACY_END_DATE` |
 
 <img width="298" alt="image" src="https://github.com/user-attachments/assets/1626a75b-a627-46d2-a855-f8522e945a5e">
 
-If either variable is missing or empty, `check_date` stops the run with a message saying so, which is the usual reason the workflow "does nothing" at the start of a quarter.
+**Make sure each variable's repository access includes `membership-scripts`.** Organization variables are only visible to the repositories you select; variables created earlier for the team repos may not include the staff repo, and then the script will report `TEAM02_START_DATE / TEAM02_END_DATE not set` and skip that assignment.
 
-### Step 3: Make sure the projects and channels are named correctly
+Optional repository variables on `membership-scripts`: `SLACK_CHANNEL_PREFIX` (default `team-`) and `KANBAN_STATUS_FIELD` (default `Status`).
 
-* One GitHub Project per team, titled exactly like the repo (`team02-f26-01`), with a single-select `Status` field whose options are the Kanban columns. `membership-scripts` workflow 45 links the projects to the repos.
-* One Slack channel per team named `team-` + team (`team-f26-01`), with the bot added.
+### Step 3: Boards and channels named so they can be found
 
-### Step 4: Have the wrapper in the starter, and let it flow to the team repos
+* One GitHub Project per team, **titled exactly like the repo** (`team02-f26-01`), with a single-select `Status` field whose options are the Kanban columns. (`membership-scripts` workflow 45 links the projects to the repos.) If a board must have a different title, record its project number in the term website's `_config.yml` under the team's `team01_project` / `team02_project` / `legacy_kanban` entry; the script uses that as a fallback.
+* One Slack channel per team named `team-` + team code (`team-f26-01`), with the bot added.
 
-Nothing needs to be edited inside the wrapper for a new quarter as long as the org secret names match. Check that the schedule is what you want (next section), and that the comment at the top names the right variables.
+### Step 4: Check the schedule
 
-When team repos are created from the starter they get the wrapper. If you change the wrapper afterwards, open one PR per team repo that replaces only `.github/workflows/82-kanban-slack-update.yml` with the starter's copy (a short shell loop over `team02-f26-01` .. `team02-f26-NN` with `gh pr create` does this in a minute).
+The schedule in the workflow file is 4:30 PM Pacific every day plus 7:00 PM Pacific on Tuesday, Wednesday and Thursday. Change it as described in the next section if the class meets at other times.
 
-### Step 5: Test with a manual run
+### Step 5: Dry run, then a real run
 
-In a team repo, *Actions / 82-kanban-slack-update.yml / Run workflow*. Manual (`workflow_dispatch`) runs skip the time-of-day check but still go through `check_date`, so the org variables must already be set and today must be inside the date range.
+In `membership-scripts`, *Actions / 82 - Kanban Slack Update / Run workflow*:
+
+1. First with **dry_run** checked and **team_filter** set to a couple of teams (for example `f26-0[1-3]`). The log shows, for each team, which project was used and how it was found (`by title` or `_config.yml team02_project=22`), the columns, and the table that would be posted; the job summary lists every team as `ok` or `FAILED` with a reason. Nothing is posted.
+2. Then without dry_run. Check one team channel.
+
+Scheduled runs then take care of themselves within the date windows.
 
 ## Schedule and daylight saving time
 
-GitHub Actions cron schedules are always in UTC and do not follow daylight saving time, so a single cron entry drifts by an hour twice a year relative to Pacific time. Since October 2026 the wrapper uses the same technique as workflows 81 and 82 in `membership-scripts`:
+GitHub Actions cron schedules are always UTC and do not follow daylight saving time, so a single cron entry drifts by an hour twice a year relative to Pacific time. The workflow uses the same technique as `membership-scripts` workflow 81:
 
 * Each intended local time is scheduled **twice**, once at the UTC time that is correct during PDT (UTC-7) and once at the time that is correct during PST (UTC-8).
-* A first job, `time-check`, converts the current time to `America/Los_Angeles` and lets the run continue only if it falls in a one-hour window starting at an intended local time (and, for class-day-only runs, on the right day of week). The cron for the "other" offset always lands exactly one hour earlier or later, so it is skipped. The window is an hour wide so that a run GitHub delays by a few minutes still counts.
-
-The F26 team02 wrapper targets 4:30 PM Pacific every day plus 7:00 PM Pacific on Tuesday, Wednesday and Thursday:
+* The first step converts the current time to `America/Los_Angeles` and lets the run continue only if it falls in a one-hour window starting at an intended local time (and, for class-day-only runs, on the right day of week). The cron for the "other" offset always lands exactly one hour earlier or later, so it is skipped. The window is an hour wide so that a run GitHub delays by a few minutes still counts.
 
 ```yaml
     - cron: "30 23 * * *"       # 4:30 PM PDT (UTC-7), every day
@@ -140,42 +122,38 @@ The F26 team02 wrapper targets 4:30 PM Pacific every day plus 7:00 PM Pacific on
     - cron: "0 3 * * 3,4,5"     # 7:00 PM PST (UTC-8), Tue/Wed/Thu (next day in UTC)
 ```
 
-To change the times, update the cron entries **and** the windows in the `time-check` job together (the target minutes and the day-of-week test). Remember that for evening Pacific times the UTC day is already the next day, so Tue/Wed/Thu Pacific is `3,4,5` in the cron.
-
-The skipped runs still appear in the Actions tab (with the reusable-workflow job shown as skipped), which is expected.
-
-## Why does this not run on STARTER repos or legacy repos?
-
-The reusable workflow's `check_date` job contains:
-
-```yml
-if [[ "$OWNER" == "ucsb-cs156" ]]; then
-  echo "This workflow should not run on repos in the ucsb-cs156 organization"
-  echo "continue=false" >> "$GITHUB_OUTPUT"
-fi
-if [[ "$REPOSITORY" == STARTER* ]]; then
-  echo "This workflow should not run on STARTER repos"
-  echo "continue=false" >> "$GITHUB_OUTPUT"
-fi
-```
-
-Some background: the legacy code projects are maintained in what we call "legacy repos" in the `ucsb-cs156` organization, for example <https://github.com/ucsb-cs156/proj-courses> and <https://github.com/ucsb-cs156/proj-dining>. (We avoid "main repo" or "master repo" because those get confused with the main or master *branch*.) Those, and the `STARTER-*` repos in the quarter organization, are the starting point for team repos such as `ucsb-cs156-f26/team02-f26-01`. The same wrapper file exists in all of them, but in the legacy and STARTER repos there is no team, no project titled like the repo, and no Slack channel, so the date check also refuses to run there. Along with the date range, this keeps the workflow from wasting Actions minutes where it cannot do anything useful.
+To change the times, update the cron entries **and** the windows in the time-check step together (the target minutes and the day-of-week test). For evening Pacific times the UTC day is already the next day, so Tue/Wed/Thu Pacific is `3,4,5` in the cron. The skipped firings still appear in the Actions tab with the remaining steps skipped; that is expected.
 
 ## Troubleshooting
 
-| Symptom in the run log | Cause |
+The job summary (bottom of the run page) is the first place to look; it has one line per team. Messages you may see in it or in the log:
+
+| Message | Cause and fix |
 |---|---|
-| `Not one of the target Pacific times. Skipping execution.` | Normal: this was the cron firing for the other UTC offset. |
-| `START_DATE ('') or END_DATE ('') is empty. Stopping workflow.` | The `TEAMxx_START_DATE` / `TEAMxx_END_DATE` org variables are not set, or the wrapper names the wrong ones. |
-| `This workflow should not run on STARTER repos` | Expected on the starter; it only runs in team repos. |
-| `No project titled 'team02-f26-01' found in org` | The Kanban board's title does not exactly match the repo name, or the PAT cannot see the org's projects. |
-| `No columns found. Check that the project has a single-select field named 'Status'` | The board's status field was renamed; pass `STATUS_FIELD` from the wrapper. |
-| `No Slack channel named 'team-f26-01' found` | Channel is missing or named differently, or the bot is not in it (for private channels, the bot needs `groups:read` and membership). |
-| `Error reading JToken from JsonReader` | You are looking at a pre-F26 copy of the old self-contained workflow that still reads the obsolete `TEAM_TO_CHANNEL` variable; replace it with the wrapper. |
+| `Not one of the target Pacific times. Skipping.` | Normal: this firing was the cron for the other UTC offset. |
+| `[team02] skipped: TEAM02_START_DATE / TEAM02_END_DATE not set` | The org variables do not exist, or their repository access does not include `membership-scripts`. |
+| `[team02] skipped: today ... is after END_DATE ...` | The window has closed; extend `TEAM02_END_DATE` if the assignment was extended. |
+| `[legacy] repos matching ^proj-[a-z0-9]+-f26-\d\d$ ...: 0` | No legacy team repos exist yet, or they are named differently. |
+| `no project titled 'team02-f26-01' in ucsb-cs156-f26, and no usable team02_project for team f26-01 in _config.yml` | The board's title does not match the repo and the project number in `_config.yml` is still `tbd`; rename the board or fill in the number. If the title does match, `CLASSIC_PAT` may lack `read:project` or may not be able to see the organization. |
+| `project #22 'team02-f26-01' has no single-select field named 'Status'` | The board's status field was renamed; set the repository variable `KANBAN_STATUS_FIELD`. |
+| `no Slack channel named 'team-f26-01' (channels containing 'f26-01': [...])` | Channel missing or named differently, or the bot is not in it (private channels also need `groups:read`). |
+| `posting to #team-f26-01 failed: not_in_channel` | Add the bot to the channel (workflow 63a or `/invite`). |
+| `SLACK_BOT_USER_OAUTH_ACCESS_TOKEN is not set` | The secret is missing or not visible to `membership-scripts`. |
+| `Query failed: 401` | `CLASSIC_PAT` is missing, expired, or not visible to `membership-scripts`. |
+| Run is red but most teams show `ok` | By design: any failed team makes the run fail so it is noticed. Fix the listed teams; the others were posted. |
 
-## Known inconsistencies and future direction
+To reproduce a run on your own machine (read-only, nothing is posted):
 
-* As of October 2026 the `STARTER-team01` wrapper (and the sixteen `team01-f26-NN` repos) still have the PST-only crons and pass the secret as `PAT`, while `STARTER-team02` has the DST-aware schedule and passes `CLASSIC_PAT`. The team01 copies are only harmless because `TEAM01_END_DATE` has passed; align them before team01 runs again.
-* The header comment of the reusable workflow still shows the old PST-only crons as its example invocation.
-* Each scheduled firing starts a separate workflow run in every team repo (seven jobs each, half of the firings skipped by `time-check`). Since all the logic is now in one place anyway, the natural next step is to run the summary **once**, centrally, from `membership-scripts`, iterating over the team repos and channels the way workflows 81 and 82 there already do, and to drop the per-repo wrapper. That would remove the per-repo PR step from this page entirely.
-* The legacy code project is a further reason to centralize: there the teams start from several different repos (`ucsb-cs156/proj-courses`, `proj-dining`, `proj-frontiers`, `proj-happycows`, `proj-rec`, ...) rather than one starter, so keeping a wrapper in sync across all of them is more work than for team01/team02. A central job does not need the wrapper at all; it only needs to find each team's board, which it can do either from the naming scheme (repo `proj-courses-f26-01` and project titled `proj-courses-f26-01`) or from the project numbers that the course website already records per team in `_config.yml` of the term repo (`team01_project`, `team02_project`, `legacy_kanban` under `teams:` in <https://github.com/ucsb-cs156/f26/blob/main/_config.yml>, a public file).
+```
+cd membership-scripts
+python3 -m venv venv && source venv/bin/activate && pip install requests slack_sdk pyyaml
+ORG_NAME=ucsb-cs156-f26 GITHUB_TOKEN=$(gh auth token) DRY_RUN=true \
+  TEAM02_START_DATE=2026-10-01 TEAM02_END_DATE=2026-12-31 TEAM_FILTER='f26-0[1-3]' \
+  python3 kanban_slack_update.py
+```
+
+## History
+
+* F24 (Ahsun Tariq, Phill Conrad): self-contained workflow copied into every team repo; Slack channels looked up through a hand-maintained `TEAM_TO_CHANNEL` JSON variable of channel ids; dates, org name and columns edited as constants in each copy.
+* October 2026: logic moved to a reusable workflow in `ucsb-cs156/workflows`; dates moved to organization variables; channels found by name; columns discovered from the board. Team repos kept a thin wrapper.
+* Late October 2026: moved to one central run in `membership-scripts` (this page). Wrappers removed from the starters and team repos; the reusable workflow marked superseded.
