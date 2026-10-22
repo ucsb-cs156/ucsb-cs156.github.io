@@ -29,7 +29,52 @@ Or for:
 It is possible to have more than one profile active; there are pros and cons to this.  It is helpful to separate concerns, but it can also be difficult to make sure that
 every combination of profiles works properly.
 
+This is specifically useful in a couple of cases:
+1. You have dependencies (`@Bean`, `@Service`, etc) or configuration classes that only need to be active at specific times.
+2. You have properties that you'd like to be available at particular times.
+
 # Defining which Spring Boot profile runs
+
+## Maven
+
+We have the ability to define which Spring Profiles are set via a Maven property. We can use maven profiles (which differ from Spring profiles) to decide which Spring profiles are active during a given time. For example, most of our codebases as of 10/2026 use some version of the following code:
+
+```xml
+
+<profiles>
+    <profile>
+        <id>localhost</id>
+        <activation>
+            <activeByDefault>true</activeByDefault>
+        </activation>
+        <properties>
+            <springProfiles>localhost</springProfiles>
+        </properties>
+    </profile>
+    <profile>
+        <id>production</id>
+        <activation>
+            <property>
+            <name>env.PRODUCTION</name>
+            </property>
+        </activation>
+        <properties>
+            <springProfiles>production</springProfiles>
+        </properties>
+    </profile>
+</profiles>
+
+```
+
+This means that by default, the maven profile `localhost` is active and it sets the Spring Profile `localhost`. If the environment variable PRODUCTION is set, instead of localhost, the profile `production` will run. It will set `springProfiles` to the Spring Profile `production`.
+
+This is then substituted into `application.properties` with the following line:
+```yaml
+spring.profiles.active=@springProfiles@
+```
+
+The value of `springProfiles` will be substituted for `@springProfiles` with at *packaging time*, rather than runtime.
+
 
 ## Localhost
 
@@ -56,3 +101,8 @@ set the active profiles to `production` and `postgres`:
 -Dspring.profiles.active=production,postgres
 ```
 
+## Dynamically adding a Spring Profile at Runtime
+Maven is a useful way to add spring profiles at packaging time; however, sometimes, like on Dokku, the environmental variables are not available at packaging time. As a result, Spring Boot offers a way to add profiles at runtime. You can wire a Spring Factory, placing it under META-INF, with a reference to the environment processor, and dynamically add a Spring Profile prior to the app being fully instantiated. It will then behave normally.
+
+
+For an example of what this looks like, see [here](https://github.com/ucsb-cs156/proj-frontiers/blob/7e4dca2b4512dece9232b9324287bae30d702fa4/src/main/java/edu/ucsb/cs156/frontiers/startup/AzureProfileEnabler.java), and [here](https://github.com/ucsb-cs156/proj-frontiers/blob/7e4dca2b4512dece9232b9324287bae30d702fa4/src/main/resources/META-INF/spring.factories) for an example of spring.factories. As a note, you'll have to manually add the `application-<profile>.properties` to the classpath source, as it won't be picked up.

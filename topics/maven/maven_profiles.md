@@ -11,7 +11,7 @@ Sometimes you want your pom.xml to do different things on `localhost` vs. when r
 
 Maven profiles, along with the Spring Boot `*.properties` files are one way to acheive this.
 
-The  code below, when added to a Maven `pom.xml` creates two different profiles called `localhost` and `heroku`:
+The code below, when added to a Maven `pom.xml` creates two different profiles called `localhost` and `heroku`:
 
 Note that:
 *  You can put a `localhost.properties` file in `src/main/config/localhost` that will override the shared properties in `application.properties`, and
@@ -21,6 +21,12 @@ Note that:
    does not get loaded:
    * In `localhost.properties`: `spring.datasource.initialization-mode=always`
    * In `heroku.properties`: `spring.datasource.initialization-mode=never`
+
+However, Maven profiles have limitations: As the jar is usually packaged and run separately at runtime, the profile will behave however it is configured at packaging/build time rather than runtime, when the jar is already fully built. 
+
+Notably, multiple profiles can be active at once--this does come with some additional complications: once a property is set for a Maven lifecycle stage, it cannot change. This can lead to odd resolutions if multiple maven profiles overlap. 
+
+Additionally, Maven profiles differ from Spring profiles in that Maven profiles instruct Maven how to behave, and can have the same or differing names from Spring profiles. A Maven profile can be used to set a Spring profile.
 
 ```xml
    <profiles>
@@ -85,6 +91,12 @@ mvn help:active-profiles
 
 
 # More on Profiles
+
+Maven profiles have limitations: As the jar is usually packaged and run separately at runtime, the profile will behave however it is configured at packaging/build time rather than runtime, when the jar is already fully built. 
+
+Notably, multiple profiles can be active at once--this does come with some additional complications: once a property is set for a Maven lifecycle stage, it cannot change. This can lead to odd resolutions if multiple maven profiles overlap. 
+
+Additionally, Maven profiles differ from Spring profiles in that Maven profiles instruct Maven how to behave, and can have the same or differing names from Spring profiles. A Maven profile can be used to set a Spring profile.
 
 * <https://devcenter.heroku.com/articles/using-a-custom-maven-settings-xml#defining-the-maven_settings_path-config-variable>
 * <http://maven.apache.org/guides/introduction/introduction-to-profiles.html>
