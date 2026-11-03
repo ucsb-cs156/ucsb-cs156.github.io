@@ -102,7 +102,11 @@ set the active profiles to `production` and `postgres`:
 ```
 
 ## Dynamically adding a Spring Profile at Runtime
-Maven is a useful way to add spring profiles at packaging time; however, sometimes, like on Dokku, the environmental variables are not available at packaging time. As a result, Spring Boot offers a way to add profiles at runtime. You can wire a Spring Factory, placing it under META-INF, with a reference to the environment processor, and dynamically add a Spring Profile prior to the app being fully instantiated. It will then behave normally.
+Maven is a useful way to add spring profiles at packaging time; however, sometimes, like on Dokku, the environmental variables are not available at packaging time. As a result, Spring Boot offers a way to add profiles at runtime. 
 
+It requires two pieces: an `EnvironmentPostProcessor`, which is a Spring-Boot Provided interface that allows you to manage and change the system and Spring Boot environment, and a listing in `spring.factories`. The `spring.factories` listing points Spring Boot at the `EnvironmentPostProcessor`, allowing it to run, inspect environment variables, and change profiles at the appropriate time.
 
-For an example of what this looks like, see [here](https://github.com/ucsb-cs156/proj-frontiers/blob/7e4dca2b4512dece9232b9324287bae30d702fa4/src/main/java/edu/ucsb/cs156/frontiers/startup/AzureProfileEnabler.java), and [here](https://github.com/ucsb-cs156/proj-frontiers/blob/7e4dca2b4512dece9232b9324287bae30d702fa4/src/main/resources/META-INF/spring.factories) for an example of spring.factories. As a note, you'll have to manually add the `application-<profile>.properties` to the classpath source, as it won't be picked up.
+For an example of what an EnvironmentPostProcessor looks like, see [here](https://github.com/ucsb-cs156/proj-frontiers/blob/7e4dca2b4512dece9232b9324287bae30d702fa4/src/main/java/edu/ucsb/cs156/frontiers/startup/AzureProfileEnabler.java), and [here](https://github.com/ucsb-cs156/proj-frontiers/blob/7e4dca2b4512dece9232b9324287bae30d702fa4/src/main/resources/META-INF/spring.factories) for an example of spring.factories. As a note, you'll have to manually add the `application-<profile>.properties` to the classpath source, as it won't be picked up.
+
+Additionally, here's an article discussing `EnvironmentPostProcessors` further:
+- <https://www.baeldung.com/spring-boot-environmentpostprocessor>
