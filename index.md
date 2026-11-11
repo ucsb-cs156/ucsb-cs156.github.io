@@ -11,6 +11,15 @@ permalink: /
 The CS156 Docs are a guide for students in 
 [CMPSC 156](https://ucsb-cs156.github.io), a software engineering course based on legacy code taught at [UC Santa Barbara](https://ucsb.edu), and designed by [Phill Conrad](https://pconrad.github.io) 
 
+<details markdown="1">
+<summary><h2>Frequently accessed articles (click triangle to open)</h2></summary>
+
+* [PR Checklist](https://ucsb-cs156.github.io/topics/pull_requests/#pr-checklist)
+* [Assign your PRs](https://ucsb-cs156.github.io/topics/pull_requests/pull_requests_assigning.html#pull-requests-assigning---how-to-assign-a-pull-request)
+* [Deploy your PRs](https://ucsb-cs156.github.io/topics/pull_requests/pull_requests_deployments.html#pull-requests-deployments---link-your-prs-to-a-deployment)
+  
+</details>
+
 ## Uptime
 
 [![ucsb-cs156 apps](https://badge.uptimerobot.com/psp/66b6313e6bead03ff6b83cc9aa194c90.svg?style=logo&theme=light)](https://stats.uptimerobot.com/cRGsgpnpFI?utm_source=status_badge&utm_medium=referral)
