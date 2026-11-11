@@ -19,22 +19,22 @@ The dropdown options are these:
 
 If other PRs have been merged, where the `main` pointer points is different from where it used to point.  That's what we mean when we say "`main` has moved".
 
-The impact is that your PR isn't mergeable in it's current form, because CI/CD has only tested your code on top of the "old version" of `main`, which isn't 
+The impact is that your PR isn't mergeable in its current form, because CI/CD has only tested your code on top of the "old version" of `main`, which isn't 
 what we will actually *get* after merging your PR.   
 
 The basic problem is that two PRs can each pass on their own and still break `main` when they're combined.  
 
 So the branch protection rules for `main` specify that we need an updated version of the commit history that combines your changes with the current version of `main`, and *that* has to pass CI/CD before we are permitted to merge the code.  This is part of the "continuous integration" (CI) part of CI/CD; we need to be continuously integrating new changes with the `main` branch and testing them thoroughly before merging them.
 
-So, to get it mergable, we need to either do a "merge" or a "rebase".
+So, to get it mergeable, we need to either do a "merge" or a "rebase".
 
 ## Ok, what's the short version of what I need to do?
 
-Typically, you just click the button, take the default (`merge`) wait for CI/CD to run again, and then the problem is solved.
+Typically, you just click the button, take the default (`merge`), wait for CI/CD to run again, and then the problem is solved.
 
-That's usually enough, but it you want to *understand* what's happening, and the difference between "merge" and "rebase", read on.
+That's usually enough, but if you want to *understand* what's happening, and the difference between "merge" and "rebase", read on.
 
-## The mental model of "commits"
+## The mental model of "branches"
 
 Before we can talk about why this is happening, and what the difference is between a merge and rebase, we have to make sure
 we understand what we mean by "branch".
@@ -64,7 +64,7 @@ But this is not, technically, the definition of branch, or how it is implemented
 * `git rebase`
 * `git reset`
 
-To understand these command properly, you need to start with the mental model that: *a branch is a pointer to a commit, identified by it's SHA*. 
+To understand these commands properly, you need to start with the mental model that: *a branch is a pointer to a commit, identified by its SHA*. 
 
 It's really just a handy name that we give to a SHA, the same way in a C++ program, we might have `p` or `head` or `tail` be a variable that stores the
 address in memory of some piece of dynamically allocated memory, or a reference in a Java program is handy name for the location of some instance of `java.lang.Object`.
@@ -106,7 +106,7 @@ Neither button moves `main`. Both only move the `feature` pointer. The differenc
 - GitHub replays your changes on top of `N2`. This creates new commits `A′` and `B′`. They have the same diffs and messages as `A` and `B` but different SHAs, because their parents are different.
 - `feature` moves from `B` to `B′`. `B` is not an ancestor of `B′`, so this is a force-push style update.
 - `A` and `B` still exist, but no branch points to them anymore. `M` is no longer special for your branch. As far as `feature` is concerned, it's just an ordinary commit in `main`'s history.
-- Local effect: your laptop's `feature` still points to `B`, so the two copies have diverged. A plain `git pull` will either complain or create a messy merge. Students need `git fetch` followed by `git reset --hard origin/feature`, or `git pull --rebase`. In practice, this is the main reason to tell students to prefer the merge option.
+- Local effect: your laptop's `feature` still points to `B`, so the two copies have diverged. A plain `git pull` will either complain or create a messy merge. You need `git fetch` followed by `git reset --hard origin/feature`, or `git pull --rebase`. In practice, this is the main reason to prefer the merge option.
 
 **Either way,** `N2` (current `main`) is now an ancestor of `feature`, and that's what makes GitHub stop saying "out of date." CI then re-runs on a commit whose content includes your work plus `N1` and `N2`.
 
@@ -120,17 +120,9 @@ Which of these you get depends on the repo's merge button setting, not on how th
 | **Squash and merge** | new `main` = `S`, parent `N2` | new `main` = `S`, parent `N2` |
 | **Rebase and merge** | linear: `M–N1–N2–A″–B″` (`U` is dropped) | linear: `M–N1–N2–A″–B″` |
 
-```
-Before                       Update with merge commit       Update with rebase
-                                                            
-M---N1---N2   <- main        M---N1---N2   <- main          M---N1---N2   <- main
- \                            \         \                              \
-  A---B       <- feature       A---B-----U   <- feature                 A'---B'  <- feature
-(M = old-main)                                              (old A---B still exist, but
-                                                             no branch points to them)
-```
 
-### The *other* button: "Create a merge commit", "Squash and merge", "Rebase and merge"
+
+## The *other* button: "Create a merge commit", "Squash and merge", "Rebase and merge"
 
 The *Update branch* button only moves **your** branch pointer.  The big green button at the bottom of
 the PR is different: it's the one that moves **`main`**.  Its dropdown can offer up to three merge methods.
@@ -148,9 +140,9 @@ All three examples below start from the "Update with merge commit" picture above
 ### Create a merge commit (the default)
 
 ```
-M---N1---N2-------P    <- main
- \         \     /
-  A---B-----U----      <- feature
+  M---N1---N2------P    <- main
+   \         \    /
+    A---B-----U         <- feature
 ```
 
 GitHub makes a new commit `P` with two parents: `N2` (where main pointed just before the merge) and `U` (your branch).
