@@ -6,6 +6,9 @@ description:  "A cloud provider of MongoDB databases"
 has_children: true
 ---
 
+{% include mongodb.com_warning.md %}
+
+
 This article, and the ones under it, are specifically about using MongoDB.com to host
 MongoDB databases.
 
@@ -18,5 +21,5 @@ further.
 
 # Articles about getting things done with MongoDB.com
 
-* [mongodb_new_database](/topics/mongodb/mongodb_new_database) Setting up an account and a new database
+* [mongodb_new_database](/topics/mongodb/mongodb_new_cloud_database) Setting up an account and a new database
 
