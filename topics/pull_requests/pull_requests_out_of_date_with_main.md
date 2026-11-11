@@ -84,6 +84,8 @@ the old place that main pointed before you started (call this old-main) the curr
 If you can make diagrams to explain it, even better!
 ```
 
+<img width="2720" height="2400" alt="update_branch_merge_vs_rebase_pointers" src="https://github.com/user-attachments/assets/f7b980e3-944d-414f-8152-6c5b0872515b" />
+
 ### What each button does to the pointers
 
 Neither button moves `main`. Both only move the `feature` pointer. The difference is which commit it ends up pointing to.
