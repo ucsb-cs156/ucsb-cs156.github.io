@@ -85,7 +85,7 @@ In the diagram above
 
 This means that CI/CD:
 * was last run against whatever main was at the time of that run (here, `M`)
-* has not been run on the combination of your code with the current main (`N1` and `N2`)
+* has not been run on the combination of your code with the current `main` (`N1` and `N2`)
 
 
 ### What do the buttons do
@@ -145,7 +145,7 @@ All three examples below start from the "Update with merge commit" picture above
     A---B-----U         <- feature
 ```
 
-GitHub makes a new commit `P` with two parents: `N2` (where main pointed just before the merge) and `U` (your branch).
+GitHub makes a new commit `P` with two parents: `N2` (where `main` pointed just before the merge) and `U` (your branch).  `main` moves to `P`.
 Every commit, including `A`, `B` and `U`, keeps its SHA and stays in `main`'s history.
 
 * Pro: nothing is rewritten; `git log --first-parent main` shows one entry per PR.
@@ -162,7 +162,7 @@ GitHub makes **one** new commit `S` whose parent is `N2`.  `S` contains all of y
 
 * Pro: a clean history with one commit per PR, and how you updated your branch doesn't matter.
 * Con: the individual commits are gone from `main`.  Because your branch's commits are not ancestors
-  of `main`, `git branch -d feature` may refuse to delete it, saying the branch is ‘not fully merged' (Use `-D`). If you keep working
+  of `main`, `git branch -d feature` may refuse to delete it, saying the branch is "not fully merged" (use `-D`). If you keep working
   on the same branch and open another PR, the old commits reappear in it.
   **Delete the branch after a squash merge and start a new one from `main`.**
 
