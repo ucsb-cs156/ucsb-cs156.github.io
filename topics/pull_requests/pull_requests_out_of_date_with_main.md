@@ -71,23 +71,6 @@ address in memory of some piece of dynamically allocated memory, or a reference 
 
 ## Ok, so what's merge vs. rebase
 
-<detail markdown="1">
-  <summary>AI disclosure; I asked Claude for help in writing this section, then hand edited the result</summary>
-  I asked Claude for help with this part, using the following initial prompt:
-```
-Please read over this page: 
-
-https://github.com/ucsb-cs156/ucsb-cs156.github.io/blob/main/topics/pull_requests/pull_requests_out_of_date_with_main.md
-
-Then, help me construct an explanation of the difference between what happens when you click 
-"Update with merge commit" vs. "Update with rebase" in terms of the branch pointers for your branch, 
-the old place that main pointed before you started (call this old-main) the current value of main and the new value of main.
-
-If you can make diagrams to explain it, even better!
-```
-I used several follow up prompts plus hand editing to get to this final result.
-</detail>
-
 ### The starting point
 
 Suppose we start with this situation:
