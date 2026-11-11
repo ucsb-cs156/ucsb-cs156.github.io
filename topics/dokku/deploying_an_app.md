@@ -103,6 +103,26 @@ If you get this error message, it may be because you missed this step:
 Failed to execute goal com.cosium.code:git-code-format-maven-plugin:5.3:install-hooks (install-formatter-hook) on project ...: One of setGitDir or setWorkTree must be called. -> [Help 1]
 ```
 
+If you want to check whether you did this or not, you can use:
+
+```
+dokku git:report appname
+```
+
+The line you want to see is this:
+
+```
+       Git keep git dir:              true                    
+```
+
+If instead, you see this:
+
+```
+       Git keep git dir:              false                    
+```
+
+It's because you missed this step.
+
 ## Step 5: Create and Link Postgres Database (`dokku postgres:create ...`)
 
 Most apps in this course will use a Postgres Database.  

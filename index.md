@@ -11,6 +11,20 @@ permalink: /
 The CS156 Docs are a guide for students in 
 [CMPSC 156](https://ucsb-cs156.github.io), a software engineering course based on legacy code taught at [UC Santa Barbara](https://ucsb.edu), and designed by [Phill Conrad](https://pconrad.github.io) 
 
+<details markdown="1">
+<summary><span style="font-size: 120%; font-weight: bold">Frequently accessed articles (click triangle to open)</span></summary>
+
+* [PR Checklist](https://ucsb-cs156.github.io/topics/pull_requests/#pr-checklist)
+* [Assign your PRs](https://ucsb-cs156.github.io/topics/pull_requests/pull_requests_assigning.html#pull-requests-assigning---how-to-assign-a-pull-request)
+* [Deploy your PRs](https://ucsb-cs156.github.io/topics/pull_requests/pull_requests_deployments.html#pull-requests-deployments---link-your-prs-to-a-deployment)
+* [PR out of date with main](https://ucsb-cs156.github.io/topics/pull_requests/pull_requests_out_of_date_with_main.html)
+
+</details>
+
+## Uptime
+
+[![ucsb-cs156 apps](https://badge.uptimerobot.com/psp/66b6313e6bead03ff6b83cc9aa194c90.svg?style=logo&theme=light)](https://stats.uptimerobot.com/cRGsgpnpFI?utm_source=status_badge&utm_medium=referral)
+
 ## Thanks
 
 <a href="https://www.chromatic.com/"><img src="https://user-images.githubusercontent.com/321738/84662277-e3db4f80-af1b-11ea-88f5-91d67a5e59f6.png" width="153" height="30" alt="Chromatic" /></a>

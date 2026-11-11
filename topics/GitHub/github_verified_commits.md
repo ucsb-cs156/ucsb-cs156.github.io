@@ -340,6 +340,49 @@ git push origin copilot/fix-406 -f
 
 If it doesn't rebase cleanly, abort the rebase with `git rebase --abort` and try another approach.
 
+## Bypassing Signed Commits when Creating Student Repos
+
+Many of the legacy code projects as of f26 include commits from prior to our verified commit requirements. This can be an issue when instantiating student repositories, as GitHub
+will reject old commits that are unsigned. Fortunately, there is a way to bypass this when adding the main branch. Plus, it won't cause an issue for the students, as long as the new commits
+they are adding are signed. To use this, do the following.
+
+1. On the repository in question, go to Settings.
+2. Under Rulesets, select "Rulesets":
+
+<img width="1280" height="720" alt="image" src="https://github.com/user-attachments/assets/f0104003-6137-4cd0-9e0a-08039d16d4ab" />
+
+3. Select your ruleset requiring signed commits
+
+<img width="1440" height="387" alt="image" src="https://github.com/user-attachments/assets/364424a8-847a-4d60-add7-8fd1337511cd" />
+
+
+4. Under Bypass List, Select "Add Bypass":
+
+<img width="1447" height="390" alt="image" src="https://github.com/user-attachments/assets/e76c7b48-f112-43ca-ad4f-1bca118840c8" />
+
+5. Add "Organization Admins"
+<img width="679" height="657" alt="image" src="https://github.com/user-attachments/assets/265770b5-dd11-4bad-8dc2-a66ae92e8b3a" />
+
+6. Select "Save Changes" at the bottom:
+
+<img width="1584" height="406" alt="image" src="https://github.com/user-attachments/assets/aca1b5fd-1612-4824-bade-b0c865989f5b" />
+
+7. Push the branch that includes unsigned commits to the repository. To be completely sure, I used `-f` when pushing, but I am unsure whether or not that is required.
+
+8. Delete organizational admins off the bypass list:
+
+<img width="1449" height="253" alt="image" src="https://github.com/user-attachments/assets/c747349f-c7af-46ce-ad1f-cef2396d7880" />
+
+9. Select "Save Changes" at the bottom again.
+
+<img width="1584" height="406" alt="image" src="https://github.com/user-attachments/assets/aca1b5fd-1612-4824-bade-b0c865989f5b" />
+
+You've now successfully pushed the branch. The students should have no problem from here, as GitHub will only evaluate new commits they push.
+
+
+
+
+
 ## Last Resort: Make a main-archive and a main branch
 
 
