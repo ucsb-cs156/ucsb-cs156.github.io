@@ -78,13 +78,15 @@ Suppose we start with this situation:
 <img width="1360" height="400" alt="image" src="https://github.com/user-attachments/assets/9047ca2e-3983-4323-a338-e6e7fe5d8cc2" />
 
 In the diagram above 
-* M is the commit that `main` pointed to before you started your work.
-* A and B are the commits for your PR
-* N1 and N2 are commits that have been added to the `main` branch in the meantime, so now `main` points to `N2`, not `M` anymore.
+* `M` is the commit that `main` pointed to before you started your work.
+* `A` and `B` are the commits for your PR
+* `N1` and `N2` are commits that have been added to the `main` branch in the meantime, so now `main` points to `N2`, not `M` anymore.
+
 
 This means that CI/CD:
-* has been tested on the combination of the changes in `M` (and everything before it), `A`, and `B`. 
-* has *not* been tested on the combination of your code with `N1` and `N2`.  
+* was last run against whatever main was at the time of that run (here, `M`)
+* has not been run on the combination of your code with the current main (`N1` and `N2`)
+
 
 ### What do the buttons do
 
@@ -93,20 +95,20 @@ Neither button moves `main`. Both only move the `feature` pointer. The differenc
 <img width="1360" height="420" alt="image" src="https://github.com/user-attachments/assets/f18da5f4-412f-4f15-8446-f88ed28aa20c" />
 
 **Update with merge commit**
-- GitHub creates one new commit, U, with two parents: B (your old tip) and N2 (current `main`).
-- `feature` moves from B to U. Since U is a child of B, this is a normal forward move.
-- A and B are unchanged and keep their SHAs. `old-main` (M) stays in your branch's history as the place where you forked.
-- Local effect: a plain `git pull` on the branch fast-forwards to U.
+- GitHub creates one new commit, `U`, with two parents: `B` (your old tip) and `N2` (current `main`).
+- `feature` moves from `B` to `U`. Since `U` is a child of `B`, this is a normal forward move.
+- `A` and `B` are unchanged and keep their SHAs. `M` stays in your branch's history as the place where you forked.
+- Local effect: a plain `git pull` on the branch fast-forwards to `U`.
 
 <img width="1360" height="510" alt="image" src="https://github.com/user-attachments/assets/f657f707-bb9d-46b0-af24-7ac300bc0e13" />
 
 **Update with rebase**
-- GitHub replays your changes on top of N2. This creates new commits A′ and B′. They have the same diffs and messages as A and B but different SHAs, because their parents are different.
-- `feature` moves from B to B′. B is not an ancestor of B′, so this is a force-push style update.
-- A and B still exist, but no branch points to them anymore. M is no longer special for your branch. As far as `feature` is concerned, it's just an ordinary commit in `main`'s history.
-- Local effect: your laptop's `feature` still points to B, so the two copies have diverged. A plain `git pull` will either complain or create a messy merge. Students need `git fetch` followed by `git reset --hard origin/feature`, or `git pull --rebase`. In practice, this is the main reason to tell students to prefer the merge option.
+- GitHub replays your changes on top of `N2`. This creates new commits `A′` and `B′`. They have the same diffs and messages as `A` and `B` but different SHAs, because their parents are different.
+- `feature` moves from `B` to `B′`. `B` is not an ancestor of `B′`, so this is a force-push style update.
+- `A` and `B` still exist, but no branch points to them anymore. `M` is no longer special for your branch. As far as `feature` is concerned, it's just an ordinary commit in `main`'s history.
+- Local effect: your laptop's `feature` still points to `B`, so the two copies have diverged. A plain `git pull` will either complain or create a messy merge. Students need `git fetch` followed by `git reset --hard origin/feature`, or `git pull --rebase`. In practice, this is the main reason to tell students to prefer the merge option.
 
-**Either way,** N2 (current `main`) is now an ancestor of `feature`, and that's what makes GitHub stop saying "out of date." CI then re-runs on a commit whose content includes your work plus N1 and N2.
+**Either way,** `N2` (current `main`) is now an ancestor of `feature`, and that's what makes GitHub stop saying "out of date." CI then re-runs on a commit whose content includes your work plus `N1` and `N2`.
 
 ### The new value of `main` (after the PR is merged)
 
@@ -114,10 +116,9 @@ Which of these you get depends on the repo's merge button setting, not on how th
 
 | | After "update with merge" | After "update with rebase" |
 |---|---|---|
-| **Create a merge commit** | new `main` = P, parents N2 and U | new `main` = P, parents N2 and B′ |
-| **Squash and merge** | new `main` = S, parent N2 | new `main` = S, parent N2 |
-| **Rebase and merge** | linear history, with no merge commits | linear: M–N1–N2–A′–B′ |
-
+| **Create a merge commit** | new `main` = `P`, parents `N2` and `U` | new `main` = `P`, parents `N2` and `B′` |
+| **Squash and merge** | new `main` = `S`, parent `N2` | new `main` = `S`, parent `N2` |
+| **Rebase and merge** | linear: `M–N1–N2–A″–B″` (`U` is dropped) | linear: `M–N1–N2–A″–B″` |
 
 ```
 Before                       Update with merge commit       Update with rebase
@@ -152,8 +153,8 @@ M---N1---N2-------P    <- main
   A---B-----U----      <- feature
 ```
 
-GitHub makes a new commit P with two parents: N2 (the old `main`) and U (your branch).  `main` moves to P.
-Every commit, including A, B and U, keeps its SHA and stays in `main`'s history.
+GitHub makes a new commit `P` with two parents: `N2` (where main pointed just before the merge) and `U` (your branch).
+Every commit, including `A`, `B` and `U`, keeps its SHA and stays in `main`'s history.
 
 * Pro: nothing is rewritten; `git log --first-parent main` shows one entry per PR.
 * Con: history fills up with merge commits, including the "update branch" ones.
@@ -164,12 +165,12 @@ Every commit, including A, B and U, keeps its SHA and stays in `main`'s history.
 M---N1---N2---S        <- main
 ```
 
-GitHub makes **one** new commit S whose parent is N2.  S contains all of your PR's changes together.
-`main` moves to S.  A, B, and U are *not* in `main`'s history at all.
+GitHub makes **one** new commit `S` whose parent is `N2`.  `S` contains all of your PR's changes together.
+`main` moves to `S`.  `A`, `B`, and `U` are *not* in `main`'s history at all.
 
 * Pro: a clean history with one commit per PR, and how you updated your branch doesn't matter.
 * Con: the individual commits are gone from `main`.  Because your branch's commits are not ancestors
-  of `main`, `git branch -d feature` will say the branch is "not fully merged".  If you keep working
+  of `main`, `git branch -d feature` may refuse to delete it, saying the branch is ‘not fully merged' (Use `-D`). If you keep working
   on the same branch and open another PR, the old commits reappear in it.
   **Delete the branch after a squash merge and start a new one from `main`.**
 
@@ -179,7 +180,7 @@ GitHub makes **one** new commit S whose parent is N2.  S contains all of your PR
 M---N1---N2---A''---B''   <- main
 ```
 
-GitHub replays each of your commits on top of N2 and moves `main` to the last one.  The history is
+GitHub replays each of your commits on top of `N2` and moves `main` to the last one.  The history is
 linear, with no merge commit.  These are *new* commits with new SHAs, even if you had already rebased,
 because GitHub always rewrites the committer info.
 
