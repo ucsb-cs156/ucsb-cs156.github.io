@@ -71,7 +71,9 @@ address in memory of some piece of dynamically allocated memory, or a reference 
 
 ## Ok, so what's merge vs. rebase
 
-Full disclosure: this page was hand written up to this point.  I asked Claude for help with this part, using the following prompt:
+<detail markdown="1">
+  <summary>AI disclosure; I asked Claude for help in writing this section, then hand edited the result</summary>
+  I asked Claude for help with this part, using the following initial prompt:
 ```
 Please read over this page: 
 
@@ -83,18 +85,37 @@ the old place that main pointed before you started (call this old-main) the curr
 
 If you can make diagrams to explain it, even better!
 ```
+I used several follow up prompts plus hand editing to get to this final result.
+</detail>
 
-<img width="2720" height="2400" alt="update_branch_merge_vs_rebase_pointers" src="https://github.com/user-attachments/assets/f7b980e3-944d-414f-8152-6c5b0872515b" />
+### The starting point
 
-### What each button does to the pointers
+Suppose we start with this situation:
+
+<img width="1360" height="400" alt="image" src="https://github.com/user-attachments/assets/9047ca2e-3983-4323-a338-e6e7fe5d8cc2" />
+
+In the diagram above 
+* M is the commit that `main` pointed to before you started your work.
+* A and B are the commits for your PR
+* N1 and N2 are commits that have been added to the `main` branch in the meantime, so now `main` points to `N2`, not `M` anymore.
+
+This means that CI/CD:
+* has been tested on the combination of the changes in `M` (and everything before it), `A`, and `B`. 
+* has *not* been tested on the combination of your code with `N1` and `N2`.  
+
+### What do the buttons do
 
 Neither button moves `main`. Both only move the `feature` pointer. The difference is which commit it ends up pointing to.
+
+<img width="1360" height="420" alt="image" src="https://github.com/user-attachments/assets/f18da5f4-412f-4f15-8446-f88ed28aa20c" />
 
 **Update with merge commit**
 - GitHub creates one new commit, U, with two parents: B (your old tip) and N2 (current `main`).
 - `feature` moves from B to U. Since U is a child of B, this is a normal forward move.
 - A and B are unchanged and keep their SHAs. `old-main` (M) stays in your branch's history as the place where you forked.
 - Local effect: a plain `git pull` on the branch fast-forwards to U.
+
+<img width="1360" height="510" alt="image" src="https://github.com/user-attachments/assets/f657f707-bb9d-46b0-af24-7ac300bc0e13" />
 
 **Update with rebase**
 - GitHub replays your changes on top of N2. This creates new commits A′ and B′. They have the same diffs and messages as A and B but different SHAs, because their parents are different.
@@ -114,7 +135,6 @@ Which of these you get depends on the repo's merge button setting, not on how th
 | **Squash and merge** | new `main` = S, parent N2 | new `main` = S, parent N2 |
 | **Rebase and merge** | linear history, with no merge commits | linear: M–N1–N2–A′–B′ |
 
-The squash row is a good teaching point. If the course repos squash-merge, the choice of update button leaves no trace in `main`. It only affects the PR branch and the students' local clones.
 
 ```
 Before                       Update with merge commit       Update with rebase
@@ -126,6 +146,62 @@ M---N1---N2   <- main        M---N1---N2   <- main          M---N1---N2   <- mai
                                                              no branch points to them)
 ```
 
+### The *other* button: "Create a merge commit", "Squash and merge", "Rebase and merge"
+
+The *Update branch* button only moves **your** branch pointer.  The big green button at the bottom of
+the PR is different: it's the one that moves **`main`**.  Its dropdown can offer up to three merge methods.
+
+### Where these are set
+
+A repo admin turns them on or off under **Settings → General → Pull Requests**, with the checkboxes
+*Allow merge commits*, *Allow squash merging*, and *Allow rebase merging*.  Only the methods that are
+enabled show up in the dropdown.  If more than one is enabled, whoever clicks the button chooses.
+Branch protection rules or rulesets can narrow this further.  For example, *Require linear history*
+rules out merge commits.  If a repo uses a merge queue, the queue picks the method instead.
+
+All three examples below start from the "Update with merge commit" picture above: `feature` points to U.
+
+### Create a merge commit (the default)
+
+```
+M---N1---N2-------P    <- main
+ \         \     /
+  A---B-----U----      <- feature
+```
+
+GitHub makes a new commit P with two parents: N2 (the old `main`) and U (your branch).  `main` moves to P.
+Every commit, including A, B and U, keeps its SHA and stays in `main`'s history.
+
+* Pro: nothing is rewritten; `git log --first-parent main` shows one entry per PR.
+* Con: history fills up with merge commits, including the "update branch" ones.
+
+### Squash and merge
+
+```
+M---N1---N2---S        <- main
+```
+
+GitHub makes **one** new commit S whose parent is N2.  S contains all of your PR's changes together.
+`main` moves to S.  A, B, and U are *not* in `main`'s history at all.
+
+* Pro: a clean history with one commit per PR, and how you updated your branch doesn't matter.
+* Con: the individual commits are gone from `main`.  Because your branch's commits are not ancestors
+  of `main`, `git branch -d feature` will say the branch is "not fully merged".  If you keep working
+  on the same branch and open another PR, the old commits reappear in it.
+  **Delete the branch after a squash merge and start a new one from `main`.**
+
+### Rebase and merge
+
+```
+M---N1---N2---A''---B''   <- main
+```
+
+GitHub replays each of your commits on top of N2 and moves `main` to the last one.  The history is
+linear, with no merge commit.  These are *new* commits with new SHAs, even if you had already rebased,
+because GitHub always rewrites the committer info.
+
+* Pro: linear history that still keeps each individual commit.
+* Con: SHAs in `main` don't match the ones on your branch, so the same "start a fresh branch" advice applies.
 
 
 
