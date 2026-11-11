@@ -95,3 +95,110 @@ courses_dev_ooiuut_mongo> db.updates.countDocuments({})
 4104
 courses_dev_ooiuut_mongo> 
 ```
+
+## Find one document (any document)
+
+Here's how to show one document in a collection, when you don't care which one (you just want to see what documents look like).
+
+Use: <tt>db.<i>collection</i>.findOne()</tt>
+
+```
+courses_dev_ooiuut_mongo> db.courses.findOne()
+{
+  _id: ObjectId("6aed36653c9a790d310e64e5"),
+  courseInfo: {
+    quarter: '20221',
+    courseId: 'CMPSC     5A -1',
+    title: 'INTRO DATA SCI 1',
+    description: 'Introduction to data science methods and Python programming language for st udents with little to no experience in the subjects. Topics include foundat ional programming concepts, problem-solving strategies and code design, and data science concepts as table operations, exploratory data analysis, basi c probability.',
+    generalEducation: []
+  },
+  section: {
+    enrollCode: '57109',
+    section: '0100',
+    enrolledTotal: 68,
+    maxEnroll: 80,
+    secondaryStatus: 'R',
+    departmentApprovalRequired: false,
+    instructorApprovalRequired: false,
+    restrictionMajor: '-CMPSC',
+    concurrentCourses: [],
+    timeLocations: [
+      {
+        room: '1930',
+        building: 'BUCHN',
+        roomCapacity: '100',
+        days: ' T R   ',
+        beginTime: '11:00',
+        endTime: '12:15'
+      }
+    ],
+    instructors: [
+      {
+        instructor: 'SOLIS S W',
+        functionCode: 'Teaching and in charge'
+      }
+    ]
+  },
+  _class: 'edu.ucsb.cs156.courses.documents.ConvertedSection'
+}
+courses_dev_ooiuut_mongo> 
+```
+
+## Narrowing your search
+
+Suppose you want to find all documents that have the value `20221` in the `quarter` field inside `courseInfo`.
+
+Here's how you do it:
+
+```
+courses_dev_ooiuut_mongo> db.courses.countDocuments({ "courseInfo.quarter": "20221" })
+7211
+courses_dev_ooiuut_mongo> 
+```
+
+And if you want to show one document that has `20271` as the quarter, you can do it like this:
+
+```
+courses_dev_ooiuut_mongo> db.courses.findOne({ "courseInfo.quarter": "20221" })
+{
+  _id: ObjectId("6aed36653c9a790d310e64e5"),
+  courseInfo: {
+    quarter: '20221',
+    courseId: 'CMPSC     5A -1',
+    title: 'INTRO DATA SCI 1',
+    description: 'Introduction to data science methods and Python programming language for st udents with little to no experience in the subjects. Topics include foundat ional programming concepts, problem-solving strategies and code design, and data science concepts as table operations, exploratory data analysis, basi c probability.',
+    generalEducation: []
+  },
+  section: {
+    enrollCode: '57109',
+    section: '0100',
+    enrolledTotal: 68,
+    maxEnroll: 80,
+    secondaryStatus: 'R',
+    departmentApprovalRequired: false,
+    instructorApprovalRequired: false,
+    restrictionMajor: '-CMPSC',
+    concurrentCourses: [],
+    timeLocations: [
+      {
+        room: '1930',
+        building: 'BUCHN',
+        roomCapacity: '100',
+        days: ' T R   ',
+        beginTime: '11:00',
+        endTime: '12:15'
+      }
+    ],
+    instructors: [
+      {
+        instructor: 'SOLIS S W',
+        functionCode: 'Teaching and in charge'
+      }
+    ]
+  },
+  _class: 'edu.ucsb.cs156.courses.documents.ConvertedSection'
+}
+courses_dev_ooiuut_mongo> 
+```
+
