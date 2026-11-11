@@ -75,7 +75,7 @@ address in memory of some piece of dynamically allocated memory, or a reference 
 
 Suppose we start with this situation:
 
-<img width="1360" height="400" alt="image" src="https://github.com/user-attachments/assets/9047ca2e-3983-4323-a338-e6e7fe5d8cc2" />
+<img width="680"  alt="image" src="https://github.com/user-attachments/assets/9047ca2e-3983-4323-a338-e6e7fe5d8cc2" />
 
 In the diagram above 
 * `M` is the commit that `main` pointed to before you started your work.
@@ -92,7 +92,7 @@ This means that CI/CD:
 
 Neither button moves `main`. Both only move the `feature` pointer. The difference is which commit it ends up pointing to.
 
-<img width="1360" height="420" alt="image" src="https://github.com/user-attachments/assets/f18da5f4-412f-4f15-8446-f88ed28aa20c" />
+<img width="680"  alt="image" src="https://github.com/user-attachments/assets/f18da5f4-412f-4f15-8446-f88ed28aa20c" />
 
 **Update with merge commit**
 - GitHub creates one new commit, `U`, with two parents: `B` (your old tip) and `N2` (current `main`).
@@ -100,7 +100,7 @@ Neither button moves `main`. Both only move the `feature` pointer. The differenc
 - `A` and `B` are unchanged and keep their SHAs. `M` stays in your branch's history as the place where you forked.
 - Local effect: a plain `git pull` on the branch fast-forwards to `U`.
 
-<img width="1360" height="510" alt="image" src="https://github.com/user-attachments/assets/f657f707-bb9d-46b0-af24-7ac300bc0e13" />
+<img width="680"  alt="image" src="https://github.com/user-attachments/assets/f657f707-bb9d-46b0-af24-7ac300bc0e13" />
 
 **Update with rebase**
 - GitHub replays your changes on top of `N2`. This creates new commits `A′` and `B′`. They have the same diffs and messages as `A` and `B` but different SHAs, because their parents are different.
