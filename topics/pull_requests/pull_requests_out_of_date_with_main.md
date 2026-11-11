@@ -11,11 +11,11 @@ description:  "What that message means on GitHub"
 
 Sometimes you see this pop up on a PR:
 
-<img width="808" height="99" alt="image" src="https://github.com/user-attachments/assets/b3a41e0d-f5a6-40f3-8423-021ef5658ef4" />
+<img width="808" height="99" alt="GitHub PR message saying the branch is out-of-date with the base branch, with an Update branch button" src="https://github.com/user-attachments/assets/b3a41e0d-f5a6-40f3-8423-021ef5658ef4" />
 
 The dropdown options are these:
 
-<img width="329" height="164" alt="image" src="https://github.com/user-attachments/assets/0043932f-a25d-47b4-a7f6-b66ef8847950" />
+<img width="329" height="164" alt="Update branch dropdown with two options: Update with merge commit and Update with rebase" src="https://github.com/user-attachments/assets/0043932f-a25d-47b4-a7f6-b66ef8847950" />
 
 If other PRs have been merged, where the `main` pointer points is different from where it used to point.  That's what we mean when we say "`main` has moved".
 
@@ -75,7 +75,7 @@ address in memory of some piece of dynamically allocated memory, or a reference 
 
 Suppose we start with this situation:
 
-<img width="680"  alt="image" src="https://github.com/user-attachments/assets/9047ca2e-3983-4323-a338-e6e7fe5d8cc2" />
+<img width="680"  alt="Commit graph: main points to N2 after commits M, N1, N2; feature points to B, with commits A and B branching off from M" src="https://github.com/user-attachments/assets/9047ca2e-3983-4323-a338-e6e7fe5d8cc2" />
 
 In the diagram above 
 * `M` is the commit that `main` pointed to before you started your work.
@@ -92,7 +92,7 @@ This means that CI/CD:
 
 Neither button moves `main`. Both only move the `feature` pointer. The difference is which commit it ends up pointing to.
 
-<img width="680"  alt="image" src="https://github.com/user-attachments/assets/f18da5f4-412f-4f15-8446-f88ed28aa20c" />
+<img width="680"  alt="Commit graph after Update with merge commit: new commit U has parents B and N2; feature now points to U; main still points to N2" src="https://github.com/user-attachments/assets/f18da5f4-412f-4f15-8446-f88ed28aa20c" />
 
 **Update with merge commit**
 - GitHub creates one new commit, `U`, with two parents: `B` (your old tip) and `N2` (current `main`).
@@ -100,7 +100,7 @@ Neither button moves `main`. Both only move the `feature` pointer. The differenc
 - `A` and `B` are unchanged and keep their SHAs. `M` stays in your branch's history as the place where you forked.
 - Local effect: a plain `git pull` on the branch fast-forwards to `U`.
 
-<img width="680"  alt="image" src="https://github.com/user-attachments/assets/f657f707-bb9d-46b0-af24-7ac300bc0e13" />
+<img width="680"  alt="Commit graph after Update with rebase: copies A′ and B′ follow N2; feature now points to B′; original A and B remain but no branch points to them" src="https://github.com/user-attachments/assets/f657f707-bb9d-46b0-af24-7ac300bc0e13" />
 
 **Update with rebase**
 - GitHub replays your changes on top of `N2`. This creates new commits `A′` and `B′`. They have the same diffs and messages as `A` and `B` but different SHAs, because their parents are different.
