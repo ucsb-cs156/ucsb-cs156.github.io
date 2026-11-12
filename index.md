@@ -17,6 +17,7 @@ The CS156 Docs are a guide for students in
 * [PR Checklist](https://ucsb-cs156.github.io/topics/pull_requests/#pr-checklist)
 * [Assign your PRs](https://ucsb-cs156.github.io/topics/pull_requests/pull_requests_assigning.html#pull-requests-assigning---how-to-assign-a-pull-request)
 * [Deploy your PRs](https://ucsb-cs156.github.io/topics/pull_requests/pull_requests_deployments.html#pull-requests-deployments---link-your-prs-to-a-deployment)
+* [Code Review includes reviewing the Deployment](https://ucsb-cs156.github.io/topics/code_reviews/code_review_checking_deployment.html)
 * [PR out of date with main](https://ucsb-cs156.github.io/topics/pull_requests/pull_requests_out_of_date_with_main.html)
 
 </details>
