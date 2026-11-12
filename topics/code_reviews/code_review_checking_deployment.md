@@ -33,3 +33,10 @@ To access this feature, login as an admin, go to the admin menu, and find "Devel
 
 Then, check that the SHA matches the one on the PR.
 
+Here's what that looks like on our apps:
+
+| courses | dining | frontiers | happycows |
+|-|-|-|-|
+| | | | |
+
+
